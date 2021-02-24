@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { BrowserModule } from '@angular/platform-browser';
+import { setTheme } from 'ngx-bootstrap/utils';
 import { SharedModule } from '../shared/shared.module';
 
 
@@ -17,4 +18,8 @@ import { SharedModule } from '../shared/shared.module';
     BrowserModule
   ]
 })
-export class CoreModule { }
+export class CoreModule {
+  constructor() {
+    setTheme('bs4');
+  }
+}
