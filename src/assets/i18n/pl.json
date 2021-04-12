@@ -1,1 +1,8 @@
-{}
+{
+  "AUTH": {
+    "LOGIN": "Zaloguj się",
+    "USERNAME": "Login",
+    "PASSWORD": "Hasło",
+    "SUBMIT": "Zaloguj"
+  }
+}

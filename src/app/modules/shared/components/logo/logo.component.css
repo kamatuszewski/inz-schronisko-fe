@@ -1,0 +1,20 @@
+.app-logo {
+  width: auto;
+}
+.app-logo__image {
+  width: 100%;
+}
+.app-logo--small .app-logo__image {
+  max-width: 100px;
+  width: 100%;
+}
+.app-logo--normal .app-logo__image {
+  max-width: 200px;
+  width: 100%;
+}
+.app-logo--big .app-logo__image {
+  max-width: 300px;
+  width: 100%;
+}
+
+/*# sourceMappingURL=logo.component.css.map */
