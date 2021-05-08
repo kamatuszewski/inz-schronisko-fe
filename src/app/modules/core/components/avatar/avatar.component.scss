@@ -1,0 +1,14 @@
+@import "src/resources/styles/variables";
+
+.app-avatar {
+  width: 41px;
+  height: 41px;
+  background-color: $primary-color;
+  border-radius: 50%;
+
+  &__text {
+    font-size: 18px;
+    font-weight: $font-weight-medium;
+    color: $white-color;
+  }
+}

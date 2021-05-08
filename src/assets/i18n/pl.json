@@ -1,4 +1,7 @@
 {
+  "COMMON": {
+    "APP_NAME": "Przytulisko"
+  },
   "AUTH": {
     "HEADER": "Logowanie",
     "LOGIN": "Zaloguj się",
