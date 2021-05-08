@@ -1,0 +1,32 @@
+<div class="app-login d-flex flex-column">
+  <div class="app-login__logo">
+    <app-logo size="big"></app-logo>
+  </div>
+  <form [formGroup]="formGroup"
+        autocomplete="off"
+        (ngSubmit)="submit()"
+        class="app-login__form">
+    <mat-form-field appearance="outline"
+                    class="app-login__form-control">
+      <mat-label>{{ 'AUTH.LOGIN' | transloco }}</mat-label>
+      <input matInput
+             type="text"
+             formControlName="login">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline"
+                    class="app-login__form-control">
+      <mat-label>{{ 'AUTH.LOGIN' | transloco }}</mat-label>
+      <input matInput
+             formControlName="password"
+             [type]="passwordVisibility ? 'text' : 'password'">
+      <mat-icon matSuffix
+                (click)="changePasswordVisibility()">{{ passwordVisibility ? 'visibility' : 'visibility_off' }}</mat-icon>
+    </mat-form-field>
+
+    <button mat-raised-button
+            type="submit"
+            class="app-login__button"
+            color="primary">{{ 'AUTH.SUBMIT' | transloco }}</button>
+  </form>
+</div>
