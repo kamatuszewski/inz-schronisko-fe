@@ -1,5 +1,6 @@
 {
   "AUTH": {
+    "HEADER": "Logowanie",
     "LOGIN": "Zaloguj się",
     "USERNAME": "Login",
     "PASSWORD": "Hasło",
