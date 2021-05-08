@@ -1,10 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { AuthService } from '../../auth.service';
 import { ILoginRequest } from '../../interfaces/login-request.interface';
-import { takeUntil } from 'rxjs/operators';
-import { PermissionsService } from '../../services/permissions.service';
 
 @Component({
   selector: 'app-login',
@@ -18,8 +17,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService,
-    private permissions: PermissionsService
+    private authService: AuthService
   ) {
   }
 
