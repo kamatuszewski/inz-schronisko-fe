@@ -1,0 +1,14 @@
+@import "src/resources/styles/variables";
+
+.app-business-card {
+  &__personal {
+    font-size: 16px;
+    font-weight: $font-weight-medium;
+    margin-bottom: 5px;
+  }
+
+  &__role {
+    font-size: 14px;
+    font-weight: $font-weight-regular;
+  }
+}

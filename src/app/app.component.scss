@@ -1,0 +1,17 @@
+@import "src/resources/styles/variables";
+
+.app {
+  $parent: &;
+  display: grid;
+  grid-template-columns: minmax(150px, 226px) 1fr;
+  grid-template-rows: 87px 1fr;
+
+  &:not(&--unauthorized) {
+    background-color: $background-color;
+  }
+
+  &--unauthorized {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+}

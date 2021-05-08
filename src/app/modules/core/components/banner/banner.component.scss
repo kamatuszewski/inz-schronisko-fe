@@ -1,0 +1,19 @@
+@import "src/resources/styles/variables";
+
+.app-banner {
+  background-color: $light-primary-color;
+
+  &__content {
+    display: grid;
+    grid-template-columns: 53px 1fr;
+    grid-template-rows: 56px;
+    grid-gap: 10px;
+  }
+
+  &__header {
+    font-size: 24px;
+    color: $white-color;
+    margin: 0;
+    font-weight: $font-weight-medium;
+  }
+}
