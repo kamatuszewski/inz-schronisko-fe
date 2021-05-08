@@ -6,6 +6,9 @@
         autocomplete="off"
         (ngSubmit)="submit()"
         class="app-login__form">
+
+    <h1 class="app-login__header text-center">{{ 'AUTH.HEADER' | transloco }}</h1>
+
     <mat-form-field appearance="outline"
                     class="app-login__form-control">
       <mat-label>{{ 'AUTH.LOGIN' | transloco }}</mat-label>
@@ -21,6 +24,7 @@
              formControlName="password"
              [type]="passwordVisibility ? 'text' : 'password'">
       <mat-icon matSuffix
+                class="clickable input-icon"
                 (click)="changePasswordVisibility()">{{ passwordVisibility ? 'visibility' : 'visibility_off' }}</mat-icon>
     </mat-form-field>
 

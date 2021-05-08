@@ -1,4 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
 
+/**
+ * GLOBAL STYLES
+ */
+
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 20px;
+  color: #363636;
+}
+
+.clickable {
+  cursor: pointer !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-background-clip: text;
+}
+
+.input-icon {
+  color: #363636;
+  opacity: .5;
+}
