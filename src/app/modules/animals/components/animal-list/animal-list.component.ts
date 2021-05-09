@@ -47,11 +47,11 @@ export interface ISimpleAnimal {
 }
 
 @Component({
-  selector: 'app-animals-list',
-  templateUrl: './animals-list.component.html',
-  styleUrls: ['./animals-list.component.scss']
+  selector: 'app-animal-list',
+  templateUrl: './animal-list.component.html',
+  styleUrls: ['./animal-list.component.scss']
 })
-export class AnimalsListComponent implements OnInit {
+export class AnimalListComponent implements OnInit {
   public tableColumns: ITableColumn[];
   public data = ELEMENT_DATA;
   public listConfig: IListConfig;
