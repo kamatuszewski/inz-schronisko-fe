@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ITableColumn } from '../../../shared/interfaces/table-column.interface';
+import { IListConfig } from '../../../shared/interfaces/list-config.interface';
 
 const ELEMENT_DATA: ISimpleAnimal[] = [
   {
@@ -53,6 +54,7 @@ export interface ISimpleAnimal {
 export class AnimalsListComponent implements OnInit {
   public tableColumns: ITableColumn[];
   public data = ELEMENT_DATA;
+  public listConfig: IListConfig;
 
   constructor() { }
 
@@ -68,7 +70,7 @@ export class AnimalsListComponent implements OnInit {
       },
       {
         code: 'sex',
-        name: 'Wiek'
+        name: 'Płeć'
       },
       {
         code: 'foundDate',
@@ -87,9 +89,17 @@ export class AnimalsListComponent implements OnInit {
 
   public ngOnInit(): void {
     this.initColumnTable();
+    this.initListConfig();
   }
 
   public openFilter(): void {
     console.log('open filter');
+  }
+
+  private initListConfig(): void {
+    this.listConfig = {
+      header: 'ANIMALS.LIST.HEADER',
+      create: 'ANIMALS.LIST.CREATE'
+    }
   }
 }
