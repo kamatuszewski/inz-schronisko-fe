@@ -8,5 +8,11 @@
     "USERNAME": "Login",
     "PASSWORD": "Hasło",
     "SUBMIT": "Zaloguj"
+  },
+  "ANIMALS": {
+    "LIST": {
+      "HEADER": "Lista zwierząt",
+      "CREATE": "Dodaj zwierzę"
+    }
   }
 }

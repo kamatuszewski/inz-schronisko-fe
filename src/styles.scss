@@ -1,3 +1,5 @@
+@import "src/resources/styles/variables";
+
 /* You can add global styles to this file, and also import other style files */
 
 /**
@@ -31,4 +33,14 @@ input:-webkit-autofill:active {
 .app-wrapper {
   padding-left: 20px;
   padding-right: 20px;
+
+  &--with-vertical {
+    padding: 20px;
+  }
+}
+
+.app .app__content .app-content-header {
+  font-size: 34px;
+  font-weight: $font-weight-medium;
+  margin: 0;
 }
