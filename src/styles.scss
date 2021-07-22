@@ -1,3 +1,5 @@
+@import "src/resources/styles/variables";
+
 /* You can add global styles to this file, and also import other style files */
 
 /**
@@ -9,7 +11,7 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   font-size: 20px;
-  color: #363636;
+  color: $main-font-color;
 }
 
 .clickable {
@@ -24,11 +26,21 @@ input:-webkit-autofill:active {
 }
 
 .input-icon {
-  color: #363636;
+  color: $main-font-color;
   opacity: .5;
 }
 
 .app-wrapper {
   padding-left: 20px;
   padding-right: 20px;
+
+  &--with-vertical {
+    padding: 20px;
+  }
+}
+
+.app .app__content .app-content-header {
+  font-size: 34px;
+  font-weight: $font-weight-medium;
+  margin: 0;
 }

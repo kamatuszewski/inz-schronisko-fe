@@ -1,9 +1,10 @@
+<app-loader></app-loader>
 <div class="app h-100"
      [class.app--unauthorized]="!loggedIn">
   <app-banner *ngIf="loggedIn"></app-banner>
   <app-top-bar *ngIf="loggedIn"></app-top-bar>
   <app-side-bar *ngIf="loggedIn"></app-side-bar>
-  <div class="app__content app-wrapper">
+  <div class="app__content app-wrapper app-wrapper--with-vertical">
     <router-outlet></router-outlet>
   </div>
 </div>

@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './modules/core/core.module';
 import { SharedModule } from './modules/shared/shared.module';
 import { TranslocoRootModule } from './modules/transloco/transloco-root.module';
+import { BASE_LIST_SERVICE } from './modules/shared/interfaces/base-list-service.interface';
+import { BaseListService } from './modules/shared/services/base-list.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,12 @@ import { TranslocoRootModule } from './modules/transloco/transloco-root.module';
     HttpClientModule,
     TranslocoRootModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: BASE_LIST_SERVICE,
+      useClass: BaseListService
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
