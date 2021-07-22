@@ -16,6 +16,7 @@
     </div>
   </div>
   <div class="app-list__content">
-    <app-list-table [tableData]="tableData" [tableColumns]="tableColumns"></app-list-table>
+    <app-list-table [tableData]="tableData | async"
+                    [tableColumns]="tableColumns"></app-list-table>
   </div>
 </div>
