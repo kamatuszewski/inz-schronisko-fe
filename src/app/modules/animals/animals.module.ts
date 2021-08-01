@@ -5,10 +5,12 @@ import { SharedModule } from '../shared/shared.module';
 import { AnimalsRoutingModule } from './animals-routing.module';
 import { AnimalListComponent } from './components/animal-list/animal-list.component';
 import { AnimalListService } from './services/animal-list.service';
+import { AnimalFormComponent } from './components/animal-form/animal-form.component';
+import { AnimalFormGeneralInfoComponent } from './components/animal-form-general-info/animal-form-general-info.component';
 
 
 @NgModule({
-  declarations: [AnimalListComponent],
+  declarations: [AnimalListComponent, AnimalFormComponent, AnimalFormGeneralInfoComponent],
   imports: [
     AnimalsRoutingModule,
     SharedModule

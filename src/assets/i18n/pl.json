@@ -13,6 +13,15 @@
     "LIST": {
       "HEADER": "Lista zwierząt",
       "CREATE": "Dodaj zwierzę"
+    },
+    "FORM": {
+      "CREATE": {
+        "HEADER": "Formularz dodawania zwierza"
+      },
+      "COMMONS": {
+        "SAVE": "Zapisz",
+        "CANCEL": "Anuluj"
+      }
     }
   }
 }

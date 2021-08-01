@@ -10,15 +10,15 @@ import { ITableColumn } from '../../interfaces/table-column.interface';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent<T> implements OnInit {
-  @Output() public clickAddNew: EventEmitter<void> = new EventEmitter();
   @Input() public listConfig: IListConfig;
+  @Output() public redirectToForm: EventEmitter<void> = new EventEmitter();
   @Input() public tableColumns: ITableColumn[];
   public tableData: Observable<T>;
 
   constructor(@Inject(BASE_LIST_SERVICE) private listService: IBaseListService) { }
 
   public goToAddNew(): void {
-    this.clickAddNew.emit();
+    this.redirectToForm.emit();
   }
 
   public ngOnInit(): void {
