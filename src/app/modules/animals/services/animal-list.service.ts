@@ -10,7 +10,7 @@ import { ISimpleAnimal } from '../interceptors/animals.interface';
 })
 export class AnimalListService implements IBaseListService<ISimpleAnimal[]> {
   private animals$ = new BehaviorSubject([]);
-  private readonly animalUrl: string = environment.apiUrl.animal;
+  private readonly animalUrl: string = environment.apiUrl.animals;
   constructor(private http: HttpClient) { }
 
   public fetchList(): Observable<ISimpleAnimal[]> {

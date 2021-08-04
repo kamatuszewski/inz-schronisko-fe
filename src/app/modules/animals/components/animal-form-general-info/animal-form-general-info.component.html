@@ -1,0 +1,57 @@
+<div [formGroup]="formGroup"
+     class="app-animal-form-general-info">
+  <mat-form-field appearance="outline">
+    <mat-label>{{ 'ANIMALS.FORM.FIELDS.CHIP_NUMBER' | transloco }}</mat-label>
+    <input matInput
+           type="text"
+           formControlName="chipNumber">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>{{ 'ANIMALS.FORM.FIELDS.NAME' | transloco }}</mat-label>
+    <input matInput
+           type="text"
+           formControlName="name">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>{{ 'ANIMALS.FORM.FIELDS.SPECIES' | transloco }}</mat-label>
+    <mat-select formControlName="speciesId">
+      <mat-option *ngFor="let species of allSpecies$ | async"
+                  [value]="species.id">
+        {{ 'ANIMALS.FORM.FIELDS.SPECIES_OPTIONS.' + species.name | transloco }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>{{ 'ANIMALS.FORM.FIELDS.BIRTH_DATE' | transloco }}</mat-label>
+    <input matInput
+           type="text"
+           formControlName="birthDate">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>{{ 'ANIMALS.FORM.FIELDS.SEX' | transloco }}</mat-label>
+    <mat-select formControlName="sex">
+      <mat-option *ngFor="let sex of sexOptions"
+                  [value]="sex">
+        {{ 'ANIMALS.FORM.FIELDS.SEX_OPTIONS.' + sex | transloco }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>{{ 'ANIMALS.FORM.FIELDS.FOUND_PLACE' | transloco }}</mat-label>
+    <input matInput
+           type="text"
+           formControlName="foundPlace">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>{{ 'ANIMALS.FORM.FIELDS.FOUND_DATE' | transloco }}</mat-label>
+    <input matInput
+           type="text"
+           formControlName="foundDate">
+  </mat-form-field>
+</div>

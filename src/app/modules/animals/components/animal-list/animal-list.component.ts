@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IListConfig } from '../../../shared/interfaces/list-config.interface';
 import { ITableColumn } from '../../../shared/interfaces/table-column.interface';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-animal-list',
@@ -11,10 +12,12 @@ export class AnimalListComponent implements OnInit {
   public listConfig: IListConfig;
   public tableColumns: ITableColumn[];
 
-  constructor() { }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
 
   public goToAddNewAnimal(): void {
-    console.log('go to add new');
+    this.router.navigate(['create'], {
+      relativeTo: this.activatedRoute
+    }).then();
   }
 
   public initColumnTable(): void {

@@ -1,5 +1,5 @@
-<div class="app-list">
-  <div class="app-list__header d-flex justify-content-between align-items-center">
+<div class="app-theme">
+  <div class="app-list__header app-theme__header d-flex justify-content-between align-items-center">
     <h3 class="app-list__header-text app-content-header">{{ listConfig.header | transloco }}</h3>
     <div class="app-list__actions d-flex">
       <button mat-mini-fab
@@ -15,7 +15,7 @@
               (click)="goToAddNew()">{{ listConfig.create | transloco }}</button>
     </div>
   </div>
-  <div class="app-list__content">
+  <div class="app-list__content app-theme__content">
     <app-list-table [tableData]="tableData | async"
                     [tableColumns]="tableColumns"></app-list-table>
   </div>
