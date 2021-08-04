@@ -8,7 +8,8 @@ export const environment: IEnvironment = {
   production: false,
   apiUrl: {
     auth: '',
-    animal: ''
+    animals: '',
+    dictionaries: ''
   }
 };
 

@@ -18,6 +18,24 @@
       "CREATE": {
         "HEADER": "Formularz dodawania zwierza"
       },
+      "FIELDS": {
+        "CHIP_NUMBER": "Numer chipa",
+        "NAME": "Imię",
+        "SPECIES": "Gatunek",
+        "SPECIES_OPTIONS": {
+          "DOG": "Pies",
+          "CAT": "Kot",
+          "PARROT": "Papuga"
+        },
+        "BIRTH_DATE": "Data urodzenia",
+        "SEX": "Płeć",
+        "SEX_OPTIONS": {
+          "F": "Samica",
+          "M": "Samiec"
+        },
+        "FOUND_PLACE": "Miejsce znalezoenia",
+        "FOUND_DATE": "Data znalezienia"
+      },
       "COMMONS": {
         "SAVE": "Zapisz",
         "CANCEL": "Anuluj"

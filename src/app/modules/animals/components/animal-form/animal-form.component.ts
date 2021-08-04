@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { IFormActions } from '../../../shared/interfaces/form-actions.interface';
 import { ActivatedRoute, Router } from '@angular/router';
+import { IFormActions } from '../../../shared/interfaces/form-actions.interface';
+import { AnimalFormService } from '../../services/animal-form.service';
 
 @Component({
   selector: 'app-animal-form',
@@ -9,12 +10,13 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./animal-form.component.scss']
 })
 export class AnimalFormComponent implements OnInit, IFormActions {
-  public formGroup;
+  public formGroup: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private animalFormService: AnimalFormService
   ) { }
 
   public cancel(): void {
@@ -24,10 +26,14 @@ export class AnimalFormComponent implements OnInit, IFormActions {
   }
 
   public ngOnInit(): void {
-    this.formGroup = this.formBuilder.group({});
+    this.initForm();
   }
 
   public save(): void {
-    console.log('save', this.formGroup.value);
+    this.animalFormService.createAnimal(this.formGroup.value).subscribe();
+  }
+
+  private initForm(): void {
+    this.formGroup = this.formBuilder.group({});
   }
 }
