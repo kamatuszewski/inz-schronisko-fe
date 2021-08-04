@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { CoreService } from '../../../core/core.service';
 import { IFormActions } from '../../../shared/interfaces/form-actions.interface';
 import { AnimalFormService } from '../../services/animal-form.service';
 
@@ -20,7 +21,8 @@ export class AnimalFormComponent implements OnInit, IFormActions, OnDestroy {
     private formBuilder: FormBuilder,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private animalFormService: AnimalFormService
+    private animalFormService: AnimalFormService,
+    private coreService: CoreService
   ) { }
 
   public cancel(): void {
@@ -40,9 +42,11 @@ export class AnimalFormComponent implements OnInit, IFormActions, OnDestroy {
     const {generalInfo} = this.formGroup.value;
     this.animalFormService.createAnimal(generalInfo)
       .pipe(takeUntil(this.onDestroy$))
-      .subscribe(
-        () => this.redirectToList()
-      );
+      .subscribe(this.successSave, this.failedSave);
+  }
+
+  private failedSave = (): void => {
+    this.coreService.showErrorMessage('ANIMALS.FORM.CREATE.MESSAGES.ERROR')
   }
 
   private initForm(): void {
@@ -53,5 +57,10 @@ export class AnimalFormComponent implements OnInit, IFormActions, OnDestroy {
     this.router.navigate(['..'], {
       relativeTo: this.activatedRoute
     }).then();
+  }
+
+  private successSave = (): void => {
+    this.coreService.showSuccessMessage('ANIMALS.FORM.CREATE.MESSAGES.SUCCESS');
+    this.redirectToList();
   }
 }
