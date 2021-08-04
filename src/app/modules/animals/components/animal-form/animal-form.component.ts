@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { IFormActions } from '../../../shared/interfaces/form-actions.interface';
 import { AnimalFormService } from '../../services/animal-form.service';
 
@@ -9,8 +11,10 @@ import { AnimalFormService } from '../../services/animal-form.service';
   templateUrl: './animal-form.component.html',
   styleUrls: ['./animal-form.component.scss']
 })
-export class AnimalFormComponent implements OnInit, IFormActions {
+export class AnimalFormComponent implements OnInit, IFormActions, OnDestroy {
   public formGroup: FormGroup;
+
+  private onDestroy$ = new Subject<void>();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -20,9 +24,12 @@ export class AnimalFormComponent implements OnInit, IFormActions {
   ) { }
 
   public cancel(): void {
-    this.router.navigate(['..'], {
-      relativeTo: this.activatedRoute
-    }).then();
+    this.redirectToList();
+  }
+
+  public ngOnDestroy(): void {
+    this.onDestroy$.next();
+    this.onDestroy$.complete();
   }
 
   public ngOnInit(): void {
@@ -30,10 +37,21 @@ export class AnimalFormComponent implements OnInit, IFormActions {
   }
 
   public save(): void {
-    this.animalFormService.createAnimal(this.formGroup.value).subscribe();
+    const {generalInfo} = this.formGroup.value;
+    this.animalFormService.createAnimal(generalInfo)
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe(
+        () => this.redirectToList()
+      );
   }
 
   private initForm(): void {
     this.formGroup = this.formBuilder.group({});
+  }
+
+  private redirectToList(): void {
+    this.router.navigate(['..'], {
+      relativeTo: this.activatedRoute
+    }).then();
   }
 }
