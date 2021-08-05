@@ -32,7 +32,9 @@
             ],
             "styles": [
               "./node_modules/bootstrap/scss/bootstrap.scss",
-              "src/styles.scss"
+              "./node_modules/ngx-toastr/toastr.css",
+              "src/styles.scss",
+              "src/custom-theme.scss"
             ],
             "scripts": []
           },
@@ -73,7 +75,7 @@
               ],
               "optimization": false,
               "outputHashing": "none",
-              "sourceMap": false,
+              "sourceMap": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,

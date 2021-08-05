@@ -1,0 +1,66 @@
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+
+$shelter-theme: (
+  50: #efebf3,
+  100: #d7cee2,
+  200: #bcadcf,
+  300: #a18cbb,
+  400: #8d73ad,
+  500: #795a9e,
+  600: #715296,
+  700: #66488c,
+  800: #5c3f82,
+  900: #492e70,
+  A100: #d5b9ff,
+  A200: #b686ff,
+  A400: #9753ff,
+  A700: #873aff,
+  contrast: (
+    50: #fff,
+    100: #fff,
+    200: #fff,
+    300: #fff,
+    400: #fff,
+    500: #fff,
+    600: #fff,
+    700: #fff,
+    800: #fff,
+    900: #fff,
+    A100: #000,
+    A200: #000,
+    A400: #000,
+    A700: #000,
+  )
+);
+
+$shelter-primary: mat-palette($shelter-theme);
+
+$shelter-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$shelter-warn: mat-palette($mat-red);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as `color` or `typography`.
+$shelter-theme: mat-light-theme((
+  color: (
+    primary: $shelter-primary,
+    accent: $shelter-accent,
+    warn: $shelter-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($shelter-theme);

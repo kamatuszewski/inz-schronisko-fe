@@ -1,0 +1,22 @@
+.app-logo {
+  width: auto;
+
+  &__image {
+    width: 100%;
+  }
+
+  &--small &__image {
+    max-width: 100px;
+    width: 100%;
+  }
+
+  &--normal &__image {
+    max-width: 200px;
+    width: 100%;
+  }
+
+  &--big &__image {
+    max-width: 300px;
+    width: 100%;
+  }
+}

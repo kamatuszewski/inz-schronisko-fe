@@ -1,0 +1,75 @@
+<div [formGroup]="formGroup"
+     class="app-animal-form-general-info">
+  <mat-form-field appearance="outline">
+    <mat-label>{{ 'ANIMALS.FORM.FIELDS.CHIP_NUMBER' | transloco }}</mat-label>
+    <input matInput
+           type="text"
+           formControlName="chipNumber">
+    <mat-error>{{ formGroup.get('chipNumber').errors | validation }}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>{{ 'ANIMALS.FORM.FIELDS.NAME' | transloco }}</mat-label>
+    <input matInput
+           type="text"
+           formControlName="name">
+    <mat-error>{{ formGroup.get('name').errors | validation }}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>{{ 'ANIMALS.FORM.FIELDS.SPECIES' | transloco }}</mat-label>
+    <mat-select formControlName="speciesId">
+      <mat-option *ngFor="let species of allSpecies$ | async"
+                  [value]="species.id">
+        {{ 'ANIMALS.FORM.FIELDS.SPECIES_OPTIONS.' + species.name | transloco }}
+      </mat-option>
+    </mat-select>
+    <mat-error>{{ formGroup.get('speciesId').errors | validation }}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>{{ 'ANIMALS.FORM.FIELDS.BIRTH_DATE' | transloco }}</mat-label>
+    <input matInput
+           type="text"
+           [matDatepicker]="birthDateDatePicker"
+           [max]="todayDate"
+           readonly
+           formControlName="birthDate">
+    <mat-datepicker #birthDateDatePicker></mat-datepicker>
+    <mat-datepicker-toggle matSuffix [for]="birthDateDatePicker"></mat-datepicker-toggle>
+    <mat-error>{{ formGroup.get('birthDate').errors | validation }}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>{{ 'ANIMALS.FORM.FIELDS.SEX' | transloco }}</mat-label>
+    <mat-select formControlName="sex">
+      <mat-option *ngFor="let sex of sexOptions"
+                  [value]="sex">
+        {{ 'ANIMALS.FORM.FIELDS.SEX_OPTIONS.' + sex | transloco }}
+      </mat-option>
+    </mat-select>
+    <mat-error>{{ formGroup.get('sex').errors | validation }}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>{{ 'ANIMALS.FORM.FIELDS.FOUND_PLACE' | transloco }}</mat-label>
+    <input matInput
+           type="text"
+           formControlName="foundPlace">
+    <mat-error>{{ formGroup.get('foundPlace').errors | validation }}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>{{ 'ANIMALS.FORM.FIELDS.FOUND_DATE' | transloco }}</mat-label>
+    <input matInput
+           type="text"
+           [matDatepicker]="foundDateDatePicker"
+           readonly
+           [min]="foundMinDate"
+           [max]="todayDate"
+           formControlName="foundDate">
+    <mat-datepicker #foundDateDatePicker></mat-datepicker>
+    <mat-datepicker-toggle matSuffix [for]="foundDateDatePicker"></mat-datepicker-toggle>
+    <mat-error>{{ formGroup.get('foundDate').errors | validation : 'ANIMALS.FORM.ERRORS' }}</mat-error>
+  </mat-form-field>
+</div>

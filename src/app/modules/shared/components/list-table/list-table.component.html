@@ -1,0 +1,22 @@
+<div class="app-list-table">
+  <table mat-table
+         [dataSource]="dataSource"
+         class="app-list-table__content w-100">
+
+    <ng-container *ngFor="let column of columns"
+                  [matColumnDef]="column.code">
+      <th mat-header-cell
+          *matHeaderCellDef
+          class="app-list-table__cell app-list-table__cell--medium">{{ column.name }}</th>
+      <td mat-cell
+          *matCellDef="let element"
+          class="app-list-table__cell">{{ element[column.code] }}</td>
+    </ng-container>
+
+    <tr class="app-list-table__row app-list-table__row--primary"
+        mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr class="app-list-table__row"
+        mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <div class="app-list-table__pagination"></div>
+</div>

@@ -1,0 +1,11 @@
+@import "src/resources/styles/variables";
+
+.app-top-bar {
+  background-color: $white-color;
+
+  &__content {
+    display: grid;
+    grid-template-columns: max-content 41px;
+    grid-gap: 20px;
+  }
+}

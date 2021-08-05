@@ -1,4 +1,64 @@
+@import "src/resources/styles/variables";
+
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/**
+ * GLOBAL STYLES
+ */
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 20px;
+  color: $main-font-color;
+}
+
+.clickable {
+  cursor: pointer !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-background-clip: text;
+}
+
+.input-icon {
+  color: $main-font-color;
+  opacity: .5;
+}
+
+.app-wrapper {
+  padding-left: 20px;
+  padding-right: 20px;
+
+  &--with-vertical {
+    padding: 20px;
+  }
+}
+
+.app .app__content .app-content-header {
+  font-size: 34px;
+  font-weight: $font-weight-medium;
+  margin: 0;
+}
+
+.app-theme {
+  &__header {
+    padding-bottom: 20px;
+  }
+
+  &__content {
+    box-shadow: 0px 5px 5px -3px rgb(0 0 0 / 20%), 0px 8px 10px 1px rgb(0 0 0 / 14%), 0px 3px 14px 2px rgb(0 0 0 / 12%);
+    background-color: #fff;
+  }
+}
+
+.mat-error {
+  white-space: pre-line;
+}

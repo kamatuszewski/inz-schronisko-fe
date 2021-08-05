@@ -1,1 +1,58 @@
-{}
+{
+  "COMMON": {
+    "APP_NAME": "Przytulisko",
+    "ERRORS": {
+      "onlyDigits": "W polu powinny znaleźć się liczby.",
+      "required": "Pole nie może być puste."
+    }
+  },
+  "AUTH": {
+    "HEADER": "Logowanie",
+    "LOGIN": "Zaloguj się",
+    "USERNAME": "Login",
+    "PASSWORD": "Hasło",
+    "SUBMIT": "Zaloguj"
+  },
+  "ANIMALS": {
+    "LIST": {
+      "HEADER": "Lista zwierząt",
+      "CREATE": "Dodaj zwierzę"
+    },
+    "FORM": {
+      "CREATE": {
+        "HEADER": "Formularz dodawania zwierza",
+        "MESSAGES": {
+          "ERROR": "Nie udało się dodać zwierzęcia",
+          "SUCCESS": "Udało się dodać zwierze"
+        }
+      },
+      "FIELDS": {
+        "CHIP_NUMBER": "Numer chipa",
+        "NAME": "Imię",
+        "SPECIES": "Gatunek",
+        "SPECIES_OPTIONS": {
+          "DOG": "Pies",
+          "CAT": "Kot",
+          "PARROT": "Papuga"
+        },
+        "BIRTH_DATE": "Data urodzenia",
+        "SEX": "Płeć",
+        "SEX_OPTIONS": {
+          "F": "Samica",
+          "M": "Samiec"
+        },
+        "FOUND_PLACE": "Miejsce znalezoenia",
+        "FOUND_DATE": "Data znalezienia"
+      },
+      "ERRORS": {
+        "matDatepickerMin": "Data znalezenia musi późniejsza od daty urodzenia.",
+        "required": "Pole nie może być puste.",
+        "matDatepickerMax": "Data musi być dzisiejsza lub wcześniejsza."
+      },
+      "COMMONS": {
+        "SAVE": "Zapisz",
+        "CANCEL": "Anuluj"
+      }
+    }
+  }
+}

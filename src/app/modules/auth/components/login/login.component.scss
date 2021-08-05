@@ -1,0 +1,28 @@
+@import "src/resources/styles/variables";
+
+.app-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  &__header {
+    font-size: 34px;
+    font-weight: $font-weight-medium;
+  }
+
+  &__form {
+    display: grid;
+    grid-template-columns: minmax(200px, 300px);
+  }
+
+  &__button {
+    max-width: 200px;
+    width: 100%;
+    margin: auto;
+  }
+
+  &__logo {
+    margin-bottom: 5px;
+  }
+}

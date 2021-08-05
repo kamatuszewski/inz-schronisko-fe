@@ -1,0 +1,21 @@
+<div class="app-animal-form app-theme">
+  <div class="app-theme__header">
+    <h3 class="app-content-header">{{ 'ANIMALS.FORM.CREATE.HEADER' | transloco }}</h3>
+  </div>
+  <form class="app-animal-form__content app-theme__content"
+        [formGroup]="formGroup"
+        (ngSubmit)="save()">
+    <app-animal-form-general-info [parentGroup]="formGroup"
+                                  class="app-animal-form__fields"
+                                  groupName="generalInfo"></app-animal-form-general-info>
+    <div class="app-animal-form__actions d-flex justify-content-center">
+      <button type="button"
+              (click)="cancel()"
+              mat-button
+              color="warn">{{ 'ANIMALS.FORM.COMMONS.CANCEL' | transloco }}</button>
+      <button type="submit"
+              mat-raised-button
+              color="primary">{{ 'ANIMALS.FORM.COMMONS.SAVE' | transloco }}</button>
+    </div>
+  </form>
+</div>
