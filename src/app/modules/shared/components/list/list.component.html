@@ -17,6 +17,7 @@
   </div>
   <div class="app-list__content app-theme__content">
     <app-list-table [tableData]="tableData | async"
+                    [columnPrefix]="listConfig.columnsPrefix"
                     [tableColumns]="tableColumns"></app-list-table>
   </div>
 </div>

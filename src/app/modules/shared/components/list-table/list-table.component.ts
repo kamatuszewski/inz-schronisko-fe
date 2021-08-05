@@ -9,7 +9,6 @@ import { ITableData } from '../../interfaces/table-data.interface';
   styleUrls: ['./list-table.component.scss']
 })
 export class ListTableComponent implements OnInit {
-
   @Input() public set tableColumns(columns: ITableColumn[]) {
     this.setDisplayedColumns(columns);
     this.columns = columns;
@@ -19,6 +18,7 @@ export class ListTableComponent implements OnInit {
     this.setTableDataSource(data);
   }
 
+  @Input() public columnPrefix: string;
   public columns: ITableColumn[];
   public dataSource = new MatTableDataSource([]);
   public displayedColumns: string[];

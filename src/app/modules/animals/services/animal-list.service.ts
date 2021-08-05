@@ -18,7 +18,7 @@ export class AnimalListService implements IBaseListService<ISimpleAnimal[]> {
   }
 
   private getAnimalList(): Observable<ISimpleAnimal[]> {
-    const url = `${this.animalUrl}/list`;
+    const url = `${this.animalUrl}`;
     return this.http.get<ISimpleAnimal[]>(url);
   }
 }
