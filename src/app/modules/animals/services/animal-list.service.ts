@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment';
 import { IBaseListService } from '../../shared/interfaces/base-list-service.interface';
-import { ISimpleAnimal } from '../interceptors/animals.interface';
+import { ISimpleAnimal } from '../interfaces/animals.interface';
 
 @Injectable({
   providedIn: 'root'

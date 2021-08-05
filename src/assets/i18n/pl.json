@@ -74,6 +74,9 @@
         "SAVE": "Zapisz",
         "CANCEL": "Anuluj"
       }
+    },
+    "DETAILS": {
+      "HEADER": "Szczegóły zwierzęcia"
     }
   }
 }
