@@ -13,12 +13,14 @@ import { TranslocoModule } from '@ngneat/transloco';
 import { ListTableComponent } from './components/list-table/list-table.component';
 import { ListComponent } from './components/list/list.component';
 import { LogoComponent } from './components/logo/logo.component';
+import { ValidationPipe } from './pipes/validation.pipe';
 
 @NgModule({
   declarations: [
     LogoComponent,
     ListComponent,
-    ListTableComponent
+    ListTableComponent,
+    ValidationPipe
   ],
   imports: [
     CommonModule,
@@ -48,7 +50,8 @@ import { LogoComponent } from './components/logo/logo.component';
     MatTableModule,
     MatOptionModule,
     MatSelectModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    ValidationPipe
   ],
 })
 export class SharedModule { }

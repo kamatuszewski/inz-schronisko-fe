@@ -5,8 +5,8 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CoreService } from '../../../core/core.service';
 import { IFormActions } from '../../../shared/interfaces/form-actions.interface';
-import { AnimalFormService } from '../../services/animal-form.service';
 import { FormUtilsService } from '../../../shared/services/form-utils.service';
+import { AnimalFormService } from '../../services/animal-form.service';
 
 @Component({
   selector: 'app-animal-form',

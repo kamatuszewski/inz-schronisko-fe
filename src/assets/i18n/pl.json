@@ -1,6 +1,10 @@
 {
   "COMMON": {
-    "APP_NAME": "Przytulisko"
+    "APP_NAME": "Przytulisko",
+    "ERRORS": {
+      "onlyDigits": "W polu powinny znaleźć się liczby.",
+      "required": "Pole nie może być puste."
+    }
   },
   "AUTH": {
     "HEADER": "Logowanie",
@@ -39,6 +43,11 @@
         },
         "FOUND_PLACE": "Miejsce znalezoenia",
         "FOUND_DATE": "Data znalezienia"
+      },
+      "ERRORS": {
+        "matDatepickerMin": "Data znalezenia musi późniejsza od daty urodzenia.",
+        "required": "Pole nie może być puste.",
+        "matDatepickerMax": "Data musi być dzisiejsza lub wcześniejsza."
       },
       "COMMONS": {
         "SAVE": "Zapisz",
