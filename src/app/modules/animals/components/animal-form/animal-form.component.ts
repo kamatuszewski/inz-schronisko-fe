@@ -6,6 +6,7 @@ import { takeUntil } from 'rxjs/operators';
 import { CoreService } from '../../../core/core.service';
 import { IFormActions } from '../../../shared/interfaces/form-actions.interface';
 import { AnimalFormService } from '../../services/animal-form.service';
+import { FormUtilsService } from '../../../shared/services/form-utils.service';
 
 @Component({
   selector: 'app-animal-form',
@@ -39,10 +40,13 @@ export class AnimalFormComponent implements OnInit, IFormActions, OnDestroy {
   }
 
   public save(): void {
-    const {generalInfo} = this.formGroup.value;
-    this.animalFormService.createAnimal(generalInfo)
-      .pipe(takeUntil(this.onDestroy$))
-      .subscribe(this.successSave, this.failedSave);
+    FormUtilsService.markAllAsTouched(this.formGroup);
+    if (this.formGroup.valid) {
+      const {generalInfo} = this.formGroup.value;
+      this.animalFormService.createAnimal(generalInfo)
+        .pipe(takeUntil(this.onDestroy$))
+        .subscribe(this.successSave, this.failedSave);
+    }
   }
 
   private failedSave = (): void => {
