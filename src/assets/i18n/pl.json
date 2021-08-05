@@ -16,7 +16,28 @@
   "ANIMALS": {
     "LIST": {
       "HEADER": "Lista zwierząt",
-      "CREATE": "Dodaj zwierzę"
+      "CREATE": "Dodaj zwierzę",
+      "COLUMNS": {
+        "id": "Id",
+        "sex": "Płeć",
+        "name": "Imię",
+        "species": "Gatunek",
+        "status": "Status",
+        "COL_SEX": {
+          "F": "Samica",
+          "M": "Samiec"
+        },
+        "COL_SPECIES": {
+          "DOG": "Pies",
+          "CAT": "Kot",
+          "PARROT": "Papuga"
+        },
+        "COL_STATUS": {
+          "TO_ADOPTION": "Do adopcji",
+          "ADOPTED": "Adoptowany",
+          "DEAD": "Umarł"
+        }
+      }
     },
     "FORM": {
       "CREATE": {

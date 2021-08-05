@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IListConfig } from '../../../shared/interfaces/list-config.interface';
 import { ITableColumn } from '../../../shared/interfaces/table-column.interface';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-animal-list',
@@ -23,24 +23,22 @@ export class AnimalListComponent implements OnInit {
   public initColumnTable(): void {
     this.tableColumns = [
       {
-        code: 'chipNumber',
-        name: 'Number chipa'
+        code: 'id'
+      },
+      {
+        code: 'name'
       },
       {
         code: 'sex',
-        name: 'Płeć'
+        translated: true
       },
       {
-        code: 'foundDate',
-        name: 'Data znalezienia'
-      },
-      {
-        code: 'foundPlace',
-        name: 'Miejsce znalezienia'
+        code: 'species',
+        translated: true
       },
       {
         code: 'status',
-        name: 'Status'
+        translated: true
       },
     ] as ITableColumn[];
   }
@@ -53,7 +51,8 @@ export class AnimalListComponent implements OnInit {
   private initListConfig(): void {
     this.listConfig = {
       header: 'ANIMALS.LIST.HEADER',
-      create: 'ANIMALS.LIST.CREATE'
+      create: 'ANIMALS.LIST.CREATE',
+      columnsPrefix: 'ANIMALS.LIST.COLUMNS'
     }
   }
 }

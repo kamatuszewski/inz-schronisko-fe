@@ -1,8 +1,7 @@
 export interface ISimpleAnimal {
-  chipNumber: string;
-  foundDate: string;
-  foundPlace: string;
   id: number;
+  name: string;
   sex: string;
+  species: string;
   status: string;
 }
