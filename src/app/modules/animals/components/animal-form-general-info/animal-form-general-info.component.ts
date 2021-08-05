@@ -1,8 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Moment } from 'moment';
+import * as moment from 'moment/moment';
 import { Observable } from 'rxjs';
 import { ESex } from '../../../shared/enums/sex.enum';
 import { IGenericDictionary } from '../../../shared/interfaces/generic.interface';
+import { FormUtilsService } from '../../../shared/services/form-utils.service';
 import { AnimalDictionary } from '../../enums/animals.enum';
 import { AnimalDictionariesService } from '../../services/animal-dictionaries.service';
 
@@ -12,19 +15,27 @@ import { AnimalDictionariesService } from '../../services/animal-dictionaries.se
   styleUrls: ['./animal-form-general-info.component.scss']
 })
 export class AnimalFormGeneralInfoComponent implements OnInit {
-  public allSpecies$: Observable<IGenericDictionary[]>;
-  public formGroup: FormGroup;
+  public get foundMinDate(): string | Moment | undefined {
+    if (this.formGroup && this.formGroup?.get('birthDate')) {
+      return this.formGroup.get('birthDate').value;
+    }
+    return undefined;
+  }
   public get sexOptions(): ESex[] {
     return Object.values(ESex);
   }
+
+  public allSpecies$: Observable<IGenericDictionary[]>;
+  public formGroup: FormGroup;
   @Input() public groupName: string;
   @Input() public parentGroup: FormGroup;
+  public todayDate = moment().toISOString();
 
   constructor(private formBuilder: FormBuilder,
               private animalsDictionariesService: AnimalDictionariesService) {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.initFormGroup();
     this.appendFormToParentGroup();
     this.initDictionaries();
@@ -43,13 +54,13 @@ export class AnimalFormGeneralInfoComponent implements OnInit {
   private initFormGroup(): void {
     this.formGroup = this.formBuilder.group({
       id: this.formBuilder.control(null),
-      birthDate: this.formBuilder.control(null),
-      chipNumber: this.formBuilder.control(null),
-      foundDate: this.formBuilder.control(null),
-      foundPlace: this.formBuilder.control(null),
-      name: this.formBuilder.control(null),
-      sex: this.formBuilder.control(null),
-      speciesId: this.formBuilder.control(null),
+      birthDate: this.formBuilder.control(null, [Validators.required]),
+      chipNumber: this.formBuilder.control(null, [Validators.required, FormUtilsService.onlyDigitalValidator()]),
+      foundDate: this.formBuilder.control(null, [Validators.required]),
+      foundPlace: this.formBuilder.control(null, [Validators.required]),
+      name: this.formBuilder.control(null, [Validators.required]),
+      sex: this.formBuilder.control(null, [Validators.required]),
+      speciesId: this.formBuilder.control(null, [Validators.required]),
     });
   }
 }
