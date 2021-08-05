@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { MatNativeDateModule, MAT_DATE_FORMATS } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BrowserModule } from '@angular/platform-browser';
 import { setTheme } from 'ngx-bootstrap/utils';
@@ -28,7 +30,9 @@ import { HttpLoaderInterceptor } from './interceptors/http-loader.interceptor';
     CommonModule,
     BrowserModule,
     SharedModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatNativeDateModule,
+    MatMomentDateModule
   ],
   exports: [
     CommonModule,
@@ -43,6 +47,20 @@ import { HttpLoaderInterceptor } from './interceptors/http-loader.interceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: HttpLoaderInterceptor,
       multi: true
+    },
+    {
+      provide: MAT_DATE_FORMATS,
+      useValue: {
+        parse: {
+          dateInput: ['l', 'LL'],
+        },
+        display: {
+          dateInput: 'YYYY-MM-DD',
+          monthYearLabel: 'MMM YYYY',
+          dateA11yLabel: 'LL',
+          monthYearA11yLabel: 'MMMM YYYY',
+        },
+      }
     }
   ]
 })

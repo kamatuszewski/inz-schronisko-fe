@@ -28,7 +28,11 @@
     <mat-label>{{ 'ANIMALS.FORM.FIELDS.BIRTH_DATE' | transloco }}</mat-label>
     <input matInput
            type="text"
+           [matDatepicker]="birthDateDatePicker"
+           readonly
            formControlName="birthDate">
+    <mat-datepicker #birthDateDatePicker></mat-datepicker>
+    <mat-datepicker-toggle matSuffix [for]="birthDateDatePicker"></mat-datepicker-toggle>
   </mat-form-field>
 
   <mat-form-field appearance="outline">
@@ -52,6 +56,10 @@
     <mat-label>{{ 'ANIMALS.FORM.FIELDS.FOUND_DATE' | transloco }}</mat-label>
     <input matInput
            type="text"
+           [matDatepicker]="foundDateDatePicker"
+           readonly
            formControlName="foundDate">
+    <mat-datepicker #foundDateDatePicker></mat-datepicker>
+    <mat-datepicker-toggle matSuffix [for]="foundDateDatePicker"></mat-datepicker-toggle>
   </mat-form-field>
 </div>
