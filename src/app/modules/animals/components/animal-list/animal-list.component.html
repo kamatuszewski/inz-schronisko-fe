@@ -1,3 +1,4 @@
 <app-list [tableColumns]="tableColumns"
           [listConfig]="listConfig"
+          (selectRow)="selectAnimal($event)"
           (redirectToForm)="goToAddNewAnimal()"></app-list>

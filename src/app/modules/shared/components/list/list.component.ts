@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { BASE_LIST_SERVICE, IBaseListService } from '../../interfaces/base-list-service.interface';
 import { IListConfig } from '../../interfaces/list-config.interface';
 import { ITableColumn } from '../../interfaces/table-column.interface';
@@ -12,6 +12,7 @@ import { ITableColumn } from '../../interfaces/table-column.interface';
 export class ListComponent<T> implements OnInit {
   @Input() public listConfig: IListConfig;
   @Output() public redirectToForm: EventEmitter<void> = new EventEmitter();
+  @Output() public selectRow = new EventEmitter<number>();
   @Input() public tableColumns: ITableColumn[];
   public tableData: Observable<T>;
 

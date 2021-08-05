@@ -23,6 +23,8 @@
     <tr class="app-list-table__row app-list-table__row--primary"
         mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr class="app-list-table__row"
+        [class.clickable]="!!selectable"
+        (click)="select(row.id)"
         mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
   <div class="app-list-table__pagination"></div>

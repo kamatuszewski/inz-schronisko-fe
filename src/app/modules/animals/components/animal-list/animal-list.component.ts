@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IListConfig } from '../../../shared/interfaces/list-config.interface';
 import { ITableColumn } from '../../../shared/interfaces/table-column.interface';
+import { animalTableConfig } from '../../const/table-config.const';
 
 @Component({
   selector: 'app-animal-list',
@@ -21,26 +22,7 @@ export class AnimalListComponent implements OnInit {
   }
 
   public initColumnTable(): void {
-    this.tableColumns = [
-      {
-        code: 'id'
-      },
-      {
-        code: 'name'
-      },
-      {
-        code: 'sex',
-        translated: true
-      },
-      {
-        code: 'species',
-        translated: true
-      },
-      {
-        code: 'status',
-        translated: true
-      },
-    ] as ITableColumn[];
+    this.tableColumns = animalTableConfig;
   }
 
   public ngOnInit(): void {
@@ -48,11 +30,18 @@ export class AnimalListComponent implements OnInit {
     this.initListConfig();
   }
 
+  public selectAnimal(id: number): void {
+    this.router.navigate([id], {
+      relativeTo: this.activatedRoute
+    }).then();
+  }
+
   private initListConfig(): void {
     this.listConfig = {
       header: 'ANIMALS.LIST.HEADER',
       create: 'ANIMALS.LIST.CREATE',
-      columnsPrefix: 'ANIMALS.LIST.COLUMNS'
+      columnsPrefix: 'ANIMALS.LIST.COLUMNS',
+      selectable: true
     }
   }
 }

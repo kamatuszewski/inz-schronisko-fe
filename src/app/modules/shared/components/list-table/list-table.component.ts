@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ITableColumn } from '../../interfaces/table-column.interface';
 import { ITableData } from '../../interfaces/table-data.interface';
@@ -22,10 +22,18 @@ export class ListTableComponent implements OnInit {
   public columns: ITableColumn[];
   public dataSource = new MatTableDataSource([]);
   public displayedColumns: string[];
+  @Input() public selectable = true;
+  @Output() public selectRow = new EventEmitter<number>();
 
   constructor() { }
 
   public ngOnInit(): void {
+  }
+
+  public select(id: number): void {
+    if (!!this.selectable) {
+      this.selectRow.next(id)
+    }
   }
 
   private setDisplayedColumns(columns: ITableColumn[]): void {
