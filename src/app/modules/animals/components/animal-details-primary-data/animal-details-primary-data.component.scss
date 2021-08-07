@@ -1,0 +1,36 @@
+.app-animal-details-primary-data {
+  max-width: 1300px;
+  width: 100%;
+
+  &__details {
+    grid-template-areas:
+      "status . ." "name species sex" "foundDate foundPlace ." "birthDate deathDate .";
+  }
+
+  &__item {
+    &--status {
+      grid-area: status;
+    }
+    &--name {
+      grid-area: name;
+    }
+    &--species {
+      grid-area: species;
+    }
+    &--sex {
+      grid-area: sex;
+    }
+    &--birthDate {
+      grid-area: birthDate;
+    }
+    &--deathDate {
+      grid-area: deathDate;
+    }
+    &--foundDate {
+      grid-area: foundDate;
+    }
+    &--foundPlace {
+      grid-area: foundPlace;
+    }
+  }
+}

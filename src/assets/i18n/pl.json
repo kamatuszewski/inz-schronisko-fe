@@ -4,6 +4,12 @@
     "ERRORS": {
       "onlyDigits": "W polu powinny znaleźć się liczby.",
       "required": "Pole nie może być puste."
+    },
+    "STATUS": {
+      "ADOPTED": "Adoptowany",
+      "DEAD": "Zmarł",
+      "QUARANTINE": "Kwarantanna",
+      "FOR_ADOPTION": "Do adopcji"
     }
   },
   "AUTH": {
@@ -14,6 +20,21 @@
     "SUBMIT": "Zaloguj"
   },
   "ANIMALS": {
+    "SPECIES": {
+      "MOUSE": "Mysz",
+      "BIRD": "Ptak",
+      "CAT": "Kot",
+      "DOG": "Pies",
+      "HAMSTER": "Chomik",
+      "RAT": "Szczur",
+      "RABBIT": "Królik",
+      "PIG": "Świnka",
+      "OTHER": "Inne"
+    },
+    "SEX": {
+      "F": "Samica",
+      "M": "Samiec"
+    },
     "LIST": {
       "HEADER": "Lista zwierząt",
       "CREATE": "Dodaj zwierzę",
@@ -51,17 +72,8 @@
         "CHIP_NUMBER": "Numer chipa",
         "NAME": "Imię",
         "SPECIES": "Gatunek",
-        "SPECIES_OPTIONS": {
-          "DOG": "Pies",
-          "CAT": "Kot",
-          "PARROT": "Papuga"
-        },
         "BIRTH_DATE": "Data urodzenia",
         "SEX": "Płeć",
-        "SEX_OPTIONS": {
-          "F": "Samica",
-          "M": "Samiec"
-        },
         "FOUND_PLACE": "Miejsce znalezoenia",
         "FOUND_DATE": "Data znalezienia"
       },
@@ -76,7 +88,14 @@
       }
     },
     "DETAILS": {
-      "HEADER": "Szczegóły zwierzęcia"
+      "HEADER": "Szczegóły zwierzęcia",
+      "NAME": "Imię",
+      "SPECIES": "Gatunek",
+      "SEX": "Płeć",
+      "BIRTH_DATE": "Data urodzenia",
+      "DEATH_DATE": "Data śmierci",
+      "FOUND_DATE": "Data znalezienia",
+      "FOUND_PLACE": "Miejsce znalezienia"
     }
   }
 }

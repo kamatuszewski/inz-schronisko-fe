@@ -1,0 +1,18 @@
+.app-details-item {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  &__label {
+    color: #795A9E;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: .05rem;
+  }
+
+  &__value {
+    color: #363636;
+    font-size: .9rem;
+    font-weight: 400;
+    letter-spacing: .05rem;
+  }
+}

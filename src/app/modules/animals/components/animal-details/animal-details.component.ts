@@ -18,7 +18,6 @@ export class AnimalDetailsComponent implements OnInit, OnDestroy {
   constructor(activatedRoute: ActivatedRoute,
               private animalsService: AnimalsService) {
     this.animalId = activatedRoute.snapshot.params.id;
-    console.log(this.animalId);
   }
 
   public ngOnDestroy(): void {

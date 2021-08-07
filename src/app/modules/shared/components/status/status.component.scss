@@ -1,0 +1,24 @@
+.app-status {
+  padding: .3rem .5rem;
+  font-size: 0.8rem;
+  letter-spacing: .1rem;
+  display: inline-block;
+  border-radius: 5px;
+  text-transform: uppercase;
+  user-select: none;
+  background-color: #8B8D8C;
+  text-shadow: 1px 1px 4px #000;
+  color: #fff;
+  &--adopted {
+    background-color: #B4D285;
+  }
+  &--for_adoption {
+    background-color: #795A9E;
+  }
+  &--dead {
+    background-color: #292826;
+  }
+  &--quarantine {
+    background-color: #F78645;
+  }
+}

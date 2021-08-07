@@ -10,9 +10,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { TranslocoModule } from '@ngneat/transloco';
+import { DetailsItemComponent } from './components/details-item/details-item.component';
 import { ListTableComponent } from './components/list-table/list-table.component';
 import { ListComponent } from './components/list/list.component';
 import { LogoComponent } from './components/logo/logo.component';
+import { StatusComponent } from './components/status/status.component';
 import { ValidationPipe } from './pipes/validation.pipe';
 
 @NgModule({
@@ -20,7 +22,9 @@ import { ValidationPipe } from './pipes/validation.pipe';
     LogoComponent,
     ListComponent,
     ListTableComponent,
-    ValidationPipe
+    ValidationPipe,
+    DetailsItemComponent,
+    StatusComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +38,7 @@ import { ValidationPipe } from './pipes/validation.pipe';
     MatTableModule,
     MatOptionModule,
     MatSelectModule,
-    MatDatepickerModule,
+    MatDatepickerModule
   ],
   exports: [
     LogoComponent,
@@ -51,7 +55,9 @@ import { ValidationPipe } from './pipes/validation.pipe';
     MatOptionModule,
     MatSelectModule,
     MatDatepickerModule,
-    ValidationPipe
+    ValidationPipe,
+    DetailsItemComponent,
+    StatusComponent
   ],
 })
 export class SharedModule { }

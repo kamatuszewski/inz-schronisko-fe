@@ -27,8 +27,8 @@ export interface IGeneralAnimal {
   id: number,
   name: string,
   sex: ESex,
-  speciesId: number,
-  statusId: number,
+  species: string,
+  status: string,
 }
 
 export interface IGeneralAdoption {

@@ -9,10 +9,11 @@ import { AnimalFormComponent } from './components/animal-form/animal-form.compon
 import { AnimalListComponent } from './components/animal-list/animal-list.component';
 import { AnimalListService } from './services/animal-list.service';
 import { AnimalDetailsComponent } from './components/animal-details/animal-details.component';
+import { AnimalDetailsPrimaryDataComponent } from './components/animal-details-primary-data/animal-details-primary-data.component';
 
 
 @NgModule({
-  declarations: [AnimalListComponent, AnimalFormComponent, AnimalFormGeneralInfoComponent, AnimalDetailsComponent],
+  declarations: [AnimalListComponent, AnimalFormComponent, AnimalFormGeneralInfoComponent, AnimalDetailsComponent, AnimalDetailsPrimaryDataComponent],
   imports: [
     AnimalsRoutingModule,
     SharedModule,

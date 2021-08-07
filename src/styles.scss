@@ -62,3 +62,16 @@ input:-webkit-autofill:active {
 .mat-error {
   white-space: pre-line;
 }
+
+.details {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1rem;
+  padding: 1rem;
+
+  &__item {
+    &--full {
+      grid-column: span 3;
+    }
+  }
+}

@@ -21,7 +21,7 @@
     <mat-select formControlName="speciesId">
       <mat-option *ngFor="let species of allSpecies$ | async"
                   [value]="species.id">
-        {{ 'ANIMALS.FORM.FIELDS.SPECIES_OPTIONS.' + species.name | transloco }}
+        {{ 'ANIMALS.SPECIES.' + species.name | transloco }}
       </mat-option>
     </mat-select>
     <mat-error>{{ formGroup.get('speciesId').errors | validation }}</mat-error>
@@ -45,7 +45,7 @@
     <mat-select formControlName="sex">
       <mat-option *ngFor="let sex of sexOptions"
                   [value]="sex">
-        {{ 'ANIMALS.FORM.FIELDS.SEX_OPTIONS.' + sex | transloco }}
+        {{ 'ANIMALS.SEX.' + sex | transloco }}
       </mat-option>
     </mat-select>
     <mat-error>{{ formGroup.get('sex').errors | validation }}</mat-error>
