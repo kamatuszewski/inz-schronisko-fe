@@ -95,7 +95,11 @@
       "BIRTH_DATE": "Data urodzenia",
       "DEATH_DATE": "Data śmierci",
       "FOUND_DATE": "Data znalezienia",
-      "FOUND_PLACE": "Miejsce znalezienia"
+      "FOUND_PLACE": "Miejsce znalezienia",
+      "TABS": {
+        "ADOPTIONS": "Adopcje",
+        "VET_VISITS": "Historia leczenia"
+      }
     }
   }
 }

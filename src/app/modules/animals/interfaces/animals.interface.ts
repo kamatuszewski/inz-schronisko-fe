@@ -15,7 +15,7 @@ export interface IAnimalDetailsRequest {
 export interface IAnimalDetailsResponse {
   adoptions: IGeneralAdoption[];
   data: IGeneralAnimal;
-  vetVisits: IGeneralVetVisits;
+  vetVisits: IGeneralVetVisits[];
 }
 
 export interface IGeneralAnimal {

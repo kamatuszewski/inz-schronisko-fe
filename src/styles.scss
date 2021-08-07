@@ -75,3 +75,14 @@ input:-webkit-autofill:active {
     }
   }
 }
+
+body .mat-tab-label {
+  color: $main-font-color;
+}
+body .mat-tab-label-active {
+  color: $primary-color;
+  opacity: 1;
+}
+body .mat-tab-body-wrapper {
+  padding-top: .5rem;
+}
