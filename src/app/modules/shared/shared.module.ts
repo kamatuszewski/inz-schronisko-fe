@@ -7,8 +7,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
 import { TranslocoModule } from '@ngneat/transloco';
 import { DetailsItemComponent } from './components/details-item/details-item.component';
 import { ListTableComponent } from './components/list-table/list-table.component';
@@ -16,8 +18,6 @@ import { ListComponent } from './components/list/list.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { StatusComponent } from './components/status/status.component';
 import { ValidationPipe } from './pipes/validation.pipe';
-import { MatTabsModule } from '@angular/material/tabs';
-import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -63,7 +63,8 @@ import { MatMenuModule } from '@angular/material/menu';
     DetailsItemComponent,
     StatusComponent,
     MatTabsModule,
-    MatMenuModule
+    MatMenuModule,
+    ListTableComponent
   ],
 })
 export class SharedModule { }

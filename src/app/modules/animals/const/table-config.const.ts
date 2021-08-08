@@ -20,3 +20,21 @@ export const animalTableConfig = [
     translated: true
   },
 ] as ITableColumn[];
+
+export const animalDetailsAdoptionTableConfig = [
+  {
+    code: 'id'
+  },
+  {
+    code: 'adopterFullName'
+  },
+  {
+    code: 'employeeFullName'
+  },
+  {
+    code: 'adoptionDate'
+  },
+  {
+    code: 'controlDate'
+  },
+]

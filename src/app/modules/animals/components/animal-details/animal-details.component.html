@@ -1,15 +1,16 @@
 <div class="app-animal-details app-theme">
   <div class="app-theme__header">
-    <h3 class="app-content-header">{{ 'ANIMALS.DETAILS.HEADER' | transloco }} #{{ animalDetails.data.chipNumber }}</h3>
+    <h3 class="app-content-header">{{ 'ANIMALS.DETAILS.HEADER' | transloco }} #{{ animalDetails?.data?.chipNumber }}</h3>
   </div>
   <div class="app-theme__content">
-    <app-animal-details-primary-data [data]="animalDetails.data"></app-animal-details-primary-data>
+    <app-animal-details-primary-data [data]="animalDetails?.data"></app-animal-details-primary-data>
 
     <mat-tab-group animationDuration="0ms"
-                   dynamicHeight="true" class="app-animal-details__tabs">
+                   dynamicHeight="true"
+                   class="app-animal-details__tabs">
       <mat-tab *ngIf="animalDetails?.adoptions && !!animalDetails.adoptions.length"
                [label]="'ANIMALS.DETAILS.TABS.ADOPTIONS' | transloco">
-        <app-animal-details-adoptions></app-animal-details-adoptions>
+        <app-animal-details-adoptions [data]="animalDetails?.adoptions"></app-animal-details-adoptions>
       </mat-tab>
       <mat-tab *ngIf="animalDetails?.vetVisits && !!animalDetails.vetVisits.length"
                [label]="'ANIMALS.DETAILS.TABS.VET_VISITS' | transloco">

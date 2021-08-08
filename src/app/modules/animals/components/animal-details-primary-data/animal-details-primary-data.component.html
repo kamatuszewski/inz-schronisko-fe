@@ -1,4 +1,5 @@
-<section class="app-animal-details-primary-data">
+<section *ngIf="data"
+         class="app-animal-details-primary-data">
   <div class="details app-animal-details-primary-data__details">
     <app-status [status]="data?.status"
                 class="app-animal-details-primary-data__item app-animal-details-primary-data__item--status"></app-status>
@@ -24,11 +25,11 @@
                       class="app-animal-details-primary-data__item app-animal-details-primary-data__item--deathDate"></app-details-item>
 
     <app-details-item [label]="'ANIMALS.DETAILS.FOUND_DATE' | transloco"
-                      [value]="data.foundDate"
+                      [value]="data?.foundDate"
                       class="app-animal-details-primary-data__item app-animal-details-primary-data__item--foundDate"></app-details-item>
 
     <app-details-item [label]="'ANIMALS.DETAILS.FOUND_PLACE' | transloco"
-                      [value]="data.foundPlace"
+                      [value]="data?.foundPlace"
                       class="app-animal-details-primary-data__item app-animal-details-primary-data__item--foundPlace"></app-details-item>
   </div>
 </section>
