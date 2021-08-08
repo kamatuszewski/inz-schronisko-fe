@@ -1,4 +1,15 @@
 <app-list-table [tableData]="adoptions"
                 [tableColumns]="tableColumns"
                 [columnPrefix]="'ANIMALS.DETAILS.ADOPTIONS'"
-                expandable="true"></app-list-table>
+                expandable="true"
+                [expandedDetailsRef]="expandedDetailsRef"></app-list-table>
+<ng-template #expandedDetailsRef let-details='details'>
+  <div class="details">
+    <app-details-item [label]="'ANIMALS.DETAILS.ADOPTIONS.DETAILS.PHONE_NUMBER' | transloco"
+                      [value]="details['phoneNumber']"></app-details-item>
+    <app-details-item [label]="'ANIMALS.DETAILS.ADOPTIONS.DETAILS.EMAIL' | transloco"
+                      [value]="details['email']"></app-details-item>
+    <app-details-item [label]="'ANIMALS.DETAILS.ADOPTIONS.DETAILS.ADDRESS' | transloco"
+                      [value]="details['address']"></app-details-item>
+  </div>
+</ng-template>

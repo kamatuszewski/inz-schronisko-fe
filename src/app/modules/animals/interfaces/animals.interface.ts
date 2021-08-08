@@ -64,6 +64,13 @@ export interface IAnimalDetailsAdoption {
   adopterFullName: string;
   adoptionDate: string;
   controlDate: string;
+  details: IAnimalDetailsAdopterContact;
   employeeFullName: string;
   id: number;
+}
+
+export interface IAnimalDetailsAdopterContact {
+  address: string;
+  email: string;
+  phoneNumber: string;
 }

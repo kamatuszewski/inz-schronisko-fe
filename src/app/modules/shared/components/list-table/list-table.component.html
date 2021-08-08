@@ -28,7 +28,8 @@
           [attr.colspan]="displayedColumns.length">
         <div class="app-list-table__expanded-detail"
              [class.app-list-table__expanded-detail--expanded]="isExpandedDetails(element['id'])">
-          cos cos
+          <ng-container [ngTemplateOutlet]="expandedDetailsRef"
+                        [ngTemplateOutletContext]="{details: element.details}"></ng-container>
         </div>
       </td>
     </ng-container>

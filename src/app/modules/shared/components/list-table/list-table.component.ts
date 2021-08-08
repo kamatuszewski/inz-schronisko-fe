@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ITableColumn } from '../../interfaces/table-column.interface';
 import { ITableData } from '../../interfaces/table-data.interface';
@@ -24,6 +24,7 @@ export class ListTableComponent implements OnInit {
   public displayedColumns: string[];
   @Input() public expandable = false;
   public expandedDetailsId: number | null = null;
+  @Input() public expandedDetailsRef: TemplateRef<any>;
   @Input() public selectable = true;
   @Output() public selectRow = new EventEmitter<number>();
 

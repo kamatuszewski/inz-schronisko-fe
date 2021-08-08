@@ -105,7 +105,12 @@
         "adopterFullName": "Adoptujący",
         "employeeFullName": "Opiekun",
         "adoptionDate": "Data adopcji",
-        "controlDate": "Data kontroli"
+        "controlDate": "Data kontroli",
+        "DETAILS": {
+          "PHONE_NUMBER": "Numer telefonu",
+          "EMAIL": "E-mail",
+          "ADDRESS": "Adres"
+        }
       }
     }
   }
