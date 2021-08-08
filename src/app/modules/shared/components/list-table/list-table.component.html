@@ -1,5 +1,7 @@
-<div class="app-list-table">
+<div class="app-list-table"
+     [class.app-list-table--expandable]="expandable">
   <table mat-table
+         multiTemplateDataRows
          [dataSource]="dataSource"
          class="app-list-table__content w-100">
 
@@ -20,12 +22,31 @@
       </td>
     </ng-container>
 
+    <ng-container matColumnDef="expandedDetail">
+      <td mat-cell
+          *matCellDef="let element"
+          [attr.colspan]="displayedColumns.length">
+        <div class="app-list-table__expanded-detail"
+             [class.app-list-table__expanded-detail--expanded]="isExpandedDetails(element['id'])">
+          cos cos
+        </div>
+      </td>
+    </ng-container>
+
     <tr class="app-list-table__row app-list-table__row--primary"
-        mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        mat-header-row
+        *matHeaderRowDef="displayedColumns"></tr>
     <tr class="app-list-table__row"
         [class.clickable]="!!selectable"
         (click)="select(row.id)"
-        mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        mat-row
+        *matRowDef="let row; columns: displayedColumns;"></tr>
+    <ng-container *ngIf="expandable">
+      <tr class="app-list-table__row app-list-table__row--expanded"
+          [class.app-list-table__row--no-height]="!isExpandedDetails(row.id)"
+          mat-row
+          *matRowDef="let row; columns: ['expandedDetail']"></tr>
+    </ng-container>
   </table>
   <div class="app-list-table__pagination"></div>
 </div>

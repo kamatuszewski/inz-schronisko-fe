@@ -11,10 +11,37 @@
     }
   }
 
-  &__row {
+  &:not(&--expandable) &__row {
     background-color: $row-primary-color;
     &:not(&--primary):nth-child(odd) {
       background-color: $row-secund-color;
+    }
+  }
+
+  &--expandable &__row {
+    transition: height 225ms cubic-bezier(0.4, 0.0, 0.2, 1);
+    overflow: hidden;
+
+    &--no-height {
+      height: 0;
+    }
+
+    &--no-height, &--no-height td {
+      border-bottom: 0;
+    }
+
+    &--expanded {
+      background-color: $row-secund-color;
+    }
+  }
+
+  &__expanded-detail {
+    height: 0;
+    min-height: 0;
+    overflow: hidden;
+    &--expanded {
+      height: auto;
+      min-height: auto;
     }
   }
 }
