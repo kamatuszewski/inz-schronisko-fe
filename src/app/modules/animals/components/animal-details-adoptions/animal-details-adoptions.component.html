@@ -4,12 +4,15 @@
                 expandable="true"
                 [expandedDetailsRef]="expandedDetailsRef"></app-list-table>
 <ng-template #expandedDetailsRef let-details='details'>
-  <div class="details">
+  <div class="details details--row-1">
     <app-details-item [label]="'ANIMALS.DETAILS.ADOPTIONS.DETAILS.PHONE_NUMBER' | transloco"
-                      [value]="details['phoneNumber']"></app-details-item>
+                      [value]="details['phoneNumber']"
+                      class="details__item details__item--3"></app-details-item>
     <app-details-item [label]="'ANIMALS.DETAILS.ADOPTIONS.DETAILS.EMAIL' | transloco"
-                      [value]="details['email']"></app-details-item>
+                      [value]="details['email']"
+                      class="details__item details__item--2"></app-details-item>
     <app-details-item [label]="'ANIMALS.DETAILS.ADOPTIONS.DETAILS.ADDRESS' | transloco"
-                      [value]="details['address']"></app-details-item>
+                      [value]="details['address']"
+                      class="details__item details__item--1"></app-details-item>
   </div>
 </ng-template>

@@ -66,12 +66,19 @@ input:-webkit-autofill:active {
 .details {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "item1 item2 item3" "item4 item5 item6" "item7 item8 item9" "item10 item11 item12";
   grid-gap: 1rem;
   padding: 1rem;
 
+  &--row-1 {
+    grid-template-areas: "item1 item2 item3";
+  }
+
   &__item {
-    &--full {
-      grid-column: span 3;
+    @for $item from 1 through 12 {
+      &--#{$item} {
+        grid-area: item#{$item};
+      }
     }
   }
 }
