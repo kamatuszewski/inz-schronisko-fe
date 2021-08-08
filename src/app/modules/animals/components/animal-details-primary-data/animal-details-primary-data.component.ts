@@ -7,7 +7,7 @@ import { IGeneralAnimal } from '../../interfaces/animals.interface';
   styleUrls: ['./animal-details-primary-data.component.scss']
 })
 export class AnimalDetailsPrimaryDataComponent implements OnInit {
-  @Input() public data: IGeneralAnimal;
+  @Input() public data?: IGeneralAnimal;
   constructor() { }
 
   ngOnInit(): void {

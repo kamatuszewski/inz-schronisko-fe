@@ -99,6 +99,13 @@
       "TABS": {
         "ADOPTIONS": "Adopcje",
         "VET_VISITS": "Historia leczenia"
+      },
+      "ADOPTIONS": {
+        "id": "Id",
+        "adopterFullName": "Adoptujący",
+        "employeeFullName": "Opiekun",
+        "adoptionDate": "Data adopcji",
+        "controlDate": "Data kontroli"
       }
     }
   }

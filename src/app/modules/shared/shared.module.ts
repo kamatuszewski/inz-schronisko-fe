@@ -60,7 +60,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     ValidationPipe,
     DetailsItemComponent,
     StatusComponent,
-    MatTabsModule
+    MatTabsModule,
+    ListTableComponent
   ],
 })
 export class SharedModule { }
