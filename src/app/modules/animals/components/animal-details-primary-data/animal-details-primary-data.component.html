@@ -2,34 +2,34 @@
          class="app-animal-details-primary-data">
   <div class="details app-animal-details-primary-data__details">
     <app-status [status]="data?.status"
-                class="app-animal-details-primary-data__item app-animal-details-primary-data__item--status"></app-status>
+                class="app-animal-details-primary-data__item details__item details__item--1"></app-status>
     <app-details-item [label]="'ANIMALS.DETAILS.NAME' | transloco"
                       [value]="data?.name"
-                      class="app-animal-details-primary-data__item app-animal-details-primary-data__item--name"></app-details-item>
+                      class="app-animal-details-primary-data__item details__item details__item--4"></app-details-item>
 
     <app-details-item [label]="'ANIMALS.DETAILS.SPECIES' | transloco"
                       [value]="'ANIMALS.SPECIES.' + data?.species | transloco"
-                      class="app-animal-details-primary-data__item app-animal-details-primary-data__item--species"></app-details-item>
+                      class="app-animal-details-primary-data__item details__item details__item--5"></app-details-item>
 
     <app-details-item [label]="'ANIMALS.DETAILS.SEX' | transloco"
                       [value]="'ANIMALS.SEX.' + data?.sex | transloco"
-                      class="app-animal-details-primary-data__item app-animal-details-primary-data__item--sex"></app-details-item>
+                      class="app-animal-details-primary-data__item details__item details__item--6"></app-details-item>
 
     <app-details-item [label]="'ANIMALS.DETAILS.BIRTH_DATE' | transloco"
                       [value]="data?.birthDate"
-                      class="app-animal-details-primary-data__item app-animal-details-primary-data__item--birthDate"></app-details-item>
+                      class="app-animal-details-primary-data__item details__item details__item--7"></app-details-item>
 
     <app-details-item *ngIf="data?.deathDate"
                       [label]="'ANIMALS.DETAILS.DEATH_DATE' | transloco"
                       [value]="data?.deathDate"
-                      class="app-animal-details-primary-data__item app-animal-details-primary-data__item--deathDate"></app-details-item>
+                      class="app-animal-details-primary-data__item details__item details__item--8"></app-details-item>
 
     <app-details-item [label]="'ANIMALS.DETAILS.FOUND_DATE' | transloco"
                       [value]="data?.foundDate"
-                      class="app-animal-details-primary-data__item app-animal-details-primary-data__item--foundDate"></app-details-item>
+                      class="app-animal-details-primary-data__item details__item details__item--10"></app-details-item>
 
     <app-details-item [label]="'ANIMALS.DETAILS.FOUND_PLACE' | transloco"
                       [value]="data?.foundPlace"
-                      class="app-animal-details-primary-data__item app-animal-details-primary-data__item--foundPlace"></app-details-item>
+                      class="app-animal-details-primary-data__item details__item details__item--11"></app-details-item>
   </div>
 </section>
