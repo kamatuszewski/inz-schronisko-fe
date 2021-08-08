@@ -22,17 +22,27 @@ export class ListTableComponent implements OnInit {
   public columns: ITableColumn[];
   public dataSource = new MatTableDataSource([]);
   public displayedColumns: string[];
+  @Input() public expandable = false;
+  public expandedDetailsId: number | null = null;
   @Input() public selectable = true;
   @Output() public selectRow = new EventEmitter<number>();
 
   constructor() { }
 
+  public isExpandedDetails(expandedId: number): boolean {
+    return !!this.expandedDetailsId && this.expandedDetailsId === expandedId;
+  }
+
   public ngOnInit(): void {
   }
 
   public select(id: number): void {
-    if (!!this.selectable) {
+    if (!!this.selectable && !this.expandable) {
       this.selectRow.next(id)
+    }
+    if (this.expandable) {
+      console.log(this.expandedDetailsId, id);
+      this.expandedDetailsId = this.expandedDetailsId === id ? null : id;
     }
   }
 
