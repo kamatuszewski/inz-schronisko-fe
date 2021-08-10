@@ -55,12 +55,18 @@
           "M": "Samiec"
         },
         "COL_SPECIES": {
-          "DOG": "Pies",
+          "MOUSE": "Mysz",
+          "BIRD": "Ptak",
           "CAT": "Kot",
-          "PARROT": "Papuga"
+          "DOG": "Pies",
+          "HAMSTER": "Chomik",
+          "RAT": "Szczur",
+          "RABBIT": "Królik",
+          "PIG": "Świnka",
+          "OTHER": "Inne"
         },
         "COL_STATUS": {
-          "TO_ADOPTION": "Do adopcji",
+          "FOR_ADOPTION": "Do adopcji",
           "ADOPTED": "Adoptowany",
           "DEAD": "Umarł"
         }
