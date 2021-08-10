@@ -106,7 +106,7 @@
             },
             "dev": {
               "browserTarget": "inz-schronisko-fe:build:dev",
-              "proxyConfig": "proxy/proxy.conf.json"
+              "proxyConfig": "proxy.conf.json"
             }
           }
         },
