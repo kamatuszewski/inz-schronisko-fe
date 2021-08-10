@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IListConfig } from '../../../shared/interfaces/list-config.interface';
 import { ITableColumn } from '../../../shared/interfaces/table-column.interface';
-import { animalTableConfig } from '../../const/table-config.const';
+import { userTableConfig } from '../../../users/commons/table-config.common';
 
 @Component({
   selector: 'app-animal-list',
@@ -22,7 +22,7 @@ export class AnimalListComponent implements OnInit {
   }
 
   public initColumnTable(): void {
-    this.tableColumns = animalTableConfig;
+    this.tableColumns = userTableConfig;
   }
 
   public ngOnInit(): void {

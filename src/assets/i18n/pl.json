@@ -22,7 +22,8 @@
   },
   "TABS": {
     "ANIMAL_LIST": "Lista zwierząt",
-    "CREATE_ANIMAL": "Dodaj zwierze"
+    "CREATE_ANIMAL": "Dodaj zwierze",
+    "USER_LIST": "Lista użytkowników"
   },
   "ANIMALS": {
     "SPECIES": {
@@ -104,6 +105,23 @@
       "TABS": {
         "ADOPTIONS": "Adopcje",
         "VET_VISITS": "Historia leczenia"
+      }
+    }
+  },
+  "USERS": {
+    "LIST": {
+      "HEADER": "Lista użytkowników",
+      "CREATE": "Dodaj użytkownika",
+      "COLUMNS": {
+        "id": "Id",
+        "firstName": "Imię",
+        "lastName": "Nazwisko",
+        "emailAddress": "E-mail",
+        "sex": "Płeć",
+        "COL_SEX": {
+          "F": "Kobieta",
+          "M": "Mężczyzna"
+        }
       }
     }
   }
