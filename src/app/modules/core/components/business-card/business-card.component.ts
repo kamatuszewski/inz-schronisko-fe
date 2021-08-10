@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IPersonalData } from '../../interceptors/personal-data.interface';
+import { IPersonalData } from '../../interfaces/personal-data.interface';
 
 @Component({
   selector: 'app-business-card',

@@ -1,5 +1,5 @@
 export enum EApiUrl {
-  AUTH = 'auth',
+  PERSONS = 'persons',
   ANIMALS = 'animals',
   DICTIONARIES = 'dictionaries'
 }
