@@ -5,17 +5,31 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { IAccessToken } from './interfaces/access-token.interface';
+import { IAuthorizationHeader } from './interfaces/authorization-header.interface';
 import { ILoginRequest } from './interfaces/login-request.interface';
 import { IProfile } from './interfaces/profile.interface';
 import { JwtTokenService } from './services/jwt-token.service';
-import { AccessToken } from './types/token.type';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
   private static readonly ACCESS_TOKEN = 'SHELTER_ACCESS_TOKEN';
   private static readonly ACCESS_TOKEN_TYPE = 'SHELTER_ACCESS_TOKEN_TYPE';
+  public static getAuthorizationHeaderObject(accessToken: IAccessToken | null): IAuthorizationHeader {
+    return {
+      Authorization: this.stringifyAuthorizationHeader(accessToken)
+    }
+  }
+
+  public static stringifyAuthorizationHeader(accessToken: IAccessToken | null): string {
+    if (!accessToken) {
+      return '';
+    }
+    const authType = accessToken.tokenType;
+    return `${authType} ${accessToken.accessToken}`;
+  }
   private accessTokenSubject$ = new BehaviorSubject<IAccessToken | null>(null);
   private baseUrl = environment.apiUrl.persons;
   private profileSubject$ = new BehaviorSubject<IProfile>(null);
