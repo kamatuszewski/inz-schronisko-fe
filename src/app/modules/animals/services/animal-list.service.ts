@@ -8,7 +8,7 @@ import { ISimpleAnimal } from '../interfaces/animals.interface';
 @Injectable({
   providedIn: 'root'
 })
-export class AnimalListService implements IBaseListService<ISimpleAnimal[]> {
+export class AnimalListService implements IBaseListService<ISimpleAnimal> {
   private animals$ = new BehaviorSubject([]);
   private readonly animalUrl: string = environment.apiUrl.animals;
   constructor(private http: HttpClient) { }

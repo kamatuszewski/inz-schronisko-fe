@@ -14,7 +14,7 @@ export class ListComponent<T> implements OnInit {
   @Output() public redirectToForm: EventEmitter<void> = new EventEmitter();
   @Output() public selectRow = new EventEmitter<number>();
   @Input() public tableColumns: ITableColumn[];
-  public tableData: Observable<T>;
+  public tableData: Observable<T[]>;
 
   constructor(@Inject(BASE_LIST_SERVICE) private listService: IBaseListService) { }
 
