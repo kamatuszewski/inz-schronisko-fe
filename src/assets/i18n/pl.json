@@ -20,6 +20,10 @@
     "SUBMIT": "Zaloguj",
     "LOGOUT": "Wyloguj"
   },
+  "TABS": {
+    "ANIMAL_LIST": "Lista zwierząt",
+    "CREATE_ANIMAL": "Dodaj zwierze"
+  },
   "ANIMALS": {
     "SPECIES": {
       "MOUSE": "Mysz",

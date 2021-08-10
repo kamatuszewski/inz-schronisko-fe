@@ -2,4 +2,36 @@
 
 .app-side-bar {
   background-color: $primary-color;
+  &__item {
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1rem 1fr;
+    grid-gap: 1rem;
+    color: $white-color;
+    border-bottom: 1px solid $light-primary-color;
+    transition: background-color 250ms ease, opacity 250ms ease, color 250ms ease;
+  }
+
+  &__item:hover {
+    background-color: $light-primary-color;
+    opacity: .6;
+    color: $main-font-color;
+    transition: background-color 250ms ease, opacity 250ms ease, color 250ms ease;
+  }
+
+  &__item > * {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  &__icon {
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+  }
+
+  &__label {
+    font-size: .8rem;
+    line-height: .8rem;
+  }
 }
