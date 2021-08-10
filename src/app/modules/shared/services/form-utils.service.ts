@@ -16,7 +16,7 @@ export class FormUtilsService {
       if (!control.value || typeof control.value !== 'string') {
         return null;
       }
-      return !digitalRegexp.test(control.value) ? {onlyDigits: control.value, onlyDigits2: control.value} : null;
+      return !digitalRegexp.test(control.value) ? {onlyDigits: control.value} : null;
     }
   }
 }
