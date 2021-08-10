@@ -105,7 +105,8 @@
               "browserTarget": "inz-schronisko-fe:build:production"
             },
             "dev": {
-              "browserTarget": "inz-schronisko-fe:build:dev"
+              "browserTarget": "inz-schronisko-fe:build:dev",
+              "proxyConfig": "proxy/proxy.conf.json"
             }
           }
         },
