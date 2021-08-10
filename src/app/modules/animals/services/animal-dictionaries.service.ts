@@ -11,32 +11,29 @@ import { AnimalDictionary } from '../enums/animals.enum';
   providedIn: 'root'
 })
 export class AnimalDictionariesService extends GenericDictionariesService<AnimalDictionary, IGenericDictionary> {
-  private baseUrl = environment.apiUrl.dictionaries;
+  private baseUrl = environment.apiUrl.animals;
 
   constructor(private http: HttpClient) {
     super();
     this.getAndDispatchSpeciesList();
+    this.getAndDispatchStatusList();
   }
 
   public getAndDispatchSpeciesList(): void {
     this.dispatch(AnimalDictionary.SPECIES, this.getSpeciesList());
   }
 
+  public getAndDispatchStatusList(): void {
+    this.dispatch(AnimalDictionary.STATUS, this.getStatusList());
+  }
+
   public getSpeciesList(): Observable<IGenericDictionary[]> {
     const url = `${this.baseUrl}/species`;
-    return this.http.get<IGenericDictionary[]>(url).pipe(catchError(() => of(JSON.parse('[\n' +
-      '    {\n' +
-      '        "id": 1,\n' +
-      '        "name": "DOG"\n' +
-      '    },\n' +
-      '    {\n' +
-      '        "id": 2,\n' +
-      '        "name": "CAT"\n' +
-      '    },\n' +
-      '    {\n' +
-      '        "id": 5,\n' +
-      '        "name": "PARROT"\n' +
-      '    }\n' +
-      ']'))));
+    return this.http.get<IGenericDictionary[]>(url);
+  }
+
+  public getStatusList(): Observable<IGenericDictionary[]> {
+    const url = `${this.baseUrl}/statuses`;
+    return this.http.get<IGenericDictionary[]>(url);
   }
 }
