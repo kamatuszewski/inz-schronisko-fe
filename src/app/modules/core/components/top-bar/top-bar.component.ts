@@ -15,6 +15,10 @@ export class TopBarComponent implements OnInit, OnDestroy {
 
   constructor(private authService: AuthService) { }
 
+  public logout(): void {
+    this.authService.logout();
+  }
+
   public ngOnDestroy(): void {
     this.onDestroy$.next();
     this.onDestroy$.complete();

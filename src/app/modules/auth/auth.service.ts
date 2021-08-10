@@ -16,7 +16,7 @@ import { AccessToken } from './types/token.type';
 export class AuthService {
   private static readonly ACCESS_TOKEN = 'SHELTER_ACCESS_TOKEN';
   private static readonly ACCESS_TOKEN_TYPE = 'SHELTER_ACCESS_TOKEN_TYPE';
-  private accessTokenSubject$ = new BehaviorSubject<IAccessToken>(null);
+  private accessTokenSubject$ = new BehaviorSubject<IAccessToken | null>(null);
   private baseUrl = environment.apiUrl.persons;
   private profileSubject$ = new BehaviorSubject<IProfile>(null);
 
@@ -40,7 +40,8 @@ export class AuthService {
 
   public dispatchAccessToken(accessToken: IAccessToken): void {
     this.accessTokenSubject$.next(accessToken);
-    this.dispatchProfile(this.jwtTokenService.getProfile(accessToken.accessToken));
+    const profile = accessToken?.accessToken ? this.jwtTokenService.getProfile(accessToken.accessToken) : null;
+    this.dispatchProfile(profile);
   }
 
   public dispatchProfile(profile: IProfile): void {
@@ -63,6 +64,13 @@ export class AuthService {
     const http = `${this.baseUrl}/login`;
     return this.httpClient.post<IAccessToken>(http, payload)
       .pipe(tap(this.doOperationsAfterLogin));
+  }
+
+  public logout(): void {
+    this.dispatchAccessToken(null);
+    localStorage.removeItem(AuthService.ACCESS_TOKEN_TYPE);
+    localStorage.removeItem(AuthService.ACCESS_TOKEN);
+    this.redirectToLoginPage();
   }
 
   public redirectToHomePage(): void {

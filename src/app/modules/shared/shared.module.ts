@@ -17,6 +17,7 @@ import { LogoComponent } from './components/logo/logo.component';
 import { StatusComponent } from './components/status/status.component';
 import { ValidationPipe } from './pipes/validation.pipe';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatOptionModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatTabsModule
+    MatTabsModule,
+    MatMenuModule
   ],
   exports: [
     LogoComponent,
@@ -60,7 +62,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     ValidationPipe,
     DetailsItemComponent,
     StatusComponent,
-    MatTabsModule
+    MatTabsModule,
+    MatMenuModule
   ],
 })
 export class SharedModule { }
