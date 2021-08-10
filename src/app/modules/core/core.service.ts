@@ -1,13 +1,21 @@
+import { HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { delay } from 'rxjs/operators';
+import { EApiUrl } from '../../../environments/api-url.enum';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CoreService {
+  public static isApiRequest(request: HttpRequest<unknown>): boolean {
+    const environments = Object.values(EApiUrl).map(env => environment.apiUrl[env]);
+    return environments.some(env => request.url.startsWith(env));
+  }
+
   private isLoading$ = new BehaviorSubject<boolean>(false);
   private pendingRequests = 0;
   constructor(private toastrService: ToastrService,

@@ -3,7 +3,7 @@ import { IEnvironment } from './environment.interface';
 export const environment: IEnvironment = {
   production: false,
   apiUrl: {
-    auth: 'api/Auth',
+    persons: 'api/Persons',
     animals: 'api/Animals',
     dictionaries: 'api/Dictionaries'
   }

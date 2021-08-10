@@ -1,6 +1,16 @@
 <div class="app-top-bar w-100 h-100 d-flex align-items-center app-wrapper">
   <div class="app-top-bar__content justify-content-end w-100">
-    <app-business-card [data]="personalData"></app-business-card>
-    <app-avatar [data]="personalData"></app-avatar>
+    <app-business-card *ngIf="personalData"
+                       [data]="personalData"></app-business-card>
+    <app-avatar *ngIf="personalData"
+                [data]="personalData"
+                class="clickable"
+                [matMenuTriggerFor]="topBarMenu"></app-avatar>
+    <mat-menu #topBarMenu>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        <span>{{ 'AUTH.LOGOUT' | transloco }}</span>
+      </button>
+    </mat-menu>
   </div>
 </div>

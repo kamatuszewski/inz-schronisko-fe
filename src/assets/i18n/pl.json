@@ -17,7 +17,8 @@
     "LOGIN": "Zaloguj się",
     "USERNAME": "Login",
     "PASSWORD": "Hasło",
-    "SUBMIT": "Zaloguj"
+    "SUBMIT": "Zaloguj",
+    "LOGOUT": "Wyloguj"
   },
   "ANIMALS": {
     "SPECIES": {

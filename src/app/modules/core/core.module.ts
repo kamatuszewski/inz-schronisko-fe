@@ -7,6 +7,7 @@ import { MatNativeDateModule, MAT_DATE_FORMATS } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BrowserModule } from '@angular/platform-browser';
 import { setTheme } from 'ngx-bootstrap/utils';
+import { AuthInterceptor } from '../auth/interceptors/auth.interceptor';
 import { SharedModule } from '../shared/shared.module';
 import { AvatarComponent } from './components/avatar/avatar.component';
 import { BannerComponent } from './components/banner/banner.component';
@@ -46,6 +47,11 @@ import { HttpLoaderInterceptor } from './interceptors/http-loader.interceptor';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpLoaderInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
       multi: true
     },
     {
