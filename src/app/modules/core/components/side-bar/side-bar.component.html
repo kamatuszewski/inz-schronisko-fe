@@ -1,3 +1,8 @@
 <div class="app-side-bar w-100 h-100">
-
+  <div class="app-side-bar__item clickable"
+       *ngFor="let tab of tabs"
+       (click)="redirectTo(tab.redirectTo)">
+    <mat-icon class="app-side-bar__icon">{{ tab.iconCode }}</mat-icon>
+    <span class="app-side-bar__label">{{ tab.label | transloco }}</span>
+  </div>
 </div>

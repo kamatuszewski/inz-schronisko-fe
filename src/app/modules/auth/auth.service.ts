@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
+import { ERole } from '../users/enums/user.enum';
 import { IAccessToken } from './interfaces/access-token.interface';
 import { IAuthorizationHeader } from './interfaces/authorization-header.interface';
 import { ILoginRequest } from './interfaces/login-request.interface';
@@ -68,6 +69,14 @@ export class AuthService {
 
   public getProfile(): IProfile {
     return this.profileSubject$.getValue();
+  }
+
+  public hasSomeAllowedRole(...roles: ERole[]): boolean {
+    if (!roles.length || roles.includes(ERole.ALL)) {
+      return true;
+    }
+
+    return roles.some(role => this.getProfile().roles.includes(role));
   }
 
   public isLogged(): Observable<boolean> {
