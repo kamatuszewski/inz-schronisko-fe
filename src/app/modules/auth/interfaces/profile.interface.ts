@@ -1,4 +1,6 @@
 export interface IProfile {
-  login: string;
-  role: string;
+  firstName: string;
+  id: number;
+  lastName: string;
+  roles: string[];
 }
