@@ -98,7 +98,8 @@
         "BIRTH_DATE": "Data urodzenia",
         "SEX": "Płeć",
         "FOUND_PLACE": "Miejsce znalezoenia",
-        "FOUND_DATE": "Data znalezienia"
+        "FOUND_DATE": "Data znalezienia",
+        "STATUS": "Status"
       },
       "ERRORS": {
         "matDatepickerMin": "Data znalezenia musi późniejsza od daty urodzenia.",

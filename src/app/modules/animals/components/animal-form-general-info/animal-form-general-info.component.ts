@@ -26,6 +26,7 @@ export class AnimalFormGeneralInfoComponent implements OnInit {
   }
 
   public allSpecies$: Observable<IGenericDictionary[]>;
+  public allStatus$: Observable<IGenericDictionary[]>;
   public formGroup: FormGroup;
   @Input() public groupName: string;
   @Input() public isCreateMode: boolean;
@@ -50,6 +51,7 @@ export class AnimalFormGeneralInfoComponent implements OnInit {
 
   private initDictionaries(): void {
     this.allSpecies$ = this.animalsDictionariesService.select(AnimalDictionary.SPECIES);
+    this.allStatus$ = this.animalsDictionariesService.select(AnimalDictionary.STATUS);
   }
 
   private initFormGroup(): void {
@@ -62,6 +64,7 @@ export class AnimalFormGeneralInfoComponent implements OnInit {
       name: this.formBuilder.control(null, [Validators.required]),
       sex: this.formBuilder.control(null, [Validators.required]),
       speciesId: this.formBuilder.control(null, [Validators.required]),
+      statusId: this.formBuilder.control(null, [Validators.required])
     });
   }
 }
