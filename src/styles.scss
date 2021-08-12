@@ -57,6 +57,23 @@ input:-webkit-autofill:active {
     box-shadow: 0px 5px 5px -3px rgb(0 0 0 / 20%), 0px 8px 10px 1px rgb(0 0 0 / 14%), 0px 3px 14px 2px rgb(0 0 0 / 12%);
     background-color: #fff;
   }
+
+  &__actions {
+    gap: 10px;
+    display: flex;
+    justify-content: center;
+
+    &--end {
+      justify-content: flex-end;
+    }
+  }
+}
+
+body .app-button {
+  &--edit {
+    background-color: #F66E3E;
+    color: #fff;
+  }
 }
 
 .mat-error {

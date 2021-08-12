@@ -108,6 +108,8 @@
       "DEATH_DATE": "Data śmierci",
       "FOUND_DATE": "Data znalezienia",
       "FOUND_PLACE": "Miejsce znalezienia",
+      "REMOVE": "Usuń",
+      "EDIT": "EDYTUJ",
       "TABS": {
         "ADOPTIONS": "Adopcje",
         "VET_VISITS": "Historia leczenia"

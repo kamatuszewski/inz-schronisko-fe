@@ -4,7 +4,6 @@
   </div>
   <div class="app-theme__content">
     <app-animal-details-primary-data [data]="animalDetails?.data"></app-animal-details-primary-data>
-
     <mat-tab-group animationDuration="0ms"
                    dynamicHeight="true"
                    class="app-animal-details__tabs">
@@ -17,5 +16,15 @@
         <app-animal-details-vet-visits></app-animal-details-vet-visits>
       </mat-tab>
     </mat-tab-group>
+    <div class="app-animal-details__actions app-theme__actions app-theme__actions--end">
+      <button type="button"
+              *ngIf="hasAccessToRemove"
+              mat-raised-button
+              color="warn">{{ 'ANIMALS.DETAILS.REMOVE' | transloco }}</button>
+      <button type="button"
+              class="app-button app-button--edit"
+              *ngIf="hasAccessToEdit"
+              mat-raised-button>{{ 'ANIMALS.DETAILS.EDIT' | transloco }}</button>
+    </div>
   </div>
 </div>

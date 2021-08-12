@@ -13,7 +13,17 @@ import { IAnimalDetailsResponse } from '../../interfaces/animals.interface';
   styleUrls: ['./animal-details.component.scss']
 })
 export class AnimalDetailsComponent implements OnInit, OnDestroy {
+  public get showAdoptions(): boolean {
+    return this.animalDetails?.adoptions && !!this.animalDetails.adoptions.length && this.hasAccessToShowAdoptions;
+  }
+
+  public get showVetVisits(): boolean {
+    return this.animalDetails?.vetVisits && !!this.animalDetails.vetVisits.length && this.hasAccessToVetVisits;
+  }
+
   public animalDetails: IAnimalDetailsResponse;
+  public hasAccessToEdit = false;
+  public hasAccessToRemove = false;
   public hasAccessToShowAdoptions = false;
   public hasAccessToVetVisits = false;
   private animalId: number;
@@ -35,17 +45,11 @@ export class AnimalDetailsComponent implements OnInit, OnDestroy {
     this.loadAccessToViews();
   }
 
-  public get showAdoptions(): boolean {
-    return this.animalDetails?.adoptions && !!this.animalDetails.adoptions.length && this.hasAccessToShowAdoptions;
-  }
-
-  public get showVetVisits(): boolean {
-    return this.animalDetails?.vetVisits && !!this.animalDetails.vetVisits.length && this.hasAccessToVetVisits;
-  }
-
   private loadAccessToViews(): void {
     this.hasAccessToShowAdoptions = this.authService.hasSomeAllowedRole(...permissionsMap.get(EOperation.SHOW_ANIMAL_ADOPTIONS))
     this.hasAccessToVetVisits = this.authService.hasSomeAllowedRole(...permissionsMap.get(EOperation.SHOW_ANIMAL_VET_VISITS))
+    this.hasAccessToRemove = this.authService.hasSomeAllowedRole(...permissionsMap.get(EOperation.REMOVE_ANIMAL))
+    this.hasAccessToEdit = this.authService.hasSomeAllowedRole(...permissionsMap.get(EOperation.UPDATE_ANIMAL))
   }
 
   private loadData(): void {
