@@ -10,6 +10,10 @@
       "DEAD": "Zmarł",
       "QUARANTINE": "Kwarantanna",
       "FOR_ADOPTION": "Do adopcji"
+    },
+    "ACTIONS": {
+      "ACCEPT": "Tak",
+      "CANCEL": "Anuluj"
     }
   },
   "AUTH": {
@@ -124,7 +128,8 @@
           "EMAIL": "E-mail",
           "ADDRESS": "Adres"
         }
-      }
+      },
+      "CONFIRMATION_REMOVE": "Proces usuwania zwierzęcia jest nieodwracalny. Czy na pewno chcesz usunąć to zwierze?"
     }
   },
   "USERS": {

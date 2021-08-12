@@ -6,6 +6,7 @@ import { AuthService } from '../../../auth/auth.service';
 import { permissionsMap, EOperation } from '../../../core/commons/permissions.common';
 import { AnimalsService } from '../../animals.service';
 import { IAnimalDetailsResponse } from '../../interfaces/animals.interface';
+import { ConfirmDecisionModalService } from '../../../shared/services/confirm-decision-modal.service';
 
 @Component({
   selector: 'app-animal-details',
@@ -31,18 +32,30 @@ export class AnimalDetailsComponent implements OnInit, OnDestroy {
 
   constructor(activatedRoute: ActivatedRoute,
               private animalsService: AnimalsService,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private confirmModal: ConfirmDecisionModalService) {
     this.animalId = activatedRoute.snapshot.params.id;
   }
 
   public ngOnDestroy(): void {
     this.onDestroy$.next();
     this.onDestroy$.complete();
+    this.confirmModal.destroy();
   }
 
   public ngOnInit(): void {
     this.loadData();
     this.loadAccessToViews();
+  }
+
+  public remove(): void {
+    const data = {
+      description: 'ANIMALS.DETAILS.CONFIRMATION_REMOVE',
+      ...ConfirmDecisionModalService.defaultActionConfig()
+    }
+    this.confirmModal.openDialog(data)
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe()
   }
 
   private loadAccessToViews(): void {
