@@ -34,7 +34,6 @@ export interface IGeneralAnimal {
 export interface IGeneralAdoption {
   adopter: IGeneralAdopter;
   adoptionDate: string,
-  controlDate: string
   employee: IGeneralEmployee;
   id: number;
 }
@@ -63,7 +62,6 @@ export interface IGeneralVetVisit {
 export interface IAnimalDetailsAdoption {
   adopterFullName: string;
   adoptionDate: string;
-  controlDate: string;
   details: IAnimalDetailsAdopterContact;
   employeeFullName: string;
   id: number;

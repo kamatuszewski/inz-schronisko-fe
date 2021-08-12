@@ -2,6 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { AuthService } from '../../../auth/auth.service';
+import { permissionsMap, EOperation } from '../../../core/commons/permissions.common';
 import { AnimalsService } from '../../animals.service';
 import { IAnimalDetailsResponse } from '../../interfaces/animals.interface';
 
@@ -12,11 +14,14 @@ import { IAnimalDetailsResponse } from '../../interfaces/animals.interface';
 })
 export class AnimalDetailsComponent implements OnInit, OnDestroy {
   public animalDetails: IAnimalDetailsResponse;
+  public hasAccessToShowAdoptions = false;
+  public hasAccessToVetVisits = false;
   private animalId: number;
   private onDestroy$ = new Subject<void>();
 
   constructor(activatedRoute: ActivatedRoute,
-              private animalsService: AnimalsService) {
+              private animalsService: AnimalsService,
+              private authService: AuthService) {
     this.animalId = activatedRoute.snapshot.params.id;
   }
 
@@ -27,6 +32,20 @@ export class AnimalDetailsComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.loadData();
+    this.loadAccessToViews();
+  }
+
+  public get showAdoptions(): boolean {
+    return this.animalDetails?.adoptions && !!this.animalDetails.adoptions.length && this.hasAccessToShowAdoptions;
+  }
+
+  public get showVetVisits(): boolean {
+    return this.animalDetails?.vetVisits && !!this.animalDetails.vetVisits.length && this.hasAccessToVetVisits;
+  }
+
+  private loadAccessToViews(): void {
+    this.hasAccessToShowAdoptions = this.authService.hasSomeAllowedRole(...permissionsMap.get(EOperation.SHOW_ANIMAL_ADOPTIONS))
+    this.hasAccessToVetVisits = this.authService.hasSomeAllowedRole(...permissionsMap.get(EOperation.SHOW_ANIMAL_VET_VISITS))
   }
 
   private loadData(): void {

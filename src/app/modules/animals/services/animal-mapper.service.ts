@@ -7,7 +7,6 @@ export class AnimalMapperService {
       adopterFullName: `${data.adopter.firstName} ${data.adopter.lastName}`,
       employeeFullName: `${data.employee.firstName} ${data.employee.lastName}`,
       adoptionDate: data.adoptionDate,
-      controlDate: data.controlDate,
       details: {
         address: data.adopter.address,
         email: data.adopter.email,

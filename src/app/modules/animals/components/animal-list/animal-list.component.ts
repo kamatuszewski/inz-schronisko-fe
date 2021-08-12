@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { EOperation } from '../../../core/commons/permissions.common';
 import { IListConfig } from '../../../shared/interfaces/list-config.interface';
 import { ITableColumn } from '../../../shared/interfaces/table-column.interface';
+import { ListUtilsService } from '../../../shared/services/list-utils.service';
 import { animalTableConfig } from '../../const/table-config.const';
 
 @Component({
@@ -13,7 +15,9 @@ export class AnimalListComponent implements OnInit {
   public listConfig: IListConfig;
   public tableColumns: ITableColumn[];
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private router: Router,
+              private activatedRoute: ActivatedRoute,
+              private listUtilsService: ListUtilsService) { }
 
   public goToAddNewAnimal(): void {
     this.router.navigate(['create'], {
@@ -37,11 +41,14 @@ export class AnimalListComponent implements OnInit {
   }
 
   private initListConfig(): void {
-    this.listConfig = {
+    const config: IListConfig = {
       header: 'ANIMALS.LIST.HEADER',
-      create: 'ANIMALS.LIST.CREATE',
-      columnsPrefix: 'ANIMALS.LIST.COLUMNS',
-      selectable: true
-    }
+      columnsPrefix: 'ANIMALS.LIST.COLUMNS'
+    };
+
+    this.listUtilsService.prepareParamListConfig('create', config, 'ANIMALS.LIST.CREATE', EOperation.ADD_ANIMAL);
+    this.listUtilsService.prepareParamListConfig('selectable', config, true, EOperation.SHOW_ANIMAL_DETAILS);
+
+    this.listConfig = config;
   }
 }

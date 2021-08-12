@@ -33,8 +33,5 @@ export const animalDetailsAdoptionTableConfig = [
   },
   {
     code: 'adoptionDate'
-  },
-  {
-    code: 'controlDate'
-  },
+  }
 ]
