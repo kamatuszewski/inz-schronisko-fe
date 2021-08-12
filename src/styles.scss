@@ -76,6 +76,23 @@ body .app-button {
   }
 }
 
+.app-form-content {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(150px, 550px));
+  grid-gap: 20px;
+  justify-content: space-between;
+
+  &--padding-b {
+    padding-bottom: 1rem;
+  }
+
+  &__field {
+    &--span {
+      grid-column: span 2;
+    }
+  }
+}
+
 .mat-error {
   white-space: pre-line;
 }

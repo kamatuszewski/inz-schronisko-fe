@@ -73,3 +73,17 @@ export interface IAnimalDetailsAdopterContact {
   email: string;
   phoneNumber: string;
 }
+
+export interface IAnimalAdoptionForm {
+  adopterId: number,
+  adoptionDate: string,
+  animalId: number,
+  employeeId: number
+  isOwnerPickup: true,
+  notes?: string,
+}
+
+export interface IAnimalsGroupBySpecies {
+  animals: ISimpleAnimal[];
+  species: string;
+}

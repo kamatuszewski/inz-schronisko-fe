@@ -12,6 +12,7 @@ import { AnimalListComponent } from './components/animal-list/animal-list.compon
 import { AnimalListService } from './services/animal-list.service';
 import { AnimalDetailsAdoptionsComponent } from './components/animal-details-adoptions/animal-details-adoptions.component';
 import { AnimalDetailsVetVisitsComponent } from './components/animal-details-vet-visits/animal-details-vet-visits.component';
+import { AnimalAdoptionFormComponent } from './components/animal-adoption-form/animal-adoption-form.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { AnimalDetailsVetVisitsComponent } from './components/animal-details-vet
     AnimalDetailsComponent,
     AnimalDetailsPrimaryDataComponent,
     AnimalDetailsAdoptionsComponent,
-    AnimalDetailsVetVisitsComponent
+    AnimalDetailsVetVisitsComponent,
+    AnimalAdoptionFormComponent
   ],
   imports: [
     AnimalsRoutingModule,

@@ -1,0 +1,56 @@
+<div class="app-animal-adoption-form app-theme">
+  <div class="app-theme__header">
+    <h3 class="app-content-header">{{ 'ANIMALS.FORM.ADOPTION.HEADER' | transloco }}</h3>
+  </div>
+  <form class="app-animal-adoption-form__content app-theme__content"
+        [formGroup]="formGroup"
+        (ngSubmit)="save()">
+
+    <div class="app-form-content app-form-content--padding-b">
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'ANIMALS.FORM.FIELDS.ANIMAL' | transloco }}</mat-label>
+        <mat-select formControlName="animalId">
+          <mat-optgroup  *ngFor="let group of animalsGroupBySpecies$ | async" [label]="'ANIMALS.SPECIES.' + group.species | transloco">
+            <mat-option *ngFor="let animal of group.animals"
+                        [value]="+animal.id">
+              {{ animal.name }}
+            </mat-option>
+          </mat-optgroup>
+        </mat-select>
+        <mat-error>{{ formGroup.get('animalId').errors | validation }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'ANIMALS.FORM.FIELDS.ADOPTER' | transloco }}</mat-label>
+        <mat-select formControlName="adopterId">
+          <mat-option *ngFor="let adopter of allAdopters$ | async"
+                      [value]="adopter.id">
+            {{ '['+ adopter.id +'] '+ adopter.firstName + ' ' + adopter.lastName }}
+          </mat-option>
+        </mat-select>
+        <mat-error>{{ formGroup.get('adopterId').errors | validation }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="app-form-content__field app-form-content__field--span">
+        <mat-label>{{ 'ANIMALS.FORM.FIELDS.NOTES' | transloco }}</mat-label>
+        <textarea matInput
+                  formControlName="notes"></textarea>
+      </mat-form-field>
+
+      <mat-slide-toggle formControlName="isOwnerPickup"
+                        color="primary">
+        {{ 'ANIMALS.FORM.FIELDS.IS_OWNER_PICKUP' | transloco }}
+      </mat-slide-toggle>
+    </div>
+
+    <div class="app-animal-form__actions app-theme__actions">
+      <button type="button"
+              (click)="cancel()"
+              mat-button
+              color="warn">{{ 'ANIMALS.FORM.COMMONS.CANCEL' | transloco }}</button>
+      <button type="submit"
+              mat-raised-button
+              color="primary">{{ 'ANIMALS.FORM.COMMONS.SAVE' | transloco }}</button>
+    </div>
+  </form>
+</div>

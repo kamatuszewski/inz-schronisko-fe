@@ -1,7 +1,32 @@
+import { IGenericDictionary } from '../../shared/interfaces/generic.interface';
 import { IAnimalForm } from '../interfaces/animal-form.interface';
-import { IAnimalDetailsAdoption, IGeneralAdoption, IGeneralAnimal } from '../interfaces/animals.interface';
+import {
+  IAnimalsGroupBySpecies,
+  IAnimalDetailsAdoption,
+  IGeneralAdoption,
+  IGeneralAnimal,
+  ISimpleAnimal
+} from '../interfaces/animals.interface';
 
 export class AnimalMapperService {
+
+  public static animalsGroupBySpecies = (animals: ISimpleAnimal[], species: IGenericDictionary[]): IAnimalsGroupBySpecies[] => {
+    if (!(species && species.length) || !(animals && animals.length)) {
+      return [];
+    }
+    const group: IAnimalsGroupBySpecies[] = [];
+    species.forEach(speciesName => {
+      const animalList = animals.filter(animal => animal.species === speciesName.name);
+      if (animalList.length) {
+        group.push({
+          species: speciesName.name,
+          animals: animalList
+        })
+      }
+    })
+    return group;
+  }
+
   public static generalAdoptionToDetailsAdoption = (data: IGeneralAdoption): IAnimalDetailsAdoption => {
     return {
       id: data.id,

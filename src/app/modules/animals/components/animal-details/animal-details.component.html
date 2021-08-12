@@ -27,6 +27,11 @@
               (click)="edit()"
               *ngIf="hasAccessToEdit"
               mat-raised-button>{{ 'ANIMALS.DETAILS.EDIT' | transloco }}</button>
+      <button type="button"
+              (click)="adopt()"
+              *ngIf="hasAccessToAddAdoption && isAllowedAdopt"
+              mat-raised-button
+              color="primary">{{ 'ANIMALS.DETAILS.ADD_ADOPTION' | transloco }}</button>
     </div>
   </div>
 </div>

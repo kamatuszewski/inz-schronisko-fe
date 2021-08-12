@@ -9,7 +9,8 @@ export const environment: IEnvironment = {
   apiUrl: {
     persons: '',
     animals: '',
-    dictionaries: ''
+    dictionaries: '',
+    adoptions: ''
   }
 };
 

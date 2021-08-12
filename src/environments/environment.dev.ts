@@ -5,6 +5,7 @@ export const environment: IEnvironment = {
   apiUrl: {
     persons: 'api/Persons',
     animals: 'api/Animals',
-    dictionaries: 'api/Dictionaries'
+    dictionaries: 'api/Dictionaries',
+    adoptions: 'api/Adoptions'
   }
 };
