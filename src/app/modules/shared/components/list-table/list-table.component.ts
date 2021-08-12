@@ -42,7 +42,6 @@ export class ListTableComponent implements OnInit {
       this.selectRow.next(id)
     }
     if (this.expandable) {
-      console.log(this.expandedDetailsId, id);
       this.expandedDetailsId = this.expandedDetailsId === id ? null : id;
     }
   }

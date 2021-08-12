@@ -70,7 +70,9 @@ export class AnimalFormComponent implements OnInit, IFormActions, OnDestroy {
   }
 
   private redirectToBackPage(): void {
-    this.router.navigate(['animals']).then();
+    this.router.navigate(['..'], {
+      relativeTo: this.activatedRoute
+    }).then();
   }
 
   private saveData(data: ICreateAnimalRequest): Observable<unknown> {

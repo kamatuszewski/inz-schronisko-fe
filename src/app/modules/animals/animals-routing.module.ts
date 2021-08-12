@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ForOnlyLoggedInGuard } from '../auth/guards/for-only-logged-in.guard';
+import { AnimalAdoptionFormComponent } from './components/animal-adoption-form/animal-adoption-form.component';
 import { AnimalDetailsComponent } from './components/animal-details/animal-details.component';
 import { AnimalFormComponent } from './components/animal-form/animal-form.component';
 import { AnimalListComponent } from './components/animal-list/animal-list.component';
@@ -17,7 +18,12 @@ const routes: Routes = [
     canActivate: [ForOnlyLoggedInGuard]
   },
   {
-    path: 'edit/:id',
+    path: 'adopt',
+    component: AnimalAdoptionFormComponent,
+    canActivate: [ForOnlyLoggedInGuard]
+  },
+  {
+    path: ':id/edit',
     component: AnimalFormComponent,
     canActivate: [ForOnlyLoggedInGuard]
   },
@@ -25,7 +31,12 @@ const routes: Routes = [
     path: ':id',
     component: AnimalDetailsComponent,
     canActivate: [ForOnlyLoggedInGuard]
-  }
+  },
+  {
+    path: ':id/adopt',
+    component: AnimalAdoptionFormComponent,
+    canActivate: [ForOnlyLoggedInGuard]
+  },
 ];
 
 @NgModule({

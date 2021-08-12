@@ -7,6 +7,7 @@ export enum EOperation {
   UPDATE_ANIMAL,
   REMOVE_ANIMAL,
   SHOW_ANIMAL_ADOPTIONS,
+  ADD_ADOPTION,
   SHOW_ANIMAL_VET_VISITS,
   SHOW_USER_LIST
 }
@@ -17,7 +18,8 @@ export const permissionsMap = new Map<EOperation, ERole[]>([
   [EOperation.ADD_ANIMAL, [ERole.EMPLOYEE, ERole.ADMIN]],
   [EOperation.UPDATE_ANIMAL, [ERole.EMPLOYEE, ERole.ADMIN]],
   [EOperation.REMOVE_ANIMAL, [ERole.ADMIN]],
-  [EOperation.SHOW_ANIMAL_ADOPTIONS, [ERole.ADMIN]],
+  [EOperation.SHOW_ANIMAL_ADOPTIONS, [ERole.ADMIN, ERole.VET]],
   [EOperation.SHOW_ANIMAL_VET_VISITS, [ERole.ADMIN]],
   [EOperation.SHOW_USER_LIST, [ERole.ADMIN]],
+  [EOperation.ADD_ADOPTION, [ERole.EMPLOYEE, ERole.VET]]
 ]);

@@ -22,6 +22,12 @@ export const tabConfig: ITabConfig[] = [
     iconCode: 'add_circle'
   },
   {
+    label: 'TABS.CREATE_ADOPTION',
+    redirectTo: ['animals', 'adopt'],
+    allowedRoles: permissionsMap.get(EOperation.ADD_ADOPTION),
+    iconCode: 'add_business'
+  },
+  {
     label: 'TABS.USER_LIST',
     redirectTo: ['users'],
     allowedRoles: permissionsMap.get(EOperation.SHOW_USER_LIST),

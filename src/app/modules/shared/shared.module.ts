@@ -20,6 +20,7 @@ import { ListComponent } from './components/list/list.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { StatusComponent } from './components/status/status.component';
 import { ValidationPipe } from './pipes/validation.pipe';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { ValidationPipe } from './pipes/validation.pipe';
     MatDatepickerModule,
     MatTabsModule,
     MatMenuModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSlideToggleModule
   ],
   exports: [
     LogoComponent,
@@ -70,7 +72,8 @@ import { ValidationPipe } from './pipes/validation.pipe';
     MatMenuModule,
     ListTableComponent,
     ConfirmDecisionModalComponent,
-    MatDialogModule
+    MatDialogModule,
+    MatSlideToggleModule
   ],
   entryComponents: [
     ConfirmDecisionModalComponent

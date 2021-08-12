@@ -7,6 +7,7 @@ import { permissionsMap, EOperation } from '../../../core/commons/permissions.co
 import { CoreService } from '../../../core/core.service';
 import { ConfirmDecisionModalService } from '../../../shared/services/confirm-decision-modal.service';
 import { AnimalsService } from '../../animals.service';
+import { AnimalStatus } from '../../enums/animals.enum';
 import { IAnimalDetailsResponse } from '../../interfaces/animals.interface';
 
 @Component({
@@ -15,6 +16,10 @@ import { IAnimalDetailsResponse } from '../../interfaces/animals.interface';
   styleUrls: ['./animal-details.component.scss']
 })
 export class AnimalDetailsComponent implements OnInit, OnDestroy {
+
+  public get isAllowedAdopt(): boolean {
+    return this.animalDetails?.data?.status?.name === AnimalStatus.FOR_ADOPTION;
+  }
   public get showAdoptions(): boolean {
     return this.animalDetails?.adoptions && !!this.animalDetails.adoptions.length && this.hasAccessToShowAdoptions;
   }
@@ -24,6 +29,7 @@ export class AnimalDetailsComponent implements OnInit, OnDestroy {
   }
 
   public animalDetails: IAnimalDetailsResponse;
+  public hasAccessToAddAdoption = false;
   public hasAccessToEdit = false;
   public hasAccessToRemove = false;
   public hasAccessToShowAdoptions = false;
@@ -40,8 +46,16 @@ export class AnimalDetailsComponent implements OnInit, OnDestroy {
     this.animalId = activatedRoute.snapshot.params.id;
   }
 
+  public adopt(): void {
+    this.router.navigate(['adopt'], {
+      relativeTo: this.activatedRoute
+    }).then();
+  }
+
   public edit(): void {
-    this.router.navigate(['animals', 'edit', this.animalId]).then();
+    this.router.navigate(['edit'], {
+      relativeTo: this.activatedRoute
+    }).then();
   }
 
   public ngOnDestroy(): void {
@@ -70,6 +84,7 @@ export class AnimalDetailsComponent implements OnInit, OnDestroy {
     this.hasAccessToVetVisits = this.authService.hasSomeAllowedRole(...permissionsMap.get(EOperation.SHOW_ANIMAL_VET_VISITS))
     this.hasAccessToRemove = this.authService.hasSomeAllowedRole(...permissionsMap.get(EOperation.REMOVE_ANIMAL))
     this.hasAccessToEdit = this.authService.hasSomeAllowedRole(...permissionsMap.get(EOperation.UPDATE_ANIMAL))
+    this.hasAccessToAddAdoption = this.authService.hasSomeAllowedRole(...permissionsMap.get(EOperation.ADD_ADOPTION))
   }
 
   private loadData(): void {

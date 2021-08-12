@@ -27,7 +27,8 @@
   "TABS": {
     "ANIMAL_LIST": "Lista zwierząt",
     "CREATE_ANIMAL": "Dodaj zwierze",
-    "USER_LIST": "Lista użytkowników"
+    "USER_LIST": "Lista użytkowników",
+    "CREATE_ADOPTION": "Dodaj adopcję"
   },
   "ANIMALS": {
     "SPECIES": {
@@ -92,6 +93,13 @@
           "SUCCESS": "Udało się zaaktualizować zwierze"
         }
       },
+      "ADOPTION": {
+        "HEADER": "Formularz adopcji zwierza",
+        "MESSAGES": {
+          "ERROR": "Nie udało się adoptować zwierzęcia",
+          "SUCCESS": "Udało się adoptować zwierze"
+        }
+      },
       "FIELDS": {
         "CHIP_NUMBER": "Numer chipa",
         "NAME": "Imię",
@@ -100,7 +108,11 @@
         "SEX": "Płeć",
         "FOUND_PLACE": "Miejsce znalezoenia",
         "FOUND_DATE": "Data znalezienia",
-        "STATUS": "Status"
+        "STATUS": "Status",
+        "ANIMAL": "Zwierze",
+        "ADOPTER": "Adoptujący",
+        "NOTES": "Notatki",
+        "IS_OWNER_PICKUP": "Czy odebrane przez właściciela"
       },
       "ERRORS": {
         "matDatepickerMin": "Data znalezenia musi późniejsza od daty urodzenia.",
@@ -123,6 +135,7 @@
       "FOUND_PLACE": "Miejsce znalezienia",
       "REMOVE": "Usuń",
       "EDIT": "EDYTUJ",
+      "ADD_ADOPTION": "Adoptuj",
       "TABS": {
         "ADOPTIONS": "Adopcje",
         "VET_VISITS": "Historia leczenia"
