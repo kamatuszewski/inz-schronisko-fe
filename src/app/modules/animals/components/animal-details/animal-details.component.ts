@@ -1,12 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AuthService } from '../../../auth/auth.service';
 import { permissionsMap, EOperation } from '../../../core/commons/permissions.common';
+import { CoreService } from '../../../core/core.service';
+import { ConfirmDecisionModalService } from '../../../shared/services/confirm-decision-modal.service';
 import { AnimalsService } from '../../animals.service';
 import { IAnimalDetailsResponse } from '../../interfaces/animals.interface';
-import { ConfirmDecisionModalService } from '../../../shared/services/confirm-decision-modal.service';
 
 @Component({
   selector: 'app-animal-details',
@@ -30,10 +31,12 @@ export class AnimalDetailsComponent implements OnInit, OnDestroy {
   private animalId: number;
   private onDestroy$ = new Subject<void>();
 
-  constructor(activatedRoute: ActivatedRoute,
+  constructor(private activatedRoute: ActivatedRoute,
               private animalsService: AnimalsService,
               private authService: AuthService,
-              private confirmModal: ConfirmDecisionModalService) {
+              private confirmModal: ConfirmDecisionModalService,
+              private coreService: CoreService,
+              private router: Router) {
     this.animalId = activatedRoute.snapshot.params.id;
   }
 
@@ -55,7 +58,7 @@ export class AnimalDetailsComponent implements OnInit, OnDestroy {
     }
     this.confirmModal.openDialog(data)
       .pipe(takeUntil(this.onDestroy$))
-      .subscribe()
+      .subscribe(this.removeAnimal)
   }
 
   private loadAccessToViews(): void {
@@ -69,5 +72,19 @@ export class AnimalDetailsComponent implements OnInit, OnDestroy {
     this.animalsService.getAnimalDetails({id: this.animalId})
       .pipe(takeUntil(this.onDestroy$))
       .subscribe(data => (this.animalDetails = data));
+  }
+
+  private removeAnimal = (): void => {
+    this.animalsService.removeAnimal({id: this.animalId})
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe(
+        () => {
+          this.coreService.showSuccessMessage('ANIMALS.DETAILS.MESSAGES.SUCCESS');
+          this.router.navigate(['..'], {
+            relativeTo: this.activatedRoute
+          })
+        },
+        () => this.coreService.showSuccessMessage('ANIMALS.DETAILS.MESSAGES.ERROR')
+      )
   }
 }

@@ -8,7 +8,7 @@ export interface ISimpleAnimal {
   status: string;
 }
 
-export interface IAnimalDetailsRequest {
+export interface ISimplePayload {
   id: number;
 }
 

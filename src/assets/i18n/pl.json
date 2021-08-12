@@ -129,7 +129,11 @@
           "ADDRESS": "Adres"
         }
       },
-      "CONFIRMATION_REMOVE": "Proces usuwania zwierzęcia jest nieodwracalny. Czy na pewno chcesz usunąć to zwierze?"
+      "CONFIRMATION_REMOVE": "Proces usuwania zwierzęcia jest nieodwracalny. Czy na pewno chcesz usunąć to zwierze?",
+      "MESSAGES": {
+        "ERROR": "Nie udało się usunąć zwierzęcia",
+        "SUCCESS": "Udało się usunąć zwierze"
+      }
     }
   },
   "USERS": {
