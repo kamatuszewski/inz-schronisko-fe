@@ -32,5 +32,11 @@ export const tabConfig: ITabConfig[] = [
     redirectTo: ['users'],
     allowedRoles: permissionsMap.get(EOperation.SHOW_USER_LIST),
     iconCode: 'supervised_user_circle'
+  },
+  {
+    label: 'TABS.EMPLOYEE_LIST',
+    redirectTo: ['users/employees'],
+    allowedRoles: permissionsMap.get(EOperation.SHOW_USER_LIST),
+    iconCode: 'groups'
   }
 ]

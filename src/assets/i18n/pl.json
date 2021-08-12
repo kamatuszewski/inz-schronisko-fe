@@ -28,6 +28,7 @@
     "ANIMAL_LIST": "Lista zwierząt",
     "CREATE_ANIMAL": "Dodaj zwierze",
     "USER_LIST": "Lista użytkowników",
+    "EMPLOYEE_LIST": "Lista pracowników",
     "CREATE_ADOPTION": "Dodaj adopcję"
   },
   "ANIMALS": {
@@ -178,6 +179,23 @@
           "F": "Kobieta",
           "M": "Mężczyzna"
         }
+      }
+    }
+  },
+  "EMPLOYEE": {
+    "LIST": {
+      "HEADER": "Lista pracowników",
+      "COLUMNS": {
+        "id": "Id",
+        "firstName": "Imię",
+        "lastName": "Nazwisko",
+        "emailAddress": "E-mail",
+        "sex": "Płeć",
+        "COL_SEX": {
+          "F": "Kobieta",
+          "M": "Mężczyzna"
+        },
+        "roles": "Role"
       }
     }
   }
