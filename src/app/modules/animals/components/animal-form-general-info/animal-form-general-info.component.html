@@ -4,7 +4,8 @@
     <mat-label>{{ 'ANIMALS.FORM.FIELDS.CHIP_NUMBER' | transloco }}</mat-label>
     <input matInput
            type="text"
-           [disabled]="!isCreateMode"
+           [readonly]="!isCreateMode"
+           [disabled]="isCreateMode"
            formControlName="chipNumber">
     <mat-error>{{ formGroup.get('chipNumber').errors | validation }}</mat-error>
   </mat-form-field>

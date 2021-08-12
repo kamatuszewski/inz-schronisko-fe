@@ -1,4 +1,5 @@
 import { ESex } from '../../shared/enums/sex.enum';
+import { IGenericDictionary } from '../../shared/interfaces/generic.interface';
 
 export interface ISimpleAnimal {
   id: number;
@@ -27,8 +28,8 @@ export interface IGeneralAnimal {
   id: number,
   name: string,
   sex: ESex,
-  species: string,
-  status: string,
+  species: IGenericDictionary,
+  status: IGenericDictionary,
 }
 
 export interface IGeneralAdoption {

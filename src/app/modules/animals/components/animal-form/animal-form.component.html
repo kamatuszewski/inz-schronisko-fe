@@ -7,7 +7,7 @@
         [formGroup]="formGroup"
         (ngSubmit)="save()">
     <app-animal-form-general-info [parentGroup]="formGroup"
-                                  [isCreateMode]="isCreateMode"
+                                  [animalId]="animalId"
                                   class="app-animal-form__fields"
                                   groupName="generalInfo"></app-animal-form-general-info>
     <div class="app-animal-form__actions app-theme__actions">

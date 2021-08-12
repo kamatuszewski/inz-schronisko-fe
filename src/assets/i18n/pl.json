@@ -72,7 +72,8 @@
         "COL_STATUS": {
           "FOR_ADOPTION": "Do adopcji",
           "ADOPTED": "Adoptowany",
-          "DEAD": "Umarł"
+          "DEAD": "Umarł",
+          "QUARANTINE": "Kwarantanna"
         }
       }
     },
@@ -87,8 +88,8 @@
       "EDIT": {
         "HEADER": "Formularz edytowania zwierza",
         "MESSAGES": {
-          "ERROR": "Nie udało się dodać zwierzęcia",
-          "SUCCESS": "Udało się dodać zwierze"
+          "ERROR": "Nie udało się zaaktualizować zwierzęcia",
+          "SUCCESS": "Udało się zaaktualizować zwierze"
         }
       },
       "FIELDS": {
