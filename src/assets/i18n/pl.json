@@ -84,6 +84,13 @@
           "SUCCESS": "Udało się dodać zwierze"
         }
       },
+      "EDIT": {
+        "HEADER": "Formularz edytowania zwierza",
+        "MESSAGES": {
+          "ERROR": "Nie udało się dodać zwierzęcia",
+          "SUCCESS": "Udało się dodać zwierze"
+        }
+      },
       "FIELDS": {
         "CHIP_NUMBER": "Numer chipa",
         "NAME": "Imię",

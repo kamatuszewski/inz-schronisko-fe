@@ -16,6 +16,7 @@ import { AnimalFormService } from '../../services/animal-form.service';
 export class AnimalFormComponent implements OnInit, IFormActions, OnDestroy {
   public formGroup: FormGroup;
 
+  private animalId: number;
   private onDestroy$ = new Subject<void>();
 
   constructor(
@@ -24,7 +25,9 @@ export class AnimalFormComponent implements OnInit, IFormActions, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private animalFormService: AnimalFormService,
     private coreService: CoreService
-  ) { }
+  ) {
+    this.animalId = activatedRoute.snapshot.params.id;
+  }
 
   public cancel(): void {
     this.redirectToList();
@@ -37,6 +40,10 @@ export class AnimalFormComponent implements OnInit, IFormActions, OnDestroy {
 
   public ngOnInit(): void {
     this.initForm();
+  }
+
+  public get isCreateMode(): boolean {
+    return !this.animalId;
   }
 
   public save(): void {

@@ -28,6 +28,7 @@ export class AnimalFormGeneralInfoComponent implements OnInit {
   public allSpecies$: Observable<IGenericDictionary[]>;
   public formGroup: FormGroup;
   @Input() public groupName: string;
+  @Input() public isCreateMode: boolean;
   @Input() public parentGroup: FormGroup;
   public todayDate = moment().toISOString();
 

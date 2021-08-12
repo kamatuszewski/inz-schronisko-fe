@@ -40,6 +40,10 @@ export class AnimalDetailsComponent implements OnInit, OnDestroy {
     this.animalId = activatedRoute.snapshot.params.id;
   }
 
+  public edit(): void {
+    this.router.navigate(['animals', 'edit', this.animalId]).then();
+  }
+
   public ngOnDestroy(): void {
     this.onDestroy$.next();
     this.onDestroy$.complete();
@@ -82,7 +86,7 @@ export class AnimalDetailsComponent implements OnInit, OnDestroy {
           this.coreService.showSuccessMessage('ANIMALS.DETAILS.MESSAGES.SUCCESS');
           this.router.navigate(['..'], {
             relativeTo: this.activatedRoute
-          })
+          }).then();
         },
         () => this.coreService.showSuccessMessage('ANIMALS.DETAILS.MESSAGES.ERROR')
       )

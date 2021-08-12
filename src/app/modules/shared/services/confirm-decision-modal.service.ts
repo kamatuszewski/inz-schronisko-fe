@@ -29,7 +29,9 @@ export class ConfirmDecisionModalService {
   }
 
   public destroy(): void {
-    this.dialogRef.close();
+    if (this.dialogRef) {
+      this.dialogRef.close();
+    }
   }
 
   public openDialog(data: IConfirmDecisionModal): Observable<boolean> {

@@ -24,6 +24,7 @@
               color="warn">{{ 'ANIMALS.DETAILS.REMOVE' | transloco }}</button>
       <button type="button"
               class="app-button app-button--edit"
+              (click)="edit()"
               *ngIf="hasAccessToEdit"
               mat-raised-button>{{ 'ANIMALS.DETAILS.EDIT' | transloco }}</button>
     </div>
