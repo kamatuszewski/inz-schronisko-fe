@@ -1,15 +1,26 @@
 import { ESex } from '../../shared/enums/sex.enum';
 
-export interface ICreateAnimalRequest {
-  birthDate: number,
+// tslint:disable-next-line:no-empty-interface
+export interface ICreateAnimalRequest extends IAnimalForm {}
+
+// tslint:disable-next-line:no-empty-interface
+export interface ISaveAnimalResponse {}
+
+export interface IAnimalForm {
+  birthDate: string,
   chipNumber: number,
   foundDate: string;
   foundPlace: string;
   id: number,
   name: string,
   sex: ESex,
-  speciesId: string;
+  speciesId: number;
+  statusId: number;
 }
 
-// tslint:disable-next-line:no-empty-interface
-export interface ICreateAnimalResponse {}
+export interface IUpdateAnimalRequest {
+  foundPlace: string;
+  id: number,
+  name: string,
+  statusId: number;
+}

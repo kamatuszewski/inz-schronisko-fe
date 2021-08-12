@@ -4,6 +4,8 @@
     <mat-label>{{ 'ANIMALS.FORM.FIELDS.CHIP_NUMBER' | transloco }}</mat-label>
     <input matInput
            type="text"
+           [readonly]="!isCreateMode"
+           [disabled]="isCreateMode"
            formControlName="chipNumber">
     <mat-error>{{ formGroup.get('chipNumber').errors | validation }}</mat-error>
   </mat-form-field>
@@ -29,7 +31,8 @@
 
   <mat-form-field appearance="outline">
     <mat-label>{{ 'ANIMALS.FORM.FIELDS.SPECIES' | transloco }}</mat-label>
-    <mat-select formControlName="speciesId">
+    <mat-select formControlName="speciesId"
+                [disabled]="!isCreateMode">
       <mat-option *ngFor="let species of allSpecies$ | async"
                   [value]="species.id">
         {{ 'ANIMALS.SPECIES.' + species.name | transloco }}
@@ -42,9 +45,10 @@
     <mat-label>{{ 'ANIMALS.FORM.FIELDS.BIRTH_DATE' | transloco }}</mat-label>
     <input matInput
            type="text"
+           [disabled]="!isCreateMode"
            [matDatepicker]="birthDateDatePicker"
            [max]="todayDate"
-           readonly
+           [readonly]="isCreateMode"
            formControlName="birthDate">
     <mat-datepicker #birthDateDatePicker></mat-datepicker>
     <mat-datepicker-toggle matSuffix [for]="birthDateDatePicker"></mat-datepicker-toggle>
@@ -53,7 +57,8 @@
 
   <mat-form-field appearance="outline">
     <mat-label>{{ 'ANIMALS.FORM.FIELDS.SEX' | transloco }}</mat-label>
-    <mat-select formControlName="sex">
+    <mat-select formControlName="sex"
+                [disabled]="!isCreateMode">
       <mat-option *ngFor="let sex of sexOptions"
                   [value]="sex">
         {{ 'ANIMALS.SEX.' + sex | transloco }}
@@ -75,7 +80,8 @@
     <input matInput
            type="text"
            [matDatepicker]="foundDateDatePicker"
-           readonly
+           [readonly]="isCreateMode"
+           [disabled]="!isCreateMode"
            [min]="foundMinDate"
            [max]="todayDate"
            formControlName="foundDate">

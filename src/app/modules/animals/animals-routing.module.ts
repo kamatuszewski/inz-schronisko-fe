@@ -17,6 +17,11 @@ const routes: Routes = [
     canActivate: [ForOnlyLoggedInGuard]
   },
   {
+    path: 'edit/:id',
+    component: AnimalFormComponent,
+    canActivate: [ForOnlyLoggedInGuard]
+  },
+  {
     path: ':id',
     component: AnimalDetailsComponent,
     canActivate: [ForOnlyLoggedInGuard]

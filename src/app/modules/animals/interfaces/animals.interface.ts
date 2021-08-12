@@ -1,4 +1,5 @@
 import { ESex } from '../../shared/enums/sex.enum';
+import { IGenericDictionary } from '../../shared/interfaces/generic.interface';
 
 export interface ISimpleAnimal {
   id: number;
@@ -8,7 +9,7 @@ export interface ISimpleAnimal {
   status: string;
 }
 
-export interface IAnimalDetailsRequest {
+export interface ISimplePayload {
   id: number;
 }
 
@@ -27,14 +28,13 @@ export interface IGeneralAnimal {
   id: number,
   name: string,
   sex: ESex,
-  species: string,
-  status: string,
+  species: IGenericDictionary,
+  status: IGenericDictionary,
 }
 
 export interface IGeneralAdoption {
   adopter: IGeneralAdopter;
   adoptionDate: string,
-  controlDate: string
   employee: IGeneralEmployee;
   id: number;
 }
@@ -63,7 +63,6 @@ export interface IGeneralVetVisit {
 export interface IAnimalDetailsAdoption {
   adopterFullName: string;
   adoptionDate: string;
-  controlDate: string;
   details: IAnimalDetailsAdopterContact;
   employeeFullName: string;
   id: number;

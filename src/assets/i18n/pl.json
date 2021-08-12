@@ -10,6 +10,10 @@
       "DEAD": "Zmarł",
       "QUARANTINE": "Kwarantanna",
       "FOR_ADOPTION": "Do adopcji"
+    },
+    "ACTIONS": {
+      "ACCEPT": "Tak",
+      "CANCEL": "Anuluj"
     }
   },
   "AUTH": {
@@ -68,7 +72,8 @@
         "COL_STATUS": {
           "FOR_ADOPTION": "Do adopcji",
           "ADOPTED": "Adoptowany",
-          "DEAD": "Umarł"
+          "DEAD": "Umarł",
+          "QUARANTINE": "Kwarantanna"
         }
       }
     },
@@ -78,6 +83,13 @@
         "MESSAGES": {
           "ERROR": "Nie udało się dodać zwierzęcia",
           "SUCCESS": "Udało się dodać zwierze"
+        }
+      },
+      "EDIT": {
+        "HEADER": "Formularz edytowania zwierza",
+        "MESSAGES": {
+          "ERROR": "Nie udało się zaaktualizować zwierzęcia",
+          "SUCCESS": "Udało się zaaktualizować zwierze"
         }
       },
       "FIELDS": {
@@ -109,6 +121,8 @@
       "DEATH_DATE": "Data śmierci",
       "FOUND_DATE": "Data znalezienia",
       "FOUND_PLACE": "Miejsce znalezienia",
+      "REMOVE": "Usuń",
+      "EDIT": "EDYTUJ",
       "TABS": {
         "ADOPTIONS": "Adopcje",
         "VET_VISITS": "Historia leczenia"
@@ -118,12 +132,16 @@
         "adopterFullName": "Adoptujący",
         "employeeFullName": "Opiekun",
         "adoptionDate": "Data adopcji",
-        "controlDate": "Data kontroli",
         "DETAILS": {
           "PHONE_NUMBER": "Numer telefonu",
           "EMAIL": "E-mail",
           "ADDRESS": "Adres"
         }
+      },
+      "CONFIRMATION_REMOVE": "Proces usuwania zwierzęcia jest nieodwracalny. Czy na pewno chcesz usunąć to zwierze?",
+      "MESSAGES": {
+        "ERROR": "Nie udało się usunąć zwierzęcia",
+        "SUCCESS": "Udało się usunąć zwierze"
       }
     }
   },

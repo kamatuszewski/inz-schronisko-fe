@@ -1,0 +1,15 @@
+<section class="app-confirm-decision-modal app-theme">
+  <mat-dialog-content>
+    <span class="app-confirm-decision-modal__description">{{ data.description | transloco }}</span>
+  </mat-dialog-content>
+  <mat-dialog-actions class="app-theme__actions app-theme__actions--end">
+    <button type="button"
+            mat-button
+            (click)="cancel()"
+            color="warn">{{ data.cancel | transloco }}</button>
+    <button type="button"
+            mat-raised-button
+            (click)="accept()"
+            color="primary">{{ data.accept | transloco }}</button>
+  </mat-dialog-actions>
+</section>
