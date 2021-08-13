@@ -148,7 +148,13 @@
         "DETAILS": {
           "PHONE_NUMBER": "Numer telefonu",
           "EMAIL": "E-mail",
-          "ADDRESS": "Adres"
+          "ADDRESS": "Adres",
+          "NOTES": "Notatki"
+        },
+        "CONFIRMATION_REMOVE": "Proces usuwania adopcji jest nieodwracalny. Czy na pewno chcesz usunąć to adopcję?",
+        "MESSAGES": {
+          "ERROR": "Nie udało się usunąć adopcji",
+          "SUCCESS": "Udało się usunąć adopcję"
         }
       },
       "CONFIRMATION_REMOVE": "Proces usuwania zwierzęcia jest nieodwracalny. Czy na pewno chcesz usunąć to zwierze?",

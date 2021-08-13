@@ -37,11 +37,12 @@ export interface IGeneralAdoption {
   adoptionDate: string,
   employee: IGeneralEmployee;
   id: number;
+  notes?: string;
 }
 
 export interface IGeneralAdopter {
   address: string;
-  email: string;
+  emailAddress: string;
   firstName: string;
   id: number;
   lastName: string;
@@ -70,7 +71,9 @@ export interface IAnimalDetailsAdoption {
 
 export interface IAnimalDetailsAdopterContact {
   address: string;
-  email: string;
+  emailAddress: string;
+  id: number;
+  notes?: string;
   phoneNumber: string;
 }
 

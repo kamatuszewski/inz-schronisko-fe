@@ -8,6 +8,7 @@ import { IAnimalDetailsResponse, ISimplePayload } from './interfaces/animals.int
   providedIn: 'root'
 })
 export class AnimalsService {
+  private adoptionsUrl = environment.apiUrl.adoptions;
   private baseUrl = environment.apiUrl.animals;
   constructor(private http: HttpClient) {}
 
@@ -16,8 +17,13 @@ export class AnimalsService {
     return this.http.get<IAnimalDetailsResponse>(url);
   }
 
-  public removeAnimal(payload: ISimplePayload): Observable<any> {
+  public removeAdoption(payload: ISimplePayload): Observable<unknown> {
+    const url = `${this.adoptionsUrl}/${payload.id}`;
+    return this.http.delete(url);
+  }
+
+  public removeAnimal(payload: ISimplePayload): Observable<unknown> {
     const url = `${this.baseUrl}/${payload.id}`;
-    return this.http.delete<IAnimalDetailsResponse>(url);
+    return this.http.delete(url);
   }
 }
