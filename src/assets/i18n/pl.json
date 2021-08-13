@@ -191,6 +191,7 @@
         "lastName": "Nazwisko",
         "emailAddress": "E-mail",
         "sex": "Płeć",
+        "specialties": "Specjalizacje",
         "COL_SEX": {
           "F": "Kobieta",
           "M": "Mężczyzna"

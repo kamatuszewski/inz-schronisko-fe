@@ -30,14 +30,10 @@ export const employeeTableConfig = [
     code: 'lastName'
   },
   {
-    code: 'emailAddress'
-  },
-  {
     code: 'sex',
     translated: true
   },
   {
-    code: 'roles',
-    translated: true,
-  },
+    code: 'specialties'
+  }
 ] as ITableColumn[];
