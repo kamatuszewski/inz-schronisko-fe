@@ -105,7 +105,11 @@ body .app-button {
   padding: 1rem;
 
   &--row-1 {
-    grid-template-areas: "item1 item2 item3";
+    grid-template-areas: "item1 item2 item3" ;
+  }
+
+  &--row-2 {
+    grid-template-areas: "item1 item2 item3" "item4 item5 item6";
   }
 
   &__item {
@@ -114,7 +118,14 @@ body .app-button {
         grid-area: item#{$item};
       }
     }
+    &--colspan-full {
+      grid-column: span 3;
+    }
   }
+}
+
+.padding-b-1rem {
+  padding-bottom: 1rem;
 }
 
 body .mat-tab-label {

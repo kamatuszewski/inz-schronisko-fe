@@ -1,5 +1,6 @@
 import { HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { TranslocoService } from '@ngneat/transloco';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -19,7 +20,8 @@ export class CoreService {
   private isLoading$ = new BehaviorSubject<boolean>(false);
   private pendingRequests = 0;
   constructor(private toastrService: ToastrService,
-              private translocoService: TranslocoService) { }
+              private translocoService: TranslocoService,
+              private router: Router) { }
 
   public hideLoader(): void {
     if (this.pendingRequests > 0) {
@@ -32,6 +34,13 @@ export class CoreService {
 
   public isLoading(): Observable<boolean> {
     return this.isLoading$.asObservable().pipe(delay(0));
+  }
+
+  public reloadComponent = (): void => {
+    const currentUrl = this.router.url;
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate([currentUrl]);
   }
 
   public showErrorMessage(message: string): void {

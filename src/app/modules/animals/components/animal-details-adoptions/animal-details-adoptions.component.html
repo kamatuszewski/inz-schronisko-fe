@@ -3,16 +3,28 @@
                 [columnPrefix]="'ANIMALS.DETAILS.ADOPTIONS'"
                 expandable="true"
                 [expandedDetailsRef]="expandedDetailsRef"></app-list-table>
-<ng-template #expandedDetailsRef let-details='details'>
-  <div class="details details--row-1">
+<ng-template #expandedDetailsRef
+             let-details='details'>
+  <div class="details details--row-2">
     <app-details-item [label]="'ANIMALS.DETAILS.ADOPTIONS.DETAILS.PHONE_NUMBER' | transloco"
                       [value]="details['phoneNumber']"
                       class="details__item details__item--3"></app-details-item>
     <app-details-item [label]="'ANIMALS.DETAILS.ADOPTIONS.DETAILS.EMAIL' | transloco"
-                      [value]="details['email']"
+                      [value]="details['emailAddress']"
                       class="details__item details__item--2"></app-details-item>
     <app-details-item [label]="'ANIMALS.DETAILS.ADOPTIONS.DETAILS.ADDRESS' | transloco"
                       [value]="details['address']"
                       class="details__item details__item--1"></app-details-item>
+    <app-details-item
+                      [label]="'ANIMALS.DETAILS.ADOPTIONS.DETAILS.NOTES' | transloco"
+                      [value]="details['notes']"
+                      class="details__item details__item--4 details__item--colspan-full"></app-details-item>
+  </div>
+  <div class="d-flex justify-content-end padding-b-1rem">
+    <button type="button"
+            (click)="remove(details['id'])"
+            *ngIf="hasAccessToRemoveAdoption"
+            mat-raised-button
+            color="warn">{{ 'ANIMALS.DETAILS.REMOVE' | transloco }}</button>
   </div>
 </ng-template>

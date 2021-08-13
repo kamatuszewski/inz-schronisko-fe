@@ -35,8 +35,10 @@ export class AnimalMapperService {
       adoptionDate: data.adoptionDate,
       details: {
         address: data.adopter.address,
-        email: data.adopter.email,
-        phoneNumber: data.adopter.phoneNumber
+        emailAddress: data.adopter.emailAddress,
+        phoneNumber: data.adopter.phoneNumber,
+        notes: data.notes,
+        id: data.id
       }
     }
   }
