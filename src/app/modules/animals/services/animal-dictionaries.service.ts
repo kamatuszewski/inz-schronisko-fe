@@ -12,11 +12,19 @@ import { AnimalDictionary } from '../enums/animals.enum';
 })
 export class AnimalDictionariesService extends GenericDictionariesService<AnimalDictionary, IGenericDictionary> {
   private baseUrl = environment.apiUrl.animals;
+  private medicinesUrl = environment.apiUrl.medicines;
+  private treatmentsUrl = environment.apiUrl.treatments;
 
   constructor(private http: HttpClient) {
     super();
     this.getAndDispatchSpeciesList();
     this.getAndDispatchStatusList();
+    this.getAndDispatchMedicinesList();
+    this.getAndDispatchTreatmentsList();
+  }
+
+  public getAndDispatchMedicinesList(): void {
+    this.dispatch(AnimalDictionary.MEDICINES, this.getMedicinesList());
   }
 
   public getAndDispatchSpeciesList(): void {
@@ -27,6 +35,15 @@ export class AnimalDictionariesService extends GenericDictionariesService<Animal
     this.dispatch(AnimalDictionary.STATUS, this.getStatusList());
   }
 
+  public getAndDispatchTreatmentsList(): void {
+    this.dispatch(AnimalDictionary.TREATMENTS, this.getTreatmentsList());
+  }
+
+  public getMedicinesList(): Observable<IGenericDictionary[]> {
+    const url = `${this.medicinesUrl}`;
+    return this.http.get<IGenericDictionary[]>(url);
+  }
+
   public getSpeciesList(): Observable<IGenericDictionary[]> {
     const url = `${this.baseUrl}/species`;
     return this.http.get<IGenericDictionary[]>(url);
@@ -34,6 +51,11 @@ export class AnimalDictionariesService extends GenericDictionariesService<Animal
 
   public getStatusList(): Observable<IGenericDictionary[]> {
     const url = `${this.baseUrl}/statuses`;
+    return this.http.get<IGenericDictionary[]>(url);
+  }
+
+  public getTreatmentsList(): Observable<IGenericDictionary[]> {
+    const url = `${this.treatmentsUrl}`;
     return this.http.get<IGenericDictionary[]>(url);
   }
 }

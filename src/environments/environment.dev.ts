@@ -7,6 +7,8 @@ export const environment: IEnvironment = {
     animals: 'api/Animals',
     dictionaries: 'api/Dictionaries',
     adoptions: 'api/Adoptions',
-    vetvisits: 'api/Vetvisits'
+    vetvisits: 'api/VetVisits',
+    treatments: 'api/Treatments',
+    medicines: 'api/Medicines',
   }
 };

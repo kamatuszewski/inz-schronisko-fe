@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
-import { ConfirmDecisionModalComponent } from '../components/confirm-decision-modal/confirm-decision-modal.component';
-import { IActionConfirmDecisionModal, IConfirmDecisionModal } from '../interfaces/modal.interface';
 import { filter } from 'rxjs/operators';
+import { ConfirmDecisionModalComponent } from '../components/confirm-decision-modal/confirm-decision-modal.component';
+import { IActionModal, IConfirmDecisionModal } from '../interfaces/modal.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ConfirmDecisionModalService {
-  public static defaultActionConfig(): IActionConfirmDecisionModal {
+  public static defaultActionConfig(): IActionModal {
     return {
       accept: 'COMMON.ACTIONS.ACCEPT',
       cancel: 'COMMON.ACTIONS.CANCEL'
@@ -23,6 +23,7 @@ export class ConfirmDecisionModalService {
       data
     }
   }
+
   private dialogRef: MatDialogRef<ConfirmDecisionModalComponent>;
 
   constructor(private dialog: MatDialog) {
@@ -37,6 +38,7 @@ export class ConfirmDecisionModalService {
   public openDialog(data: IConfirmDecisionModal): Observable<boolean> {
     this.dialogRef = this.dialog.open(ConfirmDecisionModalComponent, ConfirmDecisionModalService.configDialog(data));
 
-    return this.dialogRef.afterClosed().pipe(filter(decision => !!decision));
+    return this.dialogRef.afterClosed()
+      .pipe(filter(decision => !!decision));
   }
 }

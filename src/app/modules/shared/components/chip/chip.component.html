@@ -1,0 +1,11 @@
+<div class="app-chip">
+  <span class="app-chip__label">{{ name }}</span>
+  <span *ngIf="additionalField && data[additionalField]"
+        class="app-chip__other-data">
+    <span *ngIf="prefix">{{ prefix }}&nbsp;</span>{{ data[additionalField] }}
+  </span>
+
+  <div class="app-chip__delete">
+    <mat-icon (click)="remove.emit(data?.id)">cancel</mat-icon>
+  </div>
+</div>

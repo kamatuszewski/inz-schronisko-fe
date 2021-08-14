@@ -53,6 +53,21 @@
       </mat-form-field>
     </div>
 
+    <app-chip-list [(data)]="treatments"
+                   [header]="'ANIMALS.FORM.TREATMENTS.HEADER' | transloco"
+                   [notFound]="'ANIMALS.FORM.TREATMENTS.NOT_FOUND' | transloco"
+                   translocoPrefix="ANIMALS.FORM.TREATMENTS.MODAL"
+                   [dictionaries$]="allTreatments$"></app-chip-list>
+
+    <app-chip-list [(data)]="medicines"
+                   [header]="'ANIMALS.FORM.MEDICINES.HEADER' | transloco"
+                   [notFound]="'ANIMALS.FORM.MEDICINES.NOT_FOUND' | transloco"
+                   additionalField="amount"
+                   [prefix]="'ANIMALS.FORM.MEDICINES.PREFIX' | transloco"
+                   additionalType="number"
+                   translocoPrefix="ANIMALS.FORM.MEDICINES.MODAL"
+                   [dictionaries$]="allMedicines$"></app-chip-list>
+
     <div class="app-animal-form__actions app-theme__actions">
       <button type="button"
               (click)="cancel()"

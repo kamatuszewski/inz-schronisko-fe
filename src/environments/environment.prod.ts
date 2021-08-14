@@ -8,5 +8,7 @@ export const environment: IEnvironment = {
     dictionaries: 'http://localhost:8080/api/dictionaries',
     adoptions: 'http://localhost:8080/api/adoptions',
     vetvisits: 'http://localhost:8080/api/vetvisits',
+    treatments: 'http://localhost:8080/api/Treatments',
+    medicines: 'http://localhost:8080/api/Medicines',
   }
 };

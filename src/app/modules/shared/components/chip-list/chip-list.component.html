@@ -1,0 +1,23 @@
+<div class="app-chip-list">
+  <h4 class="app-chip-list__header font-weight-normal">{{ header }}</h4>
+  <div class="app-chip-list__content">
+    <ng-container *ngIf="!!data?.length; else notFoundRef">
+      <app-chip *ngFor="let item of data"
+                [data]="item"
+                (remove)="remove($event)"
+                [additionalField]="additionalField"
+                [dictionaries]="dictionaries$ | async"
+                [prefix]="prefix"></app-chip>
+    </ng-container>
+  </div>
+  <div class="app-chip-list__actions d-flex justify-content-end">
+    <button mat-button
+            (click)="add()"
+            type="button"
+            color="primary">Dodaj</button>
+  </div>
+</div>
+
+<ng-template #notFoundRef>
+  <span class="app-chip-list__not-found">{{ notFound }}</span>
+</ng-template>

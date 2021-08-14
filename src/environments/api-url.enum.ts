@@ -3,5 +3,7 @@ export enum EApiUrl {
   ANIMALS = 'animals',
   DICTIONARIES = 'dictionaries',
   ADOPTIONS = 'adoptions',
-  VETVISITS = 'vetvisits'
+  VETVISITS = 'vetvisits',
+  MEDICINES = 'medicines',
+  TREATMENTS = 'treatments'
 }

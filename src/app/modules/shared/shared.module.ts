@@ -21,6 +21,9 @@ import { LogoComponent } from './components/logo/logo.component';
 import { StatusComponent } from './components/status/status.component';
 import { ValidationPipe } from './pipes/validation.pipe';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { ChipComponent } from './components/chip/chip.component';
+import { ChipListComponent } from './components/chip-list/chip-list.component';
+import { AddChipModalComponent } from './components/add-chip-modal/add-chip-modal.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     ValidationPipe,
     DetailsItemComponent,
     StatusComponent,
-    ConfirmDecisionModalComponent
+    ConfirmDecisionModalComponent,
+    ChipComponent,
+    ChipListComponent,
+    AddChipModalComponent
   ],
   imports: [
     CommonModule,
@@ -73,10 +79,14 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     ListTableComponent,
     ConfirmDecisionModalComponent,
     MatDialogModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    ChipListComponent,
+    ChipComponent,
+    AddChipModalComponent
   ],
   entryComponents: [
-    ConfirmDecisionModalComponent
+    ConfirmDecisionModalComponent,
+    AddChipModalComponent
   ]
 })
 export class SharedModule { }

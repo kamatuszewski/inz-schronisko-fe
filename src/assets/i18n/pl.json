@@ -13,7 +13,8 @@
     },
     "ACTIONS": {
       "ACCEPT": "Tak",
-      "CANCEL": "Anuluj"
+      "CANCEL": "Anuluj",
+      "SAVE": "Zapisz"
     },
     "ROLE": {
       "VOLUNTEER": "Wolontariusz",
@@ -141,6 +142,24 @@
       "COMMONS": {
         "SAVE": "Zapisz",
         "CANCEL": "Anuluj"
+      },
+      "MEDICINES": {
+        "HEADER": "Lekarstwa",
+        "NOT_FOUND": "Brak lekarstw",
+        "PREFIX": "Ilość:",
+        "MODAL": {
+          "HEADER": "Dodaj lekarstwo",
+          "LABEL": "Lekarstwo",
+          "AMOUNT": "Ilość"
+        }
+      },
+      "TREATMENTS": {
+        "HEADER": "Zabiegi",
+        "NOT_FOUND": "Brak zabiegów",
+        "MODAL": {
+          "HEADER": "Dodaj Zabieg",
+          "LABEL": "Zabieg"
+        }
       }
     },
     "DETAILS": {

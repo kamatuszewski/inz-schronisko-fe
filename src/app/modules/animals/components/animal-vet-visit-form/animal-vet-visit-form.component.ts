@@ -6,12 +6,14 @@ import { filter, map, takeUntil } from 'rxjs/operators';
 import { AuthService } from '../../../auth/auth.service';
 import { CoreService } from '../../../core/core.service';
 import { IFormActions } from '../../../shared/interfaces/form-actions.interface';
+import { IGenericDictionary } from '../../../shared/interfaces/generic.interface';
 import { FormUtilsService } from '../../../shared/services/form-utils.service';
 import { ERole } from '../../../users/enums/user.enum';
 import { IGeneralUser } from '../../../users/interfaces/user.interface';
 import { UserDictionariesService } from '../../../users/services/user-dictionaries.service';
 import { UserListService } from '../../../users/services/user-list.service';
-import { IAnimalsGroupBySpecies, IAnimalVetVisitForm } from '../../interfaces/animals.interface';
+import { AnimalsService } from '../../animals.service';
+import { IAnimalsGroupBySpecies, IAnimalVetVisitForm, IMedicines, ITreatments } from '../../interfaces/animals.interface';
 import { AnimalDictionariesService } from '../../services/animal-dictionaries.service';
 import { AnimalFormService } from '../../services/animal-form.service';
 import { AnimalListService } from '../../services/animal-list.service';
@@ -23,11 +25,16 @@ import { AnimalMapperService } from '../../services/animal-mapper.service';
   styleUrls: ['./animal-vet-visit-form.component.scss']
 })
 export class AnimalVetVisitFormComponent implements OnInit, OnDestroy, IFormActions {
+  public allMedicines$: Observable<IGenericDictionary[]>;
+  public allTreatments$: Observable<IGenericDictionary[]>;
   public allVet$: Observable<IGeneralUser[]>;
   public animalId: number = null;
   public animalsGroupBySpecies$: Observable<IAnimalsGroupBySpecies[]>;
   public formGroup: FormGroup;
+  public medicines: IMedicines[] = [];
   public speciesId: number;
+  public treatments: ITreatments[] = [];
+  public vetVisitId: number = null;
 
   private onDestroy$ = new Subject<void>();
 
@@ -36,6 +43,7 @@ export class AnimalVetVisitFormComponent implements OnInit, OnDestroy, IFormActi
               private router: Router,
               private authService: AuthService,
               private animalListService: AnimalListService,
+              private animalService: AnimalsService,
               private animalFormService: AnimalFormService,
               private animalDictionaryService: AnimalDictionariesService,
               private userDictionaryService: UserDictionariesService,
@@ -56,15 +64,19 @@ export class AnimalVetVisitFormComponent implements OnInit, OnDestroy, IFormActi
   public ngOnInit(): void {
     this.initList();
     this.initForm();
+    this.initDictionaries();
+    this.loadData();
   }
 
   public save(): void {
     FormUtilsService.markAllAsTouched(this.formGroup);
     if (this.formGroup.valid) {
       const value: IAnimalVetVisitForm = this.formGroup.value;
-      this.animalFormService.createVetVisit(value)
-        .pipe(takeUntil(this.onDestroy$))
-        .subscribe(this.successSave, this.failedSave);
+      value.medicines = this.medicines;
+      value.treatments = this.treatments;
+      this.animalFormService.createVetVisit(value).pipe(
+        takeUntil(this.onDestroy$)
+      ).subscribe(this.successSave, this.failedSave);
     }
   }
 
@@ -72,10 +84,15 @@ export class AnimalVetVisitFormComponent implements OnInit, OnDestroy, IFormActi
     this.coreService.showErrorMessage('ANIMALS.FORM.VET_VISIT.MESSAGES.ERROR');
   };
 
+  private initDictionaries(): void {
+    this.allTreatments$ = this.animalDictionaryService.getTreatmentsList();
+    this.allMedicines$ = this.animalDictionaryService.getMedicinesList();
+  }
+
   private initForm(): void {
     this.formGroup = this.formBuilder.group({
-      description: this.formBuilder.control(null),
-      animalId: this.formBuilder.control(+this.animalId, Validators.required),
+      description: this.formBuilder.control(null, Validators.required),
+      animalId: this.formBuilder.control(this.animalId ? +this.animalId : null, Validators.required),
       vetId: this.formBuilder.control(null, Validators.required),
       visitDate: this.formBuilder.control(null, Validators.required)
     });
@@ -105,6 +122,17 @@ export class AnimalVetVisitFormComponent implements OnInit, OnDestroy, IFormActi
       }
       return [];
     }));
+  }
+
+  private loadData(): void {
+    if (!!this.vetVisitId) {
+      this.animalService.getVetVisits({id: this.vetVisitId})
+        .pipe(takeUntil(this.onDestroy$))
+        .subscribe(vetVisit => {
+          this.medicines = vetVisit.medicines;
+          this.treatments = vetVisit.treatments;
+        })
+    }
   }
 
   private redirectToBackPage(): void {

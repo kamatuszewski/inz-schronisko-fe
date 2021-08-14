@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment';
 import { ICreateAnimalRequest, ISaveAnimalResponse, IUpdateAnimalRequest } from '../interfaces/animal-form.interface';
-import { IAnimalAdoptionForm, IAnimalVetVisitForm } from '../interfaces/animals.interface';
+import { IAnimalAdoptionForm, IAnimalVetVisitForm, IVetVisits } from '../interfaces/animals.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +14,11 @@ export class AnimalFormService {
   private vetVisitsUrl = environment.apiUrl.vetvisits;
   constructor(private http: HttpClient) {}
 
+  public addVetVisit = (payload: IVetVisits): Observable<unknown> => {
+    const url = `${this.vetVisitsUrl}/${payload.id}`;
+    return this.http.post<number>(url, payload);
+  }
+
   public createAdoptions = (payload: IAnimalAdoptionForm): Observable<unknown> => {
     return this.http.post(this.adoptionsUrl, payload);
   }
@@ -23,8 +28,8 @@ export class AnimalFormService {
     return this.http.post<ISaveAnimalResponse>(url, payload);
   }
 
-  public createVetVisit = (payload: IAnimalVetVisitForm): Observable<unknown> => {
-    return this.http.post(this.vetVisitsUrl, payload);
+  public createVetVisit = (payload: IAnimalVetVisitForm): Observable<number> => {
+    return this.http.post<number>(this.vetVisitsUrl, payload);
   }
 
   public updateAnimal = (payload: IUpdateAnimalRequest): Observable<ISaveAnimalResponse> => {

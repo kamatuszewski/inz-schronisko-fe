@@ -12,6 +12,8 @@ export const environment: IEnvironment = {
     dictionaries: '',
     adoptions: '',
     vetvisits: '',
+    treatments: '',
+    medicines: '',
   }
 };
 
