@@ -30,6 +30,8 @@
         <mat-label>{{ 'USERS.FORM.FIELDS.EMAIL_ADDRESS' | transloco }}</mat-label>
         <input matInput
                type="text"
+               [readonly]="!isCreateMode"
+               [disabled]="!isCreateMode"
                formControlName="emailAddress">
         <mat-error>{{ formGroup.get('emailAddress').errors | validation: 'USERS.FORM.ERRORS'  }}</mat-error>
       </mat-form-field>
@@ -46,8 +48,8 @@
         <mat-label>{{ 'USERS.FORM.FIELDS.PESEL' | transloco }}</mat-label>
         <input matInput
                type="text"
-               formControlName="PESEL">
-        <mat-error>{{ formGroup.get('PESEL').errors | validation: 'USERS.FORM.ERRORS' }}</mat-error>
+               formControlName="pesel">
+        <mat-error>{{ formGroup.get('pesel').errors | validation: 'USERS.FORM.ERRORS' }}</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
@@ -61,7 +63,8 @@
         <mat-error>{{ formGroup.get('sex').errors | validation }}</mat-error>
       </mat-form-field>
 
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline"
+                      *ngIf="isCreateMode">
         <mat-label>{{ 'USERS.FORM.FIELDS.ROLE' | transloco }}</mat-label>
         <mat-select formControlName="roleId">
           <mat-option *ngFor="let role of allRole$ | async"
@@ -85,6 +88,8 @@
         <mat-label>{{ 'USERS.FORM.FIELDS.PWZ_NUMBER' | transloco }}</mat-label>
         <input matInput
                type="text"
+               [readonly]="!isCreateMode"
+               [disabled]="!isCreateMode"
                formControlName="PWZNumber">
         <mat-error>{{ formGroup.get('PWZNumber').errors | validation }}</mat-error>
       </mat-form-field>
@@ -104,7 +109,7 @@
                type="text"
                [disabled]="!isCreateMode"
                [matDatepicker]="hireDateDatePicker"
-               [readonly]="isCreateMode"
+               readonly
                formControlName="hireDate">
         <mat-datepicker #hireDateDatePicker></mat-datepicker>
         <mat-datepicker-toggle matSuffix [for]="hireDateDatePicker"></mat-datepicker-toggle>
@@ -118,7 +123,7 @@
                type="text"
                [disabled]="!isCreateMode"
                [matDatepicker]="joiningDatePicker"
-               [readonly]="isCreateMode"
+               readonly
                formControlName="joiningDate">
         <mat-datepicker #joiningDatePicker></mat-datepicker>
         <mat-datepicker-toggle matSuffix [for]="joiningDatePicker"></mat-datepicker-toggle>
@@ -130,6 +135,8 @@
         <mat-label>{{ 'USERS.FORM.FIELDS.ATTENDANCE' | transloco }}</mat-label>
         <input matInput
                type="text"
+               [readonly]="!isCreateMode"
+               [disabled]="!isCreateMode"
                formControlName="attendance">
         <mat-error>{{ formGroup.get('attendance').errors | validation }}</mat-error>
       </mat-form-field>
@@ -139,6 +146,8 @@
         <mat-label>{{ 'USERS.FORM.FIELDS.SALARY' | transloco }}</mat-label>
         <input matInput
                type="text"
+               [readonly]="!isCreateMode"
+               [disabled]="!isCreateMode"
                formControlName="salary">
         <mat-error>{{ formGroup.get('salary').errors | validation }}</mat-error>
       </mat-form-field>
@@ -150,13 +159,33 @@
                type="text"
                [disabled]="!isCreateMode"
                [matDatepicker]="quitDatePicker"
-               [readonly]="isCreateMode"
+               readonly
                formControlName="quitDate">
         <mat-datepicker #quitDatePicker></mat-datepicker>
         <mat-datepicker-toggle matSuffix [for]="quitDatePicker"></mat-datepicker-toggle>
         <mat-error>{{ formGroup.get('quitDate').errors | validation }}</mat-error>
       </mat-form-field>
     </div>
+
+    <app-chip-list *ngIf="anVetWasSelected"
+                   [header]="'USERS.FORM.FIELDS.SPECIALTIES.HEADER' | transloco"
+                   [notFound]="'USERS.FORM.FIELDS.SPECIALTIES.NOT_FOUND' | transloco"
+                   [(data)]="vetSpecialties"
+                   additionalField="obtainingDate"
+                   [prefix]="'USERS.FORM.FIELDS.SPECIALTIES.PREFIX' | transloco"
+                   translocoPrefix="USERS.FORM.FIELDS.SPECIALTIES.MODAL"
+                   additionalType="date"
+                   [dictionaries$]="allSpecialty$"></app-chip-list>
+
+    <app-chip-list *ngIf="!isCreateMode"
+                   [header]="'USERS.FORM.FIELDS.ROLES.HEADER' | transloco"
+                   [notFound]="'USERS.FORM.FIELDS.ROLES.NOT_FOUND' | transloco"
+                   [(data)]="selectedRoles"
+                   [canAdd]="false"
+                   [canRemove]="false"
+                   [prefixLabel]="'COMMON.ROLE'"
+                   translocoPrefix="USERS.FORM.FIELDS.ROLES.MODAL"
+                   [dictionaries$]="allRole$"></app-chip-list>
 
     <div class="app-USERS-form__actions app-theme__actions">
       <button type="button"

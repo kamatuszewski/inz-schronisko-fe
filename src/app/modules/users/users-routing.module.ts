@@ -21,6 +21,11 @@ const routes: Routes = [
     component: EmployeeListComponent,
     canActivate: [ForOnlyLoggedInGuard]
   },
+  {
+    path: 'edit/:id',
+    component: UserFormComponent,
+    canActivate: [ForOnlyLoggedInGuard]
+  },
 ];
 
 @NgModule({

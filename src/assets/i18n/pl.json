@@ -248,7 +248,21 @@
         "QUIT_DATE": "Data zakończenia",
         "ROLE": "Rola",
         "SALARY": "Pensja",
-        "SEX": "Płeć"
+        "SEX": "Płeć",
+        "SPECIALTIES": {
+          "HEADER": "Specializacje",
+          "PREFIX": "Uzyskana dnia:",
+          "NOT_FOUND": "Brak specjalizacji",
+          "MODAL": {
+            "HEADER": "Dodaj specializacje",
+            "LABEL": "Specjalizacja",
+            "OBTAININGDATE": "Uzyskano"
+          }
+        },
+        "ROLES": {
+          "HEADER": "Role",
+          "NOT_FOUND": "Brak ról"
+        }
       },
       "COMMONS": {
         "SAVE": "Zapisz",

@@ -19,6 +19,8 @@ export class ChipComponent implements OnInit {
   @Input() public data: any;
   @Input() public dictionaries: IGenericDictionary[];
   @Input() public prefix?: string;
+  @Input() public prefixLabel?: string;
+  @Input() public canAdd = true;
   @Output() public remove = new EventEmitter<number>();
 
   constructor() { }

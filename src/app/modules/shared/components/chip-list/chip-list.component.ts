@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import * as moment from 'moment';
 import { Observable, Subject } from 'rxjs';
-import { IGenericDictionary } from '../../interfaces/generic.interface';
-import { AddChipModalService } from '../../services/add-chip-modal.service';
-import { IActionModal, IAddChipModal } from '../../interfaces/modal.interface';
 import { takeUntil } from 'rxjs/operators';
+import { IGenericDictionary } from '../../interfaces/generic.interface';
+import { IAddChipModal } from '../../interfaces/modal.interface';
+import { AddChipModalService } from '../../services/add-chip-modal.service';
 
 @Component({
   selector: 'app-chip-list',
@@ -12,13 +13,16 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class ChipListComponent<T> implements OnInit, OnDestroy {
   @Input() public additionalField?: string;
-  @Input() public additionalType?: 'text' | 'number';
+  @Input() public additionalType?: 'text' | 'number' | 'date';
+  @Input() public canAdd = true;
+  @Input() public canRemove = true;
   @Input() public data: T[];
   @Output() public dataChange = new EventEmitter<T[]>();
   @Input() public dictionaries$: Observable<IGenericDictionary[]>;
   @Input() public header: string;
   @Input() public notFound: string;
   @Input() public prefix?: string;
+  @Input() public prefixLabel?: string;
   @Input() public translocoPrefix?: string;
 
   private onDestroy$ = new Subject<void>();
@@ -36,7 +40,12 @@ export class ChipListComponent<T> implements OnInit, OnDestroy {
     }
     this.addChipModalService.openDialog<T>(data)
       .pipe(takeUntil(this.onDestroy$))
-      .subscribe(chipData => this.dataChange.emit([...this.data, chipData]))
+      .subscribe(chipData => {
+        if (data.additionalField && data.additionalType === 'date') {
+          chipData[this.additionalField] = moment(chipData[this.additionalField]).toISOString();
+        }
+        this.dataChange.emit([...this.data, chipData])
+      })
   }
 
   public ngOnDestroy(): void {
