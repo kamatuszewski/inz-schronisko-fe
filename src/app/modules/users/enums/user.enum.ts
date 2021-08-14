@@ -6,3 +6,7 @@ export enum ERole {
   VET = 'Vet',
   ALL = '*'
 }
+
+export enum UserDictionary {
+  ROLES = 'ROLES',
+}

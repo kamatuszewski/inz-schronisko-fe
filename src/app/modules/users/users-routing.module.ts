@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ForOnlyLoggedInGuard } from '../auth/guards/for-only-logged-in.guard';
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
 import { UserListComponent } from './components/user-list/user-list.component';
+import { UserFormComponent } from './components/user-form/user-form.component';
 
 const routes: Routes = [
   {
@@ -11,10 +12,15 @@ const routes: Routes = [
     canActivate: [ForOnlyLoggedInGuard]
   },
   {
+    path: 'create',
+    component: UserFormComponent,
+    canActivate: [ForOnlyLoggedInGuard]
+  },
+  {
     path: 'employees',
     component: EmployeeListComponent,
     canActivate: [ForOnlyLoggedInGuard]
-  }
+  },
 ];
 
 @NgModule({
