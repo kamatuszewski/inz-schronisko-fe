@@ -258,6 +258,10 @@
             "LABEL": "Specjalizacja",
             "OBTAININGDATE": "Uzyskano"
           }
+        },
+        "ROLES": {
+          "HEADER": "Role",
+          "NOT_FOUND": "Brak ról"
         }
       },
       "COMMONS": {

@@ -1,11 +1,13 @@
 <div class="app-chip">
-  <span class="app-chip__label">{{ name }}</span>
+  <span class="app-chip__label" *ngIf="prefixLabel">{{ prefixLabel + "." + name.toUpperCase() | transloco }}</span>
+  <span class="app-chip__label" *ngIf="!prefixLabel">{{ name }}</span>
   <span *ngIf="additionalField && data[additionalField]"
         class="app-chip__other-data">
     <span *ngIf="prefix">{{ prefix }}&nbsp;</span>{{ data[additionalField] }}
   </span>
 
-  <div class="app-chip__delete">
+  <div class="app-chip__delete"
+       *ngIf="canAdd">
     <mat-icon (click)="remove.emit(data?.id)">cancel</mat-icon>
   </div>
 </div>

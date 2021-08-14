@@ -14,12 +14,15 @@ import { AddChipModalService } from '../../services/add-chip-modal.service';
 export class ChipListComponent<T> implements OnInit, OnDestroy {
   @Input() public additionalField?: string;
   @Input() public additionalType?: 'text' | 'number' | 'date';
+  @Input() public canAdd = true;
+  @Input() public canRemove = true;
   @Input() public data: T[];
   @Output() public dataChange = new EventEmitter<T[]>();
   @Input() public dictionaries$: Observable<IGenericDictionary[]>;
   @Input() public header: string;
   @Input() public notFound: string;
   @Input() public prefix?: string;
+  @Input() public prefixLabel?: string;
   @Input() public translocoPrefix?: string;
 
   private onDestroy$ = new Subject<void>();
