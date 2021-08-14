@@ -34,7 +34,7 @@
   },
   "TABS": {
     "ANIMAL_LIST": "Lista zwierząt",
-    "CREATE_ANIMAL": "Dodaj zwierze",
+    "CREATE_ANIMAL": "Dodaj zwierzę",
     "USER_LIST": "Lista użytkowników",
     "EMPLOYEE_LIST": "Lista pracowników",
     "CREATE_ADOPTION": "Dodaj adopcję",
@@ -90,24 +90,24 @@
     },
     "FORM": {
       "CREATE": {
-        "HEADER": "Formularz dodawania zwierza",
+        "HEADER": "Formularz dodawania zwierzęcia",
         "MESSAGES": {
           "ERROR": "Nie udało się dodać zwierzęcia",
-          "SUCCESS": "Udało się dodać zwierze"
+          "SUCCESS": "Udało się dodać zwierzę"
         }
       },
       "EDIT": {
-        "HEADER": "Formularz edytowania zwierza",
+        "HEADER": "Formularz edytowania zwierzęcia",
         "MESSAGES": {
-          "ERROR": "Nie udało się zaaktualizować zwierzęcia",
-          "SUCCESS": "Udało się zaaktualizować zwierze"
+          "ERROR": "Nie udało się zaktualizować zwierzęcia",
+          "SUCCESS": "Udało się zaktualizować zwierzę"
         }
       },
       "ADOPTION": {
-        "HEADER": "Formularz adopcji zwierza",
+        "HEADER": "Formularz adopcji zwierzęcia",
         "MESSAGES": {
           "ERROR": "Nie udało się adoptować zwierzęcia",
-          "SUCCESS": "Udało się adoptować zwierze"
+          "SUCCESS": "Udało się adoptować zwierzę"
         }
       },
       "VET_VISIT": {
@@ -124,10 +124,10 @@
         "BIRTH_DATE": "Data urodzenia",
         "VISIT_DATE": "Data wizyty",
         "SEX": "Płeć",
-        "FOUND_PLACE": "Miejsce znalezoenia",
+        "FOUND_PLACE": "Miejsce znalezienia",
         "FOUND_DATE": "Data znalezienia",
         "STATUS": "Status",
-        "ANIMAL": "Zwierze",
+        "ANIMAL": "Zwierzę",
         "ADOPTER": "Adoptujący",
         "VET": "Weterynarz",
         "DESCRIPTION": "Opis",
@@ -135,7 +135,7 @@
         "IS_OWNER_PICKUP": "Czy odebrane przez właściciela"
       },
       "ERRORS": {
-        "matDatepickerMin": "Data znalezenia musi późniejsza od daty urodzenia.",
+        "matDatepickerMin": "Data znalezienia musi późniejsza od daty urodzenia.",
         "required": "Pole nie może być puste.",
         "matDatepickerMax": "Data musi być dzisiejsza lub wcześniejsza."
       },
@@ -189,16 +189,16 @@
           "ADDRESS": "Adres",
           "NOTES": "Notatki"
         },
-        "CONFIRMATION_REMOVE": "Proces usuwania adopcji jest nieodwracalny. Czy na pewno chcesz usunąć to adopcję?",
+        "CONFIRMATION_REMOVE": "Proces usuwania adopcji jest nieodwracalny. Czy na pewno chcesz usunąć tę adopcję?",
         "MESSAGES": {
           "ERROR": "Nie udało się usunąć adopcji",
           "SUCCESS": "Udało się usunąć adopcję"
         }
       },
-      "CONFIRMATION_REMOVE": "Proces usuwania zwierzęcia jest nieodwracalny. Czy na pewno chcesz usunąć to zwierze?",
+      "CONFIRMATION_REMOVE": "Proces usuwania zwierzęcia jest nieodwracalny. Czy na pewno chcesz usunąć to zwierzę?",
       "MESSAGES": {
         "ERROR": "Nie udało się usunąć zwierzęcia",
-        "SUCCESS": "Udało się usunąć zwierze"
+        "SUCCESS": "Udało się usunąć zwierzę"
       }
     }
   },
@@ -237,7 +237,7 @@
         "ADDRESS": "Adres",
         "ATTENDANCE": "Frekwencja",
         "EMAIL_ADDRESS": "E-mail",
-        "FIRST_NAME": "Imie",
+        "FIRST_NAME": "Imię",
         "LAST_NAME": "Nazwisko",
         "HIRE_DATE": "Data zatrudnienia",
         "JOINING_DATE": "Data dołączenia",
@@ -256,7 +256,7 @@
       },
       "ERRORS": {
         "PASSWORD": {
-          "minlength": "Hasło jest zbyt krótkie minimum 5 znaków"
+          "minlength": "Hasło jest zbyt krótkie minimum 6 znaków"
         },
         "email": "Niepoprawny adres e-mail",
         "pesel": "Niepoprawny pesel",

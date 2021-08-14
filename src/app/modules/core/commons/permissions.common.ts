@@ -40,31 +40,32 @@ export const permissionsMap = new Map<EOperation, ERole[]>([
   [EOperation.SHOW_ANIMAL_ADOPTIONS, [ERole.ALL]],
   [EOperation.SHOW_ANIMAL_VET_VISITS, [ERole.ALL]],
 
-  [EOperation.ADD_ANIMAL, [ERole.EMPLOYEE, ERole.ADMIN]],
-  [EOperation.UPDATE_ANIMAL, [ERole.EMPLOYEE, ERole.ADMIN]],
-  [EOperation.REMOVE_ANIMAL, [ERole.ADMIN]],
+  [EOperation.ADD_ANIMAL, [ERole.EMPLOYEE]],
+  [EOperation.UPDATE_ANIMAL, [ERole.EMPLOYEE]],
+  [EOperation.REMOVE_ANIMAL, [ERole.EMPLOYEE]],
 
-  [EOperation.ADD_ADOPTION, [ERole.EMPLOYEE, ERole.VET]],
-  [EOperation.REMOVE_ADOPTION, [ERole.EMPLOYEE, ERole.VET]],
+  [EOperation.ADD_ADOPTION, [ERole.EMPLOYEE]],
+  [EOperation.REMOVE_ADOPTION, [ERole.EMPLOYEE]],
 
-  [EOperation.SHOW_EMPLOYEE_LIST, [ERole.ALL]],
-  [EOperation.SHOW_EMPLOYEE_DETAILS, [ERole.ALL]],
+  [EOperation.SHOW_EMPLOYEE_LIST, [ERole.DIRECTOR] [ERole.ADMIN]],     //[Magda] i wyswietlenie listy wolontariuszy
+  [EOperation.SHOW_EMPLOYEE_DETAILS, [ERole.DIRECTOR] [ERole.ADMIN]],  //[Magda] i wyswietlenie detali wolontariusza
   [EOperation.SHOW_USER_LIST, [ERole.ADMIN]],
-  [EOperation.SHOW_DETAILS_USER, [ERole.ALL]],
+  [EOperation.SHOW_DETAILS_USER, [ERole.ADMIN]],
 
-  [EOperation.ADD_USER, [ERole.ALL]],
-  [EOperation.EDIT_USER, [ERole.ALL]],
+  [EOperation.ADD_USER, [ERole.EMPLOYEE] [ERole.ADMIN]], //[Magda] dla Employee tylko dodanie bez roli osoby i bez hasla
+  [EOperation.EDIT_USER, [ERole.ADMIN]],            //[Magda] w tym dopisanie/usunięcie roli
 
-  [EOperation.ADD_SPECIALIST, [ERole.ALL]],
-  [EOperation.ASSIGN_SPECIALIST, [ERole.ALL]],
-  [EOperation.REMOVE_SPECIALIST, [ERole.ALL]],
+  [EOperation.ADD_SPECIALIST, [ERole.ADMIN]],
+  [EOperation.ASSIGN_SPECIALIST, [ERole.ADMIN]],
+  [EOperation.REMOVE_SPECIALIST, [ERole.ADMIN]],
 
-  [EOperation.ADD_TREATMENT, [ERole.ALL]],
-  [EOperation.ADD_MEDICINES, [ERole.ALL]],
-  [EOperation.REMOVE_TREATMENT, [ERole.ALL]],
-  [EOperation.REMOVE_MEDICINES, [ERole.ALL]],
-  [EOperation.REMOVE_MEDICINES, [ERole.ALL]],
+  [EOperation.ADD_TREATMENT, [ERole.VET]],
+  [EOperation.ADD_MEDICINES, [ERole.VET]],
+  [EOperation.REMOVE_TREATMENT, [ERole.VET]],
+  [EOperation.REMOVE_MEDICINES, [ERole.VET]],       
+  [EOperation.REMOVE_MEDICINES, [ERole.VET]],       //[Magda] duplikat linijki wyżej
 
-  [EOperation.ADD_VET_VISIT, [ERole.ALL]],
-  [EOperation.EDIT_VET_VISIT, [ERole.ALL]],
+  [EOperation.ADD_VET_VISIT, [ERole.VET]],
+  [EOperation.EDIT_VET_VISIT, [ERole.VET]],
 ]);
+ 
