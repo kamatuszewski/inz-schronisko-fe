@@ -11,9 +11,6 @@ export const userTableConfig = [
     code: 'lastName'
   },
   {
-    code: 'emailAddress'
-  },
-  {
     code: 'sex',
     translated: true
   },

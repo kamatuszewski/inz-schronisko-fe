@@ -14,6 +14,13 @@
     "ACTIONS": {
       "ACCEPT": "Tak",
       "CANCEL": "Anuluj"
+    },
+    "ROLE": {
+      "VOLUNTEER": "Wolontariusz",
+      "EMPLOYEE": "Pracownik",
+      "DIRECTOR": "Dyrektor",
+      "ADMIN": "Admin",
+      "VET": "Weterynarz"
     }
   },
   "AUTH": {
@@ -166,6 +173,10 @@
     }
   },
   "USERS": {
+    "SEX": {
+      "F": "Kobieta",
+      "M": "Mężczyzna"
+    },
     "LIST": {
       "HEADER": "Lista użytkowników",
       "CREATE": "Dodaj użytkownika",
@@ -179,6 +190,47 @@
           "F": "Kobieta",
           "M": "Mężczyzna"
         }
+      }
+    },
+    "FORM": {
+      "CREATE": {
+        "HEADER": "Stwórz użytkownika",
+        "MESSAGES": {
+          "ERROR": "Nie udało się dodać użytkownika",
+          "SUCCESS": "Udało się dodać użytkownika"
+        }
+      },
+      "EDIT": {
+        "HEADER": "Edytuj użytkownika"
+      },
+      "FIELDS": {
+        "ADDRESS": "Adres",
+        "ATTENDANCE": "Frekwencja",
+        "EMAIL_ADDRESS": "E-mail",
+        "FIRST_NAME": "Imie",
+        "LAST_NAME": "Nazwisko",
+        "HIRE_DATE": "Data zatrudnienia",
+        "JOINING_DATE": "Data dołączenia",
+        "PASSWORD": "Hasło",
+        "PESEL": "Pesel",
+        "PHONE_NUMBER": "Numer telefonu",
+        "PWZ_NUMBER": "Numer Prawa Wykonywania Zawodu",
+        "QUIT_DATE": "Data zakończenia",
+        "ROLE": "Rola",
+        "SALARY": "Pensja",
+        "SEX": "Płeć"
+      },
+      "COMMONS": {
+        "SAVE": "Zapisz",
+        "CANCEL": "Anuluj"
+      },
+      "ERRORS": {
+        "PASSWORD": {
+          "minlength": "Hasło jest zbyt krótkie minimum 5 znaków"
+        },
+        "email": "Niepoprawny adres e-mail",
+        "pesel": "Niepoprawny pesel",
+        "phone": "Niepoprawny numer telefonu"
       }
     }
   },

@@ -1,0 +1,171 @@
+<div class="app-user-form app-theme">
+  <div class="app-theme__header">
+    <h3 class="app-content-header"
+        *ngIf="isCreateMode">{{ 'USERS.FORM.CREATE.HEADER' | transloco }}</h3>
+    <h3 class="app-content-header"
+        *ngIf="!isCreateMode">{{ 'USERS.FORM.EDIT.HEADER' | transloco }}</h3>
+  </div>
+  <form class="app-user-form__content app-theme__content"
+        [formGroup]="formGroup"
+        (ngSubmit)="save()">
+
+    <div class="app-form-content">
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'USERS.FORM.FIELDS.FIRST_NAME' | transloco }}</mat-label>
+        <input matInput
+               type="text"
+               formControlName="firstName">
+        <mat-error>{{ formGroup.get('firstName').errors | validation }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'USERS.FORM.FIELDS.LAST_NAME' | transloco }}</mat-label>
+        <input matInput
+               type="text"
+               formControlName="lastName">
+        <mat-error>{{ formGroup.get('lastName').errors | validation }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'USERS.FORM.FIELDS.EMAIL_ADDRESS' | transloco }}</mat-label>
+        <input matInput
+               type="text"
+               formControlName="emailAddress">
+        <mat-error>{{ formGroup.get('emailAddress').errors | validation: 'USERS.FORM.ERRORS'  }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'USERS.FORM.FIELDS.PHONE_NUMBER' | transloco }}</mat-label>
+        <input matInput
+               type="text"
+               formControlName="phoneNumber">
+        <mat-error>{{ formGroup.get('phoneNumber').errors | validation: 'USERS.FORM.ERRORS' }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'USERS.FORM.FIELDS.PESEL' | transloco }}</mat-label>
+        <input matInput
+               type="text"
+               formControlName="PESEL">
+        <mat-error>{{ formGroup.get('PESEL').errors | validation: 'USERS.FORM.ERRORS' }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'USERS.FORM.FIELDS.SEX' | transloco }}</mat-label>
+        <mat-select formControlName="sex">
+          <mat-option *ngFor="let sex of sexOptions"
+                      [value]="sex">
+            {{ 'USERS.SEX.' + sex | transloco }}
+          </mat-option>
+        </mat-select>
+        <mat-error>{{ formGroup.get('sex').errors | validation }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'USERS.FORM.FIELDS.ROLE' | transloco }}</mat-label>
+        <mat-select formControlName="roleId">
+          <mat-option *ngFor="let role of allRole$ | async"
+                      [value]="role.id">
+            {{ 'COMMON.ROLE.' + role.name.toUpperCase() | transloco }}
+          </mat-option>
+        </mat-select>
+        <mat-error>{{ formGroup.get('sex').errors | validation }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'USERS.FORM.FIELDS.PASSWORD' | transloco }}</mat-label>
+        <input matInput
+               type="password"
+               formControlName="password">
+        <mat-error>{{ formGroup.get('password').errors | validation: 'USERS.FORM.ERRORS.PASSWORD' }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline"
+                      *ngIf="anVetWasSelected">
+        <mat-label>{{ 'USERS.FORM.FIELDS.PWZ_NUMBER' | transloco }}</mat-label>
+        <input matInput
+               type="text"
+               formControlName="PWZNumber">
+        <mat-error>{{ formGroup.get('PWZNumber').errors | validation }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'USERS.FORM.FIELDS.ADDRESS' | transloco }}</mat-label>
+        <input matInput
+               type="text"
+               formControlName="address">
+        <mat-error>{{ formGroup.get('address').errors | validation }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline"
+                      *ngIf="anEmployeeWasSelected || anVetWasSelected">
+        <mat-label>{{ 'USERS.FORM.FIELDS.HIRE_DATE' | transloco }}</mat-label>
+        <input matInput
+               type="text"
+               [disabled]="!isCreateMode"
+               [matDatepicker]="hireDateDatePicker"
+               [readonly]="isCreateMode"
+               formControlName="hireDate">
+        <mat-datepicker #hireDateDatePicker></mat-datepicker>
+        <mat-datepicker-toggle matSuffix [for]="hireDateDatePicker"></mat-datepicker-toggle>
+        <mat-error>{{ formGroup.get('hireDate').errors | validation }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline"
+                      *ngIf="anVolunteerWasSelected">
+        <mat-label>{{ 'USERS.FORM.FIELDS.JOINING_DATE' | transloco }}</mat-label>
+        <input matInput
+               type="text"
+               [disabled]="!isCreateMode"
+               [matDatepicker]="joiningDatePicker"
+               [readonly]="isCreateMode"
+               formControlName="joiningDate">
+        <mat-datepicker #joiningDatePicker></mat-datepicker>
+        <mat-datepicker-toggle matSuffix [for]="joiningDatePicker"></mat-datepicker-toggle>
+        <mat-error>{{ formGroup.get('joiningDate').errors | validation }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline"
+                      *ngIf="anVolunteerWasSelected">
+        <mat-label>{{ 'USERS.FORM.FIELDS.ATTENDANCE' | transloco }}</mat-label>
+        <input matInput
+               type="text"
+               formControlName="attendance">
+        <mat-error>{{ formGroup.get('attendance').errors | validation }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline"
+                      *ngIf="anEmployeeWasSelected || anVetWasSelected">
+        <mat-label>{{ 'USERS.FORM.FIELDS.SALARY' | transloco }}</mat-label>
+        <input matInput
+               type="text"
+               formControlName="salary">
+        <mat-error>{{ formGroup.get('salary').errors | validation }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline"
+                      *ngIf="anEmployeeWasSelected || anVetWasSelected">
+        <mat-label>{{ 'USERS.FORM.FIELDS.QUIT_DATE' | transloco }}</mat-label>
+        <input matInput
+               type="text"
+               [disabled]="!isCreateMode"
+               [matDatepicker]="quitDatePicker"
+               [readonly]="isCreateMode"
+               formControlName="quitDate">
+        <mat-datepicker #quitDatePicker></mat-datepicker>
+        <mat-datepicker-toggle matSuffix [for]="quitDatePicker"></mat-datepicker-toggle>
+        <mat-error>{{ formGroup.get('quitDate').errors | validation }}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="app-USERS-form__actions app-theme__actions">
+      <button type="button"
+              (click)="cancel()"
+              mat-button
+              color="warn">{{ 'USERS.FORM.COMMONS.CANCEL' | transloco }}</button>
+      <button type="submit"
+              mat-raised-button
+              color="primary">{{ 'USERS.FORM.COMMONS.SAVE' | transloco }}</button>
+    </div>
+  </form>
+</div>

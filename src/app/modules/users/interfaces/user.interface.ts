@@ -1,6 +1,6 @@
 import { ESex } from '../../shared/enums/sex.enum';
-import { ERole } from '../enums/user.enum';
 import { IGenericDictionary } from '../../shared/interfaces/generic.interface';
+import { ERole } from '../enums/user.enum';
 
 export interface IGeneralUser {
   emailAddress: string;
@@ -21,4 +21,22 @@ export interface IGeneralUserListItem {
   lastName: string;
   sex: ESex;
   specialties: string;
+}
+
+export interface IUserForm {
+  address: string;
+  attendance: string
+  emailAddress: string;
+  firstName: string;
+  hireDate: string;
+  joiningDate: string;
+  lastName: string;
+  password: string;
+  PESEL: string
+  phoneNumber: string;
+  PWZNumber: string;
+  quitDate: string;
+  roleId: 1;
+  salary: number;
+  sex: ESex;
 }
