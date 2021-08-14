@@ -38,4 +38,10 @@ export interface IUserForm {
   roleId: 1;
   salary: number;
   sex: ESex;
+  vetSpecialties: IVetSpecialty[]
+}
+
+export interface IVetSpecialty {
+  id: number;
+  obtainingDate: string;
 }

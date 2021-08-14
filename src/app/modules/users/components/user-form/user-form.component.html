@@ -158,6 +158,16 @@
       </mat-form-field>
     </div>
 
+    <app-chip-list *ngIf="anVetWasSelected"
+                   [header]="'USERS.FORM.FIELDS.SPECIALTIES.HEADER' | transloco"
+                   [notFound]="'USERS.FORM.FIELDS.SPECIALTIES.NOT_FOUND' | transloco"
+                   [(data)]="vetSpecialties"
+                   additionalField="obtainingDate"
+                   [prefix]="'USERS.FORM.FIELDS.SPECIALTIES.PREFIX' | transloco"
+                   translocoPrefix="USERS.FORM.FIELDS.SPECIALTIES.MODAL"
+                   additionalType="date"
+                   [dictionaries$]="allSpecialty$"></app-chip-list>
+
     <div class="app-USERS-form__actions app-theme__actions">
       <button type="button"
               (click)="cancel()"

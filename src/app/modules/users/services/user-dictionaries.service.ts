@@ -15,14 +15,24 @@ export class UserDictionariesService extends GenericDictionariesService<UserDict
   constructor(private http: HttpClient) {
     super();
     this.getAndDispatchRoleList();
+    this.getAndDispatchSpecialtyList();
   }
 
   public getAndDispatchRoleList(): void {
     this.dispatch(UserDictionary.ROLES, this.getRoleList());
   }
 
+  public getAndDispatchSpecialtyList(): void {
+    this.dispatch(UserDictionary.SPECIALTY, this.getSpecialtyList());
+  }
+
   public getRoleList(): Observable<IGenericDictionary[]> {
     const url = `${this.baseUrl}/roles`;
+    return this.http.get<IGenericDictionary[]>(url);
+  }
+
+  public getSpecialtyList(): Observable<IGenericDictionary[]> {
+    const url = `${this.baseUrl}/vets/specialties`;
     return this.http.get<IGenericDictionary[]>(url);
   }
 }

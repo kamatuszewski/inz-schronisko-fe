@@ -10,6 +10,7 @@ import { IGenericDictionary } from '../../../shared/interfaces/generic.interface
 import { FormUtilsService } from '../../../shared/services/form-utils.service';
 import { roleAddedFieldsMap, roleAddedFieldsValidatorMap } from '../../commons/user.common';
 import { ERole } from '../../enums/user.enum';
+import { IVetSpecialty } from '../../interfaces/user.interface';
 import { UserDictionariesService } from '../../services/user-dictionaries.service';
 import { UsersService } from '../../users.service';
 
@@ -40,8 +41,10 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
   }
 
   public allRole$: Observable<IGenericDictionary[]>;
+  public allSpecialty$: Observable<IGenericDictionary[]>;
   public formGroup: FormGroup;
   public userId: number;
+  public vetSpecialties: IVetSpecialty[] = [];
 
   private onDestroy$ = new Subject<void>();
   private selectedRole: ERole;
@@ -74,6 +77,7 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
     FormUtilsService.markAllAsTouched(this.formGroup);
     if (this.formGroup.valid) {
       const formValue = this.formGroup.value;
+      formValue.vetSpecialties = this.vetSpecialties;
       this.userService.createUser(formValue)
         .pipe(takeUntil(this.onDestroy$))
         .subscribe(this.successSave, this.failedSave)
@@ -95,6 +99,7 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
 
   private initDictionaries(): void {
     this.allRole$ = this.userDictionariesService.getRoleList();
+    this.allSpecialty$ = this.userDictionariesService.getSpecialtyList();
   }
 
   private initForm(): void {

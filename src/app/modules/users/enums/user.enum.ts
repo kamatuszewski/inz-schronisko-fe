@@ -9,4 +9,5 @@ export enum ERole {
 
 export enum UserDictionary {
   ROLES = 'ROLES',
+  SPECIALTY = 'SPECIALTY'
 }

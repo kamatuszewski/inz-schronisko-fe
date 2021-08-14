@@ -13,15 +13,29 @@
       <mat-error>{{ formGroup.get('id').errors | validation }}</mat-error>
     </mat-form-field>
 
-    <mat-form-field appearance="outline"
-                    *ngIf="data?.additionalField">
-      <mat-label>{{ translocoPrefix + '.' + data.additionalField.toUpperCase() | transloco }}</mat-label>
-      <input matInput
-             [type]="data.additionalType"
-             [min]="data.additionalType === 'number' ? 0 : undefined"
-             [formControlName]="data.additionalField">
-      <mat-error>{{ formGroup.get(data.additionalField).errors | validation }}</mat-error>
-    </mat-form-field>
+    <ng-container *ngIf="data?.additionalField">
+      <mat-form-field appearance="outline"
+                      *ngIf="data.additionalType === 'date'">
+        <mat-label>{{ translocoPrefix + '.' + data.additionalField.toUpperCase() | transloco }}</mat-label>
+        <input matInput
+               type="text"
+               [matDatepicker]="additionalFieldPicker"
+               readonly
+               [formControlName]="data.additionalField">
+        <mat-datepicker #additionalFieldPicker></mat-datepicker>
+        <mat-datepicker-toggle matSuffix [for]="additionalFieldPicker"></mat-datepicker-toggle>
+        <mat-error>{{ formGroup.get(data.additionalField).errors | validation }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline"
+                      *ngIf="data.additionalType !== 'date'">
+        <input matInput
+               [type]="data.additionalType"
+               [min]="data.additionalType === 'number' ? 0 : undefined"
+               [formControlName]="data.additionalField">
+        <mat-error>{{ formGroup.get(data.additionalField).errors | validation }}</mat-error>
+      </mat-form-field>
+    </ng-container>
   </div>
   <mat-dialog-actions class="app-theme__actions app-theme__actions--end">
     <button type="button"

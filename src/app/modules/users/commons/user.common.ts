@@ -24,6 +24,7 @@ export const vetValidatorMap = new Map<string, ValidatorFn[]>([
   ['quitDate', []],
   ['salary', [Validators.required]],
   ['PWZNumber', [Validators.required]],
+  ['VetSpecialties', [Validators.required]]
 ]);
 
 export const roleAddedFieldsValidatorMap = new Map<ERole, Map<string, ValidatorFn[]>>([
