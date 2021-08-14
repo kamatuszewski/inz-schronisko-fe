@@ -1,0 +1,35 @@
+<form [formGroup]="formGroup"
+      (ngSubmit)="save()" class="app-add-chip-modal">
+  <h4>{{ translocoPrefix + '.HEADER' | transloco }}</h4>
+  <div class="app-add-chip-modal__content app-form-content">
+    <mat-form-field appearance="outline">
+      <mat-label>{{ translocoPrefix + '.LABEL' | transloco }}</mat-label>
+      <mat-select formControlName="id">
+        <mat-option *ngFor="let dictionary of dictionaries$ | async"
+                    [value]="dictionary.id">
+          {{ dictionary.name | transloco }}
+        </mat-option>
+      </mat-select>
+      <mat-error>{{ formGroup.get('id').errors | validation }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline"
+                    *ngIf="data?.additionalField">
+      <mat-label>{{ translocoPrefix + '.' + data.additionalField.toUpperCase() | transloco }}</mat-label>
+      <input matInput
+             [type]="data.additionalType"
+             [min]="data.additionalType === 'number' ? 0 : undefined"
+             [formControlName]="data.additionalField">
+      <mat-error>{{ formGroup.get(data.additionalField).errors | validation }}</mat-error>
+    </mat-form-field>
+  </div>
+  <mat-dialog-actions class="app-theme__actions app-theme__actions--end">
+    <button type="button"
+            mat-button
+            (click)="close()"
+            color="warn">{{ data.cancel | transloco }}</button>
+    <button type="submit"
+            mat-raised-button
+            color="primary">{{ data.accept | transloco }}</button>
+  </mat-dialog-actions>
+</form>

@@ -1,6 +1,8 @@
 export enum AnimalDictionary {
   SPECIES = 'SPECIES',
-  STATUS = 'STATUS'
+  STATUS = 'STATUS',
+  MEDICINES = 'MEDICINES',
+  TREATMENTS = 'TREATMENTS'
 }
 
 export enum AnimalStatus {

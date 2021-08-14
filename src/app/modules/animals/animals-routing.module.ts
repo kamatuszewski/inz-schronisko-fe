@@ -5,6 +5,7 @@ import { AnimalAdoptionFormComponent } from './components/animal-adoption-form/a
 import { AnimalDetailsComponent } from './components/animal-details/animal-details.component';
 import { AnimalFormComponent } from './components/animal-form/animal-form.component';
 import { AnimalListComponent } from './components/animal-list/animal-list.component';
+import { AnimalVetVisitFormComponent } from './components/animal-vet-visit-form/animal-vet-visit-form.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,11 @@ const routes: Routes = [
   {
     path: 'adopt',
     component: AnimalAdoptionFormComponent,
+    canActivate: [ForOnlyLoggedInGuard]
+  },
+  {
+    path: 'vet-visit',
+    component: AnimalVetVisitFormComponent,
     canActivate: [ForOnlyLoggedInGuard]
   },
   {
