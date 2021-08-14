@@ -28,6 +28,12 @@ export const tabConfig: ITabConfig[] = [
     iconCode: 'add_business'
   },
   {
+    label: 'TABS.CREATE_VET_VISIT',
+    redirectTo: ['animals', 'vet-visit'],
+    allowedRoles: permissionsMap.get(EOperation.ADD_VET_VISIT),
+    iconCode: 'add_business'
+  },
+  {
     label: 'TABS.EMPLOYEE_LIST',
     redirectTo: ['users/employees'],
     allowedRoles: permissionsMap.get(EOperation.SHOW_USER_LIST),

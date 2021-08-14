@@ -90,3 +90,10 @@ export interface IAnimalsGroupBySpecies {
   animals: ISimpleAnimal[];
   species: string;
 }
+
+export interface IAnimalVetVisitForm {
+  animalId: number;
+  description: string;
+  vetId: number;
+  visitDate: string;
+}

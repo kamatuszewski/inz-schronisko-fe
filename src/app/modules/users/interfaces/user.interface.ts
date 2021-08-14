@@ -1,6 +1,5 @@
 import { ESex } from '../../shared/enums/sex.enum';
 import { IGenericDictionary } from '../../shared/interfaces/generic.interface';
-import { ERole } from '../enums/user.enum';
 
 export interface IGeneralUser {
   emailAddress: string;
@@ -9,7 +8,7 @@ export interface IGeneralUser {
   lastName: string;
   pesel: string;
   phoneNumber: string;
-  roles: ERole[];
+  roles: IGenericDictionary[];
   sex: ESex;
   specialties: IGenericDictionary[];
 }

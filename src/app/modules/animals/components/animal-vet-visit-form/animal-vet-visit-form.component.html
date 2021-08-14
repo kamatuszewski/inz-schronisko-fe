@@ -1,0 +1,66 @@
+<div class="app-animal-vet-visit-form app-theme">
+  <div class="app-theme__header">
+    <h3 class="app-content-header">{{ 'ANIMALS.FORM.VET_VISIT.HEADER' | transloco }}</h3>
+  </div>
+  <form class="app-animal-vet-visit-form__content app-theme__content"
+        [formGroup]="formGroup"
+        (ngSubmit)="save()">
+
+    <div class="app-form-content app-form-content--padding-b">
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'ANIMALS.FORM.FIELDS.ANIMAL' | transloco }}</mat-label>
+        <mat-select formControlName="animalId">
+          <mat-optgroup  *ngFor="let group of animalsGroupBySpecies$ | async"
+                         [label]="'ANIMALS.SPECIES.' + group.species | transloco">
+            <mat-option *ngFor="let animal of group.animals"
+                        [value]="+animal.id">
+              {{ animal.name }}
+            </mat-option>
+          </mat-optgroup>
+        </mat-select>
+        <mat-error>{{ formGroup.get('animalId').errors | validation }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'ANIMALS.FORM.FIELDS.VET' | transloco }}</mat-label>
+        <mat-select formControlName="vetId">
+          <mat-option *ngFor="let vet of allVet$ | async"
+                      [value]="vet.id">
+            {{ vet.firstName + ' ' + vet.lastName }}
+          </mat-option>
+        </mat-select>
+        <mat-error>{{ formGroup.get('vetId').errors | validation }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'ANIMALS.FORM.FIELDS.VISIT_DATE' | transloco }}</mat-label>
+        <input matInput
+               type="text"
+               [matDatepicker]="visitDatePicker"
+               readonly
+               formControlName="visitDate">
+        <mat-datepicker #visitDatePicker></mat-datepicker>
+        <mat-datepicker-toggle matSuffix [for]="visitDatePicker"></mat-datepicker-toggle>
+        <mat-error>{{ formGroup.get('visitDate').errors | validation }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline"
+                      class="app-form-content__field app-form-content__field--span">
+        <mat-label>{{ 'ANIMALS.FORM.FIELDS.DESCRIPTION' | transloco }}</mat-label>
+        <textarea matInput
+                  formControlName="description"></textarea>
+        <mat-error>{{ formGroup.get('description').errors | validation }}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="app-animal-form__actions app-theme__actions">
+      <button type="button"
+              (click)="cancel()"
+              mat-button
+              color="warn">{{ 'ANIMALS.FORM.COMMONS.CANCEL' | transloco }}</button>
+      <button type="submit"
+              mat-raised-button
+              color="primary">{{ 'ANIMALS.FORM.COMMONS.SAVE' | transloco }}</button>
+    </div>
+  </form>
+</div>

@@ -36,7 +36,8 @@
     "CREATE_ANIMAL": "Dodaj zwierze",
     "USER_LIST": "Lista użytkowników",
     "EMPLOYEE_LIST": "Lista pracowników",
-    "CREATE_ADOPTION": "Dodaj adopcję"
+    "CREATE_ADOPTION": "Dodaj adopcję",
+    "CREATE_VET_VISIT": "Dodaj leczenie"
   },
   "ANIMALS": {
     "SPECIES": {
@@ -108,17 +109,27 @@
           "SUCCESS": "Udało się adoptować zwierze"
         }
       },
+      "VET_VISIT": {
+        "HEADER": "Formularz dodawania wizyty",
+        "MESSAGES": {
+          "ERROR": "Nie udało się dodać wizyty",
+          "SUCCESS": "Udało się dodać wizytę"
+        }
+      },
       "FIELDS": {
         "CHIP_NUMBER": "Numer chipa",
         "NAME": "Imię",
         "SPECIES": "Gatunek",
         "BIRTH_DATE": "Data urodzenia",
+        "VISIT_DATE": "Data wizyty",
         "SEX": "Płeć",
         "FOUND_PLACE": "Miejsce znalezoenia",
         "FOUND_DATE": "Data znalezienia",
         "STATUS": "Status",
         "ANIMAL": "Zwierze",
         "ADOPTER": "Adoptujący",
+        "VET": "Weterynarz",
+        "DESCRIPTION": "Opis",
         "NOTES": "Notatki",
         "IS_OWNER_PICKUP": "Czy odebrane przez właściciela"
       },

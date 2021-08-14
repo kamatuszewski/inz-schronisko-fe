@@ -10,7 +10,8 @@ export const environment: IEnvironment = {
     persons: '',
     animals: '',
     dictionaries: '',
-    adoptions: ''
+    adoptions: '',
+    vetvisits: '',
   }
 };
 

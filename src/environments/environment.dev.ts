@@ -6,6 +6,7 @@ export const environment: IEnvironment = {
     persons: 'api/Persons',
     animals: 'api/Animals',
     dictionaries: 'api/Dictionaries',
-    adoptions: 'api/Adoptions'
+    adoptions: 'api/Adoptions',
+    vetvisits: 'api/Vetvisits'
   }
 };

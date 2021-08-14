@@ -6,6 +6,7 @@ export const environment: IEnvironment = {
     persons: 'http://localhost:8080/api/auth',
     animals: 'http://localhost:8080/api/animals',
     dictionaries: 'http://localhost:8080/api/dictionaries',
-    adoptions: 'http://localhost:8080/api/adoptions'
+    adoptions: 'http://localhost:8080/api/adoptions',
+    vetvisits: 'http://localhost:8080/api/vetvisits',
   }
 };
