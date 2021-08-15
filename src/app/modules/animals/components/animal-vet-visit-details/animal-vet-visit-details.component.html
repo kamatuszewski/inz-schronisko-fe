@@ -1,0 +1,46 @@
+<div class="app-animal-details app-theme">
+  <div class="app-theme__header">
+    <h3 class="app-content-header">{{ 'ANIMALS.VET_VISIT.DETAILS.HEADER' | transloco }}</h3>
+  </div>
+  <div class="app-theme__content">
+    <h4>{{ 'ANIMALS.VET_VISIT.DETAILS.SUB_HEADER.ANIMAL' | transloco }}</h4>
+    <div class="details app-animal-details-primary-data__details">
+      <app-details-item [label]="'ANIMALS.VET_VISIT.DETAILS.NAME' | transloco"
+                        [value]="'ANIMALS.SPECIES.' + data?.animal?.name | transloco"
+                        class="app-animal-details-primary-data__item details__item details__item--5"></app-details-item>
+
+      <app-details-item [label]="'ANIMALS.VET_VISIT.DETAILS.SEX' | transloco"
+                        [value]="'ANIMALS.SEX.' + data?.animal?.sex | transloco"
+                        class="app-animal-details-primary-data__item details__item details__item--6"></app-details-item>
+
+      <app-details-item [label]="'ANIMALS.VET_VISIT.DETAILS.SPECIES' | transloco"
+                        [value]="'ANIMALS.SPECIES.' + data?.animal?.species"
+                        class="app-animal-details-primary-data__item details__item details__item--7"></app-details-item>
+
+      <app-details-item [label]="'ANIMALS.VET_VISIT.DETAILS.BIRTH_DATE' | transloco"
+                        [value]="data?.animal?.birthDate"
+                        class="app-animal-details-primary-data__item details__item details__item--8"></app-details-item>
+    </div>
+
+    <h4>{{ 'ANIMALS.VET_VISIT.DETAILS.SUB_HEADER.VET' | transloco }}</h4>
+    <div class="details app-animal-details-primary-data__details">
+      <app-details-item [label]="'ANIMALS.VET_VISIT.DETAILS.FIRST_NAME' | transloco"
+                        [value]="data?.vet?.firstName | transloco"
+                        class="app-animal-details-primary-data__item details__item details__item--5"></app-details-item>
+
+      <app-details-item [label]="'ANIMALS.VET_VISIT.DETAILS.LAST_NAME' | transloco"
+                        [value]="data?.animal?.lastName | transloco"
+                        class="app-animal-details-primary-data__item details__item details__item--6"></app-details-item>
+
+      <app-details-item [label]="'ANIMALS.VET_VISIT.DETAILS.SEX' | transloco"
+                        [value]="'USERS.SEX.' + data?.vet?.sex"
+                        class="app-animal-details-primary-data__item details__item details__item--7"></app-details-item>
+    </div>
+    <app-chip-list [data]="data?.animal?.specialties || []"
+                   [canRemove]="false"
+                   [canAdd]="false"
+                   prefixLabel="ANIMALS.VET_VISIT.DETAILS.SPECIES.SPECIALTIES"
+                   [header]="'ANIMALS.VET_VISIT.DETAILS.SPECIES.SPECIALTIES.HEADER' | transloco"
+                   [dictionaries$]="ofObservable(data?.animal?.specialties)"></app-chip-list>
+  </div>
+</div>

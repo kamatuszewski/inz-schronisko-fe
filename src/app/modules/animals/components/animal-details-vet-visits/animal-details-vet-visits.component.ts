@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { AuthService } from '../../../auth/auth.service';
 import { EOperation } from '../../../core/commons/permissions.common';
@@ -20,6 +21,8 @@ export class AnimalDetailsVetVisitsComponent implements OnInit {
   public tableColumns: ITableColumn[];
 
   constructor(private authService: AuthService,
+              private router: Router,
+              private activatedRoute: ActivatedRoute,
               private animalsService: AnimalsService,
               private listUtilsService: ListUtilsService) {
   }
@@ -31,6 +34,12 @@ export class AnimalDetailsVetVisitsComponent implements OnInit {
   public ngOnInit(): void {
     this.initColumnTable();
     this.initListConfig();
+  }
+
+  public redirectToDetails(id: number): void {
+    this.router.navigate(['vet-visit', id], {
+      relativeTo: this.activatedRoute
+    }).then()
   }
 
   private initListConfig(): void {

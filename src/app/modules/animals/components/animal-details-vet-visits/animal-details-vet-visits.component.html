@@ -1,4 +1,5 @@
 <app-list-table [tableData]="data"
                 [tableColumns]="tableColumns"
                 [selectable]="listConfig.selectable"
+                (selectRow)="redirectToDetails($event)"
                 [columnPrefix]="'ANIMALS.DETAILS.VET_VISITS'"></app-list-table>

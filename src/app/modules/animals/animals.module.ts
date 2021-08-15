@@ -14,6 +14,7 @@ import { AnimalFormComponent } from './components/animal-form/animal-form.compon
 import { AnimalListComponent } from './components/animal-list/animal-list.component';
 import { AnimalVetVisitFormComponent } from './components/animal-vet-visit-form/animal-vet-visit-form.component';
 import { AnimalListService } from './services/animal-list.service';
+import { AnimalVetVisitDetailsComponent } from './components/animal-vet-visit-details/animal-vet-visit-details.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AnimalListService } from './services/animal-list.service';
     AnimalDetailsAdoptionsComponent,
     AnimalDetailsVetVisitsComponent,
     AnimalAdoptionFormComponent,
-    AnimalVetVisitFormComponent
+    AnimalVetVisitFormComponent,
+    AnimalVetVisitDetailsComponent
   ],
   imports: [
     AnimalsRoutingModule,
