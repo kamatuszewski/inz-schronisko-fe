@@ -5,7 +5,7 @@
       <app-chip *ngFor="let item of data"
                 [data]="item"
                 (remove)="remove($event)"
-                [canAdd]="canAdd"
+                [canRemove]="canRemove"
                 [prefixLabel]="prefixLabel"
                 [additionalField]="additionalField"
                 [dictionaries]="dictionaries$ | async"
