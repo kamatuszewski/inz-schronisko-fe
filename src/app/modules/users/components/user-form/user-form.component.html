@@ -175,14 +175,17 @@
                    [prefix]="'USERS.FORM.FIELDS.SPECIALTIES.PREFIX' | transloco"
                    translocoPrefix="USERS.FORM.FIELDS.SPECIALTIES.MODAL"
                    additionalType="date"
+                   [canAdd]="isCreateMode"
+                   [canRemove]="isCreateMode"
                    [dictionaries$]="allSpecialty$"></app-chip-list>
 
     <app-chip-list *ngIf="!isCreateMode"
                    [header]="'USERS.FORM.FIELDS.ROLES.HEADER' | transloco"
                    [notFound]="'USERS.FORM.FIELDS.ROLES.NOT_FOUND' | transloco"
                    [(data)]="selectedRoles"
-                   [canAdd]="false"
+                   [canAdd]="true"
                    [canRemove]="false"
+                   [addFnCallback]="redirectToAddRole"
                    [prefixLabel]="'COMMON.ROLE'"
                    translocoPrefix="USERS.FORM.FIELDS.ROLES.MODAL"
                    [dictionaries$]="allRole$"></app-chip-list>

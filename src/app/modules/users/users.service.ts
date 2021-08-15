@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { ISimplePayload } from '../animals/interfaces/animals.interface';
-import { IUpdateUserForm, IUserForm } from './interfaces/user.interface';
+import { IUpdateUserForm, IUserForm, IUserRoleForm } from './interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,12 @@ import { IUpdateUserForm, IUserForm } from './interfaces/user.interface';
 export class UsersService {
   private baseUrl = environment.apiUrl.persons;
   constructor(private http: HttpClient) { }
+
+  public addRoleToUser(userId: number, payload: IUserRoleForm): Observable<unknown> {
+    const url = `${this.baseUrl}/${userId}/role`;
+    return this.http.post(url, payload);
+
+  }
 
   public createUser(payload: IUserForm): Observable<unknown> {
     const url = `${this.baseUrl}/register`;

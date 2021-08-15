@@ -10,9 +10,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { TranslocoModule } from '@ngneat/transloco';
+import { AddChipModalComponent } from './components/add-chip-modal/add-chip-modal.component';
+import { ChipListComponent } from './components/chip-list/chip-list.component';
+import { ChipComponent } from './components/chip/chip.component';
 import { ConfirmDecisionModalComponent } from './components/confirm-decision-modal/confirm-decision-modal.component';
 import { DetailsItemComponent } from './components/details-item/details-item.component';
 import { ListTableComponent } from './components/list-table/list-table.component';
@@ -20,10 +24,6 @@ import { ListComponent } from './components/list/list.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { StatusComponent } from './components/status/status.component';
 import { ValidationPipe } from './pipes/validation.pipe';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { ChipComponent } from './components/chip/chip.component';
-import { ChipListComponent } from './components/chip-list/chip-list.component';
-import { AddChipModalComponent } from './components/add-chip-modal/add-chip-modal.component';
 
 @NgModule({
   declarations: [

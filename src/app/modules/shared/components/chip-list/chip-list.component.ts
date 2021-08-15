@@ -12,6 +12,7 @@ import { AddChipModalService } from '../../services/add-chip-modal.service';
   styleUrls: ['./chip-list.component.scss']
 })
 export class ChipListComponent<T> implements OnInit, OnDestroy {
+  @Input() public addFnCallback?: () => void;
   @Input() public additionalField?: string;
   @Input() public additionalType?: 'text' | 'number' | 'date';
   @Input() public canAdd = true;
@@ -30,6 +31,11 @@ export class ChipListComponent<T> implements OnInit, OnDestroy {
   constructor(private addChipModalService: AddChipModalService) { }
 
   public add(): void {
+    if (typeof this.addFnCallback === 'function') {
+      this.addFnCallback();
+      return;
+    }
+
     const data: IAddChipModal = {
       ...AddChipModalService.defaultActionConfig(),
       list$: this.dictionaries$,

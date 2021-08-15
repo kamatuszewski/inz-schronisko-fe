@@ -56,3 +56,13 @@ export interface IUpdateUserForm {
   phoneNumber: string;
   sex: ESex;
 }
+
+export interface IUserRoleForm {
+  attendance?: string;
+  hireDate?: string;
+  joiningDate?: string;
+  PWZNumber?: string;
+  quitDate?: string;
+  roleId: number;
+  salary?: number;
+}

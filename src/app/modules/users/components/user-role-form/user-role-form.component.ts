@@ -4,59 +4,45 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { combineLatest, Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CoreService } from '../../../core/core.service';
-import { ESex } from '../../../shared/enums/sex.enum';
 import { IFormActions } from '../../../shared/interfaces/form-actions.interface';
 import { IGenericDictionary } from '../../../shared/interfaces/generic.interface';
 import { FormUtilsService } from '../../../shared/services/form-utils.service';
 import { roleAddedFieldsMap, roleAddedFieldsValidatorMap } from '../../commons/user.common';
 import { ERole } from '../../enums/user.enum';
-import { IVetSpecialty } from '../../interfaces/user.interface';
 import { UserDictionariesService } from '../../services/user-dictionaries.service';
 import { UsersService } from '../../users.service';
 
 @Component({
-  selector: 'app-user-form',
-  templateUrl: './user-form.component.html',
-  styleUrls: ['./user-form.component.scss']
+  selector: 'app-user-role-form',
+  templateUrl: './user-role-form.component.html',
+  styleUrls: ['./user-role-form.component.scss']
 })
-export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
-
+export class UserRoleFormComponent implements OnInit, OnDestroy, IFormActions {
   public get anEmployeeWasSelected(): boolean {
-    return this.selectedRole === ERole.EMPLOYEE || this.selectedRoles.map(role => role.name).includes(ERole.EMPLOYEE);
+    return this.selectedRole === ERole.EMPLOYEE;
   }
 
   public get anVetWasSelected(): boolean {
-    return this.selectedRole === ERole.VET || this.selectedRoles.map(role => role.name).includes(ERole.VET);
+    return this.selectedRole === ERole.VET;
   }
 
   public get anVolunteerWasSelected(): boolean {
-    return this.selectedRole === ERole.VOLUNTEER || this.selectedRoles.map(role => role.name).includes(ERole.VOLUNTEER);
-  }
-
-  public get isCreateMode(): boolean {
-    return !this.userId;
-  }
-
-  public get sexOptions(): ESex[] {
-    return Object.values(ESex);
+    return this.selectedRole === ERole.VOLUNTEER;
   }
 
   public allRole$: Observable<IGenericDictionary[]>;
-  public allSpecialty$: Observable<IGenericDictionary[]>;
   public formGroup: FormGroup;
-  public selectedRoles: IGenericDictionary[] = [];
   public userId: number;
-  public vetSpecialties: IVetSpecialty[] = [];
 
   private onDestroy$ = new Subject<void>();
   private selectedRole: ERole;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private userDictionariesService: UserDictionariesService,
+              private coreService: CoreService,
+              private formBuilder: FormBuilder,
               private router: Router,
               private activatedRoute: ActivatedRoute,
-              private userService: UsersService,
-              private userDictionariesService: UserDictionariesService,
-              private coreService: CoreService) {
+              private userService: UsersService) {
     this.userId = activatedRoute.snapshot.params.id;
   }
 
@@ -73,19 +59,13 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
     this.initForm();
     this.initDictionaries();
     this.subscribeRole();
-    this.loadData();
-  }
-
-  public redirectToAddRole = (): void => {
-    this.router.navigate(['add-role'], {
-      relativeTo: this.activatedRoute
-    }).then();
   }
 
   public save(): void {
     FormUtilsService.markAllAsTouched(this.formGroup);
     if (this.formGroup.valid) {
-      this.saveUser()
+      const data = this.formGroup.value;
+      this.userService.addRoleToUser(this.userId, data)
         .pipe(takeUntil(this.onDestroy$))
         .subscribe(this.successSave, this.failedSave)
     }
@@ -100,55 +80,24 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
       });
   }
 
-  private createUser(): Observable<unknown> {
-    const formValue = this.formGroup.value;
-    formValue.vetSpecialties = this.vetSpecialties;
-    return this.userService.createUser(formValue)
-  }
-
   private failedSave = (): void => {
-    if (this.isCreateMode) {
       this.coreService.showErrorMessage('USERS.FORM.CREATE.MESSAGES.ERROR');
-    } else {
-      this.coreService.showErrorMessage('USERS.FORM.EDIT.MESSAGES.ERROR');
-    }
   }
 
   private initDictionaries(): void {
     this.allRole$ = this.userDictionariesService.getRoleList();
-    this.allSpecialty$ = this.userDictionariesService.getSpecialtyList();
   }
 
   private initForm(): void {
     this.formGroup = this.formBuilder.group({
-      address: this.formBuilder.control(null, [Validators.required]),
       attendance: this.formBuilder.control(null),
-      emailAddress: this.formBuilder.control(null, [Validators.required, FormUtilsService.emailValidator()]),
-      firstName: this.formBuilder.control(null, [Validators.required]),
       hireDate: this.formBuilder.control(null),
       joiningDate: this.formBuilder.control(null),
-      lastName: this.formBuilder.control(null, [Validators.required]),
-      password: this.formBuilder.control(null, [Validators.required, Validators.minLength(5)]),
-      pesel: this.formBuilder.control(null, [Validators.required, FormUtilsService.peselValidator()]),
-      phoneNumber: this.formBuilder.control(null, [Validators.required, FormUtilsService.phoneValidator()]),
       PWZNumber: this.formBuilder.control(null),
       quitDate: this.formBuilder.control(null),
       roleId: this.formBuilder.control(null),
       salary: this.formBuilder.control(null),
-      sex: this.formBuilder.control(null, [Validators.required]),
     });
-  }
-
-  private loadData(): void {
-    if (!this.isCreateMode) {
-      this.userService.getUser({id: this.userId})
-        .pipe(takeUntil(this.onDestroy$))
-        .subscribe(user => {
-          this.selectedRoles = user.roles;
-          this.formGroup.patchValue(user);
-          this.formGroup.updateValueAndValidity();
-        })
-    }
   }
 
   private redirectToBackPage(): void {
@@ -167,14 +116,6 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
     });
   }
 
-  private saveUser(): Observable<unknown> {
-    if (this.isCreateMode) {
-      return this.createUser();
-    } else {
-      return this.updateUser();
-    }
-  }
-
   private subscribeRole(): void {
     combineLatest(this.formGroup.get('roleId').valueChanges, this.allRole$)
       .pipe(takeUntil(this.onDestroy$))
@@ -188,17 +129,8 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
   }
 
   private successSave = (): void => {
-    if (this.isCreateMode) {
       this.coreService.showSuccessMessage('USERS.FORM.CREATE.MESSAGES.SUCCESS');
       this.redirectToBackPage();
-    } else {
-      this.coreService.showSuccessMessage('USERS.FORM.EDIT.MESSAGES.SUCCESS');
-    }
-  }
-
-  private updateUser(): Observable<unknown> {
-    const formValue = this.formGroup.value;
-    return this.userService.updateUser({id: this.userId, ...formValue});
   }
 
   private updateValueAndValidator(): void {
@@ -206,7 +138,6 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
       case ERole.EMPLOYEE:
         this.addedValidators(ERole.EMPLOYEE);
         this.resetOtherAddedFields(ERole.EMPLOYEE);
-        this.vetSpecialties = [];
         break;
       case ERole.VET:
         this.addedValidators(ERole.VET);
@@ -215,8 +146,9 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
       case ERole.VOLUNTEER:
         this.addedValidators(ERole.VOLUNTEER);
         this.resetOtherAddedFields(ERole.VOLUNTEER);
-        this.vetSpecialties = [];
         break;
+      default:
+        this.resetOtherAddedFields(this.selectedRole);
     }
   }
 }
