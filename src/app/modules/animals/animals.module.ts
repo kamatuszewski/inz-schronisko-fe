@@ -15,7 +15,6 @@ import { AnimalListComponent } from './components/animal-list/animal-list.compon
 import { AnimalVetVisitFormComponent } from './components/animal-vet-visit-form/animal-vet-visit-form.component';
 import { AnimalListService } from './services/animal-list.service';
 
-
 @NgModule({
   declarations: [
     AnimalListComponent,

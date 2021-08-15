@@ -195,6 +195,11 @@
           "SUCCESS": "Udało się usunąć adopcję"
         }
       },
+      "VET_VISITS": {
+        "id": "Id",
+        "visitDate": "Data wizyty",
+        "description": "Opis"
+      },
       "CONFIRMATION_REMOVE": "Proces usuwania zwierzęcia jest nieodwracalny. Czy na pewno chcesz usunąć to zwierze?",
       "MESSAGES": {
         "ERROR": "Nie udało się usunąć zwierzęcia",
