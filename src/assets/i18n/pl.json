@@ -233,6 +233,13 @@
       "EDIT": {
         "HEADER": "Edytuj użytkownika"
       },
+      "ADD_ROLE": {
+        "HEADER": "Dodaj rolę do użytkownika",
+        "MESSAGES": {
+          "ERROR": "Nie udało się dodać roli do użytkownika",
+          "SUCCESS": "Udało się dodać rolę do użytkownika"
+        }
+      },
       "FIELDS": {
         "ADDRESS": "Adres",
         "ATTENDANCE": "Frekwencja",
