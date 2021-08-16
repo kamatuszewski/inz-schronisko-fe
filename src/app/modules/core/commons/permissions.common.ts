@@ -47,13 +47,13 @@ export const permissionsMap = new Map<EOperation, ERole[]>([
   [EOperation.ADD_ADOPTION, [ERole.EMPLOYEE]],
   [EOperation.REMOVE_ADOPTION, [ERole.EMPLOYEE]],
 
-  [EOperation.SHOW_EMPLOYEE_LIST, [ERole.DIRECTOR] [ERole.ADMIN]],     //[Magda] i wyswietlenie listy wolontariuszy
-  [EOperation.SHOW_EMPLOYEE_DETAILS, [ERole.DIRECTOR] [ERole.ADMIN]],  //[Magda] i wyswietlenie detali wolontariusza
+  [EOperation.SHOW_EMPLOYEE_LIST, [ERole.DIRECTOR] [ERole.ADMIN]],
+  [EOperation.SHOW_EMPLOYEE_DETAILS, [ERole.DIRECTOR] [ERole.ADMIN]],
   [EOperation.SHOW_USER_LIST, [ERole.ADMIN]],
   [EOperation.SHOW_DETAILS_USER, [ERole.ADMIN]],
 
-  [EOperation.ADD_USER, [ERole.EMPLOYEE] [ERole.ADMIN]], //[Magda] dla Employee tylko dodanie bez roli osoby i bez hasla
-  [EOperation.EDIT_USER, [ERole.ADMIN]],            //[Magda] w tym dopisanie/usunięcie roli
+  [EOperation.ADD_USER, [ERole.EMPLOYEE] [ERole.ADMIN]],
+  [EOperation.EDIT_USER, [ERole.ADMIN]],
 
   [EOperation.ADD_SPECIALIST, [ERole.ADMIN]],
   [EOperation.ASSIGN_SPECIALIST, [ERole.ADMIN]],
@@ -62,10 +62,9 @@ export const permissionsMap = new Map<EOperation, ERole[]>([
   [EOperation.ADD_TREATMENT, [ERole.VET]],
   [EOperation.ADD_MEDICINES, [ERole.VET]],
   [EOperation.REMOVE_TREATMENT, [ERole.VET]],
-  [EOperation.REMOVE_MEDICINES, [ERole.VET]],       
-  [EOperation.REMOVE_MEDICINES, [ERole.VET]],       //[Magda] duplikat linijki wyżej
+  [EOperation.REMOVE_MEDICINES, [ERole.VET]],
+  [EOperation.REMOVE_MEDICINES, [ERole.VET]],
 
   [EOperation.ADD_VET_VISIT, [ERole.VET]],
   [EOperation.EDIT_VET_VISIT, [ERole.VET]],
 ]);
- 

@@ -15,6 +15,7 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   font-size: 20px;
   color: $main-font-color;
+  background-color: #f7f7f7;
 }
 
 .clickable {
@@ -40,6 +41,12 @@ input:-webkit-autofill:active {
   &--with-vertical {
     padding: 20px;
   }
+}
+
+.app {
+  max-width: 1200px;
+  width: 100%;
+  margin: auto;
 }
 
 .app .app__content .app-content-header {
