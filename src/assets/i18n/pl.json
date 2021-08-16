@@ -117,6 +117,14 @@
           "SUCCESS": "Udało się dodać wizytę"
         }
       },
+
+      "VET_VISIT_EDIT": {
+        "HEADER": "Formularz edycji wizyty",
+        "MESSAGES": {
+          "ERROR": "Nie udało się edytować wizyty",
+          "SUCCESS": "Udało się edytować wizytę"
+        }
+      },
       "FIELDS": {
         "CHIP_NUMBER": "Numer chipa",
         "NAME": "Imię",
@@ -194,6 +202,11 @@
           "ERROR": "Nie udało się usunąć adopcji",
           "SUCCESS": "Udało się usunąć adopcję"
         }
+      },
+      "VET_VISITS": {
+        "id": "Id",
+        "visitDate": "Data wizyty",
+        "description": "Opis"
       },
       "CONFIRMATION_REMOVE": "Proces usuwania zwierzęcia jest nieodwracalny. Czy na pewno chcesz usunąć to zwierze?",
       "MESSAGES": {
@@ -300,6 +313,43 @@
           "M": "Mężczyzna"
         },
         "roles": "Role"
+      }
+    }
+  },
+  "VET_VISIT": {
+    "DETAILS": {
+      "HEADER": "Szczegóły wizyty",
+      "SUB_HEADER": {
+        "ANIMAL": "Szczegóły zwierzęcia",
+        "VET": "Szczegóły weterynarza"
+      },
+      "NAME": "Imię",
+      "SEX": "Płeć",
+      "SPECIES": "Gatunek",
+      "BIRTH_DATE": "Data urodzenia",
+      "DESCRIPTION": "Opis",
+      "VISIT_DATE": "Data wizyty",
+      "FIRST_NAME": "Imię",
+      "LAST_NAME": "Nazwisko",
+      "REMOVE": "Usuń",
+      "EDIT": "EDYTUJ",
+      "CONFIRMATION_REMOVE": "Proces usuwania wizyty lekarskiej jest nieodwracalny. Czy na pewno chcesz usunąć to wizytę?",
+      "SPECIALTIES": {
+        "HEADER": "Specjalizacje",
+        "NOT_FOUND": "Brak specjalizacji"
+      },
+      "MEDICINES": {
+        "HEADER": "Lekarstwa",
+        "NOT_FOUND": "Brak lekarstw",
+        "PREFIX": "Ilość"
+      },
+      "TREATMENTS": {
+        "HEADER": "Zabiegi",
+        "NOT_FOUND": "Brak zabiegów"
+      },
+      "MESSAGES": {
+        "ERROR": "Nie udało się usunąć wizyty",
+        "SUCCESS": "Udało się usunąć wizytę"
       }
     }
   }

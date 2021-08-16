@@ -1,6 +1,7 @@
 <div class="app-animal-vet-visit-form app-theme">
   <div class="app-theme__header">
-    <h3 class="app-content-header">{{ 'ANIMALS.FORM.VET_VISIT.HEADER' | transloco }}</h3>
+    <h3 class="app-content-header" *ngIf="!isEditMode">{{ 'ANIMALS.FORM.VET_VISIT.HEADER' | transloco }}</h3>
+    <h3 class="app-content-header" *ngIf="isEditMode">{{ 'ANIMALS.FORM.VET_VISIT_EDIT.HEADER' | transloco }}</h3>
   </div>
   <form class="app-animal-vet-visit-form__content app-theme__content"
         [formGroup]="formGroup"

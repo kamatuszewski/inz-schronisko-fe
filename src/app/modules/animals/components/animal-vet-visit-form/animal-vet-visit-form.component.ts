@@ -25,6 +25,10 @@ import { AnimalMapperService } from '../../services/animal-mapper.service';
   styleUrls: ['./animal-vet-visit-form.component.scss']
 })
 export class AnimalVetVisitFormComponent implements OnInit, OnDestroy, IFormActions {
+
+  public get isEditMode(): boolean {
+    return !!this.vetVisitId;
+  }
   public allMedicines$: Observable<IGenericDictionary[]>;
   public allTreatments$: Observable<IGenericDictionary[]>;
   public allVet$: Observable<IGeneralUser[]>;
@@ -50,6 +54,7 @@ export class AnimalVetVisitFormComponent implements OnInit, OnDestroy, IFormActi
               private userListService: UserListService,
               private coreService: CoreService) {
     this.animalId = activatedRoute.snapshot.params.id;
+    this.vetVisitId = activatedRoute.snapshot.params.vetVisitId;
   }
 
   public cancel(): void {
@@ -71,17 +76,23 @@ export class AnimalVetVisitFormComponent implements OnInit, OnDestroy, IFormActi
   public save(): void {
     FormUtilsService.markAllAsTouched(this.formGroup);
     if (this.formGroup.valid) {
-      const value: IAnimalVetVisitForm = this.formGroup.value;
-      value.medicines = this.medicines;
-      value.treatments = this.treatments;
-      this.animalFormService.createVetVisit(value).pipe(
+      this.saveVetVisit().pipe(
         takeUntil(this.onDestroy$)
       ).subscribe(this.successSave, this.failedSave);
     }
   }
 
+  private blockFieldForEditForm(): void {
+    const fields = ['visitDate', 'vetId', 'animalId'];
+    fields.forEach(key => this.formGroup.get(key).disable())
+  }
+
   private failedSave = (): void => {
-    this.coreService.showErrorMessage('ANIMALS.FORM.VET_VISIT.MESSAGES.ERROR');
+    if (!this.isEditMode) {
+      this.coreService.showErrorMessage('ANIMALS.FORM.VET_VISIT.MESSAGES.ERROR');
+    } else {
+      this.coreService.showErrorMessage('ANIMALS.FORM.VET_VISIT_EDIT.MESSAGES.ERROR');
+    }
   };
 
   private initDictionaries(): void {
@@ -131,6 +142,14 @@ export class AnimalVetVisitFormComponent implements OnInit, OnDestroy, IFormActi
         .subscribe(vetVisit => {
           this.medicines = vetVisit.medicines;
           this.treatments = vetVisit.treatments;
+          const formValue = {
+            visitDate: vetVisit.visitDate,
+            vetId: vetVisit.vet.id,
+            animalId: vetVisit.animal.id,
+            description: vetVisit.description
+          }
+          this.formGroup.patchValue(formValue);
+          this.blockFieldForEditForm();
         })
     }
   }
@@ -141,8 +160,24 @@ export class AnimalVetVisitFormComponent implements OnInit, OnDestroy, IFormActi
     }).then();
   }
 
+  private saveVetVisit(): Observable<unknown> {
+    const value: IAnimalVetVisitForm = this.formGroup.value;
+    value.medicines = this.medicines;
+    value.treatments = this.treatments;
+    if (!this.isEditMode) {
+      return this.animalFormService.createVetVisit(value)
+    } else {
+      value.id = this.vetVisitId;
+      return this.animalFormService.updateVetVisit(value)
+    }
+  }
+
   private successSave = (): void => {
-    this.coreService.showSuccessMessage('ANIMALS.FORM.VET_VISIT.MESSAGES.SUCCESS');
+    if (this.isEditMode) {
+      this.coreService.showSuccessMessage('ANIMALS.FORM.VET_VISIT_EDIT.MESSAGES.SUCCESS');
+    } else {
+      this.coreService.showSuccessMessage('ANIMALS.FORM.VET_VISIT.MESSAGES.SUCCESS');
+    }
     this.redirectToBackPage();
   };
 }

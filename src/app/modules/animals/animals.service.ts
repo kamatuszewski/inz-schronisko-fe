@@ -32,4 +32,9 @@ export class AnimalsService {
     const url = `${this.baseUrl}/${payload.id}`;
     return this.http.delete(url);
   }
+
+  public removeVetVisit(payload: ISimplePayload): Observable<unknown> {
+    const url = `${this.vetVisitsUrl}/${payload.id}`;
+    return this.http.delete(url);
+  }
 }

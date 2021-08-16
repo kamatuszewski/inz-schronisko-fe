@@ -1,0 +1,84 @@
+<div class="app-animal-details app-theme" *ngIf="data$ | async; let data">
+  <div class="app-theme__header">
+    <h3 class="app-content-header">{{ 'VET_VISIT.DETAILS.HEADER' | transloco }}</h3>
+  </div>
+  <div class="app-animal-details__content app-theme__content">
+    <div class="details app-animal-details-primary-data__details">
+      <app-details-item [label]="'VET_VISIT.DETAILS.VISIT_DATE' | transloco"
+                        [value]="data?.visitDate | transloco"
+                        class="app-animal-details-primary-data__item details__item details__item--1"></app-details-item>
+
+      <app-details-item [label]="'VET_VISIT.DETAILS.DESCRIPTION' | transloco"
+                        [value]="data?.description"
+                        class="app-animal-details-primary-data__item details__item details__item--4 details__item--colspan-full"></app-details-item>
+    </div>
+
+    <app-chip-list [data]="data?.treatments"
+                   [canRemove]="false"
+                   [canAdd]="false"
+                   [notFound]="'VET_VISIT.DETAILS.TREATMENTS.NOT_FOUND' | transloco"
+                   [header]="'VET_VISIT.DETAILS.TREATMENTS.HEADER' | transloco"
+                   [dictionaries$]="ofObservable(data?.treatments)"></app-chip-list>
+
+    <app-chip-list [data]="data?.medicines"
+                   [canRemove]="false"
+                   [canAdd]="false"
+                   additionalField="amount"
+                   [prefix]="'VET_VISIT.DETAILS.MEDICINES.PREFIX' | transloco"
+                   [notFound]="'VET_VISIT.DETAILS.MEDICINES.NOT_FOUND' | transloco"
+                   [header]="'VET_VISIT.DETAILS.MEDICINES.HEADER' | transloco"
+                   [dictionaries$]="ofObservable(data?.medicines)"></app-chip-list>
+
+    <h4 class="app-content-sub-header">{{ 'VET_VISIT.DETAILS.SUB_HEADER.ANIMAL' | transloco }}</h4>
+    <div class="details app-animal-details-primary-data__details">
+      <app-details-item [label]="'VET_VISIT.DETAILS.NAME' | transloco"
+                        [value]="data?.animal?.name | transloco"
+                        class="app-animal-details-primary-data__item details__item details__item--1"></app-details-item>
+
+      <app-details-item [label]="'VET_VISIT.DETAILS.SEX' | transloco"
+                        [value]="'ANIMALS.SEX.' + data?.animal?.sex | transloco"
+                        class="app-animal-details-primary-data__item details__item details__item--2"></app-details-item>
+
+      <app-details-item [label]="'VET_VISIT.DETAILS.SPECIES' | transloco"
+                        [value]="'ANIMALS.SPECIES.' + data?.animal?.species | transloco"
+                        class="app-animal-details-primary-data__item details__item details__item--3"></app-details-item>
+
+      <app-details-item [label]="'VET_VISIT.DETAILS.BIRTH_DATE' | transloco"
+                        [value]="data?.animal?.birthDate"
+                        class="app-animal-details-primary-data__item details__item details__item--4"></app-details-item>
+    </div>
+
+    <h4 class="app-content-sub-header">{{ 'VET_VISIT.DETAILS.SUB_HEADER.VET' | transloco }}</h4>
+    <div class="details app-animal-details-primary-data__details">
+      <app-details-item [label]="'VET_VISIT.DETAILS.FIRST_NAME' | transloco"
+                        [value]="data?.vet?.firstName | transloco"
+                        class="app-animal-details-primary-data__item details__item details__item--1"></app-details-item>
+
+      <app-details-item [label]="'VET_VISIT.DETAILS.LAST_NAME' | transloco"
+                        [value]="data?.vet?.lastName | transloco"
+                        class="app-animal-details-primary-data__item details__item details__item--2"></app-details-item>
+
+      <app-details-item [label]="'VET_VISIT.DETAILS.SEX' | transloco"
+                        [value]="'USERS.SEX.' + data?.vet?.sex | transloco"
+                        class="app-animal-details-primary-data__item details__item details__item--3"></app-details-item>
+    </div>
+    <app-chip-list [data]="data?.vet?.specialties"
+                   [canRemove]="false"
+                   [canAdd]="false"
+                   [notFound]="'VET_VISIT.DETAILS.SPECIALTIES.NOT_FOUND' | transloco"
+                   [header]="'VET_VISIT.DETAILS.SPECIALTIES.HEADER' | transloco"
+                   [dictionaries$]="ofObservable(data?.vet?.specialties)"></app-chip-list>
+
+
+    <div class="app-theme__actions app-theme__actions--end">
+      <button type="button"
+              mat-raised-button
+              (click)="remove()"
+              color="warn">{{ 'VET_VISIT.DETAILS.REMOVE' | transloco }}</button>
+      <button type="button"
+              class="app-button app-button--edit"
+              (click)="edit()"
+              mat-raised-button>{{ 'VET_VISIT.DETAILS.EDIT' | transloco }}</button>
+    </div>
+  </div>
+</div>

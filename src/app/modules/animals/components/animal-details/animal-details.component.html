@@ -13,7 +13,7 @@
       </mat-tab>
       <mat-tab *ngIf="showVetVisits"
                [label]="'ANIMALS.DETAILS.TABS.VET_VISITS' | transloco">
-        <app-animal-details-vet-visits></app-animal-details-vet-visits>
+        <app-animal-details-vet-visits [data]="animalDetails?.vetVisits"></app-animal-details-vet-visits>
       </mat-tab>
     </mat-tab-group>
     <div class="app-animal-details__actions app-theme__actions app-theme__actions--end">
