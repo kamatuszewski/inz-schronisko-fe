@@ -1,7 +1,9 @@
 import { ESex } from '../../shared/enums/sex.enum';
 import { IGenericDictionary } from '../../shared/interfaces/generic.interface';
+import { IVetSpecialty } from '../../users/interfaces/user.interface';
 
 export interface ISimpleAnimal {
+  birthDate: string;
   id: number;
   name: string;
   sex: string;
@@ -111,7 +113,19 @@ export interface ITreatments {
 }
 
 export interface IVetVisits {
+  animal: ISimpleAnimal;
+  description: string;
   id: number;
   medicines: IMedicines[];
-  treatments: ITreatments[]
+  treatments: ITreatments[];
+  vet: ISimpleVet;
+  visitDate: string;
+}
+
+export interface ISimpleVet {
+  firstName: string;
+  id: number;
+  lastName: string;
+  sex: ESex;
+  specialties: IVetSpecialty[];
 }

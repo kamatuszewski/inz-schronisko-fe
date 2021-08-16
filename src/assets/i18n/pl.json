@@ -307,5 +307,41 @@
         "roles": "Role"
       }
     }
+  },
+  "VET_VISIT": {
+    "DETAILS": {
+      "HEADER": "Szczegóły wizyty",
+      "SUB_HEADER": {
+        "ANIMAL": "Szczegóły zwierzęcia",
+        "VET": "Szczegóły weterynarza"
+      },
+      "NAME": "Imię",
+      "SEX": "Płeć",
+      "SPECIES": "Gatunek",
+      "BIRTH_DATE": "Data urodzenia",
+      "DESCRIPTION": "Opis",
+      "VISIT_DATE": "Data wizyty",
+      "FIRST_NAME": "Imię",
+      "LAST_NAME": "Nazwisko",
+      "REMOVE": "Usuń",
+      "EDIT": "EDYTUJ",
+      "CONFIRMATION_REMOVE": "Proces usuwania wizyty lekarskiej jest nieodwracalny. Czy na pewno chcesz usunąć to wizytę?",
+      "SPECIALTIES": {
+        "HEADER": "Specjalizacje",
+        "NOT_FOUND": "Brak specjalizacji"
+      },
+      "MEDICINES": {
+        "HEADER": "Lekarstwa",
+        "NOT_FOUND": "Brak lekarstw"
+      },
+      "TREATMENTS": {
+        "HEADER": "Zabiegi",
+        "NOT_FOUND": "Brak zabiegów"
+      },
+      "MESSAGES": {
+        "ERROR": "Nie udało się usunąć wizyty",
+        "SUCCESS": "Udało się usunąć wizytę"
+      }
+    }
   }
 }
