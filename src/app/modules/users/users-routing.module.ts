@@ -4,6 +4,7 @@ import { ForOnlyLoggedInGuard } from '../auth/guards/for-only-logged-in.guard';
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
+import { UserRoleFormComponent } from './components/user-role-form/user-role-form.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,16 @@ const routes: Routes = [
   {
     path: 'employees',
     component: EmployeeListComponent,
+    canActivate: [ForOnlyLoggedInGuard]
+  },
+  {
+    path: 'edit/:id',
+    component: UserFormComponent,
+    canActivate: [ForOnlyLoggedInGuard]
+  },
+  {
+    path: 'edit/:id/add-role',
+    component: UserRoleFormComponent,
     canActivate: [ForOnlyLoggedInGuard]
   },
 ];

@@ -5,6 +5,9 @@
     font-size: 1rem;
     font-weight: $font-weight-regular;
     color: $main-font-color;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    padding-left: .5rem;
 
     &--medium {
       font-weight: $font-weight-medium;

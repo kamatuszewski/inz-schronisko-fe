@@ -1,0 +1,98 @@
+<div class="app-user-role-form app-theme">
+  <div class="app-theme__header">
+    <h3 class="app-content-header">{{ 'USERS.FORM.ADD_ROLE.HEADER' | transloco }}</h3>
+  </div>
+  <form class="app-user-role-form__content app-theme__content"
+        [formGroup]="formGroup"
+        (ngSubmit)="save()">
+    <div class="app-form-content app-form-content--padding-b">
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'USERS.FORM.FIELDS.ROLE' | transloco }}</mat-label>
+        <mat-select formControlName="roleId">
+          <mat-option *ngFor="let role of allRole$ | async"
+                      [value]="role.id">
+            {{ 'COMMON.ROLE.' + role.name.toUpperCase() | transloco }}
+          </mat-option>
+        </mat-select>
+        <mat-error>{{ formGroup.get('roleId').errors | validation }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline"
+                      *ngIf="anVetWasSelected">
+        <mat-label>{{ 'USERS.FORM.FIELDS.PWZ_NUMBER' | transloco }}</mat-label>
+        <input matInput
+               type="text"
+               formControlName="PWZNumber">
+        <mat-error>{{ formGroup.get('PWZNumber').errors | validation }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline"
+                      *ngIf="anEmployeeWasSelected || anVetWasSelected">
+        <mat-label>{{ 'USERS.FORM.FIELDS.HIRE_DATE' | transloco }}</mat-label>
+        <input matInput
+               type="text"
+               [matDatepicker]="hireDateDatePicker"
+               readonly
+               formControlName="hireDate">
+        <mat-datepicker #hireDateDatePicker></mat-datepicker>
+        <mat-datepicker-toggle matSuffix [for]="hireDateDatePicker"></mat-datepicker-toggle>
+        <mat-error>{{ formGroup.get('hireDate').errors | validation }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline"
+                      *ngIf="anVolunteerWasSelected">
+        <mat-label>{{ 'USERS.FORM.FIELDS.JOINING_DATE' | transloco }}</mat-label>
+        <input matInput
+               type="text"
+               [matDatepicker]="joiningDatePicker"
+               readonly
+               formControlName="joiningDate">
+        <mat-datepicker #joiningDatePicker></mat-datepicker>
+        <mat-datepicker-toggle matSuffix [for]="joiningDatePicker"></mat-datepicker-toggle>
+        <mat-error>{{ formGroup.get('joiningDate').errors | validation }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline"
+                      *ngIf="anVolunteerWasSelected">
+        <mat-label>{{ 'USERS.FORM.FIELDS.ATTENDANCE' | transloco }}</mat-label>
+        <input matInput
+               type="text"
+               formControlName="attendance">
+        <mat-error>{{ formGroup.get('attendance').errors | validation }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline"
+                      *ngIf="anEmployeeWasSelected || anVetWasSelected">
+        <mat-label>{{ 'USERS.FORM.FIELDS.SALARY' | transloco }}</mat-label>
+        <input matInput
+               type="text"
+               formControlName="salary">
+        <mat-error>{{ formGroup.get('salary').errors | validation }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline"
+                      *ngIf="anEmployeeWasSelected || anVetWasSelected">
+        <mat-label>{{ 'USERS.FORM.FIELDS.QUIT_DATE' | transloco }}</mat-label>
+        <input matInput
+               type="text"
+               [matDatepicker]="quitDatePicker"
+               readonly
+               formControlName="quitDate">
+        <mat-datepicker #quitDatePicker></mat-datepicker>
+        <mat-datepicker-toggle matSuffix [for]="quitDatePicker"></mat-datepicker-toggle>
+        <mat-error>{{ formGroup.get('quitDate').errors | validation }}</mat-error>
+      </mat-form-field>
+    </div>
+
+
+    <div class="app-animal-form__actions app-theme__actions">
+      <button type="button"
+              (click)="cancel()"
+              mat-button
+              color="warn">{{ 'USERS.FORM.COMMONS.CANCEL' | transloco }}</button>
+      <button type="submit"
+              mat-raised-button
+              color="primary">{{ 'USERS.FORM.COMMONS.SAVE' | transloco }}</button>
+    </div>
+  </form>
+</div>

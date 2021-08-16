@@ -34,4 +34,16 @@ export const animalDetailsAdoptionTableConfig = [
   {
     code: 'adoptionDate'
   }
-]
+];
+
+export const animalDetailsVetVisistTableConfig = [
+  {
+    code: 'id'
+  },
+  {
+    code: 'visitDate'
+  },
+  {
+    code: 'description'
+  }
+];

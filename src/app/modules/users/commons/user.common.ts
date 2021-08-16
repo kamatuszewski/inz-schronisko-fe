@@ -5,7 +5,9 @@ export const roleAddedFieldsMap = new Map<ERole, string[]>([
   [ERole.ALL, ['hireDate', 'quitDate', 'salary', 'PWZNumber', 'attendance', 'joiningDate']],
   [ERole.VOLUNTEER, ['attendance', 'joiningDate']],
   [ERole.EMPLOYEE, ['hireDate', 'quitDate', 'salary']],
-  [ERole.VET, ['hireDate', 'quitDate', 'salary', 'PWZNumber']]
+  [ERole.VET, ['hireDate', 'quitDate', 'salary', 'PWZNumber']],
+  [ERole.ADMIN, []],
+  [ERole.DIRECTOR, []],
 ]);
 
 export const volunteerValidatorMap = new Map<string, ValidatorFn[]>([
@@ -24,6 +26,7 @@ export const vetValidatorMap = new Map<string, ValidatorFn[]>([
   ['quitDate', []],
   ['salary', [Validators.required]],
   ['PWZNumber', [Validators.required]],
+  ['VetSpecialties', [Validators.required]]
 ]);
 
 export const roleAddedFieldsValidatorMap = new Map<ERole, Map<string, ValidatorFn[]>>([

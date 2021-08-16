@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
-import { IActionModal, IAddChipModal } from '../interfaces/modal.interface';
 import { Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { AddChipModalComponent } from '../components/add-chip-modal/add-chip-modal.component';
+import { IActionModal, IAddChipModal } from '../interfaces/modal.interface';
 
 @Injectable({
   providedIn: 'root'

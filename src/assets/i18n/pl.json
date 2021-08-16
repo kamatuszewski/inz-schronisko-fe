@@ -117,6 +117,14 @@
           "SUCCESS": "Udało się dodać wizytę"
         }
       },
+
+      "VET_VISIT_EDIT": {
+        "HEADER": "Formularz edycji wizyty",
+        "MESSAGES": {
+          "ERROR": "Nie udało się edytować wizyty",
+          "SUCCESS": "Udało się edytować wizytę"
+        }
+      },
       "FIELDS": {
         "CHIP_NUMBER": "Numer chipa",
         "NAME": "Imię",
@@ -195,6 +203,11 @@
           "SUCCESS": "Udało się usunąć adopcję"
         }
       },
+      "VET_VISITS": {
+        "id": "Id",
+        "visitDate": "Data wizyty",
+        "description": "Opis"
+      },
       "CONFIRMATION_REMOVE": "Proces usuwania zwierzęcia jest nieodwracalny. Czy na pewno chcesz usunąć to zwierzę?",
       "MESSAGES": {
         "ERROR": "Nie udało się usunąć zwierzęcia",
@@ -233,6 +246,13 @@
       "EDIT": {
         "HEADER": "Edytuj użytkownika"
       },
+      "ADD_ROLE": {
+        "HEADER": "Dodaj rolę do użytkownika",
+        "MESSAGES": {
+          "ERROR": "Nie udało się dodać roli do użytkownika",
+          "SUCCESS": "Udało się dodać rolę do użytkownika"
+        }
+      },
       "FIELDS": {
         "ADDRESS": "Adres",
         "ATTENDANCE": "Frekwencja",
@@ -248,7 +268,21 @@
         "QUIT_DATE": "Data zakończenia",
         "ROLE": "Rola",
         "SALARY": "Pensja",
-        "SEX": "Płeć"
+        "SEX": "Płeć",
+        "SPECIALTIES": {
+          "HEADER": "Specializacje",
+          "PREFIX": "Uzyskana dnia:",
+          "NOT_FOUND": "Brak specjalizacji",
+          "MODAL": {
+            "HEADER": "Dodaj specializacje",
+            "LABEL": "Specjalizacja",
+            "OBTAININGDATE": "Uzyskano"
+          }
+        },
+        "ROLES": {
+          "HEADER": "Role",
+          "NOT_FOUND": "Brak ról"
+        }
       },
       "COMMONS": {
         "SAVE": "Zapisz",
@@ -279,6 +313,43 @@
           "M": "Mężczyzna"
         },
         "roles": "Role"
+      }
+    }
+  },
+  "VET_VISIT": {
+    "DETAILS": {
+      "HEADER": "Szczegóły wizyty",
+      "SUB_HEADER": {
+        "ANIMAL": "Szczegóły zwierzęcia",
+        "VET": "Szczegóły weterynarza"
+      },
+      "NAME": "Imię",
+      "SEX": "Płeć",
+      "SPECIES": "Gatunek",
+      "BIRTH_DATE": "Data urodzenia",
+      "DESCRIPTION": "Opis",
+      "VISIT_DATE": "Data wizyty",
+      "FIRST_NAME": "Imię",
+      "LAST_NAME": "Nazwisko",
+      "REMOVE": "Usuń",
+      "EDIT": "EDYTUJ",
+      "CONFIRMATION_REMOVE": "Proces usuwania wizyty lekarskiej jest nieodwracalny. Czy na pewno chcesz usunąć to wizytę?",
+      "SPECIALTIES": {
+        "HEADER": "Specjalizacje",
+        "NOT_FOUND": "Brak specjalizacji"
+      },
+      "MEDICINES": {
+        "HEADER": "Lekarstwa",
+        "NOT_FOUND": "Brak lekarstw",
+        "PREFIX": "Ilość"
+      },
+      "TREATMENTS": {
+        "HEADER": "Zabiegi",
+        "NOT_FOUND": "Brak zabiegów"
+      },
+      "MESSAGES": {
+        "ERROR": "Nie udało się usunąć wizyty",
+        "SUCCESS": "Udało się usunąć wizytę"
       }
     }
   }

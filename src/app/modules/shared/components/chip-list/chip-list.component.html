@@ -5,12 +5,15 @@
       <app-chip *ngFor="let item of data"
                 [data]="item"
                 (remove)="remove($event)"
+                [canRemove]="canRemove"
+                [prefixLabel]="prefixLabel"
                 [additionalField]="additionalField"
                 [dictionaries]="dictionaries$ | async"
                 [prefix]="prefix"></app-chip>
     </ng-container>
   </div>
-  <div class="app-chip-list__actions d-flex justify-content-end">
+  <div *ngIf="canAdd"
+       class="app-chip-list__actions d-flex justify-content-end">
     <button mat-button
             (click)="add()"
             type="button"
