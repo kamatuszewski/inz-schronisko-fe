@@ -13,19 +13,21 @@
                         class="app-animal-details-primary-data__item details__item details__item--4 details__item--colspan-full"></app-details-item>
     </div>
 
-    <app-chip-list [data]="data?.medicines"
-                   [canRemove]="false"
-                   [canAdd]="false"
-                   [notFound]="'VET_VISIT.DETAILS.MEDICINES.NOT_FOUND' | transloco"
-                   [header]="'VET_VISIT.DETAILS.MEDICINES.HEADER' | transloco"
-                   [dictionaries$]="ofObservable(data?.medicines)"></app-chip-list>
-
     <app-chip-list [data]="data?.treatments"
                    [canRemove]="false"
                    [canAdd]="false"
                    [notFound]="'VET_VISIT.DETAILS.TREATMENTS.NOT_FOUND' | transloco"
                    [header]="'VET_VISIT.DETAILS.TREATMENTS.HEADER' | transloco"
                    [dictionaries$]="ofObservable(data?.treatments)"></app-chip-list>
+
+    <app-chip-list [data]="data?.medicines"
+                   [canRemove]="false"
+                   [canAdd]="false"
+                   additionalField="amount"
+                   [prefix]="'VET_VISIT.DETAILS.MEDICINES.PREFIX' | transloco"
+                   [notFound]="'VET_VISIT.DETAILS.MEDICINES.NOT_FOUND' | transloco"
+                   [header]="'VET_VISIT.DETAILS.MEDICINES.HEADER' | transloco"
+                   [dictionaries$]="ofObservable(data?.medicines)"></app-chip-list>
 
     <h4 class="app-content-sub-header">{{ 'VET_VISIT.DETAILS.SUB_HEADER.ANIMAL' | transloco }}</h4>
     <div class="details app-animal-details-primary-data__details">

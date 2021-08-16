@@ -96,6 +96,7 @@ export interface IAnimalsGroupBySpecies {
 export interface IAnimalVetVisitForm {
   animalId: number;
   description: string;
+  id: number;
   medicines: IMedicines[];
   treatments: ITreatments[]
   vetId: number;

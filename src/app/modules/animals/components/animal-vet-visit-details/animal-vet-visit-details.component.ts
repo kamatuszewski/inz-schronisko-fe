@@ -29,7 +29,7 @@ export class AnimalVetVisitDetailsComponent implements OnInit, OnDestroy {
   }
 
   public edit(): void {
-
+    this.router.navigate(['animals', this.animalId, 'vet-visit', this.vetVisitId, 'edit']).then();
   }
 
   public ngOnDestroy(): void {

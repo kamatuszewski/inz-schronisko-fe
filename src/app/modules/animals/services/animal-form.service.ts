@@ -36,4 +36,9 @@ export class AnimalFormService {
     const url = `${this.baseUrl}/${payload.id}`;
     return this.http.put<ISaveAnimalResponse>(url, payload);
   }
+
+  public updateVetVisit(payload: IAnimalVetVisitForm): Observable<unknown> {
+    const url = `${this.vetVisitsUrl}/${payload.id}`;
+    return this.http.put<number>(url, payload);
+  }
 }

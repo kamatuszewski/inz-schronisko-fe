@@ -49,6 +49,11 @@ const routes: Routes = [
     component: AnimalVetVisitDetailsComponent,
     canActivate: [ForOnlyLoggedInGuard]
   },
+  {
+    path: ':id/vet-visit/:vetVisitId/edit',
+    component: AnimalVetVisitFormComponent,
+    canActivate: [ForOnlyLoggedInGuard]
+  },
 ];
 
 @NgModule({

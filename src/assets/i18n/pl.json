@@ -117,6 +117,14 @@
           "SUCCESS": "Udało się dodać wizytę"
         }
       },
+
+      "VET_VISIT_EDIT": {
+        "HEADER": "Formularz edycji wizyty",
+        "MESSAGES": {
+          "ERROR": "Nie udało się edytować wizyty",
+          "SUCCESS": "Udało się edytować wizytę"
+        }
+      },
       "FIELDS": {
         "CHIP_NUMBER": "Numer chipa",
         "NAME": "Imię",
@@ -332,7 +340,8 @@
       },
       "MEDICINES": {
         "HEADER": "Lekarstwa",
-        "NOT_FOUND": "Brak lekarstw"
+        "NOT_FOUND": "Brak lekarstw",
+        "PREFIX": "Ilość"
       },
       "TREATMENTS": {
         "HEADER": "Zabiegi",
