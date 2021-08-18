@@ -1,4 +1,5 @@
 {
+  "NOT_PERMISSIONS": "Nie masz uprawnień do tej części aplikacji",
   "COMMON": {
     "APP_NAME": "Przytulisko",
     "ERRORS": {
@@ -17,6 +18,7 @@
       "SAVE": "Zapisz"
     },
     "ROLE": {
+      "USER": "Użytkownik",
       "VOLUNTEER": "Wolontariusz",
       "EMPLOYEE": "Pracownik",
       "DIRECTOR": "Dyrektor",
@@ -38,7 +40,8 @@
     "USER_LIST": "Lista użytkowników",
     "EMPLOYEE_LIST": "Lista pracowników",
     "CREATE_ADOPTION": "Dodaj adopcję",
-    "CREATE_VET_VISIT": "Dodaj leczenie"
+    "CREATE_VET_VISIT": "Dodaj leczenie",
+    "CREATE_USER": "Dodaj użytkownika"
   },
   "ANIMALS": {
     "SPECIES": {

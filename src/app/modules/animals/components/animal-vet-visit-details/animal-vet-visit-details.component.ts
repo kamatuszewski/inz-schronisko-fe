@@ -2,6 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { of, Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { AuthService } from '../../../auth/auth.service';
+import { permissionsMap, EOperation } from '../../../core/commons/permissions.common';
 import { CoreService } from '../../../core/core.service';
 import { ConfirmDecisionModalService } from '../../../shared/services/confirm-decision-modal.service';
 import { AnimalsService } from '../../animals.service';
@@ -14,12 +16,16 @@ import { IVetVisits } from '../../interfaces/animals.interface';
 })
 export class AnimalVetVisitDetailsComponent implements OnInit, OnDestroy {
   public data$: Observable<IVetVisits>;
+  public hasAccessToEditVetVisit = false;
+  public hasAccessToRemoveVetVisit = false;
+
+  private animalId: number;
   private onDestroy$ = new Subject<void>();
   private vetVisitId: number;
-  private animalId: number;
 
   constructor(private activatedRoute: ActivatedRoute,
               private animalService: AnimalsService,
+              private authService: AuthService,
               private confirmModal: ConfirmDecisionModalService,
               private coreService: CoreService,
               private router: Router
@@ -39,6 +45,7 @@ export class AnimalVetVisitDetailsComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.loadData();
+    this.loadAccessToViews();
   }
 
   public ofObservable<T>(data: T[]): Observable<any> {
@@ -53,6 +60,11 @@ export class AnimalVetVisitDetailsComponent implements OnInit, OnDestroy {
     this.confirmModal.openDialog(data)
       .pipe(takeUntil(this.onDestroy$))
       .subscribe(this.removeVisit)
+  }
+
+  private loadAccessToViews(): void {
+    this.hasAccessToEditVetVisit = this.authService.hasSomeAllowedRole(...permissionsMap.get(EOperation.EDIT_VET_VISIT));
+    this.hasAccessToRemoveVetVisit = this.authService.hasSomeAllowedRole(...permissionsMap.get(EOperation.REMOVE_VET_VISIT));
   }
 
   private loadData(): void {
