@@ -70,12 +70,14 @@
                    [dictionaries$]="ofObservable(data?.vet?.specialties)"></app-chip-list>
 
 
-    <div class="app-theme__actions app-theme__actions--end">
+    <div class="app-theme__actions app-theme__actions--end" *ngIf="hasAccessToRemoveVetVisit || hasAccessToEditVetVisit">
       <button type="button"
+              *ngIf="hasAccessToRemoveVetVisit"
               mat-raised-button
               (click)="remove()"
               color="warn">{{ 'VET_VISIT.DETAILS.REMOVE' | transloco }}</button>
       <button type="button"
+              *ngIf="hasAccessToEditVetVisit"
               class="app-button app-button--edit"
               (click)="edit()"
               mat-raised-button>{{ 'VET_VISIT.DETAILS.EDIT' | transloco }}</button>

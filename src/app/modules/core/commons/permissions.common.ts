@@ -20,6 +20,7 @@ export enum EOperation {
 
   ADD_USER,
   EDIT_USER,
+  ADD_ROLE_TO_USER,
 
   ADD_SPECIALIST,
   ASSIGN_SPECIALIST,
@@ -31,7 +32,8 @@ export enum EOperation {
   REMOVE_TREATMENT,
 
   ADD_VET_VISIT,
-  EDIT_VET_VISIT
+  EDIT_VET_VISIT,
+  REMOVE_VET_VISIT
 }
 
 export const permissionsMap = new Map<EOperation, ERole[]>([
@@ -47,13 +49,14 @@ export const permissionsMap = new Map<EOperation, ERole[]>([
   [EOperation.ADD_ADOPTION, [ERole.EMPLOYEE]],
   [EOperation.REMOVE_ADOPTION, [ERole.EMPLOYEE]],
 
-  [EOperation.SHOW_EMPLOYEE_LIST, [ERole.DIRECTOR] [ERole.ADMIN]],
-  [EOperation.SHOW_EMPLOYEE_DETAILS, [ERole.DIRECTOR] [ERole.ADMIN]],
+  [EOperation.SHOW_EMPLOYEE_LIST, [ERole.DIRECTOR, ERole.ADMIN]],
+  [EOperation.SHOW_EMPLOYEE_DETAILS, [ERole.DIRECTOR, ERole.ADMIN]],
   [EOperation.SHOW_USER_LIST, [ERole.ADMIN]],
   [EOperation.SHOW_DETAILS_USER, [ERole.ADMIN]],
 
-  [EOperation.ADD_USER, [ERole.EMPLOYEE] [ERole.ADMIN]],
+  [EOperation.ADD_USER, [ERole.EMPLOYEE, ERole.ADMIN]],
   [EOperation.EDIT_USER, [ERole.ADMIN]],
+  [EOperation.ADD_ROLE_TO_USER, [ERole.ADMIN]],
 
   [EOperation.ADD_SPECIALIST, [ERole.ADMIN]],
   [EOperation.ASSIGN_SPECIALIST, [ERole.ADMIN]],
@@ -67,4 +70,5 @@ export const permissionsMap = new Map<EOperation, ERole[]>([
 
   [EOperation.ADD_VET_VISIT, [ERole.VET]],
   [EOperation.EDIT_VET_VISIT, [ERole.VET]],
+  [EOperation.REMOVE_VET_VISIT, [ERole.VET]]
 ]);

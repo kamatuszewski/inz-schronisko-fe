@@ -64,9 +64,10 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline"
-                      *ngIf="isCreateMode">
+                      *ngIf="isCreateMode && !hasOnlyEmployeeRole">
         <mat-label>{{ 'USERS.FORM.FIELDS.ROLE' | transloco }}</mat-label>
         <mat-select formControlName="roleId">
+          <mat-option value="null">{{ 'COMMON.ROLE.USER' | transloco }}</mat-option>
           <mat-option *ngFor="let role of allRole$ | async"
                       [value]="role.id">
             {{ 'COMMON.ROLE.' + role.name.toUpperCase() | transloco }}
@@ -75,7 +76,8 @@
         <mat-error>{{ formGroup.get('sex').errors | validation }}</mat-error>
       </mat-form-field>
 
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline"
+                      *ngIf="!hasOnlyEmployeeRole">
         <mat-label>{{ 'USERS.FORM.FIELDS.PASSWORD' | transloco }}</mat-label>
         <input matInput
                type="password"
@@ -175,8 +177,8 @@
                    [prefix]="'USERS.FORM.FIELDS.SPECIALTIES.PREFIX' | transloco"
                    translocoPrefix="USERS.FORM.FIELDS.SPECIALTIES.MODAL"
                    additionalType="date"
-                   [canAdd]="isCreateMode"
-                   [canRemove]="isCreateMode"
+                   [canAdd]="isCreateMode && hasAccessToAssignSpecialist"
+                   [canRemove]="isCreateMode && hasAccessToRemoveSpecialist"
                    [dictionaries$]="allSpecialty$"></app-chip-list>
 
     <app-chip-list *ngIf="!isCreateMode"

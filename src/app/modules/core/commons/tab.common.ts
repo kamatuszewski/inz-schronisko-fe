@@ -36,7 +36,7 @@ export const tabConfig: ITabConfig[] = [
   {
     label: 'TABS.EMPLOYEE_LIST',
     redirectTo: ['users/employees'],
-    allowedRoles: permissionsMap.get(EOperation.SHOW_USER_LIST),
+    allowedRoles: permissionsMap.get(EOperation.SHOW_EMPLOYEE_LIST),
     iconCode: 'groups'
   },
   {
@@ -44,5 +44,11 @@ export const tabConfig: ITabConfig[] = [
     redirectTo: ['users'],
     allowedRoles: permissionsMap.get(EOperation.SHOW_USER_LIST),
     iconCode: 'supervised_user_circle'
+  },
+  {
+    label: 'TABS.CREATE_USER',
+    redirectTo: ['users', 'create'],
+    allowedRoles: permissionsMap.get(EOperation.ADD_USER),
+    iconCode: 'person_add_alt'
   }
 ]

@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { combineLatest, Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { AuthService } from '../../../auth/auth.service';
+import { permissionsMap, EOperation } from '../../../core/commons/permissions.common';
 import { CoreService } from '../../../core/core.service';
 import { ESex } from '../../../shared/enums/sex.enum';
 import { IFormActions } from '../../../shared/interfaces/form-actions.interface';
@@ -44,6 +46,9 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
   public allRole$: Observable<IGenericDictionary[]>;
   public allSpecialty$: Observable<IGenericDictionary[]>;
   public formGroup: FormGroup;
+  public hasAccessToAssignSpecialist = false;
+  public hasAccessToRemoveSpecialist = false;
+  public hasOnlyEmployeeRole = false;
   public selectedRoles: IGenericDictionary[] = [];
   public userId: number;
   public vetSpecialties: IVetSpecialty[] = [];
@@ -55,6 +60,7 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
               private router: Router,
               private activatedRoute: ActivatedRoute,
               private userService: UsersService,
+              private authService: AuthService,
               private userDictionariesService: UserDictionariesService,
               private coreService: CoreService) {
     this.userId = activatedRoute.snapshot.params.id;
@@ -74,6 +80,7 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
     this.initDictionaries();
     this.subscribeRole();
     this.loadData();
+    this.loadAccessToViews();
   }
 
   public redirectToAddRole = (): void => {
@@ -103,6 +110,9 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
   private createUser(): Observable<unknown> {
     const formValue = this.formGroup.value;
     formValue.vetSpecialties = this.vetSpecialties;
+    if (formValue.roleId === null || formValue.roleId === 'null') {
+      delete formValue.roleId;
+    }
     return this.userService.createUser(formValue)
   }
 
@@ -128,7 +138,7 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
       hireDate: this.formBuilder.control(null),
       joiningDate: this.formBuilder.control(null),
       lastName: this.formBuilder.control(null, [Validators.required]),
-      password: this.formBuilder.control(null, [Validators.required, Validators.minLength(5)]),
+      password: this.formBuilder.control(null, [Validators.minLength(5)]),
       pesel: this.formBuilder.control(null, [Validators.required, FormUtilsService.peselValidator()]),
       phoneNumber: this.formBuilder.control(null, [Validators.required, FormUtilsService.phoneValidator()]),
       PWZNumber: this.formBuilder.control(null),
@@ -137,6 +147,15 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
       salary: this.formBuilder.control(null),
       sex: this.formBuilder.control(null, [Validators.required]),
     });
+  }
+
+  private loadAccessToViews(): void {
+    this.hasAccessToAssignSpecialist = this.authService.hasSomeAllowedRole(...permissionsMap.get(EOperation.ASSIGN_SPECIALIST));
+    this.hasAccessToRemoveSpecialist = this.authService.hasSomeAllowedRole(...permissionsMap.get(EOperation.REMOVE_SPECIALIST));
+    const roles = this.authService.getProfile().roles;
+    if (roles.length === 1 && roles[0] === ERole.EMPLOYEE) {
+      this.hasOnlyEmployeeRole = true;
+    }
   }
 
   private loadData(): void {
@@ -157,9 +176,15 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
     }).then();
   }
 
-  private resetOtherAddedFields(role: ERole): void {
+  private resetOtherAddedFields(role?: ERole): void {
     const otherAddedFields = roleAddedFieldsMap.get(ERole.ALL)
-      .filter(field => !roleAddedFieldsMap.get(role).includes(field));
+      .filter(field => {
+        if (!!role) {
+          return !roleAddedFieldsMap.get(role).includes(field)
+        } else {
+          return true;
+        }
+      });
     otherAddedFields.forEach(field => {
       this.formGroup.get(field).clearValidators();
       this.formGroup.get(field).reset(null);
@@ -179,9 +204,13 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
     combineLatest(this.formGroup.get('roleId').valueChanges, this.allRole$)
       .pipe(takeUntil(this.onDestroy$))
       .subscribe(([roleId, roles]) => {
-        const newSelectedRole = roles.filter(role => role.id === roleId)[0].name as ERole;
-        if (newSelectedRole !== this.selectedRole) {
-          this.selectedRole = newSelectedRole;
+        const newSelectedRole = roles.filter(role => role.id === roleId)[0];
+        if (!!newSelectedRole && newSelectedRole.name !== this.selectedRole) {
+          this.selectedRole = newSelectedRole.name as ERole;
+          this.updateValueAndValidator();
+        }
+        if (!newSelectedRole) {
+          this.selectedRole = null;
           this.updateValueAndValidator();
         }
       });
@@ -217,6 +246,14 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
         this.resetOtherAddedFields(ERole.VOLUNTEER);
         this.vetSpecialties = [];
         break;
+      default:
+        this.resetOtherAddedFields();
+        this.vetSpecialties = [];
+    }
+    const role = [ERole.EMPLOYEE, ERole.VET, ERole.DIRECTOR, ERole.ADMIN, ERole.VOLUNTEER];
+    if (role.includes(this.selectedRole)) {
+      this.formGroup?.get('password')?.setValidators(Validators.required);
+      this.formGroup?.get('password')?.updateValueAndValidity();
     }
   }
 }
