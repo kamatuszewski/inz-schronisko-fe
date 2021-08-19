@@ -29,10 +29,17 @@
   "AUTH": {
     "HEADER": "Logowanie",
     "LOGIN": "Zaloguj się",
-    "USERNAME": "Login",
+    "USERNAME": "E-mail",
     "PASSWORD": "Hasło",
     "SUBMIT": "Zaloguj",
-    "LOGOUT": "Wyloguj"
+    "LOGOUT": "Wyloguj",
+    "ERRORS": {
+      "WRONG_LOGIN_OR_PASSWORD": "Niepoprawny login lub hasło"
+    },
+    "MESSAGES": {
+      "ERROR": "Nie udało się zalogować",
+      "SUCCESS": "Udało się zalogować"
+    }
   },
   "TABS": {
     "ANIMAL_LIST": "Lista zwierząt",

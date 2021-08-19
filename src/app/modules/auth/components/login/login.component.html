@@ -14,7 +14,9 @@
       <mat-label>{{ 'AUTH.USERNAME' | transloco }}</mat-label>
       <input matInput
              type="text"
+             name="emailAddress"
              formControlName="emailAddress">
+      <mat-error>{{ formGroup.get('emailAddress').errors | validation }}</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline"
@@ -22,10 +24,12 @@
       <mat-label>{{ 'AUTH.PASSWORD' | transloco }}</mat-label>
       <input matInput
              formControlName="password"
+             name="password"
              [type]="passwordVisibility ? 'text' : 'password'">
       <mat-icon matSuffix
                 class="clickable input-icon"
                 (click)="changePasswordVisibility()">{{ passwordVisibility ? 'visibility' : 'visibility_off' }}</mat-icon>
+      <mat-error>{{ formGroup.get('password').errors | validation }}</mat-error>
     </mat-form-field>
 
     <button mat-raised-button
