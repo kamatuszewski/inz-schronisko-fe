@@ -13,7 +13,7 @@
           <mat-optgroup  *ngFor="let group of animalsGroupBySpecies$ | async" [label]="'ANIMALS.SPECIES.' + group.species | transloco">
             <mat-option *ngFor="let animal of group.animals"
                         [value]="+animal.id">
-              {{ animal.name }}
+              #{{ animal.id }} {{ animal.name }}
             </mat-option>
           </mat-optgroup>
         </mat-select>
