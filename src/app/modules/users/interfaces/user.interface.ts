@@ -67,3 +67,19 @@ export interface IUserRoleForm {
   roleId: number;
   salary?: number;
 }
+
+export interface IEmployee {
+  emailAddress: string;
+  firstName: string;
+  hireDate: string;
+  id: number;
+  lastName: string;
+  pesel: string;
+  phoneNumber: string;
+  pwzNumber: string;
+  quitDate: string;
+  roles: IGenericDictionary[];
+  salary: number;
+  sex: ESex;
+  specialties: IVetSpecialty[];
+}

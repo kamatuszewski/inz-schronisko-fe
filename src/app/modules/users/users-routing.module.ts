@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ForOnlyLoggedInGuard } from '../auth/guards/for-only-logged-in.guard';
 import { OnlyAllowedRoleGuard } from '../auth/guards/only-allowed-role.guard';
 import { EOperation } from '../core/commons/permissions.common';
+import { EmployeeDetailsComponent } from './components/employee-details/employee-details.component';
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
@@ -48,6 +49,14 @@ const routes: Routes = [
     canActivate: [ForOnlyLoggedInGuard, OnlyAllowedRoleGuard],
     data: {
       operation: EOperation.EDIT_USER
+    }
+  },
+  {
+    path: 'employees/:id',
+    component: EmployeeDetailsComponent,
+    canActivate: [ForOnlyLoggedInGuard, OnlyAllowedRoleGuard],
+    data: {
+      operation: EOperation.SHOW_EMPLOYEE_DETAILS
     }
   },
   {

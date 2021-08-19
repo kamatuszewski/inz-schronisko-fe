@@ -321,6 +321,9 @@
         },
         "roles": "Role"
       }
+    },
+    "DETAILS": {
+      "HEADER": "Szczegóły pracownika"
     }
   },
   "VET_VISIT": {
