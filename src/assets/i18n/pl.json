@@ -299,6 +299,10 @@
         "pesel": "Niepoprawny pesel",
         "phone": "Niepoprawny numer telefonu"
       }
+    },
+    "DETAILS": {
+      "HEADER": "Szczegóły użytkownika",
+      "EDIT": "Edytuj"
     }
   },
   "EMPLOYEE": {

@@ -43,7 +43,7 @@ export class UserListComponent implements OnInit {
   }
 
   public selectUser(id: number): void {
-    this.router.navigate(['edit', id], {
+    this.router.navigate([id], {
       relativeTo: this.activatedRoute
     }).then();
   }

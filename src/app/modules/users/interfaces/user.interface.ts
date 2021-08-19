@@ -28,6 +28,7 @@ export interface IUserForm {
   emailAddress: string;
   firstName: string;
   hireDate: string;
+  id?: number;
   joiningDate: string;
   lastName: string;
   password: string;
