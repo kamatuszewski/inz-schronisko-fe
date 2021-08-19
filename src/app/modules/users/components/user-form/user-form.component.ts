@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { combineLatest, Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { AuthService } from '../../../auth/auth.service';
+import { permissionsMap, EOperation } from '../../../core/commons/permissions.common';
 import { CoreService } from '../../../core/core.service';
 import { ESex } from '../../../shared/enums/sex.enum';
 import { IFormActions } from '../../../shared/interfaces/form-actions.interface';
@@ -13,8 +15,6 @@ import { ERole } from '../../enums/user.enum';
 import { IVetSpecialty } from '../../interfaces/user.interface';
 import { UserDictionariesService } from '../../services/user-dictionaries.service';
 import { UsersService } from '../../users.service';
-import { AuthService } from '../../../auth/auth.service';
-import { EOperation, permissionsMap } from '../../../core/commons/permissions.common';
 
 @Component({
   selector: 'app-user-form',
@@ -110,6 +110,9 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
   private createUser(): Observable<unknown> {
     const formValue = this.formGroup.value;
     formValue.vetSpecialties = this.vetSpecialties;
+    if (formValue.roleId === null || formValue.roleId === 'null') {
+      delete formValue.roleId;
+    }
     return this.userService.createUser(formValue)
   }
 
@@ -173,9 +176,15 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
     }).then();
   }
 
-  private resetOtherAddedFields(role: ERole): void {
+  private resetOtherAddedFields(role?: ERole): void {
     const otherAddedFields = roleAddedFieldsMap.get(ERole.ALL)
-      .filter(field => !roleAddedFieldsMap.get(role).includes(field));
+      .filter(field => {
+        if (!!role) {
+          return !roleAddedFieldsMap.get(role).includes(field)
+        } else {
+          return true;
+        }
+      });
     otherAddedFields.forEach(field => {
       this.formGroup.get(field).clearValidators();
       this.formGroup.get(field).reset(null);
@@ -237,6 +246,9 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
         this.resetOtherAddedFields(ERole.VOLUNTEER);
         this.vetSpecialties = [];
         break;
+      default:
+        this.resetOtherAddedFields();
+        this.vetSpecialties = [];
     }
     const role = [ERole.EMPLOYEE, ERole.VET, ERole.DIRECTOR, ERole.ADMIN, ERole.VOLUNTEER];
     if (role.includes(this.selectedRole)) {
