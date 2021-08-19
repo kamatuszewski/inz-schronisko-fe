@@ -44,7 +44,7 @@ export class CoreService {
   }
 
   public showErrorMessage(message: string): void {
-    this.toastrService.warning(this.translocoService.translate(message));
+    this.toastrService.error(this.translocoService.translate(message));
   }
 
   public showLoader(): void {

@@ -28,6 +28,7 @@ export interface IUserForm {
   emailAddress: string;
   firstName: string;
   hireDate: string;
+  id?: number;
   joiningDate: string;
   lastName: string;
   password: string;
@@ -65,4 +66,20 @@ export interface IUserRoleForm {
   quitDate?: string;
   roleId: number;
   salary?: number;
+}
+
+export interface IEmployee {
+  emailAddress: string;
+  firstName: string;
+  hireDate: string;
+  id: number;
+  lastName: string;
+  pesel: string;
+  phoneNumber: string;
+  pwzNumber: string;
+  quitDate: string;
+  roles: IGenericDictionary[];
+  salary: number;
+  sex: ESex;
+  specialties: IVetSpecialty[];
 }

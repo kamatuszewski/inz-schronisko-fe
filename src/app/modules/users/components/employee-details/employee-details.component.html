@@ -1,0 +1,61 @@
+<div class="app-employee-details app-theme" *ngIf="data$ | async; let data">
+  <div class="app-theme__header">
+    <h3 class="app-content-header">{{ 'EMPLOYEE.DETAILS.HEADER' | transloco }}#{{data.id}}</h3>
+  </div>
+  <div class="app-employee-details__content app-theme__content">
+    <div class="details app-employee-details-primary-data__details">
+      <app-details-item [label]="'USERS.FORM.FIELDS.FIRST_NAME' | transloco"
+                        [value]="data?.firstName"
+                        class="app-employee-details-primary-data__item details__item"></app-details-item>
+      <app-details-item [label]="'USERS.FORM.FIELDS.LAST_NAME' | transloco"
+                        [value]="data?.lastName"
+                        class="app-employee-details-primary-data__item details__item"></app-details-item>
+      <app-details-item [label]="'USERS.FORM.FIELDS.PESEL' | transloco"
+                        [value]="data?.pesel"
+                        class="app-employee-details-primary-data__item details__item"></app-details-item>
+      <app-details-item [label]="'USERS.FORM.FIELDS.SEX' | transloco"
+                        [value]="'USERS.SEX.' + data?.sex | transloco"
+                        class="app-employee-details-primary-data__item details__item"></app-details-item>
+      <app-details-item [label]="'USERS.FORM.FIELDS.PHONE_NUMBER' | transloco"
+                        [value]="data?.phoneNumber"
+                        class="app-employee-details-primary-data__item details__item"></app-details-item>
+      <app-details-item [label]="'USERS.FORM.FIELDS.EMAIL_ADDRESS' | transloco"
+                        [value]="data?.emailAddress"
+                        class="app-employee-details-primary-data__item details__item"></app-details-item>
+      <app-details-item *ngIf="data.hireDate"
+                        [label]="'USERS.FORM.FIELDS.HIRE_DATE' | transloco"
+                        [value]="data?.hireDate"
+                        class="app-employee-details-primary-data__item details__item"></app-details-item>
+      <app-details-item *ngIf="data.quitDate"
+                        [label]="'USERS.FORM.FIELDS.QUIT_DATE' | transloco"
+                        [value]="data?.quitDate"
+                        class="app-employee-details-primary-data__item details__item"></app-details-item>
+      <app-details-item *ngIf="data.pwzNumber"
+                        [label]="'USERS.FORM.FIELDS.PWZ_NUMBER' | transloco"
+                        [value]="data?.pwzNumber"
+                        class="app-employee-details-primary-data__item details__item"></app-details-item>
+      <app-details-item *ngIf="data.salary"
+                        [label]="'USERS.FORM.FIELDS.SALARY' | transloco"
+                        [value]="data?.salary"
+                        class="app-employee-details-primary-data__item details__item"></app-details-item>
+    </div>
+
+    <app-chip-list *ngIf="data.specialties && !!data.specialties?.length"
+                   [data]="data?.specialties"
+                   [canRemove]="false"
+                   [canAdd]="false"
+                   [prefix]="'USERS.FORM.FIELDS.SPECIALTIES.PREFIX' | transloco"
+                   additionalField="obtainingDate"
+                   [notFound]="'USERS.FORM.FIELDS.SPECIALTIES.NOT_FOUND' | transloco"
+                   [header]="'USERS.FORM.FIELDS.SPECIALTIES.HEADER' | transloco"
+                   [dictionaries$]="ofObservable(data?.specialties)"></app-chip-list>
+
+    <app-chip-list [data]="data?.roles"
+                   [canRemove]="false"
+                   [canAdd]="false"
+                   [prefixLabel]="'COMMON.ROLE'"
+                   [notFound]="'USERS.FORM.FIELDS.ROLES.NOT_FOUND' | transloco"
+                   [header]="'USERS.FORM.FIELDS.ROLES.HEADER' | transloco"
+                   [dictionaries$]="ofObservable(data?.roles)"></app-chip-list>
+  </div>
+</div>

@@ -1,4 +1,4 @@
 <div class="app-business-card d-flex flex-column justify-content-between">
   <span class="app-business-card__personal">{{ data.firstName }} {{ data.lastName }}</span>
-  <span class="app-business-card__role">{{ data.role }}</span>
+  <span class="app-business-card__role">{{ 'COMMON.ROLE.' + data.role.toUpperCase() | transloco }}</span>
 </div>

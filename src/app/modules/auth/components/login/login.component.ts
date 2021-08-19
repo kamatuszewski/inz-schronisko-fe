@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { CoreService } from '../../../core/core.service';
 import { AuthService } from '../../auth.service';
 import { ILoginRequest } from '../../interfaces/login-request.interface';
 
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private coreService: CoreService
   ) {
   }
 
@@ -35,10 +37,22 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   public submit(): void {
-    const payload: ILoginRequest = this.formGroup.value;
-    this.authService.login(payload)
-      .pipe(takeUntil(this.onDestroy$))
-      .subscribe((cos) => console.log(cos))
+    if (this.formGroup.valid) {
+      const payload: ILoginRequest = this.formGroup.value;
+      this.authService.login(payload)
+        .pipe(takeUntil(this.onDestroy$))
+        .subscribe(
+          this.success,
+          this.failed
+        )
+    }
+  }
+
+  private failed = (error) => {
+    if (error.status === 401) {
+      this.coreService.showErrorMessage('AUTH.ERRORS.' + error.error);
+    }
+    this.coreService.showErrorMessage('AUTH.MESSAGES.ERROR');
   }
 
   private initForm(): void {
@@ -46,5 +60,9 @@ export class LoginComponent implements OnInit, OnDestroy {
       emailAddress: this.formBuilder.control(null, [Validators.required, Validators.minLength(3)]),
       password: this.formBuilder.control(null, [Validators.required])
     })
+  }
+
+  private success = () => {
+    this.coreService.showSuccessMessage('AUTH.MESSAGES.SUCCESS');
   }
 }

@@ -14,6 +14,7 @@
         <mat-label>{{ 'USERS.FORM.FIELDS.FIRST_NAME' | transloco }}</mat-label>
         <input matInput
                type="text"
+               name="firstName"
                formControlName="firstName">
         <mat-error>{{ formGroup.get('firstName').errors | validation }}</mat-error>
       </mat-form-field>
@@ -22,6 +23,7 @@
         <mat-label>{{ 'USERS.FORM.FIELDS.LAST_NAME' | transloco }}</mat-label>
         <input matInput
                type="text"
+               name="lastName"
                formControlName="lastName">
         <mat-error>{{ formGroup.get('lastName').errors | validation }}</mat-error>
       </mat-form-field>
@@ -30,6 +32,7 @@
         <mat-label>{{ 'USERS.FORM.FIELDS.EMAIL_ADDRESS' | transloco }}</mat-label>
         <input matInput
                type="text"
+               name="emailAddress"
                [readonly]="!isCreateMode"
                [disabled]="!isCreateMode"
                formControlName="emailAddress">
@@ -40,6 +43,7 @@
         <mat-label>{{ 'USERS.FORM.FIELDS.PHONE_NUMBER' | transloco }}</mat-label>
         <input matInput
                type="text"
+               name="phoneNumber"
                formControlName="phoneNumber">
         <mat-error>{{ formGroup.get('phoneNumber').errors | validation: 'USERS.FORM.ERRORS' }}</mat-error>
       </mat-form-field>
@@ -48,6 +52,7 @@
         <mat-label>{{ 'USERS.FORM.FIELDS.PESEL' | transloco }}</mat-label>
         <input matInput
                type="text"
+               name="pesel"
                formControlName="pesel">
         <mat-error>{{ formGroup.get('pesel').errors | validation: 'USERS.FORM.ERRORS' }}</mat-error>
       </mat-form-field>
@@ -81,6 +86,7 @@
         <mat-label>{{ 'USERS.FORM.FIELDS.PASSWORD' | transloco }}</mat-label>
         <input matInput
                type="password"
+               name="password"
                formControlName="password">
         <mat-error>{{ formGroup.get('password').errors | validation: 'USERS.FORM.ERRORS.PASSWORD' }}</mat-error>
       </mat-form-field>
@@ -100,6 +106,7 @@
         <mat-label>{{ 'USERS.FORM.FIELDS.ADDRESS' | transloco }}</mat-label>
         <input matInput
                type="text"
+               name="address"
                formControlName="address">
         <mat-error>{{ formGroup.get('address').errors | validation }}</mat-error>
       </mat-form-field>
@@ -109,6 +116,7 @@
         <mat-label>{{ 'USERS.FORM.FIELDS.HIRE_DATE' | transloco }}</mat-label>
         <input matInput
                type="text"
+               name="hireDate"
                [disabled]="!isCreateMode"
                [matDatepicker]="hireDateDatePicker"
                readonly
@@ -126,6 +134,7 @@
                [disabled]="!isCreateMode"
                [matDatepicker]="joiningDatePicker"
                readonly
+               name="joiningDate"
                formControlName="joiningDate">
         <mat-datepicker #joiningDatePicker></mat-datepicker>
         <mat-datepicker-toggle matSuffix [for]="joiningDatePicker"></mat-datepicker-toggle>
@@ -139,6 +148,7 @@
                type="text"
                [readonly]="!isCreateMode"
                [disabled]="!isCreateMode"
+               name="attendance"
                formControlName="attendance">
         <mat-error>{{ formGroup.get('attendance').errors | validation }}</mat-error>
       </mat-form-field>
@@ -150,6 +160,7 @@
                type="text"
                [readonly]="!isCreateMode"
                [disabled]="!isCreateMode"
+               name="salary"
                formControlName="salary">
         <mat-error>{{ formGroup.get('salary').errors | validation }}</mat-error>
       </mat-form-field>
@@ -161,6 +172,7 @@
                type="text"
                [disabled]="!isCreateMode"
                [matDatepicker]="quitDatePicker"
+               name="quitDate"
                readonly
                formControlName="quitDate">
         <mat-datepicker #quitDatePicker></mat-datepicker>
