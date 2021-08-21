@@ -250,7 +250,10 @@
         "HEADER": "Stwórz użytkownika",
         "MESSAGES": {
           "ERROR": "Nie udało się dodać użytkownika",
-          "SUCCESS": "Udało się dodać użytkownika"
+          "SUCCESS": "Udało się dodać użytkownika",
+          "ERRORS": {
+            "USER_ROLE_EXISTS": "Ten użytkownik posiada już tą rolę"
+          }
         }
       },
       "EDIT": {

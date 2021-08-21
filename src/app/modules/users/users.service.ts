@@ -12,9 +12,9 @@ export class UsersService {
   private baseUrl = environment.apiUrl.persons;
   constructor(private http: HttpClient) { }
 
-  public addRoleToUser(userId: number, payload: IUserRoleForm): Observable<unknown> {
+  public addRoleToUser(userId: number, payload: IUserRoleForm): Observable<string> {
     const url = `${this.baseUrl}/${userId}/role`;
-    return this.http.post(url, payload);
+    return this.http.post<string>(url, payload);
   }
 
   public createUser(payload: IUserForm): Observable<unknown> {

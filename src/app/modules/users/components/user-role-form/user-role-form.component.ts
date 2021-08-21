@@ -80,8 +80,12 @@ export class UserRoleFormComponent implements OnInit, OnDestroy, IFormActions {
       });
   }
 
-  private failedSave = (): void => {
+  private failedSave = (error): void => {
+    if (error.status === 404 && !!error?.error && error.error === 'USER_ROLE_EXISTS') {
+      this.coreService.showErrorMessage('USERS.FORM.CREATE.MESSAGES.ERRORS.' + error.error);
+    } else {
       this.coreService.showErrorMessage('USERS.FORM.CREATE.MESSAGES.ERROR');
+    }
   }
 
   private initDictionaries(): void {
