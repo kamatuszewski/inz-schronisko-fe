@@ -5,8 +5,10 @@
     "ng": "ng",
     "start": "ng serve",
     "dev": "ng serve --configuration=dev",
-    "start:dev": "npm run dev ",
-    "build": "ng build",
+    "prod": "ng serve --configuration=production",
+    "start:dev": "npm run dev",
+    "start:prod": "npm run prod",
+    "build": "ng build --configuration=production",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

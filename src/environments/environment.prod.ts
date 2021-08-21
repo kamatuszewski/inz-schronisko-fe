@@ -3,12 +3,12 @@ import { IEnvironment } from './environment.interface';
 export const environment: IEnvironment = {
   production: true,
   apiUrl: {
-    persons: 'http://localhost:8080/api/auth',
-    animals: 'http://localhost:8080/api/animals',
-    dictionaries: 'http://localhost:8080/api/dictionaries',
-    adoptions: 'http://localhost:8080/api/adoptions',
-    vetvisits: 'http://localhost:8080/api/vetvisits',
-    treatments: 'http://localhost:8080/api/Treatments',
-    medicines: 'http://localhost:8080/api/Medicines',
+    persons: 'https://shelter-api-app.azurewebsites.net/api/Persons',
+    animals: 'https://shelter-api-app.azurewebsites.net/api/Animals',
+    dictionaries: 'https://shelter-api-app.azurewebsites.net/api/Dictionaries',
+    adoptions: 'https://shelter-api-app.azurewebsites.net/api/Adoptions',
+    vetvisits: 'https://shelter-api-app.azurewebsites.net/api/VetVisits',
+    treatments: 'https://shelter-api-app.azurewebsites.net/api/Treatments',
+    medicines: 'https://shelter-api-app.azurewebsites.net/api/Medicines',
   }
 };
