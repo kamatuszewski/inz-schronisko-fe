@@ -376,6 +376,9 @@
     }
   },
   "VOLUNTEER": {
+    "DETAILS": {
+      "HEADER": "Szczegóły wolontariusza"
+    },
     "LIST": {
       "HEADER": "Lista wolontariuszy",
       "COLUMNS": {

@@ -85,3 +85,15 @@ export interface IEmployee {
   sex: ESex;
   specialties: IVetSpecialty[];
 }
+
+export interface IVolunteer {
+  attendance: string
+  emailAddress: string;
+  firstName: string;
+  id: number;
+  joiningDate: string;
+  lastName: string;
+  pesel: string;
+  phoneNumber: string;
+  sex: ESex;
+}
