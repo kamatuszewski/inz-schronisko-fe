@@ -78,7 +78,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'edit/:id/add-role',
+    path: ':id/edit/add-role',
     component: UserRoleFormComponent,
     canActivate: [ForOnlyLoggedInGuard, OnlyAllowedRoleGuard],
     data: {

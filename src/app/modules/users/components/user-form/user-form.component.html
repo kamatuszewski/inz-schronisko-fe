@@ -189,8 +189,9 @@
                    [notFound]="'USERS.FORM.FIELDS.ROLES.NOT_FOUND' | transloco"
                    [(data)]="selectedRoles"
                    [canAdd]="true"
-                   [canRemove]="false"
+                   [canRemove]="!hasOnlyEmployeeRole && hasAccessToRemoveRole"
                    [addFnCallback]="redirectToAddRole"
+                   (remove)="removeRole($event)"
                    [prefixLabel]="'COMMON.ROLE'"
                    translocoPrefix="USERS.FORM.FIELDS.ROLES.MODAL"
                    [dictionaries$]="allRole$"></app-chip-list>

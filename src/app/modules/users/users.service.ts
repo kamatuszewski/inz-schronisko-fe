@@ -1,9 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { ISimplePayload } from '../animals/interfaces/animals.interface';
-import { IEmployee, IUpdateUserForm, IUserForm, IUserRoleForm, IVolunteer } from './interfaces/user.interface';
+import { IEmployee, IUpdateUserForm, IUserForm, IUserRemoveRoleForm, IUserRoleForm, IVolunteer } from './interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,6 @@ export class UsersService {
   public addRoleToUser(userId: number, payload: IUserRoleForm): Observable<unknown> {
     const url = `${this.baseUrl}/${userId}/role`;
     return this.http.post(url, payload);
-
   }
 
   public createUser(payload: IUserForm): Observable<unknown> {
@@ -36,6 +35,14 @@ export class UsersService {
   public getVolunteer(payload: ISimplePayload): Observable<IVolunteer> {
     const url = `${this.baseUrl}/Volunteers/${payload.id}`;
     return this.http.get<IVolunteer>(url);
+  }
+
+  public removeRoleFromUser(payload: IUserRemoveRoleForm, userId: number): Observable<any> {
+    const url = `${this.baseUrl}/${userId}/role`;
+    const params = new HttpParams().set('roleId', `${payload.roleId}`).append('quitDate', payload.quitDate);
+    // params
+    console.log(params);
+    return this.http.delete(url, {params});
   }
 
   public updateUser(payload: IUpdateUserForm): Observable<unknown> {

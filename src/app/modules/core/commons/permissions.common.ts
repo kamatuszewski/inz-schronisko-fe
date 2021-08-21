@@ -23,6 +23,7 @@ export enum EOperation {
   ADD_USER,
   EDIT_USER,
   ADD_ROLE_TO_USER,
+  REMOVE_ROLE_FROM_USER,
 
   ADD_SPECIALIST,
   ASSIGN_SPECIALIST,
@@ -61,6 +62,7 @@ export const permissionsMap = new Map<EOperation, ERole[]>([
   [EOperation.ADD_USER, [ERole.EMPLOYEE, ERole.ADMIN]],
   [EOperation.EDIT_USER, [ERole.ADMIN]],
   [EOperation.ADD_ROLE_TO_USER, [ERole.ADMIN]],
+  [EOperation.REMOVE_ROLE_FROM_USER, [ERole.ADMIN]],
 
   [EOperation.ADD_SPECIALIST, [ERole.ADMIN]],
   [EOperation.ASSIGN_SPECIALIST, [ERole.ADMIN]],

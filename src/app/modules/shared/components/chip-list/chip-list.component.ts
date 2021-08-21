@@ -24,6 +24,7 @@ export class ChipListComponent<T> implements OnInit, OnDestroy {
   @Input() public notFound: string;
   @Input() public prefix?: string;
   @Input() public prefixLabel?: string;
+  @Output() public remove = new EventEmitter<T>();
   @Input() public translocoPrefix?: string;
 
   private onDestroy$ = new Subject<void>();
@@ -63,7 +64,8 @@ export class ChipListComponent<T> implements OnInit, OnDestroy {
   public ngOnInit(): void {
   }
 
-  public remove(id: number): void {
+  public removeItem(id: number): void {
+    this.remove.emit(this.data.filter((item: any) => item.id === id)[0]);
     const newData = this.data.filter((item: any) => item.id !== id);
     this.dataChange.emit([...newData]);
   }

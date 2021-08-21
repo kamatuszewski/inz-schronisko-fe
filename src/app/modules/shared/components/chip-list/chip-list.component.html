@@ -4,7 +4,7 @@
     <ng-container *ngIf="!!data?.length; else notFoundRef">
       <app-chip *ngFor="let item of data"
                 [data]="item"
-                (remove)="remove($event)"
+                (remove)="removeItem($event)"
                 [canRemove]="canRemove"
                 [prefixLabel]="prefixLabel"
                 [additionalField]="additionalField"

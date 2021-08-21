@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { combineLatest, Observable, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import * as moment from 'moment';
+import { combineLatest, forkJoin, of, EMPTY, Observable, Subject } from 'rxjs';
+import { switchMap, takeUntil } from 'rxjs/operators';
 import { AuthService } from '../../../auth/auth.service';
 import { permissionsMap, EOperation } from '../../../core/commons/permissions.common';
 import { CoreService } from '../../../core/core.service';
@@ -47,6 +48,7 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
   public allSpecialty$: Observable<IGenericDictionary[]>;
   public formGroup: FormGroup;
   public hasAccessToAssignSpecialist = false;
+  public hasAccessToRemoveRole = false;
   public hasAccessToRemoveSpecialist = false;
   public hasOnlyEmployeeRole = false;
   public selectedRoles: IGenericDictionary[] = [];
@@ -54,6 +56,7 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
   public vetSpecialties: IVetSpecialty[] = [];
 
   private onDestroy$ = new Subject<void>();
+  private removeRoles: IGenericDictionary[] = [];
   private selectedRole: ERole;
 
   constructor(private formBuilder: FormBuilder,
@@ -87,6 +90,12 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
     this.router.navigate(['add-role'], {
       relativeTo: this.activatedRoute
     }).then();
+  }
+
+  public removeRole(role: IGenericDictionary): void {
+    if (this.hasAccessToRemoveRole) {
+      this.removeRoles.push(role);
+    }
   }
 
   public save(): void {
@@ -152,6 +161,7 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
   private loadAccessToViews(): void {
     this.hasAccessToAssignSpecialist = this.authService.hasSomeAllowedRole(...permissionsMap.get(EOperation.ASSIGN_SPECIALIST));
     this.hasAccessToRemoveSpecialist = this.authService.hasSomeAllowedRole(...permissionsMap.get(EOperation.REMOVE_SPECIALIST));
+    this.hasAccessToRemoveRole = this.authService.hasSomeAllowedRole(...permissionsMap.get(EOperation.REMOVE_ROLE_FROM_USER));
     const roles = this.authService.getProfile().roles;
     if (roles.length === 1 && roles[0] === ERole.EMPLOYEE) {
       this.hasOnlyEmployeeRole = true;
@@ -200,6 +210,19 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
     }
   }
 
+  private sendRemoveRole(): Array<Observable<any>> | Observable<null> {
+    if (this.hasAccessToRemoveRole && !!this.removeRoles?.length) {
+      return this.removeRoles.map(role => {
+        const obj = {
+          roleId: role.id,
+          quitDate: role.name === ERole.EMPLOYEE || role.name === ERole.VOLUNTEER ? moment().toISOString() : null
+        }
+        return this.userService.removeRoleFromUser(obj, this.userId);
+      });
+    }
+    return of(null);
+  }
+
   private subscribeRole(): void {
     combineLatest(this.formGroup.get('roleId').valueChanges, this.allRole$)
       .pipe(takeUntil(this.onDestroy$))
@@ -227,7 +250,9 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
 
   private updateUser(): Observable<unknown> {
     const formValue = this.formGroup.value;
-    return this.userService.updateUser({id: this.userId, ...formValue});
+    return this.userService.updateUser({id: this.userId, ...formValue}).pipe(
+      switchMap(() => forkJoin(this.sendRemoveRole()))
+    );
   }
 
   private updateValueAndValidator(): void {

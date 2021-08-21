@@ -97,3 +97,5 @@ export interface IVolunteer {
   phoneNumber: string;
   sex: ESex;
 }
+
+export interface IUserRemoveRoleForm { quitDate: string | null; roleId: number };
