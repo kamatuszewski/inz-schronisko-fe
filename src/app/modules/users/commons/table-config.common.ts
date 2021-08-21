@@ -32,5 +32,25 @@ export const employeeTableConfig = [
   },
   {
     code: 'specialties'
+  },
+  {
+    code: 'isVet',
+    translated: true
+  }
+] as ITableColumn[];
+
+export const volunteerTableConfig = [
+  {
+    code: 'id'
+  },
+  {
+    code: 'firstName'
+  },
+  {
+    code: 'lastName'
+  },
+  {
+    code: 'sex',
+    translated: true
   }
 ] as ITableColumn[];

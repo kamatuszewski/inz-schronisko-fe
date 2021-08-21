@@ -219,10 +219,10 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
   private successSave = (): void => {
     if (this.isCreateMode) {
       this.coreService.showSuccessMessage('USERS.FORM.ADD_ROLE.MESSAGES.SUCCESS');
-      this.redirectToBackPage();
     } else {
       this.coreService.showSuccessMessage('USERS.FORM.ADD_ROLE.MESSAGES.SUCCESS');
     }
+    this.redirectToBackPage();
   }
 
   private updateUser(): Observable<unknown> {

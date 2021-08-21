@@ -28,13 +28,12 @@
         <mat-error>{{ formGroup.get('lastName').errors | validation }}</mat-error>
       </mat-form-field>
 
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline"
+                      *ngIf="isCreateMode">
         <mat-label>{{ 'USERS.FORM.FIELDS.EMAIL_ADDRESS' | transloco }}</mat-label>
         <input matInput
                type="text"
                name="emailAddress"
-               [readonly]="!isCreateMode"
-               [disabled]="!isCreateMode"
                formControlName="emailAddress">
         <mat-error>{{ formGroup.get('emailAddress').errors | validation: 'USERS.FORM.ERRORS'  }}</mat-error>
       </mat-form-field>
@@ -82,7 +81,7 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline"
-                      *ngIf="!hasOnlyEmployeeRole">
+                      *ngIf="!hasOnlyEmployeeRole && isCreateMode">
         <mat-label>{{ 'USERS.FORM.FIELDS.PASSWORD' | transloco }}</mat-label>
         <input matInput
                type="password"
@@ -92,12 +91,10 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline"
-                      *ngIf="anVetWasSelected">
+                      *ngIf="anVetWasSelected && isCreateMode">
         <mat-label>{{ 'USERS.FORM.FIELDS.PWZ_NUMBER' | transloco }}</mat-label>
         <input matInput
                type="text"
-               [readonly]="!isCreateMode"
-               [disabled]="!isCreateMode"
                formControlName="PWZNumber">
         <mat-error>{{ formGroup.get('PWZNumber').errors | validation }}</mat-error>
       </mat-form-field>
@@ -112,7 +109,7 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline"
-                      *ngIf="anEmployeeWasSelected || anVetWasSelected">
+                      *ngIf="(anEmployeeWasSelected || anVetWasSelected) && isCreateMode">
         <mat-label>{{ 'USERS.FORM.FIELDS.HIRE_DATE' | transloco }}</mat-label>
         <input matInput
                type="text"
@@ -127,11 +124,10 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline"
-                      *ngIf="anVolunteerWasSelected">
+                      *ngIf="anVolunteerWasSelected && isCreateMode">
         <mat-label>{{ 'USERS.FORM.FIELDS.JOINING_DATE' | transloco }}</mat-label>
         <input matInput
                type="text"
-               [disabled]="!isCreateMode"
                [matDatepicker]="joiningDatePicker"
                readonly
                name="joiningDate"
@@ -142,35 +138,30 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline"
-                      *ngIf="anVolunteerWasSelected">
+                      *ngIf="anVolunteerWasSelected && isCreateMode">
         <mat-label>{{ 'USERS.FORM.FIELDS.ATTENDANCE' | transloco }}</mat-label>
         <input matInput
                type="text"
-               [readonly]="!isCreateMode"
-               [disabled]="!isCreateMode"
                name="attendance"
                formControlName="attendance">
         <mat-error>{{ formGroup.get('attendance').errors | validation }}</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline"
-                      *ngIf="anEmployeeWasSelected || anVetWasSelected">
+                      *ngIf="(anEmployeeWasSelected || anVetWasSelected) && isCreateMode">
         <mat-label>{{ 'USERS.FORM.FIELDS.SALARY' | transloco }}</mat-label>
         <input matInput
                type="text"
-               [readonly]="!isCreateMode"
-               [disabled]="!isCreateMode"
                name="salary"
                formControlName="salary">
         <mat-error>{{ formGroup.get('salary').errors | validation }}</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline"
-                      *ngIf="anEmployeeWasSelected || anVetWasSelected">
+                      *ngIf="(anEmployeeWasSelected || anVetWasSelected) && isCreateMode">
         <mat-label>{{ 'USERS.FORM.FIELDS.QUIT_DATE' | transloco }}</mat-label>
         <input matInput
                type="text"
-               [disabled]="!isCreateMode"
                [matDatepicker]="quitDatePicker"
                name="quitDate"
                readonly

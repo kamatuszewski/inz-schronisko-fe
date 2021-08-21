@@ -9,6 +9,8 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UserRoleFormComponent } from './components/user-role-form/user-role-form.component';
+import { VolunteerDetailsComponent } from './components/volunteer-details/volunteer-details.component';
+import { VolunteerListComponent } from './components/volunteer-list/volunteer-list.component';
 
 const routes: Routes = [
   {
@@ -36,6 +38,14 @@ const routes: Routes = [
     }
   },
   {
+    path: 'volunteers',
+    component: VolunteerListComponent,
+    canActivate: [ForOnlyLoggedInGuard, OnlyAllowedRoleGuard],
+    data: {
+      operation: EOperation.SHOW_VOLUNTEER_LIST
+    }
+  },
+  {
     path: ':id',
     component: UserDetailsComponent,
     canActivate: [ForOnlyLoggedInGuard, OnlyAllowedRoleGuard],
@@ -57,6 +67,14 @@ const routes: Routes = [
     canActivate: [ForOnlyLoggedInGuard, OnlyAllowedRoleGuard],
     data: {
       operation: EOperation.SHOW_EMPLOYEE_DETAILS
+    }
+  },
+  {
+    path: 'volunteers/:id',
+    component: VolunteerDetailsComponent,
+    canActivate: [ForOnlyLoggedInGuard, OnlyAllowedRoleGuard],
+    data: {
+      operation: EOperation.SHOW_DETAILS_VOLUNTEER
     }
   },
   {

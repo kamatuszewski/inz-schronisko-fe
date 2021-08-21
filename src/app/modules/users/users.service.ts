@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { ISimplePayload } from '../animals/interfaces/animals.interface';
-import { IEmployee, IUpdateUserForm, IUserForm, IUserRoleForm } from './interfaces/user.interface';
+import { IEmployee, IUpdateUserForm, IUserForm, IUserRoleForm, IVolunteer } from './interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +31,11 @@ export class UsersService {
   public getUser(payload: ISimplePayload): Observable<IUserForm> {
     const url = `${this.baseUrl}/${payload.id}`;
     return this.http.get<IUserForm>(url);
+  }
+
+  public getVolunteer(payload: ISimplePayload): Observable<IVolunteer> {
+    const url = `${this.baseUrl}/Volunteers/${payload.id}`;
+    return this.http.get<IVolunteer>(url);
   }
 
   public updateUser(payload: IUpdateUserForm): Observable<unknown> {
