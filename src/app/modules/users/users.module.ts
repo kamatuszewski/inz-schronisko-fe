@@ -9,6 +9,7 @@ import { UserFormComponent } from './components/user-form/user-form.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UserRoleFormComponent } from './components/user-role-form/user-role-form.component';
 import { UsersRoutingModule } from './users-routing.module';
+import { VolunteerListComponent } from './components/volunteer-list/volunteer-list.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { UsersRoutingModule } from './users-routing.module';
     UserFormComponent,
     UserRoleFormComponent,
     UserDetailsComponent,
-    EmployeeDetailsComponent
+    EmployeeDetailsComponent,
+    VolunteerListComponent
   ],
   imports: [
     CommonModule,

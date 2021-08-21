@@ -40,6 +40,12 @@ export const tabConfig: ITabConfig[] = [
     iconCode: 'groups'
   },
   {
+    label: 'TABS.VOLUNTEER_LIST',
+    redirectTo: ['users/volunteers'],
+    allowedRoles: permissionsMap.get(EOperation.SHOW_VOLUNTEER_LIST),
+    iconCode: 'groups'
+  },
+  {
     label: 'TABS.USER_LIST',
     redirectTo: ['users'],
     allowedRoles: permissionsMap.get(EOperation.SHOW_USER_LIST),

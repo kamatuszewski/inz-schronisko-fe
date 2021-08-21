@@ -12,7 +12,8 @@ export class UserMapperService {
           sex: user.sex,
           specialties: user.specialties.length === 1 ?
             user.specialties[0]?.name :
-            UserMapperService.checkIfNull(user.specialties[0]?.name, '(...)')
+            UserMapperService.checkIfNull(user.specialties[0]?.name, '(...)'),
+          isVet: user.isVet
         }
       ))
     }

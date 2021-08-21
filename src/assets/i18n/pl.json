@@ -48,7 +48,8 @@
     "EMPLOYEE_LIST": "Lista pracowników",
     "CREATE_ADOPTION": "Dodaj adopcję",
     "CREATE_VET_VISIT": "Dodaj leczenie",
-    "CREATE_USER": "Dodaj użytkownika"
+    "CREATE_USER": "Dodaj użytkownika",
+    "VOLUNTEER_LIST": "Lista wolontariuszy"
   },
   "ANIMALS": {
     "SPECIES": {
@@ -127,7 +128,6 @@
           "SUCCESS": "Udało się dodać wizytę"
         }
       },
-
       "VET_VISIT_EDIT": {
         "HEADER": "Formularz edycji wizyty",
         "MESSAGES": {
@@ -322,9 +322,14 @@
         "emailAddress": "E-mail",
         "sex": "Płeć",
         "specialties": "Specjalizacje",
+        "isVet": "Jest weterynarzem?",
         "COL_SEX": {
           "F": "Kobieta",
           "M": "Mężczyzna"
+        },
+        "COL_ISVET": {
+          "true": "Tak",
+          "false": "Nie"
         },
         "roles": "Role"
       }
@@ -367,6 +372,21 @@
       "MESSAGES": {
         "ERROR": "Nie udało się usunąć wizyty",
         "SUCCESS": "Udało się usunąć wizytę"
+      }
+    }
+  },
+  "VOLUNTEER": {
+    "LIST": {
+      "HEADER": "Lista wolontariuszy",
+      "COLUMNS": {
+        "id": "Id",
+        "firstName": "Imię",
+        "lastName": "Nazwisko",
+        "sex": "Płeć",
+        "COL_SEX": {
+          "F": "Kobieta",
+          "M": "Mężczyzna"
+        }
       }
     }
   }

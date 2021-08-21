@@ -5,6 +5,7 @@ export interface IGeneralUser {
   emailAddress: string;
   firstName: string;
   id: number;
+  isVet?: boolean;
   lastName: string;
   pesel: string;
   phoneNumber: string;
@@ -17,6 +18,7 @@ export interface IGeneralUserListItem {
   emailAddress: string;
   firstName: string;
   id: number;
+  isVet?: boolean;
   lastName: string;
   sex: ESex;
   specialties: string;
