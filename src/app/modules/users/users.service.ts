@@ -39,9 +39,12 @@ export class UsersService {
 
   public removeRoleFromUser(payload: IUserRemoveRoleForm, userId: number): Observable<any> {
     const url = `${this.baseUrl}/${userId}/role`;
-    const params = new HttpParams().set('roleId', `${payload.roleId}`).append('quitDate', payload.quitDate);
-    // params
-    console.log(params);
+    let params;
+    if (payload.quitDate) {
+      params = new HttpParams().set('roleId', `${payload.roleId}`).append('quitDate', payload.quitDate);
+    } else {
+      params = new HttpParams().set('roleId', `${payload.roleId}`);
+    }
     return this.http.delete(url, {params});
   }
 

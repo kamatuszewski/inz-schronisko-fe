@@ -147,7 +147,7 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
       hireDate: this.formBuilder.control(null),
       joiningDate: this.formBuilder.control(null),
       lastName: this.formBuilder.control(null, [Validators.required]),
-      password: this.formBuilder.control(null, [Validators.minLength(5)]),
+      password: this.formBuilder.control(null, [Validators.minLength(6)]),
       pesel: this.formBuilder.control(null, [Validators.required, FormUtilsService.peselValidator()]),
       phoneNumber: this.formBuilder.control(null, [Validators.required, FormUtilsService.phoneValidator()]),
       PWZNumber: this.formBuilder.control(null),
@@ -215,7 +215,7 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
       return this.removeRoles.map(role => {
         const obj = {
           roleId: role.id,
-          quitDate: role.name === ERole.EMPLOYEE || role.name === ERole.VOLUNTEER ? moment().toISOString() : null
+          quitDate: role.name === ERole.EMPLOYEE || role.name === ERole.VOLUNTEER ? moment().toISOString() : undefined
         }
         return this.userService.removeRoleFromUser(obj, this.userId);
       });
