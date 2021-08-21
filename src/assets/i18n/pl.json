@@ -303,8 +303,10 @@
       },
       "ERRORS": {
         "PASSWORD": {
-          "minlength": "Hasło jest zbyt krótkie minimum 6 znaków"
+          "minlength": "Hasło jest zbyt krótkie minimum 6 znaków",
+          "required": "Pole nie może być puste"
         },
+        "required": "Pole nie może być puste",
         "email": "Niepoprawny adres e-mail",
         "pesel": "Niepoprawny pesel",
         "phone": "Niepoprawny numer telefonu"
