@@ -21,16 +21,17 @@ jobs:
       with:
         node-version: '14.x'
 
-    - name: npm install, build
-      run: |
-        npm install
-        npm run build --if-present
+    - name: npm install
+      run: npm install
+
+    - name: npm build
+      run:  npm run build
 
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v2
       with:
         name: node-app
-        path: dist
+        path: /dist
 
   deploy:
     runs-on: ubuntu-latest
