@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
-import { combineLatest, forkJoin, of, EMPTY, Observable, Subject } from 'rxjs';
+import { combineLatest, forkJoin, of, Observable, Subject } from 'rxjs';
 import { switchMap, takeUntil } from 'rxjs/operators';
 import { AuthService } from '../../../auth/auth.service';
 import { permissionsMap, EOperation } from '../../../core/commons/permissions.common';
@@ -127,7 +127,11 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
 
   private failedSave = (): void => {
     if (this.isCreateMode) {
-      this.coreService.showErrorMessage('USERS.FORM.CREATE.MESSAGES.ERROR');
+      if (this.hasOnlyEmployeeRole) {
+        this.coreService.showErrorMessage('USERS.FORM.CREATE.MESSAGES.ERROR_ADOPTER');
+      } else {
+        this.coreService.showErrorMessage('USERS.FORM.CREATE.MESSAGES.ERROR');
+      }
     } else {
       this.coreService.showErrorMessage('USERS.FORM.EDIT.MESSAGES.ERROR');
     }
@@ -181,9 +185,13 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
   }
 
   private redirectToBackPage(): void {
-    this.router.navigate(['..'], {
-      relativeTo: this.activatedRoute
-    }).then();
+    if (this.authService.hasSomeAllowedRole(...permissionsMap.get(EOperation.SHOW_DETAILS_USER))) {
+      this.router.navigate(['..'], {
+        relativeTo: this.activatedRoute
+      }).then();
+    } else {
+      this.router.navigate(['animals']).then();
+    }
   }
 
   private resetOtherAddedFields(role?: ERole): void {
@@ -241,9 +249,13 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
 
   private successSave = (): void => {
     if (this.isCreateMode) {
-      this.coreService.showSuccessMessage('USERS.FORM.ADD_ROLE.MESSAGES.SUCCESS');
+      if (this.hasOnlyEmployeeRole) {
+        this.coreService.showSuccessMessage('USERS.FORM.CREATE.MESSAGES.SUCCESS_ADOPTER');
+      } else {
+        this.coreService.showSuccessMessage('USERS.FORM.CREATE.MESSAGES.SUCCESS');
+      }
     } else {
-      this.coreService.showSuccessMessage('USERS.FORM.ADD_ROLE.MESSAGES.SUCCESS');
+      this.coreService.showSuccessMessage('USERS.FORM.EDIT.MESSAGES.SUCCESS');
     }
     this.redirectToBackPage();
   }

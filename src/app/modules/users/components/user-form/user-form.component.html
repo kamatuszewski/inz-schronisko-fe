@@ -1,7 +1,14 @@
 <div class="app-user-form app-theme">
   <div class="app-theme__header">
     <h3 class="app-content-header"
-        *ngIf="isCreateMode">{{ 'USERS.FORM.CREATE.HEADER' | transloco }}</h3>
+        *ngIf="isCreateMode">
+      <ng-container *ngIf="!hasOnlyEmployeeRole; else adopter">
+        {{ 'USERS.FORM.CREATE.HEADER' | transloco }}
+      </ng-container>
+      <ng-template #adopter>
+        {{ 'USERS.FORM.CREATE.HEADER_ADOPTER' | transloco }}
+      </ng-template>
+    </h3>
     <h3 class="app-content-header"
         *ngIf="!isCreateMode">{{ 'USERS.FORM.EDIT.HEADER' | transloco }}</h3>
   </div>

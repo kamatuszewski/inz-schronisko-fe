@@ -26,7 +26,7 @@ const routes: Routes = [
     component: UserFormComponent,
     canActivate: [ForOnlyLoggedInGuard, OnlyAllowedRoleGuard],
     data: {
-      operation: EOperation.ADD_USER
+      operation: EOperation.ADD_USER_AND_ADOPTER
     }
   },
   {

@@ -29,6 +29,7 @@
 
       <mat-form-field appearance="outline"
                       *ngIf="data.additionalType !== 'date'">
+        <mat-label>{{ translocoPrefix + '.' + data.additionalField.toUpperCase() | transloco }}</mat-label>
         <input matInput
                [type]="data.additionalType"
                [min]="data.additionalType === 'number' ? 0 : undefined"

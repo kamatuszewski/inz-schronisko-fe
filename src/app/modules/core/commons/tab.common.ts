@@ -56,5 +56,11 @@ export const tabConfig: ITabConfig[] = [
     redirectTo: ['users', 'create'],
     allowedRoles: permissionsMap.get(EOperation.ADD_USER),
     iconCode: 'person_add_alt'
+  },
+  {
+    label: 'TABS.CREATE_ADOPTER',
+    redirectTo: ['users', 'create'],
+    allowedRoles: permissionsMap.get(EOperation.ADD_ADOPTER),
+    iconCode: 'person_add_alt'
   }
 ]

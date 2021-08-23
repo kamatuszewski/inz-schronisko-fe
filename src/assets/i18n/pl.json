@@ -49,6 +49,7 @@
     "CREATE_ADOPTION": "Dodaj adopcję",
     "CREATE_VET_VISIT": "Dodaj leczenie",
     "CREATE_USER": "Dodaj użytkownika",
+    "CREATE_ADOPTER": "Dodaj adoptującego",
     "VOLUNTEER_LIST": "Lista wolontariuszy"
   },
   "ANIMALS": {
@@ -248,16 +249,23 @@
     "FORM": {
       "CREATE": {
         "HEADER": "Stwórz użytkownika",
+        "HEADER_ADOPTER": "Stwórz adoptującego",
         "MESSAGES": {
           "ERROR": "Nie udało się dodać użytkownika",
+          "ERROR_ADOPTER": "Nie udało się dodać adoptującego",
           "SUCCESS": "Udało się dodać użytkownika",
+          "SUCCESS_ADOPTER": "Udało się dodać adoptującego",
           "ERRORS": {
             "USER_ROLE_EXISTS": "Ten użytkownik posiada już tą rolę"
           }
         }
       },
       "EDIT": {
-        "HEADER": "Edytuj użytkownika"
+        "HEADER": "Edytuj użytkownika",
+        "MESSAGES": {
+          "ERROR": "Nie udało się edytować użytkownika",
+          "SUCCESS": "Poprawnie edytowano użytkownika"
+        }
       },
       "ADD_ROLE": {
         "HEADER": "Dodaj rolę do użytkownika",
