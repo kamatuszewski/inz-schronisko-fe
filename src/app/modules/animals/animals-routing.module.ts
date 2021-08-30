@@ -9,6 +9,7 @@ import { AnimalFormComponent } from './components/animal-form/animal-form.compon
 import { AnimalListComponent } from './components/animal-list/animal-list.component';
 import { AnimalVetVisitDetailsComponent } from './components/animal-vet-visit-details/animal-vet-visit-details.component';
 import { AnimalVetVisitFormComponent } from './components/animal-vet-visit-form/animal-vet-visit-form.component';
+import { MedicationsAndTreatmentsComponent } from './components/medications-and-treatments/medications-and-treatments.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,14 @@ const routes: Routes = [
     canActivate: [ForOnlyLoggedInGuard, OnlyAllowedRoleGuard],
     data: {
       operation: EOperation.ADD_VET_VISIT
+    }
+  },
+  {
+    path: 'medications-and-treatments',
+    component: MedicationsAndTreatmentsComponent,
+    canActivate: [ForOnlyLoggedInGuard, OnlyAllowedRoleGuard],
+    data: {
+      operation: EOperation.SHOW_MEDICATIONS_AND_TREATMENTS
     }
   },
   {

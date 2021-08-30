@@ -17,3 +17,7 @@ export interface IAddChipModal extends IActionModal {
   prefix?: string;
   translocoPrefix: string;
 }
+
+export interface IAddDictionaryModal extends IActionModal {
+  translocoPrefix: string;
+}

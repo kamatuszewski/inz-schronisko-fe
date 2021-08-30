@@ -15,6 +15,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { TranslocoModule } from '@ngneat/transloco';
 import { AddChipModalComponent } from './components/add-chip-modal/add-chip-modal.component';
+import { AddDictionaryModalComponent } from './components/add-dictionary-modal/add-dictionary-modal.component';
 import { ChipListComponent } from './components/chip-list/chip-list.component';
 import { ChipComponent } from './components/chip/chip.component';
 import { ConfirmDecisionModalComponent } from './components/confirm-decision-modal/confirm-decision-modal.component';
@@ -36,7 +37,8 @@ import { ValidationPipe } from './pipes/validation.pipe';
     ConfirmDecisionModalComponent,
     ChipComponent,
     ChipListComponent,
-    AddChipModalComponent
+    AddChipModalComponent,
+    AddDictionaryModalComponent,
   ],
   imports: [
     CommonModule,
@@ -82,11 +84,13 @@ import { ValidationPipe } from './pipes/validation.pipe';
     MatSlideToggleModule,
     ChipListComponent,
     ChipComponent,
-    AddChipModalComponent
+    AddChipModalComponent,
+    AddDictionaryModalComponent
   ],
   entryComponents: [
     ConfirmDecisionModalComponent,
-    AddChipModalComponent
+    AddChipModalComponent,
+    AddDictionaryModalComponent
   ]
 })
 export class SharedModule { }

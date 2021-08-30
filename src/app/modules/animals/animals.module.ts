@@ -15,6 +15,10 @@ import { AnimalListComponent } from './components/animal-list/animal-list.compon
 import { AnimalVetVisitFormComponent } from './components/animal-vet-visit-form/animal-vet-visit-form.component';
 import { AnimalListService } from './services/animal-list.service';
 import { AnimalVetVisitDetailsComponent } from './components/animal-vet-visit-details/animal-vet-visit-details.component';
+import { MedicationsAndTreatmentsComponent } from './components/medications-and-treatments/medications-and-treatments.component';
+import { MedicationsAndTreatmentsItemComponent } from './components/medications-and-treatments-item/medications-and-treatments-item.component';
+import { MedicationsComponent } from './components/medications/medications.component';
+import { TreatmentsComponent } from './components/treatments/treatments.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,11 @@ import { AnimalVetVisitDetailsComponent } from './components/animal-vet-visit-de
     AnimalDetailsVetVisitsComponent,
     AnimalAdoptionFormComponent,
     AnimalVetVisitFormComponent,
-    AnimalVetVisitDetailsComponent
+    AnimalVetVisitDetailsComponent,
+    MedicationsAndTreatmentsComponent,
+    MedicationsAndTreatmentsItemComponent,
+    MedicationsComponent,
+    TreatmentsComponent
   ],
   imports: [
     AnimalsRoutingModule,

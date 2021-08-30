@@ -50,7 +50,8 @@
     "CREATE_VET_VISIT": "Dodaj leczenie",
     "CREATE_USER": "Dodaj użytkownika",
     "CREATE_ADOPTER": "Dodaj adoptującego",
-    "VOLUNTEER_LIST": "Lista wolontariuszy"
+    "VOLUNTEER_LIST": "Lista wolontariuszy",
+    "MEDICATIONS_AND_TREATMENTS": "Leki i zabiegi"
   },
   "ANIMALS": {
     "SPECIES": {
@@ -403,6 +404,37 @@
           "F": "Kobieta",
           "M": "Mężczyzna"
         }
+      }
+    }
+  },
+  "MEDICATIONS_AND_TREATMENTS": {
+    "HEADER": "Leki i zabiegi",
+    "CREATE": "Dodaj",
+    "MEDICATIONS": {
+      "HEADER": "Leki",
+      "FORM": {
+        "HEADER": "Dodaj lek",
+        "LABEL": "Nazwa leku",
+        "MESSAGES": {
+          "ERROR": "Nie udało się dodać leku",
+          "SUCCESS": "Udało się dodać lek"
+        }
+      }
+    },
+    "TREATMENTS": {
+      "HEADER": "Zabiegi",
+      "FORM": {
+        "HEADER": "Dodaj zabieg",
+        "LABEL": "Nazwa zabiegu",
+        "MESSAGES": {
+          "ERROR": "Nie udało się dodać zabiegu",
+          "SUCCESS": "Udało się dodać zabieg"
+        }
+      }
+    },
+    "LIST": {
+      "COLUMNS": {
+        "name": "Nazwa"
       }
     }
   }

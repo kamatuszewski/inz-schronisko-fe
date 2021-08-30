@@ -47,3 +47,9 @@ export const animalDetailsVetVisistTableConfig = [
     code: 'description'
   }
 ];
+
+export const vetDictionaryTableConfig = [
+  {
+    code: 'name'
+  }
+]

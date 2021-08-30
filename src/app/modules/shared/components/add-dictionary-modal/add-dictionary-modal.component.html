@@ -1,0 +1,24 @@
+<form [formGroup]="formGroup"
+      (ngSubmit)="save()" class="app-add-dictionary-modal">
+  <h4>{{ translocoPrefix + '.HEADER' | transloco }}</h4>
+  <div class="app-add-chip-modal__content app-form-content">
+    <mat-form-field appearance="outline"
+                    class="app-form-content__field app-form-content__field--span">
+      <mat-label>{{ translocoPrefix + '.LABEL' | transloco }}</mat-label>
+      <input matInput
+             name="name"
+             type="text"
+             formControlName="name">
+      <mat-error>{{ formGroup.get('name').errors | validation }}</mat-error>
+    </mat-form-field>
+  </div>
+  <mat-dialog-actions class="app-theme__actions app-theme__actions--end">
+    <button type="button"
+            mat-button
+            (click)="close()"
+            color="warn">{{ data.cancel | transloco }}</button>
+    <button type="submit"
+            mat-raised-button
+            color="primary">{{ data.accept | transloco }}</button>
+  </mat-dialog-actions>
+</form>

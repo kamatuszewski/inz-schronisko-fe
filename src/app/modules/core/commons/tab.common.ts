@@ -62,5 +62,11 @@ export const tabConfig: ITabConfig[] = [
     redirectTo: ['users', 'create'],
     allowedRoles: permissionsMap.get(EOperation.ADD_ADOPTER),
     iconCode: 'person_add_alt'
+  },
+  {
+    label: 'TABS.MEDICATIONS_AND_TREATMENTS',
+    redirectTo: ['animals', 'medications-and-treatments'],
+    allowedRoles: permissionsMap.get(EOperation.SHOW_MEDICATIONS_AND_TREATMENTS),
+    iconCode: 'person_add_alt'
   }
 ]

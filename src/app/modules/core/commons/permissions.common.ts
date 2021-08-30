@@ -35,6 +35,7 @@ export enum EOperation {
   ADD_TREATMENT,
   REMOVE_MEDICINES,
   REMOVE_TREATMENT,
+  SHOW_MEDICATIONS_AND_TREATMENTS,
 
   ADD_VET_VISIT,
   EDIT_VET_VISIT,
@@ -76,7 +77,7 @@ export const permissionsMap = new Map<EOperation, ERole[]>([
   [EOperation.ADD_MEDICINES, [ERole.VET]],
   [EOperation.REMOVE_TREATMENT, [ERole.VET]],
   [EOperation.REMOVE_MEDICINES, [ERole.VET]],
-  [EOperation.REMOVE_MEDICINES, [ERole.VET]],
+  [EOperation.SHOW_MEDICATIONS_AND_TREATMENTS, [ERole.VET]],
 
   [EOperation.ADD_VET_VISIT, [ERole.VET]],
   [EOperation.EDIT_VET_VISIT, [ERole.VET]],
