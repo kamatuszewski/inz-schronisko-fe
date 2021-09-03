@@ -53,7 +53,7 @@ export class TreatmentsComponent implements OnInit, OnDestroy {
   }
 
   private failed = (): void => {
-    this.coreService.showErrorMessage('MEDICATIONS_AND_TREATMENTS.TREATMENTS.FORM.MESSAGE.FAILED');
+    this.coreService.showErrorMessage('MEDICATIONS_AND_TREATMENTS.TREATMENTS.FORM.MESSAGES.FAILED');
   }
 
   private initListConfig(): void {
@@ -71,6 +71,6 @@ export class TreatmentsComponent implements OnInit, OnDestroy {
   }
 
   private success = (): void => {
-    this.coreService.showSuccessMessage('MEDICATIONS_AND_TREATMENTS.TREATMENTS.FORM.MESSAGE.SUCCESS');
+    this.coreService.showSuccessMessage('MEDICATIONS_AND_TREATMENTS.TREATMENTS.FORM.MESSAGES.SUCCESS');
   }
 }
