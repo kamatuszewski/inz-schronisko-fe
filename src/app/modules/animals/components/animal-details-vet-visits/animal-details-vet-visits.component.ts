@@ -8,7 +8,8 @@ import { ITableColumn } from '../../../shared/interfaces/table-column.interface'
 import { ListUtilsService } from '../../../shared/services/list-utils.service';
 import { AnimalsService } from '../../animals.service';
 import { animalDetailsVetVisistTableConfig } from '../../const/table-config.const';
-import { IGeneralVetVisit } from '../../interfaces/animals.interface';
+import { IGeneralAdoption, IGeneralVetVisit } from '../../interfaces/animals.interface';
+import { AnimalMapperService } from '../../services/animal-mapper.service';
 
 @Component({
   selector: 'app-animal-details-vet-visits',
@@ -16,9 +17,13 @@ import { IGeneralVetVisit } from '../../interfaces/animals.interface';
   styleUrls: ['./animal-details-vet-visits.component.scss']
 })
 export class AnimalDetailsVetVisitsComponent implements OnInit {
-  @Input() public data: IGeneralVetVisit[];
+  @Input()
+  public set data(data: IGeneralVetVisit[]) {
+    this.vetVisits = data && data.length ? data.map(AnimalMapperService.generalVetVisitToDetailsVetVisit) : [];
+  }
   public listConfig: IListConfig;
   public tableColumns: ITableColumn[];
+  public vetVisits: IGeneralVetVisit[];
 
   constructor(private authService: AuthService,
               private router: Router,

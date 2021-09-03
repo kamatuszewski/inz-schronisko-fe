@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { of, Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AuthService } from '../../../auth/auth.service';
+import { dateFormat } from '../../../core/commons/date-format.common';
 import { permissionsMap, EOperation } from '../../../core/commons/permissions.common';
 import { CoreService } from '../../../core/core.service';
 import { ConfirmDecisionModalService } from '../../../shared/services/confirm-decision-modal.service';
@@ -16,6 +17,7 @@ import { IVetVisits } from '../../interfaces/animals.interface';
 })
 export class AnimalVetVisitDetailsComponent implements OnInit, OnDestroy {
   public data$: Observable<IVetVisits>;
+  public dateFormat = dateFormat;
   public hasAccessToEditVetVisit = false;
   public hasAccessToRemoveVetVisit = false;
 

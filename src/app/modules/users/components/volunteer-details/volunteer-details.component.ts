@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
+import { dateFormat } from '../../../core/commons/date-format.common';
 import { IVolunteer } from '../../interfaces/user.interface';
 import { UsersService } from '../../users.service';
 
@@ -11,6 +12,7 @@ import { UsersService } from '../../users.service';
 })
 export class VolunteerDetailsComponent implements OnInit, OnDestroy {
   public data$: Observable<IVolunteer>;
+  public dateFormat = dateFormat;
 
   private onDestroy$ = new Subject<void>();
   private userId: number;

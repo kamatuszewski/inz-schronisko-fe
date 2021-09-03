@@ -1,3 +1,5 @@
+import * as moment from 'moment';
+import { dateMomentFormat } from '../../core/commons/date-format.common';
 import { IGenericDictionary } from '../../shared/interfaces/generic.interface';
 import { IAnimalForm } from '../interfaces/animal-form.interface';
 import {
@@ -5,7 +7,7 @@ import {
   IAnimalDetailsAdoption,
   IGeneralAdoption,
   IGeneralAnimal,
-  ISimpleAnimal
+  IGeneralVetVisit, ISimpleAnimal
 } from '../interfaces/animals.interface';
 
 export class AnimalMapperService {
@@ -32,7 +34,7 @@ export class AnimalMapperService {
       id: data.id,
       adopterFullName: `${data.adopter.firstName} ${data.adopter.lastName}`,
       employeeFullName: `${data.employee.firstName} ${data.employee.lastName}`,
-      adoptionDate: data.adoptionDate,
+      adoptionDate: moment(data.adoptionDate).format(dateMomentFormat),
       details: {
         address: data.adopter.address,
         emailAddress: data.adopter.emailAddress,
@@ -43,7 +45,7 @@ export class AnimalMapperService {
     }
   }
 
-  public static generalAnimalToFormAnimal = (data: IGeneralAnimal): IAnimalForm => {
+  public static generalAnimalToFormAnimal = ( data: IGeneralAnimal): IAnimalForm => {
     return {
       id: data.id,
       birthDate: data.birthDate,
@@ -54,6 +56,14 @@ export class AnimalMapperService {
       sex: data.sex,
       statusId: data.status.id,
       chipNumber: data.chipNumber
+    }
+  }
+
+  public static generalVetVisitToDetailsVetVisit = (data: IGeneralVetVisit): IGeneralVetVisit => {
+    return {
+      id: data.id,
+      description: data.description,
+      visitDate: moment(data.visitDate).format(dateMomentFormat)
     }
   }
 }

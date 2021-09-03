@@ -24,11 +24,11 @@
                         class="app-employee-details-primary-data__item details__item"></app-details-item>
       <app-details-item *ngIf="data.hireDate"
                         [label]="'USERS.FORM.FIELDS.HIRE_DATE' | transloco"
-                        [value]="data?.hireDate"
+                        [value]="data?.hireDate | date: dateFormat"
                         class="app-employee-details-primary-data__item details__item"></app-details-item>
       <app-details-item *ngIf="data.quitDate"
                         [label]="'USERS.FORM.FIELDS.QUIT_DATE' | transloco"
-                        [value]="data?.quitDate"
+                        [value]="data?.quitDate | date: dateFormat"
                         class="app-employee-details-primary-data__item details__item"></app-details-item>
       <app-details-item *ngIf="data.pwzNumber"
                         [label]="'USERS.FORM.FIELDS.PWZ_NUMBER' | transloco"

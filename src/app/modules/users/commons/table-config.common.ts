@@ -2,9 +2,6 @@ import { ITableColumn } from '../../shared/interfaces/table-column.interface';
 
 export const userTableConfig = [
   {
-    code: 'id'
-  },
-  {
     code: 'firstName'
   },
   {
@@ -17,9 +14,6 @@ export const userTableConfig = [
 ] as ITableColumn[];
 
 export const employeeTableConfig = [
-  {
-    code: 'id'
-  },
   {
     code: 'firstName'
   },
@@ -40,9 +34,6 @@ export const employeeTableConfig = [
 ] as ITableColumn[];
 
 export const volunteerTableConfig = [
-  {
-    code: 'id'
-  },
   {
     code: 'firstName'
   },

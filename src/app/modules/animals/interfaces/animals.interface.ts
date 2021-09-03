@@ -60,7 +60,7 @@ export interface IGeneralEmployee {
 export interface IGeneralVetVisit {
   description: string;
   id: number;
-  visitDateTime: string;
+  visitDate: string;
 }
 
 export interface IAnimalDetailsAdoption {
