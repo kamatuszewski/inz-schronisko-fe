@@ -50,7 +50,7 @@
 
     <tr class="app-list-table__row app-list-table__row--primary"
         mat-header-row
-        *matHeaderRowDef="displayedColumns"></tr>
+        *matHeaderRowDef="displayedColumns; sticky: true"></tr>
     <tr class="app-list-table__row"
         [class.clickable]="!!selectable"
         (click)="select(row.id)"
