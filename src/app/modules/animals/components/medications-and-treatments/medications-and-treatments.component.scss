@@ -1,0 +1,8 @@
+.app-medications-and-treatments {
+  &__content {
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2rem;
+  }
+}

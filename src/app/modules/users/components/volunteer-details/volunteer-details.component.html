@@ -23,7 +23,7 @@
                         [value]="data?.emailAddress"
                         class="app-employee-details-primary-data__item details__item"></app-details-item>
       <app-details-item [label]="'USERS.FORM.FIELDS.JOINING_DATE' | transloco"
-                        [value]="data?.joiningDate"
+                        [value]="data?.joiningDate | date: dateFormat"
                         class="app-employee-details-primary-data__item details__item"></app-details-item>
       <app-details-item [label]="'USERS.FORM.FIELDS.ATTENDANCE' | transloco"
                         [value]="data?.attendance"

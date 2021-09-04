@@ -44,7 +44,7 @@
                         class="app-animal-details-primary-data__item details__item details__item--3"></app-details-item>
 
       <app-details-item [label]="'VET_VISIT.DETAILS.BIRTH_DATE' | transloco"
-                        [value]="data?.animal?.birthDate"
+                        [value]="data?.animal?.birthDate | date: dateFormat"
                         class="app-animal-details-primary-data__item details__item details__item--4"></app-details-item>
     </div>
 

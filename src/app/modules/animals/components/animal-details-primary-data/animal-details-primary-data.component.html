@@ -16,16 +16,16 @@
                       class="app-animal-details-primary-data__item details__item details__item--6"></app-details-item>
 
     <app-details-item [label]="'ANIMALS.DETAILS.BIRTH_DATE' | transloco"
-                      [value]="data?.birthDate"
+                      [value]="data?.birthDate | date: dateFormat"
                       class="app-animal-details-primary-data__item details__item details__item--7"></app-details-item>
 
     <app-details-item *ngIf="data?.deathDate"
                       [label]="'ANIMALS.DETAILS.DEATH_DATE' | transloco"
-                      [value]="data?.deathDate"
+                      [value]="data?.deathDate | date: dateFormat"
                       class="app-animal-details-primary-data__item details__item details__item--8"></app-details-item>
 
     <app-details-item [label]="'ANIMALS.DETAILS.FOUND_DATE' | transloco"
-                      [value]="data?.foundDate"
+                      [value]="data?.foundDate | date: dateFormat"
                       class="app-animal-details-primary-data__item details__item details__item--10"></app-details-item>
 
     <app-details-item [label]="'ANIMALS.DETAILS.FOUND_PLACE' | transloco"

@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -125,7 +126,7 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
     return this.userService.createUser(formValue)
   }
 
-  private failedSave = (): void => {
+  private failedSave = (e: HttpErrorResponse): void => {
     if (this.isCreateMode) {
       if (this.hasOnlyEmployeeRole) {
         this.coreService.showErrorMessage('USERS.FORM.CREATE.MESSAGES.ERROR_ADOPTER');
@@ -134,6 +135,10 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
       }
     } else {
       this.coreService.showErrorMessage('USERS.FORM.EDIT.MESSAGES.ERROR');
+    }
+
+    if(!!e?.error?.errors?.EmailAddress) {
+      this.setErrorSameEmailAddress();
     }
   }
 
@@ -229,6 +234,10 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
       });
     }
     return of(null);
+  }
+
+  private setErrorSameEmailAddress(): void {
+    this.formGroup.get('emailAddress').setErrors({isSameAddress: true});
   }
 
   private subscribeRole(): void {

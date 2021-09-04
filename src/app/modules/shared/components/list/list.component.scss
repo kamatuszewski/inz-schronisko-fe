@@ -2,4 +2,11 @@
   &__actions {
     gap: 20px;
   }
+
+  &__content {
+    &--scrollable {
+      max-height: 400px;
+      overflow-y: auto;
+    }
+  }
 }

@@ -2,9 +2,6 @@ import { ITableColumn } from '../../shared/interfaces/table-column.interface';
 
 export const animalTableConfig = [
   {
-    code: 'id'
-  },
-  {
     code: 'name'
   },
   {
@@ -23,9 +20,6 @@ export const animalTableConfig = [
 
 export const animalDetailsAdoptionTableConfig = [
   {
-    code: 'id'
-  },
-  {
     code: 'adopterFullName'
   },
   {
@@ -38,12 +32,15 @@ export const animalDetailsAdoptionTableConfig = [
 
 export const animalDetailsVetVisistTableConfig = [
   {
-    code: 'id'
-  },
-  {
     code: 'visitDate'
   },
   {
     code: 'description'
   }
 ];
+
+export const vetDictionaryTableConfig = [
+  {
+    code: 'name'
+  }
+]
