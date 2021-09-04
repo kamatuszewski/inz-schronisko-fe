@@ -318,7 +318,8 @@
         "required": "Pole nie może być puste",
         "email": "Niepoprawny adres e-mail",
         "pesel": "Niepoprawny pesel",
-        "phone": "Niepoprawny numer telefonu"
+        "phone": "Niepoprawny numer telefonu",
+        "isSameAddress": "Podany adres e-mail już istnieje w bazie"
       }
     },
     "DETAILS": {
