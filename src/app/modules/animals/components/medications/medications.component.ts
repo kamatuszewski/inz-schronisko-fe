@@ -6,6 +6,7 @@ import { CoreService } from '../../../core/core.service';
 import { BASE_LIST_SERVICE, IBaseListService } from '../../../shared/interfaces/base-list-service.interface';
 import { IListConfig } from '../../../shared/interfaces/list-config.interface';
 import { ITableColumn } from '../../../shared/interfaces/table-column.interface';
+import { ConfirmDecisionModalService } from '../../../shared/services/confirm-decision-modal.service';
 import { ListUtilsService } from '../../../shared/services/list-utils.service';
 import { AnimalsService } from '../../animals.service';
 import { vetDictionaryTableConfig } from '../../const/table-config.const';
@@ -25,13 +26,14 @@ import { MedicationListService } from '../../services/medication-list.service';
 })
 export class MedicationsComponent implements OnInit, OnDestroy {
   public listConfig: IListConfig;
+  public refreshListSubject$ = new Subject<void>();
   public tableColumns: ITableColumn[];
 
   private onDestroy$ = new Subject<void>();
   constructor(private listUtilsService: ListUtilsService,
               private animalsService: AnimalsService,
               private coreService: CoreService,
-              @Inject(BASE_LIST_SERVICE) private listService: IBaseListService) { }
+              private confirmModal: ConfirmDecisionModalService) { }
 
 
   public initColumnTable(): void {
@@ -48,6 +50,16 @@ export class MedicationsComponent implements OnInit, OnDestroy {
     this.initListConfig();
   }
 
+  public remove(id: number): void {
+    const data = {
+      description: 'MEDICATIONS_AND_TREATMENTS.MEDICATIONS.CONFIRMATION_REMOVE',
+      ...ConfirmDecisionModalService.defaultActionConfig()
+    }
+    this.confirmModal.openDialog(data)
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe(() => this.removeItem(id))
+  }
+
   public save = (data: ITreatment): void => {
     this.animalsService.addMedication(data)
       .pipe(takeUntil(this.onDestroy$))
@@ -55,7 +67,11 @@ export class MedicationsComponent implements OnInit, OnDestroy {
   }
 
   private failed = (): void => {
-    this.coreService.showErrorMessage('MEDICATIONS_AND_TREATMENTS.MEDICATIONS.FORM.MESSAGES.FAILED');
+    this.coreService.showErrorMessage('MEDICATIONS_AND_TREATMENTS.MEDICATIONS.FORM.MESSAGES.ERROR');
+  }
+
+  private failedRemove = (): void => {
+    this.coreService.showErrorMessage('MEDICATIONS_AND_TREATMENTS.MEDICATIONS.REMOVE.MESSAGES.ERROR');
   }
 
   private initListConfig(): void {
@@ -72,8 +88,19 @@ export class MedicationsComponent implements OnInit, OnDestroy {
     this.listConfig = config;
   }
 
+  private removeItem = (id: number): void => {
+    this.animalsService.removeMedication({id})
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe(this.successRemove, this.failedRemove)
+  }
+
   private success = (): void => {
     this.coreService.showSuccessMessage('MEDICATIONS_AND_TREATMENTS.MEDICATIONS.FORM.MESSAGES.SUCCESS');
-    this.listService.fetchList
+    this.refreshListSubject$.next();
+  }
+
+  private successRemove = (): void => {
+    this.coreService.showSuccessMessage('MEDICATIONS_AND_TREATMENTS.MEDICATIONS.REMOVE.MESSAGES.SUCCESS');
+    this.refreshListSubject$.next();
   }
 }

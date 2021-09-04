@@ -1,4 +1,6 @@
-import { IGeneralUser, IGeneralUserListItem } from '../interfaces/user.interface';
+import * as moment from 'moment';
+import { dateMomentFormat } from '../../core/commons/date-format.common';
+import { IGeneralUser, IGeneralUserListItem, IVetSpecialty } from '../interfaces/user.interface';
 
 export class UserMapperService {
   public static generalUsersToGeneralUserListMap = (users: IGeneralUser[]): IGeneralUserListItem[] => {
@@ -18,6 +20,17 @@ export class UserMapperService {
       ))
     }
     return [];
+  }
+
+  public static mapSpecialties = (specialties :IVetSpecialty[]): IVetSpecialty[] => {
+    if (specialties && specialties.length) {
+      return specialties.map(specialty => ({
+        id: specialty.id,
+        name: specialty.name,
+        obtainingDate: moment(specialty.obtainingDate).format(dateMomentFormat)
+      }))
+    }
+    return specialties;
   }
 
   private static checkIfNull(name: string, suffix: string): string {

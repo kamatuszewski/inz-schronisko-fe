@@ -1,4 +1,6 @@
 <app-list [tableColumns]="tableColumns"
           [listConfig]="listConfig"
+          [refreshList$]="refreshListSubject$"
           isSmallHeader="true"
+          (removeRow)="removeItem.emit($event)"
           (redirectToForm)="openForm()"></app-list>

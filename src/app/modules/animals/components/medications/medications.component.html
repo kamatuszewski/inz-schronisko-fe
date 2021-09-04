@@ -1,3 +1,5 @@
 <app-medications-and-treatments-item [tableColumns]="tableColumns"
                                      [listConfig]="listConfig"
+                                     (removeItem)="remove($event)"
+                                     [refreshListSubject$]="refreshListSubject$"
                                      [callback]="save"></app-medications-and-treatments-item>

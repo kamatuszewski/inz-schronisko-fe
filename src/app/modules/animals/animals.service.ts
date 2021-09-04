@@ -46,6 +46,16 @@ export class AnimalsService {
     return this.http.delete(url);
   }
 
+  public removeMedication(payload: ISimplePayload): Observable<unknown> {
+    const url = `${this.medicinesUrl}/${payload.id}`;
+    return this.http.delete(url);
+  }
+
+  public removeTreatments(payload: ISimplePayload): Observable<unknown> {
+    const url = `${this.treatmentsUrl}/${payload.id}`;
+    return this.http.delete(url);
+  }
+
   public removeVetVisit(payload: ISimplePayload): Observable<unknown> {
     const url = `${this.vetVisitsUrl}/${payload.id}`;
     return this.http.delete(url);

@@ -42,5 +42,8 @@ export const animalDetailsVetVisistTableConfig = [
 export const vetDictionaryTableConfig = [
   {
     code: 'name'
+  },
+  {
+    code: 'remove'
   }
 ]

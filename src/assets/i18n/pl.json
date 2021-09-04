@@ -420,7 +420,14 @@
           "ERROR": "Nie udało się dodać leku",
           "SUCCESS": "Udało się dodać lek"
         }
-      }
+      },
+      "REMOVE": {
+        "MESSAGES": {
+          "ERROR": "Nie udało się usunąć leku",
+          "SUCCESS": "Udało się usunąć lek"
+        }
+      },
+      "CONFIRMATION_REMOVE": "Proces usuwania leku jest nieodwracalny. Czy na pewno chcesz usunąć ten lek?"
     },
     "TREATMENTS": {
       "HEADER": "Zabiegi",
@@ -431,7 +438,14 @@
           "ERROR": "Nie udało się dodać zabiegu",
           "SUCCESS": "Udało się dodać zabieg"
         }
-      }
+      },
+      "REMOVE": {
+        "MESSAGES": {
+          "ERROR": "Nie udało się usunąć zabiegu",
+          "SUCCESS": "Udało się usunąć zabieg"
+        }
+      },
+      "CONFIRMATION_REMOVE": "Proces usuwania zabiegu jest nieodwracalny. Czy na pewno chcesz usunąć ten zabieg?"
     },
     "LIST": {
       "COLUMNS": {

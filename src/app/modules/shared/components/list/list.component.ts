@@ -14,7 +14,8 @@ export class ListComponent<T> implements OnInit, OnDestroy {
   @Input() public isSmallHeader = false;
   @Input() public listConfig: IListConfig;
   @Output() public redirectToForm: EventEmitter<void> = new EventEmitter();
-  @Input() public refreshList$?: Observable<void>;
+  @Input() public refreshList$ = new Subject<void>();
+  @Output() public removeRow = new EventEmitter<number>();
   @Output() public selectRow = new EventEmitter<number>();
   @Input() public tableColumns: ITableColumn[];
   public tableData: Observable<T[]>;

@@ -47,6 +47,7 @@ export interface IUserForm {
 
 export interface IVetSpecialty {
   id: number;
+  name: string;
   obtainingDate: string;
 }
 

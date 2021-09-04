@@ -25,6 +25,7 @@ export class ListTableComponent implements OnInit {
   @Input() public expandable = false;
   public expandedDetailsId: number | null = null;
   @Input() public expandedDetailsRef: TemplateRef<any>;
+  @Output() public removeRow = new EventEmitter<number>();
   @Input() public selectable = true;
   @Output() public selectRow = new EventEmitter<number>();
 
@@ -35,6 +36,10 @@ export class ListTableComponent implements OnInit {
   }
 
   public ngOnInit(): void {
+  }
+
+  public remove(id: number): void {
+    this.removeRow.emit(id);
   }
 
   public select(id: number): void {

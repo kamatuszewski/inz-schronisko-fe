@@ -23,6 +23,7 @@
                     [columnPrefix]="listConfig?.columnsPrefix"
                     [selectable]="listConfig?.selectable"
                     (selectRow)="selectRow.emit($event)"
+                    (removeRow)="removeRow.emit($event)"
                     [tableColumns]="tableColumns"></app-list-table>
   </div>
 </div>

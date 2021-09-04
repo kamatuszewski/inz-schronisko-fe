@@ -14,6 +14,8 @@ export class MedicationsAndTreatmentsItemComponent implements OnInit, OnDestroy 
   @Input() public callback: (payload: any) => void;
   @Input() public listConfig: IListConfig;
   @Output() public refresh = new EventEmitter<void>();
+  @Input() public refreshListSubject$ = new Subject<void>();
+  @Output() public removeItem = new EventEmitter<number>();
   @Input() public tableColumns: ITableColumn[];
 
   private onDestroy$ = new Subject<void>();

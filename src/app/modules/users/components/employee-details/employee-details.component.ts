@@ -1,8 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { of, Observable, Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { dateFormat } from '../../../core/commons/date-format.common';
 import { IEmployee } from '../../interfaces/user.interface';
+import { UserMapperService } from '../../services/user-mapper.service';
 import { UsersService } from '../../users.service';
 
 @Component({
@@ -38,7 +40,14 @@ export class EmployeeDetailsComponent implements OnInit, OnDestroy {
 
   private loadData(): void {
     if (!!this.userId) {
-      this.data$ = this.usersService.getEmployee({id: this.userId});
+      this.data$ = this.usersService.getEmployee({id: this.userId})
+        .pipe(
+          map(employee => {
+            const specialties = employee.specialties;
+            employee.specialties = UserMapperService.mapSpecialties(specialties);
+            return employee;
+          })
+        );
     }
   }
 }
