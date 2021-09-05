@@ -24,7 +24,12 @@
       "DIRECTOR": "Dyrektor",
       "ADMIN": "Admin",
       "VET": "Weterynarz"
-    }
+    },
+    "PAGINATION": {
+      "NEXT": "Następna strona",
+      "BACK": "Poprzednia strona"
+    },
+    "EMPTY_LIST": "Brak wyników"
   },
   "AUTH": {
     "HEADER": "Logowanie",
@@ -51,7 +56,8 @@
     "CREATE_USER": "Dodaj użytkownika",
     "CREATE_ADOPTER": "Dodaj adoptującego",
     "VOLUNTEER_LIST": "Lista wolontariuszy",
-    "MEDICATIONS_AND_TREATMENTS": "Leki i zabiegi"
+    "MEDICATIONS_AND_TREATMENTS": "Leki i zabiegi",
+    "SPECIALIST_LIST": "Lista specjalizacji"
   },
   "ANIMALS": {
     "SPECIES": {
@@ -68,6 +74,16 @@
     "SEX": {
       "F": "Samica",
       "M": "Samiec"
+    },
+    "FILTER": {
+      "HEADER": "Filtruj zwierzęta",
+      "SEX": "Płeć",
+      "NAME": "Imię",
+      "SPECIES": "Gatunek",
+      "STATUS": "Status",
+      "CANCEL": "Anuluj",
+      "FILTER": "Filtruj",
+      "RESET": "Resetuj"
     },
     "LIST": {
       "HEADER": "Lista zwierząt",
@@ -446,6 +462,30 @@
         }
       },
       "CONFIRMATION_REMOVE": "Proces usuwania zabiegu jest nieodwracalny. Czy na pewno chcesz usunąć ten zabieg?"
+    },
+    "LIST": {
+      "COLUMNS": {
+        "name": "Nazwa"
+      }
+    }
+  },
+  "SPECIALIST_LIST": {
+    "HEADER": "Lista specjalizacji",
+    "CREATE": "Dodaj",
+    "CONFIRMATION_REMOVE": "Proces usuwania specializacji jest nieodwracalny. Czy na pewno chcesz usunąć to specjalizację?",
+    "FORM": {
+      "HEADER": "Dodaj specjalizacje",
+      "LABEL": "Specjalizacja",
+      "MESSAGES": {
+        "ERROR": "Nie udało się dodać specjalizacji",
+        "SUCCESS": "Udało się dodać specjalizacje"
+      }
+    },
+    "REMOVE": {
+      "MESSAGES": {
+        "ERROR": "Nie udało się usunąć specjalizacji",
+        "SUCCESS": "Udało się usunąć specjalizacje"
+      }
     },
     "LIST": {
       "COLUMNS": {

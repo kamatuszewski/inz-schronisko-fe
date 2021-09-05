@@ -57,5 +57,13 @@
                    [notFound]="'USERS.FORM.FIELDS.ROLES.NOT_FOUND' | transloco"
                    [header]="'USERS.FORM.FIELDS.ROLES.HEADER' | transloco"
                    [dictionaries$]="ofObservable(data?.roles)"></app-chip-list>
+    <div class="app-theme__actions app-theme__actions--end"
+         *ngIf="hasAccessToEditUser">
+      <button type="button"
+              *ngIf="hasAccessToEditUser"
+              class="app-button app-button--edit"
+              (click)="edit()"
+              mat-raised-button>{{ 'USERS.DETAILS.EDIT' | transloco }}</button>
+    </div>
   </div>
 </div>

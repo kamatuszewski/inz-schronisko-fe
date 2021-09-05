@@ -11,14 +11,15 @@ import { AnimalDetailsVetVisitsComponent } from './components/animal-details-vet
 import { AnimalDetailsComponent } from './components/animal-details/animal-details.component';
 import { AnimalFormGeneralInfoComponent } from './components/animal-form-general-info/animal-form-general-info.component';
 import { AnimalFormComponent } from './components/animal-form/animal-form.component';
+import { AnimalListFilterComponent } from './components/animal-list-filter/animal-list-filter.component';
 import { AnimalListComponent } from './components/animal-list/animal-list.component';
-import { AnimalVetVisitFormComponent } from './components/animal-vet-visit-form/animal-vet-visit-form.component';
-import { AnimalListService } from './services/animal-list.service';
 import { AnimalVetVisitDetailsComponent } from './components/animal-vet-visit-details/animal-vet-visit-details.component';
-import { MedicationsAndTreatmentsComponent } from './components/medications-and-treatments/medications-and-treatments.component';
+import { AnimalVetVisitFormComponent } from './components/animal-vet-visit-form/animal-vet-visit-form.component';
 import { MedicationsAndTreatmentsItemComponent } from './components/medications-and-treatments-item/medications-and-treatments-item.component';
+import { MedicationsAndTreatmentsComponent } from './components/medications-and-treatments/medications-and-treatments.component';
 import { MedicationsComponent } from './components/medications/medications.component';
 import { TreatmentsComponent } from './components/treatments/treatments.component';
+import { AnimalListService } from './services/animal-list.service';
 
 @NgModule({
   declarations: [
@@ -35,12 +36,16 @@ import { TreatmentsComponent } from './components/treatments/treatments.componen
     MedicationsAndTreatmentsComponent,
     MedicationsAndTreatmentsItemComponent,
     MedicationsComponent,
-    TreatmentsComponent
+    TreatmentsComponent,
+    AnimalListFilterComponent
   ],
   imports: [
     AnimalsRoutingModule,
     SharedModule,
     CommonModule
+  ],
+  entryComponents: [
+    AnimalListFilterComponent
   ],
   providers: [
     {

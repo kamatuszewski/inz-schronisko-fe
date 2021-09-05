@@ -1,0 +1,62 @@
+<form [formGroup]="formGroup"
+      (ngSubmit)="filter()"
+      class="app-animal-list-filter">
+  <h4>{{ 'ANIMALS.FILTER.HEADER' | transloco }}</h4>
+  <div class="app-animal-list-filter__content app-form-content">
+    <div class="app-animal-list-filter__content app-form-content">
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'ANIMALS.FILTER.NAME' | transloco }}</mat-label>
+        <input matInput
+               formControlName="Name"
+               name="filterName"
+               type="text">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'ANIMALS.FILTER.SEX' | transloco }}</mat-label>
+        <mat-select formControlName="Sex">
+          <mat-option [value]="null"></mat-option>
+          <mat-option *ngFor="let sex of sexOptions"
+                      [value]="sex">
+            {{ 'ANIMALS.SEX.' + sex | transloco }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'ANIMALS.FILTER.SPECIES' | transloco }}</mat-label>
+        <mat-select formControlName="SpeciesId">
+          <mat-option [value]="null"></mat-option>
+          <mat-option *ngFor="let species of allSpecies$ | async"
+                      [value]="species.id">
+            {{ 'ANIMALS.SPECIES.' + species.name | transloco }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'ANIMALS.FILTER.STATUS' | transloco }}</mat-label>
+        <mat-select formControlName="StatusId">
+          <mat-option [value]="null"></mat-option>
+          <mat-option *ngFor="let status of allStatus$ | async"
+                      [value]="status.id">
+            {{ 'COMMON.STATUS.' + status.name | transloco }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <mat-dialog-actions class="app-theme__actions app-theme__actions--end">
+    <button type="button"
+            mat-button
+            (click)="reset()"
+            color="primary">{{ 'ANIMALS.FILTER.RESET' | transloco }}</button>
+    <button type="button"
+            mat-button
+            (click)="close()"
+            color="warn">{{ 'ANIMALS.FILTER.CANCEL' | transloco }}</button>
+    <button type="submit"
+            mat-raised-button
+            color="primary">{{ 'ANIMALS.FILTER.FILTER' | transloco }}</button>
+  </mat-dialog-actions>
+</form>

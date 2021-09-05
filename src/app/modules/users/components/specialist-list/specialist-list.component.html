@@ -1,0 +1,5 @@
+<app-list [tableColumns]="tableColumns"
+          [listConfig]="listConfig"
+          [refreshList$]="refreshListSubject$"
+          (removeRow)="remove($event)"
+          (redirectToForm)="openForm()"></app-list>

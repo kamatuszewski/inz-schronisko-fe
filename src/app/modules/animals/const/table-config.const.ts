@@ -2,19 +2,23 @@ import { ITableColumn } from '../../shared/interfaces/table-column.interface';
 
 export const animalTableConfig = [
   {
-    code: 'name'
+    code: 'name',
+    sortable: true
   },
   {
     code: 'sex',
-    translated: true
+    translated: true,
+    sortable: true
   },
   {
     code: 'species',
-    translated: true
+    translated: true,
+    sortable: true
   },
   {
     code: 'status',
-    translated: true
+    translated: true,
+    sortable: true
   },
 ] as ITableColumn[];
 

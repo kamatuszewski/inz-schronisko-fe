@@ -3,7 +3,15 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { ISimplePayload } from '../animals/interfaces/animals.interface';
-import { IEmployee, IUpdateUserForm, IUserForm, IUserRemoveRoleForm, IUserRoleForm, IVolunteer } from './interfaces/user.interface';
+import {
+  IEmployee,
+  ISpecialist,
+  IUpdateUserForm,
+  IUserForm,
+  IUserRemoveRoleForm,
+  IUserRoleForm,
+  IVolunteer
+} from './interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +23,11 @@ export class UsersService {
   public addRoleToUser(userId: number, payload: IUserRoleForm): Observable<string> {
     const url = `${this.baseUrl}/${userId}/role`;
     return this.http.post<string>(url, payload);
+  }
+
+  public addSpecialist(payload: ISpecialist): Observable<unknown> {
+    const url = `${this.baseUrl}/Vets/Specialties`;
+    return this.http.post(url, payload);
   }
 
   public createUser(payload: IUserForm): Observable<unknown> {
@@ -46,6 +59,11 @@ export class UsersService {
       params = new HttpParams().set('roleId', `${payload.roleId}`);
     }
     return this.http.delete(url, {params});
+  }
+
+  public removeSpecialist(payload: ISimplePayload): Observable<unknown> {
+    const url = `${this.baseUrl}/Vets/Specialties/${payload.id}`;
+    return this.http.delete(url);
   }
 
   public updateUser(payload: IUpdateUserForm): Observable<unknown> {

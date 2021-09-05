@@ -30,5 +30,13 @@
                         class="app-employee-details-primary-data__item details__item"></app-details-item>
 
     </div>
+    <div class="app-theme__actions app-theme__actions--end"
+         *ngIf="hasAccessToEditUser">
+      <button type="button"
+              *ngIf="hasAccessToEditUser"
+              class="app-button app-button--edit"
+              (click)="edit()"
+              mat-raised-button>{{ 'USERS.DETAILS.EDIT' | transloco }}</button>
+    </div>
   </div>
 </div>

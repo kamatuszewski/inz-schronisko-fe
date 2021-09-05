@@ -11,6 +11,7 @@ import { UserRoleFormComponent } from './components/user-role-form/user-role-for
 import { UsersRoutingModule } from './users-routing.module';
 import { VolunteerListComponent } from './components/volunteer-list/volunteer-list.component';
 import { VolunteerDetailsComponent } from './components/volunteer-details/volunteer-details.component';
+import { SpecialistListComponent } from './components/specialist-list/specialist-list.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { VolunteerDetailsComponent } from './components/volunteer-details/volunt
     UserDetailsComponent,
     EmployeeDetailsComponent,
     VolunteerListComponent,
-    VolunteerDetailsComponent
+    VolunteerDetailsComponent,
+    SpecialistListComponent
   ],
   imports: [
     CommonModule,
