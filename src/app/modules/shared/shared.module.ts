@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTableModule } from '@angular/material/table';
@@ -56,7 +57,8 @@ import { ValidationPipe } from './pipes/validation.pipe';
     MatTabsModule,
     MatMenuModule,
     MatDialogModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatPaginatorModule
   ],
   exports: [
     LogoComponent,
@@ -85,7 +87,8 @@ import { ValidationPipe } from './pipes/validation.pipe';
     ChipListComponent,
     ChipComponent,
     AddChipModalComponent,
-    AddDictionaryModalComponent
+    AddDictionaryModalComponent,
+    MatPaginatorModule
   ],
   entryComponents: [
     ConfirmDecisionModalComponent,

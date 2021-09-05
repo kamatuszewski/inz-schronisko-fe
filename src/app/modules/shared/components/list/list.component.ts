@@ -4,6 +4,7 @@ import { takeUntil } from 'rxjs/operators';
 import { BASE_LIST_SERVICE, IBaseListService } from '../../interfaces/base-list-service.interface';
 import { IListConfig } from '../../interfaces/list-config.interface';
 import { ITableColumn } from '../../interfaces/table-column.interface';
+import { PaginationAndSortService } from '../../services/pagination-and-sort.service';
 
 @Component({
   selector: 'app-list',
@@ -21,7 +22,10 @@ export class ListComponent<T> implements OnInit, OnDestroy {
   public tableData: Observable<T[]>;
   private onDestroy$ = new Subject<void>();
 
-  constructor(@Inject(BASE_LIST_SERVICE) private listService: IBaseListService) { }
+  constructor(
+    @Inject(BASE_LIST_SERVICE) private listService: IBaseListService,
+    private paginationAndSortService: PaginationAndSortService
+  ) { }
 
   public goToAddNew(): void {
     this.redirectToForm.emit();
@@ -51,5 +55,8 @@ export class ListComponent<T> implements OnInit, OnDestroy {
         .pipe(takeUntil(this.onDestroy$))
         .subscribe(this.initList)
     }
+    this.paginationAndSortService.refreshList()
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe(this.initList);
   }
 }

@@ -22,6 +22,7 @@
     <app-list-table [tableData]="tableData | async"
                     [columnPrefix]="listConfig?.columnsPrefix"
                     [selectable]="listConfig?.selectable"
+                    [isPagination]="!!listConfig?.isPagination"
                     (selectRow)="selectRow.emit($event)"
                     (removeRow)="removeRow.emit($event)"
                     [tableColumns]="tableColumns"></app-list-table>

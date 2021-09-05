@@ -43,7 +43,8 @@ export class AnimalListComponent implements OnInit {
   private initListConfig(): void {
     const config: IListConfig = {
       header: 'ANIMALS.LIST.HEADER',
-      columnsPrefix: 'ANIMALS.LIST.COLUMNS'
+      columnsPrefix: 'ANIMALS.LIST.COLUMNS',
+      isPagination: true
     };
 
     this.listUtilsService.prepareParamListConfig('create', config, 'ANIMALS.LIST.CREATE', EOperation.ADD_ANIMAL);

@@ -63,5 +63,12 @@
           *matRowDef="let row; columns: ['expandedDetail']"></tr>
     </ng-container>
   </table>
-  <div class="app-list-table__pagination"></div>
+  <div class="app-list-table__pagination"
+       *ngIf="isPagination && paginationData">
+    <mat-paginator [hidePageSize]="true"
+                   [pageIndex]="pageNumber - 1"
+                   (page)="changePage($event)"
+                   [length]="paginationData.totalItemsCount"
+                   [pageSize]="10"></mat-paginator>
+  </div>
 </div>
