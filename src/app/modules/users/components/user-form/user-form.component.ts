@@ -77,7 +77,7 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
       this.userService.addSpecialistToUser(this.userId, {id: data.id, obtainingDate: data.obtainingDate})
         .pipe(takeUntil(this.onDestroy$))
         .subscribe(() => this.coreService.showSuccessMessage('USERS.FORM.EDIT.MESSAGES.SUCCESS_SPECIALIST'),
-          () => this.coreService.showSuccessMessage('USERS.FORM.EDIT.MESSAGES.ERROR_SPECIALIST'))
+          () => this.coreService.showErrorMessage('USERS.FORM.EDIT.MESSAGES.ERROR_SPECIALIST'))
     }
   }
 

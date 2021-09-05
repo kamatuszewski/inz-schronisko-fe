@@ -16,6 +16,7 @@ export interface IAddChipModal extends IActionModal {
   list$: Observable<IGenericDictionary[]>,
   prefix?: string;
   translocoPrefix: string;
+  usedItems?: any,
 }
 
 export interface IAddDictionaryModal extends IActionModal {

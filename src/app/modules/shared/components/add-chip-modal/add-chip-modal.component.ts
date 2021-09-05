@@ -2,7 +2,7 @@ import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Observable, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { map, takeUntil } from 'rxjs/operators';
 import { IGenericDictionary } from '../../interfaces/generic.interface';
 import { IAddChipModal } from '../../interfaces/modal.interface';
 import { FormUtilsService } from '../../services/form-utils.service';
@@ -16,13 +16,19 @@ export class AddChipModalComponent implements OnInit, OnDestroy {
   public dictionaries$: Observable<IGenericDictionary[]>;
   public formGroup: FormGroup;
   public translocoPrefix: string;
+  public usedItems: number[] = [];
 
   private ngDestroy$ = new Subject<void>();
 
   constructor(public dialogRef: MatDialogRef<AddChipModalComponent>,
               @Inject(MAT_DIALOG_DATA) public data: IAddChipModal,
               private formBuilder: FormBuilder) {
-    this.dictionaries$ = this.data.list$;
+    this.usedItems = this.data.usedItems;
+    this.dictionaries$ = this.data.list$.pipe(
+      map(items => items.filter(item => {
+        return !this.usedItems.includes(item.id)
+      }))
+    );
     this.translocoPrefix = this.data.translocoPrefix;
   }
 

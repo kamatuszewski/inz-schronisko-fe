@@ -18,7 +18,7 @@ export class ChipListComponent<T> implements OnInit, OnDestroy {
   @Input() public additionalType?: 'text' | 'number' | 'date';
   @Input() public canAdd = true;
   @Input() public canRemove = true;
-  @Input() public data: T[];
+  @Input() public data: T[] = [];
   @Output() public dataChange = new EventEmitter<T[]>();
   @Input() public dictionaries$: Observable<IGenericDictionary[]>;
   @Input() public header: string;
@@ -43,6 +43,7 @@ export class ChipListComponent<T> implements OnInit, OnDestroy {
       list$: this.dictionaries$,
       additionalField: this.additionalField,
       additionalType: this.additionalType,
+      usedItems: this.preparedUsedItems(),
       prefix: this.prefix,
       translocoPrefix: this.translocoPrefix
     }
@@ -55,6 +56,11 @@ export class ChipListComponent<T> implements OnInit, OnDestroy {
         this.addItem.emit(chipData);
         this.dataChange.emit([...this.data, chipData])
       })
+  }
+
+  private preparedUsedItems = (): number[] => {
+    // @ts-ignore
+    return this.data?.length ? this.data.map(item => item.id) : []
   }
 
   public ngOnDestroy(): void {
