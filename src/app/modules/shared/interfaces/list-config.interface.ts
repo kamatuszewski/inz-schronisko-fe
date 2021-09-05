@@ -26,6 +26,7 @@ export interface RequestListConfig extends SortConfig{
 }
 
 export interface SortConfig {
+  local?: string;
   sortBy?: string;
   sortDirection?: 'ASC' | 'DESC';
 }

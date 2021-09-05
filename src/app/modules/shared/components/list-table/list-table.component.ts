@@ -3,7 +3,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { PaginationData } from '../../interfaces/list-config.interface';
+import { PaginationData, SortConfig } from '../../interfaces/list-config.interface';
 import { ITableColumn } from '../../interfaces/table-column.interface';
 import { ITableData } from '../../interfaces/table-data.interface';
 import { PaginationAndSortService } from '../../services/pagination-and-sort.service';
@@ -38,6 +38,7 @@ export class ListTableComponent implements OnInit, OnDestroy {
   @Output() public removeRow = new EventEmitter<number>();
   @Input() public selectable = true;
   @Output() public selectRow = new EventEmitter<number>();
+  public sort: SortConfig = {};
 
   private onDestroy$ = new Subject<void>();
 
@@ -46,7 +47,6 @@ export class ListTableComponent implements OnInit, OnDestroy {
   }
 
   public changePage(page: PageEvent): void {
-    console.log(page)
     this.paginationAndSortService.dispatchPage(page.pageIndex + 1);
     this.pageNumber = page.pageIndex;
   }
@@ -85,6 +85,23 @@ export class ListTableComponent implements OnInit, OnDestroy {
     if (this.expandable) {
       this.expandedDetailsId = this.expandedDetailsId === id ? null : id;
     }
+  }
+
+  public setSort(code: string, type: 'ASC' | 'DESC'): void {
+    if (this.sort.sortDirection === type) {
+      this.sort = {};
+    } else {
+      this.sort = {
+        sortBy: this.capitalizeText(code),
+        local: code,
+        sortDirection: type
+      }
+    }
+    this.paginationAndSortService.dispatchSort(this.sort);
+  }
+
+  private capitalizeText(text: string): string {
+    return text.charAt(0).toUpperCase() + text.slice(1);
   }
 
   private setDisplayedColumns(columns: ITableColumn[]): void {

@@ -6,7 +6,7 @@ import { PaginationData, RequestListConfig, SortConfig } from '../interfaces/lis
 export class PaginationAndSortService {
   public static defaultRequestListConfig: RequestListConfig = {
     pageNumber: 1,
-    pageSize: 2
+    pageSize: 10
   };
 
   public static prepareRequest(config =

@@ -11,9 +11,27 @@
           *matHeaderCellDef
           class="app-list-table__cell app-list-table__cell--medium"
           [class.app-list-table__cell--remove]="column.code === 'remove'">
+        <div class="app-list-table__cell-container d-flex justify-content-start align-items-center">
         <ng-container *ngIf="column.code !== 'remove'">
           {{ columnPrefix + '.' + column.code | transloco }}
+          <div class="app-list-table__sort" *ngIf="!!column.sortable">
+            <button mat-icon-button
+                    class="app-list-table__sort-button"
+                    (click)="setSort(column.code, 'ASC')"
+                    [class.app-list-table__sort-button--active]="column.code === sort.local && sort.sortDirection === 'ASC'"
+                    type="button">
+              <mat-icon class="app-list-table__sort-icon">arrow_drop_up</mat-icon>
+            </button>
+            <button mat-icon-button
+                    class="app-list-table__sort-button"
+                    (click)="setSort(column.code, 'DESC')"
+                    [class.app-list-table__sort-button--active]="column.code === sort.local && sort.sortDirection === 'DESC'"
+                    type="button">
+              <mat-icon class="app-list-table__sort-icon">arrow_drop_down</mat-icon>
+            </button>
+          </div>
         </ng-container>
+        </div>
       </th>
       <td mat-cell
           *matCellDef="let element"
@@ -21,7 +39,7 @@
           [class.app-list-table__cell--remove]="column.code === 'remove'">
         <ng-container *ngIf="column.code !== 'remove'; else removeTd">
           <ng-container *ngIf="!!column.translated; else noTranslated">
-            {{ columnPrefix + '.COL_'+ column.code.toUpperCase() + '.' + element[column.code] | transloco }}
+            {{ columnPrefix + '.COL_' + column.code.toUpperCase() + '.' + element[column.code] | transloco }}
           </ng-container>
           <ng-template #noTranslated>{{ element[column.code] }}</ng-template>
         </ng-container>
