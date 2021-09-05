@@ -79,11 +79,27 @@ const routes: Routes = [
     }
   },
   {
+    path: 'employees/:id/edit',
+    component: UserFormComponent,
+    canActivate: [ForOnlyLoggedInGuard, OnlyAllowedRoleGuard],
+    data: {
+      operation: EOperation.EDIT_USER
+    }
+  },
+  {
     path: 'volunteers/:id',
     component: VolunteerDetailsComponent,
     canActivate: [ForOnlyLoggedInGuard, OnlyAllowedRoleGuard],
     data: {
       operation: EOperation.SHOW_DETAILS_VOLUNTEER
+    }
+  },
+  {
+    path: 'volunteers/:id/edit',
+    component: UserFormComponent,
+    canActivate: [ForOnlyLoggedInGuard, OnlyAllowedRoleGuard],
+    data: {
+      operation: EOperation.EDIT_USER
     }
   },
   {
