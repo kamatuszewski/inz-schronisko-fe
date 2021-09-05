@@ -75,7 +75,7 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline"
-                      *ngIf="isCreateMode && !hasOnlyEmployeeRole">
+                      *ngIf="isCreateMode && hasOnlyAdminRole">
         <mat-label>{{ 'USERS.FORM.FIELDS.ROLE' | transloco }}</mat-label>
         <mat-select formControlName="roleId">
           <mat-option value="null">{{ 'COMMON.ROLE.USER' | transloco }}</mat-option>
@@ -88,7 +88,7 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline"
-                      *ngIf="!hasOnlyEmployeeRole && isCreateMode">
+                      *ngIf="hasOnlyAdminRole && isCreateMode">
         <mat-label>{{ 'USERS.FORM.FIELDS.PASSWORD' | transloco }}</mat-label>
         <input matInput
                type="password"

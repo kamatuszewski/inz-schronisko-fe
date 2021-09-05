@@ -52,6 +52,7 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
   public hasAccessToAssignSpecialist = false;
   public hasAccessToRemoveRole = false;
   public hasAccessToRemoveSpecialist = false;
+  public hasOnlyAdminRole = false;
   public hasOnlyEmployeeRole = false;
   public selectedRoles: IGenericDictionary[] = [];
   public userId: number;
@@ -192,6 +193,7 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
     if (roles.length === 1 && roles[0] === ERole.EMPLOYEE) {
       this.hasOnlyEmployeeRole = true;
     }
+    this.hasOnlyAdminRole = roles.includes(ERole.ADMIN);
   }
 
   private loadData(): void {
