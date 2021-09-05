@@ -6,7 +6,7 @@ import { takeUntil } from 'rxjs/operators';
 import { PaginationData, SortConfig } from '../../interfaces/list-config.interface';
 import { ITableColumn } from '../../interfaces/table-column.interface';
 import { ITableData } from '../../interfaces/table-data.interface';
-import { PaginationAndSortService } from '../../services/pagination-and-sort.service';
+import { PrepareListRequestService } from '../../services/prepare-list-request.service';
 
 @Component({
   selector: 'app-list-table',
@@ -43,11 +43,11 @@ export class ListTableComponent implements OnInit, OnDestroy {
   private onDestroy$ = new Subject<void>();
 
   constructor(
-    private paginationAndSortService: PaginationAndSortService) {
+    private prepareListRequestService: PrepareListRequestService) {
   }
 
   public changePage(page: PageEvent): void {
-    this.paginationAndSortService.dispatchPage(page.pageIndex + 1);
+    this.prepareListRequestService.dispatchPage(page.pageIndex + 1);
     this.pageNumber = page.pageIndex;
   }
 
@@ -56,18 +56,18 @@ export class ListTableComponent implements OnInit, OnDestroy {
   }
 
   public loadPaginationData(): void {
-    this.paginationAndSortService.selectPaginationData()
+    this.prepareListRequestService.selectPaginationData()
       .pipe(takeUntil(this.onDestroy$))
       .subscribe(data => {
         this.paginationData = data;
-        this.pageNumber = this.paginationAndSortService.getPage();
+        this.pageNumber = this.prepareListRequestService.getPage();
       });
   }
 
   public ngOnDestroy(): void {
     this.onDestroy$.next();
     this.onDestroy$.complete();
-    this.paginationAndSortService.reset();
+    this.prepareListRequestService.reset();
   }
 
   public ngOnInit(): void {
@@ -88,7 +88,7 @@ export class ListTableComponent implements OnInit, OnDestroy {
   }
 
   public setSort(code: string, type: 'ASC' | 'DESC'): void {
-    if (this.sort.sortDirection === type) {
+    if (this.sort.sortDirection === type && this.sort.local === code) {
       this.sort = {};
     } else {
       this.sort = {
@@ -97,7 +97,7 @@ export class ListTableComponent implements OnInit, OnDestroy {
         sortDirection: type
       }
     }
-    this.paginationAndSortService.dispatchSort(this.sort);
+    this.prepareListRequestService.dispatchSort(this.sort);
   }
 
   private capitalizeText(text: string): string {

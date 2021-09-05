@@ -31,8 +31,7 @@ export const employeeTableConfig = [
     sortable: true
   },
   {
-    code: 'specialties',
-    sortable: true
+    code: 'specialties'
   },
   {
     code: 'isVet',

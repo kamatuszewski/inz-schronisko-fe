@@ -1,16 +1,24 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { PaginationData, RequestListConfig, SortConfig } from '../interfaces/list-config.interface';
+import { FilterConfig, PaginationData, RequestListConfig, SortConfig } from '../interfaces/list-config.interface';
 
 @Injectable({providedIn: 'root'})
-export class PaginationAndSortService {
+export class PrepareListRequestService {
   public static defaultRequestListConfig: RequestListConfig = {
     pageNumber: 1,
     pageSize: 10
   };
 
-  public static prepareRequest(config =
-                                 PaginationAndSortService.defaultRequestListConfig): {[param: string]: string | string[]} {
+  public static prepareFilterRequest(config: FilterConfig = {}): {[param: string]: string | string[]} {
+    return this.prepareRequest(config);
+  }
+
+  public static preparePaginationAndSortRequest(config =
+                                 PrepareListRequestService.defaultRequestListConfig): {[param: string]: string | string[]} {
+    return this.prepareRequest(config);
+  }
+
+  private static prepareRequest(config: any): {[param: string]: string | string[]} {
     const params: {[param: string]: string | string[]} = {};
     Object.keys(config)
       .filter(key => !!config[key])
@@ -20,8 +28,13 @@ export class PaginationAndSortService {
     return params;
   }
 
-  private paginationAndSortConfig$ = new BehaviorSubject<RequestListConfig>(PaginationAndSortService.defaultRequestListConfig);
+  private filter$ = new BehaviorSubject<FilterConfig>({});
+  private paginationAndSortConfig$ = new BehaviorSubject<RequestListConfig>(PrepareListRequestService.defaultRequestListConfig);
   private paginationData$ = new BehaviorSubject<PaginationData>(null);
+
+  public dispatchFilter(filter: FilterConfig): void {
+    this.filter$.next(filter);
+  }
 
   public dispatchPage(page: number): void {
     const allData = this.paginationAndSortConfig$.getValue();
@@ -49,7 +62,10 @@ export class PaginationAndSortService {
   }
 
   public getParamsData(): {[param: string]: string | string[]} {
-    return PaginationAndSortService.prepareRequest(this.paginationAndSortConfig$.getValue());
+    return {
+      ...PrepareListRequestService.preparePaginationAndSortRequest(this.paginationAndSortConfig$.getValue()),
+      ...PrepareListRequestService.prepareFilterRequest(this.filter$.getValue())
+    };
   }
 
   public refreshList(): Observable<RequestListConfig> {
@@ -57,7 +73,15 @@ export class PaginationAndSortService {
   }
 
   public reset(): void {
-    this.paginationAndSortConfig$.next(PaginationAndSortService.defaultRequestListConfig)
+    this.paginationAndSortConfig$.next(PrepareListRequestService.defaultRequestListConfig)
+  }
+
+  public resetFilter(): void {
+    this.filter$.next({});
+  }
+
+  public selectFilter(): Observable<FilterConfig> {
+    return this.filter$.asObservable();
   }
 
   public selectPaginationData(): Observable<PaginationData> {

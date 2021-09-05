@@ -74,6 +74,16 @@
       "F": "Samica",
       "M": "Samiec"
     },
+    "FILTER": {
+      "HEADER": "Filtruj zwierzęta",
+      "SEX": "Płeć",
+      "NAME": "Imię",
+      "SPECIES": "Gatunek",
+      "STATUS": "Status",
+      "CANCEL": "Anuluj",
+      "FILTER": "Filtruj",
+      "RESET": "Resetuj"
+    },
     "LIST": {
       "HEADER": "Lista zwierząt",
       "CREATE": "Dodaj zwierzę",

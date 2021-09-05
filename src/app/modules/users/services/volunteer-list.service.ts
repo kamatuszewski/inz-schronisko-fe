@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
 import { IBaseListService } from '../../shared/interfaces/base-list-service.interface';
 import { Pagination } from '../../shared/interfaces/list-config.interface';
-import { PaginationAndSortService } from '../../shared/services/pagination-and-sort.service';
+import { PrepareListRequestService } from '../../shared/services/prepare-list-request.service';
 import { IGeneralUserListItem } from '../interfaces/user.interface';
 
 @Injectable({
@@ -14,7 +14,7 @@ import { IGeneralUserListItem } from '../interfaces/user.interface';
 export class VolunteerListService implements IBaseListService<IGeneralUserListItem> {
   private readonly userUrl = environment.apiUrl.persons;
   constructor(private http: HttpClient,
-              private paginationAndSortService: PaginationAndSortService) {}
+              private prepareListRequestService: PrepareListRequestService) {}
 
   public fetchList(): Observable<IGeneralUserListItem[]> {
     return this.getEmployeeList();
@@ -25,7 +25,7 @@ export class VolunteerListService implements IBaseListService<IGeneralUserListIt
     return this.http.get<Pagination<IGeneralUserListItem>>(url)
       .pipe(map(data => {
         const {items, ...paginationData} = data;
-        this.paginationAndSortService.dispatchPaginationData(paginationData)
+        this.prepareListRequestService.dispatchPaginationData(paginationData)
         return items;
       }));
   }
