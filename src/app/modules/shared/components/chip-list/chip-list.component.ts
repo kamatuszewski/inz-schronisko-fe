@@ -13,6 +13,7 @@ import { AddChipModalService } from '../../services/add-chip-modal.service';
 })
 export class ChipListComponent<T> implements OnInit, OnDestroy {
   @Input() public addFnCallback?: () => void;
+  @Output() public addItem = new EventEmitter<T>();
   @Input() public additionalField?: string;
   @Input() public additionalType?: 'text' | 'number' | 'date';
   @Input() public canAdd = true;
@@ -51,6 +52,7 @@ export class ChipListComponent<T> implements OnInit, OnDestroy {
         if (data.additionalField && data.additionalType === 'date') {
           chipData[this.additionalField] = moment(chipData[this.additionalField]).toISOString();
         }
+        this.addItem.emit(chipData);
         this.dataChange.emit([...this.data, chipData])
       })
   }

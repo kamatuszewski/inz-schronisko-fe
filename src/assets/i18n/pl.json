@@ -281,7 +281,9 @@
         "HEADER": "Edytuj użytkownika",
         "MESSAGES": {
           "ERROR": "Nie udało się edytować użytkownika",
-          "SUCCESS": "Poprawnie edytowano użytkownika"
+          "SUCCESS": "Poprawnie edytowano użytkownika",
+          "ERROR_SPECIALIST": "Nie udało się dodać specjalizacji",
+          "SUCCESS_SPECIALIST": "Udało się dodać specjalizację"
         }
       },
       "ADD_ROLE": {

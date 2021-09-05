@@ -6,6 +6,7 @@ import * as moment from 'moment';
 import { combineLatest, forkJoin, of, Observable, Subject } from 'rxjs';
 import { switchMap, takeUntil } from 'rxjs/operators';
 import { AuthService } from '../../../auth/auth.service';
+import { dateMomentFormat } from '../../../core/commons/date-format.common';
 import { permissionsMap, EOperation } from '../../../core/commons/permissions.common';
 import { CoreService } from '../../../core/core.service';
 import { ESex } from '../../../shared/enums/sex.enum';
@@ -58,6 +59,7 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
 
   private onDestroy$ = new Subject<void>();
   private removeRoles: IGenericDictionary[] = [];
+  private removeSpecialties: IGenericDictionary[] = [];
   private selectedRole: ERole;
 
   constructor(private formBuilder: FormBuilder,
@@ -68,6 +70,15 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
               private userDictionariesService: UserDictionariesService,
               private coreService: CoreService) {
     this.userId = activatedRoute.snapshot.params.id;
+  }
+
+  public addSpecialist(data: IVetSpecialty): void {
+    if (!this.isCreateMode) {
+      this.userService.addSpecialistToUser(this.userId, {id: data.id, obtainingDate: data.obtainingDate})
+        .pipe(takeUntil(this.onDestroy$))
+        .subscribe(() => this.coreService.showSuccessMessage('USERS.FORM.EDIT.MESSAGES.SUCCESS_SPECIALIST'),
+          () => this.coreService.showSuccessMessage('USERS.FORM.EDIT.MESSAGES.ERROR_SPECIALIST'))
+    }
   }
 
   public cancel(): void {
@@ -96,6 +107,12 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
   public removeRole(role: IGenericDictionary): void {
     if (this.hasAccessToRemoveRole) {
       this.removeRoles.push(role);
+    }
+  }
+
+  public removeSpecialty(data: IGenericDictionary): void {
+    if (this.hasAccessToRemoveRole) {
+      this.removeSpecialties.push(data);
     }
   }
 
@@ -183,10 +200,21 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
         .pipe(takeUntil(this.onDestroy$))
         .subscribe(user => {
           this.selectedRoles = user.roles;
+          this.vetSpecialties = this.prepareSpecialties(user.specialties);
           this.formGroup.patchValue(user);
           this.formGroup.updateValueAndValidity();
         })
     }
+  }
+
+  private prepareSpecialties = (specialties: IVetSpecialty[]): IVetSpecialty[] => {
+    if (!!specialties?.length) {
+      return specialties.map(specialty => {
+        specialty.obtainingDate = moment(specialty.obtainingDate).format(dateMomentFormat);
+        return specialty;
+      })
+    }
+    return specialties;
   }
 
   private redirectToBackPage(): void {
@@ -236,6 +264,15 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
     return of(null);
   }
 
+  private sendRemoveSpecialist(): Array<Observable<any>> | Observable<null> {
+    if (this.hasAccessToRemoveSpecialist && !!this.removeSpecialties?.length) {
+      return this.removeSpecialties.map(specialist => {
+        return this.userService.removeSpecialistFromUser(this.userId, specialist.id);
+      });
+    }
+    return of(null);
+  }
+
   private setErrorSameEmailAddress(): void {
     this.formGroup.get('emailAddress').setErrors({isSameAddress: true});
   }
@@ -272,7 +309,8 @@ export class UserFormComponent implements OnInit, IFormActions, OnDestroy {
   private updateUser(): Observable<unknown> {
     const formValue = this.formGroup.value;
     return this.userService.updateUser({id: this.userId, ...formValue}).pipe(
-      switchMap(() => forkJoin(this.sendRemoveRole()))
+      switchMap(() => forkJoin(this.sendRemoveSpecialist())),
+      switchMap(() => forkJoin(this.sendRemoveRole())),
     );
   }
 

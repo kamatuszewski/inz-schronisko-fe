@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { dateFormat } from '../../../core/commons/date-format.common';
 import { IGenericDictionary } from '../../interfaces/generic.interface';
 
 @Component({
@@ -16,8 +17,10 @@ export class ChipComponent implements OnInit {
   }
 
   @Input() public additionalField?: string;
+  @Input() public additionalType?: 'text' | 'number' | 'date';
   @Input() public canRemove = true;
   @Input() public data: any;
+  public dateFormat = dateFormat;
   @Input() public dictionaries: IGenericDictionary[];
   @Input() public prefix?: string;
   @Input() public prefixLabel?: string;

@@ -87,6 +87,14 @@ const routes: Routes = [
     }
   },
   {
+    path: 'employees/:id/edit/add-role',
+    component: UserRoleFormComponent,
+    canActivate: [ForOnlyLoggedInGuard, OnlyAllowedRoleGuard],
+    data: {
+      operation: EOperation.ADD_ROLE_TO_USER
+    }
+  },
+  {
     path: 'volunteers/:id',
     component: VolunteerDetailsComponent,
     canActivate: [ForOnlyLoggedInGuard, OnlyAllowedRoleGuard],
@@ -100,6 +108,14 @@ const routes: Routes = [
     canActivate: [ForOnlyLoggedInGuard, OnlyAllowedRoleGuard],
     data: {
       operation: EOperation.EDIT_USER
+    }
+  },
+  {
+    path: 'volunteers/:id/edit/add-role',
+    component: UserRoleFormComponent,
+    canActivate: [ForOnlyLoggedInGuard, OnlyAllowedRoleGuard],
+    data: {
+      operation: EOperation.ADD_ROLE_TO_USER
     }
   },
   {

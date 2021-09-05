@@ -187,8 +187,10 @@
                    [prefix]="'USERS.FORM.FIELDS.SPECIALTIES.PREFIX' | transloco"
                    translocoPrefix="USERS.FORM.FIELDS.SPECIALTIES.MODAL"
                    additionalType="date"
-                   [canAdd]="isCreateMode && hasAccessToAssignSpecialist"
-                   [canRemove]="isCreateMode && hasAccessToRemoveSpecialist"
+                   [canAdd]="hasAccessToAssignSpecialist"
+                   [canRemove]="hasAccessToRemoveSpecialist"
+                   (addItem)="addSpecialist($event)"
+                   (remove)="removeSpecialty($event)"
                    [dictionaries$]="allSpecialty$"></app-chip-list>
 
     <app-chip-list *ngIf="!isCreateMode"

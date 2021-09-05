@@ -3,7 +3,9 @@
   <span class="app-chip__label" *ngIf="!prefixLabel">{{ name }}</span>
   <span *ngIf="additionalField && data[additionalField]"
         class="app-chip__other-data">
-    <span *ngIf="prefix">{{ prefix }}&nbsp;</span>{{ data[additionalField] }}
+    <span *ngIf="prefix">{{ prefix }}&nbsp;</span>
+    <ng-container *ngIf="additionalType !== 'date'; else date">{{ data[additionalField] }}</ng-container>
+    <ng-template #date>{{ data[additionalField] | date: dateFormat }}</ng-template>
   </span>
 
   <div class="app-chip__delete"

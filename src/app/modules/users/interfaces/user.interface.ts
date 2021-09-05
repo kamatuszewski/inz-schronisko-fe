@@ -42,6 +42,7 @@ export interface IUserForm {
   roles?: IGenericDictionary[];
   salary: number;
   sex: ESex;
+  specialties: IVetSpecialty[];
   vetSpecialties: IVetSpecialty[];
 }
 

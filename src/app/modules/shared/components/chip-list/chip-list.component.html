@@ -6,6 +6,7 @@
                 [data]="item"
                 (remove)="removeItem($event)"
                 [canRemove]="canRemove"
+                [additionalType]="additionalType"
                 [prefixLabel]="prefixLabel"
                 [additionalField]="additionalField"
                 [dictionaries]="dictionaries$ | async"

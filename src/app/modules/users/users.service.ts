@@ -30,6 +30,11 @@ export class UsersService {
     return this.http.post(url, payload);
   }
 
+  public addSpecialistToUser(userId: number, specialty: any): Observable<unknown> {
+    const url = `${this.baseUrl}/Vets/${userId}/specialty`
+    return this.http.post(url, specialty);
+  }
+
   public createUser(payload: IUserForm): Observable<unknown> {
     const url = `${this.baseUrl}/register`;
     return this.http.post(url, payload);
@@ -63,6 +68,11 @@ export class UsersService {
 
   public removeSpecialist(payload: ISimplePayload): Observable<unknown> {
     const url = `${this.baseUrl}/Vets/Specialties/${payload.id}`;
+    return this.http.delete(url);
+  }
+
+  public removeSpecialistFromUser(userId: number, specialtyId: number): Observable<unknown> {
+    const url = `${this.baseUrl}/Vets/${userId}/${specialtyId}`
     return this.http.delete(url);
   }
 
