@@ -23,6 +23,7 @@ export class ListTableComponent implements OnInit, OnDestroy {
   @Input()
   public set tableData(data: any) {
     this.setTableDataSource(data);
+    this.isEmptyList = !data?.length;
   }
 
   @Input() public columnPrefix: string;
@@ -32,6 +33,7 @@ export class ListTableComponent implements OnInit, OnDestroy {
   @Input() public expandable = false;
   public expandedDetailsId: number | null = null;
   @Input() public expandedDetailsRef: TemplateRef<any>;
+  public isEmptyList = false;
   @Input() public isPagination = false;
   public pageNumber: number;
   public paginationData: PaginationData = null;

@@ -28,7 +28,8 @@
     "PAGINATION": {
       "NEXT": "Następna strona",
       "BACK": "Poprzednia strona"
-    }
+    },
+    "EMPTY_LIST": "Brak wyników"
   },
   "AUTH": {
     "HEADER": "Logowanie",

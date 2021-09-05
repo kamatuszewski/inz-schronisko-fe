@@ -53,7 +53,6 @@ export class AnimalListFilterComponent implements OnInit, OnDestroy {
   }
 
   public reset(): void {
-    this.prepareRequest.resetFilter();
     this.formGroup.reset();
   }
 
