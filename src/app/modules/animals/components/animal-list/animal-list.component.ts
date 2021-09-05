@@ -7,6 +7,7 @@ import { EOperation } from '../../../core/commons/permissions.common';
 import { FilterConfig, IListConfig } from '../../../shared/interfaces/list-config.interface';
 import { ITableColumn } from '../../../shared/interfaces/table-column.interface';
 import { ListUtilsService } from '../../../shared/services/list-utils.service';
+import { PrepareListRequestService } from '../../../shared/services/prepare-list-request.service';
 import { animalTableConfig } from '../../const/table-config.const';
 import { AnimalListFilterComponent } from '../animal-list-filter/animal-list-filter.component';
 
@@ -25,7 +26,8 @@ export class AnimalListComponent implements OnInit, OnDestroy {
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private dialog: MatDialog,
-              private listUtilsService: ListUtilsService) { }
+              private listUtilsService: ListUtilsService,
+              private prepareListRequestService: PrepareListRequestService) { }
 
   public goToAddNewAnimal(): void {
     this.router.navigate(['create'], {
@@ -43,6 +45,7 @@ export class AnimalListComponent implements OnInit, OnDestroy {
     if (this.dialogRef) {
       this.dialogRef.close();
     }
+    this.prepareListRequestService.resetFilter();
   }
 
   public ngOnInit(): void {
