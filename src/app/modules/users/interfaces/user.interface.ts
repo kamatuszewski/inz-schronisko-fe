@@ -99,4 +99,8 @@ export interface IVolunteer {
   sex: ESex;
 }
 
-export interface IUserRemoveRoleForm { quitDate: string | null; roleId: number };
+export interface IUserRemoveRoleForm { quitDate: string | null; roleId: number }
+
+export interface ISpecialist {
+  name: string;
+}

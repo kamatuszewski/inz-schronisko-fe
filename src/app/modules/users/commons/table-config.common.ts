@@ -45,3 +45,13 @@ export const volunteerTableConfig = [
     translated: true
   }
 ] as ITableColumn[];
+
+
+export const specialistTableConfig = [
+  {
+    code: 'name'
+  },
+  {
+    code: 'remove'
+  }
+]

@@ -52,6 +52,12 @@ export const tabConfig: ITabConfig[] = [
     iconCode: 'supervised_user_circle'
   },
   {
+    label: 'TABS.SPECIALIST_LIST',
+    redirectTo: ['users', 'specialists'],
+    allowedRoles: permissionsMap.get(EOperation.SHOW_SPECIALIST_LIST),
+    iconCode: 'person_add_alt'
+  },
+  {
     label: 'TABS.CREATE_USER',
     redirectTo: ['users', 'create'],
     allowedRoles: permissionsMap.get(EOperation.ADD_USER),
