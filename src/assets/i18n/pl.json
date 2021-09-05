@@ -24,6 +24,10 @@
       "DIRECTOR": "Dyrektor",
       "ADMIN": "Admin",
       "VET": "Weterynarz"
+    },
+    "PAGINATION": {
+      "NEXT": "Następna strona",
+      "BACK": "Poprzednia strona"
     }
   },
   "AUTH": {
