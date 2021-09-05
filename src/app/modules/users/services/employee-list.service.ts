@@ -25,7 +25,7 @@ export class EmployeeListService implements IBaseListService<IGeneralUserListIte
 
   private getEmployeeList(): Observable<IGeneralUserListItem[]> {
     const url = `${this.userUrl}/Employees`;
-    return this.http.get<Pagination<IGeneralUser>>(url).pipe(
+    return this.http.get<Pagination<IGeneralUser>>(url, {params: this.prepareListRequestService.getParamsData()}).pipe(
       map(data => {
         const {items, ...paginationData} = data;
         this.prepareListRequestService.dispatchPaginationData(paginationData);

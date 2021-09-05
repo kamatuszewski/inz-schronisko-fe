@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Observable, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { map, takeUntil } from 'rxjs/operators';
 import { ESex } from '../../../shared/enums/sex.enum';
 import { IGenericDictionary } from '../../../shared/interfaces/generic.interface';
 import { PrepareListRequestService } from '../../../shared/services/prepare-list-request.service';
@@ -64,10 +64,10 @@ export class AnimalListFilterComponent implements OnInit, OnDestroy {
 
   private initFormGroup(): void {
     this.formGroup = this.formBuilder.group({
-      name: this.formBuilder.control(null),
-      sex: this.formBuilder.control(null),
-      speciesId: this.formBuilder.control(null),
-      statusId: this.formBuilder.control(null)
+      Name: this.formBuilder.control(null),
+      Sex: this.formBuilder.control(null),
+      SpeciesId: this.formBuilder.control(null),
+      StatusId: this.formBuilder.control(null)
     });
   }
 

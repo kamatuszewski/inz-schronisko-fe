@@ -75,19 +75,6 @@ export class AnimalListComponent implements OnInit, OnDestroy {
     this.dialogRef = this.dialog.open(AnimalListFilterComponent, {
       width: '368px'
     });
-    return this.dialogRef.afterClosed().pipe(map(this.prepareFilter));
-  }
-
-  private prepareFilter = (filter: FilterConfig): FilterConfig => {
-    const filterConfig: FilterConfig = {};
-    if (!!filter) {
-      Object.keys(filter)
-        .filter(key => filter[key] !== null || filter[key] !== undefined)
-        .forEach(key => {
-          const preparedKey = key.charAt(0).toUpperCase() + key.slice(1);
-          filterConfig[preparedKey] = filter[key];
-        })
-    }
-    return filterConfig;
+    return this.dialogRef.afterClosed();
   }
 }

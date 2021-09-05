@@ -22,7 +22,7 @@ export class VolunteerListService implements IBaseListService<IGeneralUserListIt
 
   private getEmployeeList(): Observable<IGeneralUserListItem[]> {
     const url = `${this.userUrl}/Volunteers`
-    return this.http.get<Pagination<IGeneralUserListItem>>(url)
+    return this.http.get<Pagination<IGeneralUserListItem>>(url, {params: this.prepareListRequestService.getParamsData()})
       .pipe(map(data => {
         const {items, ...paginationData} = data;
         this.prepareListRequestService.dispatchPaginationData(paginationData)

@@ -7,14 +7,14 @@
       <mat-form-field appearance="outline">
         <mat-label>{{ 'ANIMALS.FILTER.NAME' | transloco }}</mat-label>
         <input matInput
-               formControlName="name"
+               formControlName="Name"
                name="filterName"
                type="text">
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>{{ 'ANIMALS.FILTER.SEX' | transloco }}</mat-label>
-        <mat-select formControlName="sex">
+        <mat-select formControlName="Sex">
           <mat-option *ngFor="let sex of sexOptions"
                       [value]="sex">
             {{ 'ANIMALS.SEX.' + sex | transloco }}
@@ -24,7 +24,7 @@
 
       <mat-form-field appearance="outline">
         <mat-label>{{ 'ANIMALS.FILTER.SPECIES' | transloco }}</mat-label>
-        <mat-select formControlName="speciesId">
+        <mat-select formControlName="SpeciesId">
           <mat-option *ngFor="let species of allSpecies$ | async"
                       [value]="species.id">
             {{ 'ANIMALS.SPECIES.' + species.name | transloco }}
@@ -34,7 +34,7 @@
 
       <mat-form-field appearance="outline">
         <mat-label>{{ 'ANIMALS.FILTER.STATUS' | transloco }}</mat-label>
-        <mat-select formControlName="statusId">
+        <mat-select formControlName="StatusId">
           <mat-option *ngFor="let status of allStatus$ | async"
                       [value]="status.id">
             {{ 'COMMON.STATUS.' + status.name | transloco }}

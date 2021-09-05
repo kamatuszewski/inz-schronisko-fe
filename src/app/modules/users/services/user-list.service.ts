@@ -23,7 +23,7 @@ export class UserListService implements IBaseListService<IGeneralUser> {
   }
 
   private getUserList(): Observable<IGeneralUser[]> {
-    return this.http.get<Pagination<IGeneralUser>>(this.userUrl)
+    return this.http.get<Pagination<IGeneralUser>>(this.userUrl, {params: this.prepareListRequestService.getParamsData()})
       .pipe(map(data => {
         const {items, ...paginationData} = data;
         this.prepareListRequestService.dispatchPaginationData(paginationData);
