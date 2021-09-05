@@ -46,6 +46,7 @@ export class VolunteerListComponent implements OnInit {
     const config: IListConfig = {
       header: 'VOLUNTEER.LIST.HEADER',
       columnsPrefix: 'VOLUNTEER.LIST.COLUMNS',
+      isPagination: true
     };
 
     this.listUtilsService.prepareParamListConfig('selectable', config, true, EOperation.SHOW_DETAILS_VOLUNTEER);

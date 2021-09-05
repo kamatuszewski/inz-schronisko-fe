@@ -46,6 +46,7 @@ export class EmployeeListComponent implements OnInit {
     const config: IListConfig = {
       header: 'EMPLOYEE.LIST.HEADER',
       columnsPrefix: 'EMPLOYEE.LIST.COLUMNS',
+      isPagination: true
     };
 
     this.listUtilsService.prepareParamListConfig('selectable', config, true, EOperation.SHOW_EMPLOYEE_DETAILS);

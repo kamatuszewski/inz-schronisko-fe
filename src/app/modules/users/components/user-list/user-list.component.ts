@@ -52,6 +52,7 @@ export class UserListComponent implements OnInit {
     const config: IListConfig = {
       header: 'USERS.LIST.HEADER',
       columnsPrefix: 'USERS.LIST.COLUMNS',
+      isPagination: true
     }
 
     this.listUtilsService.prepareParamListConfig('selectable', config, true, EOperation.SHOW_DETAILS_USER);
