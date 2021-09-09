@@ -9,6 +9,7 @@ import { CoreService } from '../../../core/core.service';
 import { IFormActions } from '../../../shared/interfaces/form-actions.interface';
 import { FormUtilsService } from '../../../shared/services/form-utils.service';
 import { GenericDictionariesService } from '../../../shared/services/generic-dictionaries.service';
+import { PrepareListRequestService } from '../../../shared/services/prepare-list-request.service';
 import { IGeneralUser } from '../../../users/interfaces/user.interface';
 import { UserListService } from '../../../users/services/user-list.service';
 import { AnimalStatus } from '../../enums/animals.enum';
@@ -87,11 +88,14 @@ export class AnimalAdoptionFormComponent implements OnInit, OnDestroy, IFormActi
 
   private initList(): void {
     this.animalsGroupBySpecies$ = forkJoin(
-      this.animalListService.fetchList().pipe(map(animals => animals.filter(animal => animal.status === AnimalStatus.FOR_ADOPTION))),
+      this.animalListService.fetchList(
+        PrepareListRequestService.preparePaginationAndSortRequest(PrepareListRequestService.allDataListConfig)
+      ).pipe(map(animals => animals.filter(animal => animal.status === AnimalStatus.FOR_ADOPTION))),
       this.dictionaryService.getSpeciesList()
     ).pipe(map(([animals, species]) => AnimalMapperService.animalsGroupBySpecies(animals, species)));
-
-    this.allAdopters$ = this.userListService.fetchList();
+    this.allAdopters$ = this.userListService.fetchList(
+      PrepareListRequestService.preparePaginationAndSortRequest(PrepareListRequestService.allDataListConfig)
+    );
   }
 
   private redirectToBackPage(): void {

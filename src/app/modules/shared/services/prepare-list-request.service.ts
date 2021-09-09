@@ -4,6 +4,11 @@ import { FilterConfig, PaginationData, RequestListConfig, SortConfig } from '../
 
 @Injectable({providedIn: 'root'})
 export class PrepareListRequestService {
+  public static allDataListConfig: RequestListConfig = {
+    pageNumber: 1,
+    pageSize: 1000
+  }
+
   public static defaultRequestListConfig: RequestListConfig = {
     pageNumber: 1,
     pageSize: 10
@@ -73,7 +78,10 @@ export class PrepareListRequestService {
   }
 
   public reset(): void {
-    this.paginationAndSortConfig$.next(PrepareListRequestService.defaultRequestListConfig)
+    this.paginationAndSortConfig$.next({
+      pageNumber: 1,
+      pageSize: 10
+    })
   }
 
   public resetFilter(): void {

@@ -17,13 +17,14 @@ export class AnimalListService implements IBaseListService<ISimpleAnimal> {
               private prepareListRequestService: PrepareListRequestService) { }
 
 
-  public fetchList(): Observable<ISimpleAnimal[]> {
-    return this.getAnimalList();
+  public fetchList(customParams?: {[param: string]: string | string[]}): Observable<ISimpleAnimal[]> {
+    return this.getAnimalList(customParams);
   }
 
-  private getAnimalList(): Observable<ISimpleAnimal[]> {
+  private getAnimalList(customParams?: {[param: string]: string | string[]}): Observable<ISimpleAnimal[]> {
     const url = `${this.animalUrl}`;
-    return this.http.get<Pagination<ISimpleAnimal>>(url, {params: this.prepareListRequestService.getParamsData()})
+    const params = !!customParams ? customParams : this.prepareListRequestService.getParamsData();
+    return this.http.get<Pagination<ISimpleAnimal>>(url, {params})
       .pipe(map(data => {
         const {items, ...paginationData} = data;
         this.prepareListRequestService.dispatchPaginationData(paginationData)

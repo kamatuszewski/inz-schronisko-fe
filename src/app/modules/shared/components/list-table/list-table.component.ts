@@ -70,6 +70,7 @@ export class ListTableComponent implements OnInit, OnDestroy {
     this.onDestroy$.next();
     this.onDestroy$.complete();
     this.prepareListRequestService.reset();
+    this.prepareListRequestService.resetFilter();
   }
 
   public ngOnInit(): void {

@@ -8,6 +8,7 @@ import { CoreService } from '../../../core/core.service';
 import { IFormActions } from '../../../shared/interfaces/form-actions.interface';
 import { IGenericDictionary } from '../../../shared/interfaces/generic.interface';
 import { FormUtilsService } from '../../../shared/services/form-utils.service';
+import { PrepareListRequestService } from '../../../shared/services/prepare-list-request.service';
 import { ERole } from '../../../users/enums/user.enum';
 import { IGeneralUser } from '../../../users/interfaces/user.interface';
 import { UserDictionariesService } from '../../../users/services/user-dictionaries.service';
@@ -111,13 +112,17 @@ export class AnimalVetVisitFormComponent implements OnInit, OnDestroy, IFormActi
 
   private initList(): void {
     this.animalsGroupBySpecies$ = forkJoin(
-      this.animalListService.fetchList(),
+      this.animalListService.fetchList(
+        PrepareListRequestService.preparePaginationAndSortRequest(PrepareListRequestService.allDataListConfig)
+      ),
       this.animalDictionaryService.getSpeciesList()
     ).pipe(map(([animals, species]) =>
       AnimalMapperService.animalsGroupBySpecies(animals, species)));
 
     this.allVet$ = combineLatest(
-      this.userListService.fetchList(),
+      this.userListService.fetchList(
+        PrepareListRequestService.preparePaginationAndSortRequest(PrepareListRequestService.allDataListConfig)
+      ),
       this.userDictionaryService.getRoleList().pipe(
         filter(role => !!role.length),
         map(role => {

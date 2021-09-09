@@ -18,12 +18,16 @@ export class UserListService implements IBaseListService<IGeneralUser> {
               private prepareListRequestService: PrepareListRequestService) {
   }
 
-  public fetchList(): Observable<IGeneralUser[]> {
-    return this.getUserList();
+  public fetchList(customParams?: {[param: string]: string | string[]}): Observable<IGeneralUser[]> {
+    return this.getUserList(customParams);
   }
 
-  private getUserList(): Observable<IGeneralUser[]> {
-    return this.http.get<Pagination<IGeneralUser>>(this.userUrl, {params: this.prepareListRequestService.getParamsData()})
+  private getUserList(customParams?: {[param: string]: string | string[]}): Observable<IGeneralUser[]> {
+    const params = !!customParams ? customParams : this.prepareListRequestService.getParamsData();
+    return this.http.get<Pagination<IGeneralUser>>(
+      this.userUrl,
+      {params}
+    )
       .pipe(map(data => {
         const {items, ...paginationData} = data;
         this.prepareListRequestService.dispatchPaginationData(paginationData);
